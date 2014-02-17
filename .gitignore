@@ -1,0 +1,5 @@
+node_modules
+bower_components
+build
+application/templates
+.DS_Store
