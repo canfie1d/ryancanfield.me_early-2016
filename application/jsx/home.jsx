@@ -1,22 +1,22 @@
 /** @jsx React.DOM */
 define([
-	'react'
+    'react'
 ], function(
-	React
+    React
 ) {
 
-	return React.createClass({
+    return React.createClass({
 
-		displayName    : 'HomeModule',
+        displayName    : 'HomeModule',
 
-		getInitialState : function()
-		{
-			return {};
-		},
+        getInitialState : function()
+        {
+            return {};
+        },
 
-		render : function() {
-			return <div>Hello</div>;
-		}
+        render : function() {
+            return <div>Hello</div>;
+        }
 
-	});
+    });
 });

@@ -1,222 +1,222 @@
 define([
-	'underscore',
-	'backbone',
-	'lib/history',
-	'lib/route'
+    'underscore',
+    'backbone',
+    'lib/history',
+    'lib/route'
 ], function(
-	_,
-	Backbone,
-	History,
-	Route
+    _,
+    Backbone,
+    History,
+    Route
 ) {
-	'use strict';
+    'use strict';
 
-	var escapeRegExp = function(str)
-	{
-		return String(str || '').replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
-	};
+    var escapeRegExp = function(str)
+    {
+        return String(str || '').replace(/([.*+?^=!:${}()|[\]\/\\])/g, '\\$1');
+    };
 
-	Router.extend = Backbone.Model.extend;
+    Router.extend = Backbone.Model.extend;
 
-	function Router(options)
-	{
-		var isWebFile;
+    function Router(options)
+    {
+        var isWebFile;
 
-		this.options = options != null ? options : {};
-		this.match   = _.bind(this.match, this);
-		isWebFile    = window.location.protocol !== 'file:';
+        this.options = options != null ? options : {};
+        this.match   = _.bind(this.match, this);
+        isWebFile    = window.location.protocol !== 'file:';
 
-		_.defaults(this.options, {
-			pushState : isWebFile,
-			root      : '/',
-			trailing  : false
-		});
+        _.defaults(this.options, {
+            pushState : isWebFile,
+            root      : '/',
+            trailing  : false
+        });
 
-		this.removeRoot = new RegExp('^' + escapeRegExp(this.options.root) + '(#)?');
-		this.createHistory();
-	}
+        this.removeRoot = new RegExp('^' + escapeRegExp(this.options.root) + '(#)?');
+        this.createHistory();
+    }
 
-	Router.prototype.createHistory = function()
-	{
-		return Backbone.history = new History();
-	};
+    Router.prototype.createHistory = function()
+    {
+        return Backbone.history = new History();
+    };
 
-	Router.prototype.startHistory = function()
-	{
-		return Backbone.history.start(this.options);
-	};
+    Router.prototype.startHistory = function()
+    {
+        return Backbone.history.start(this.options);
+    };
 
-	Router.prototype.stopHistory = function()
-	{
-		if (Backbone.History.started)
-		{
-			return Backbone.history.stop();
-		}
-	};
+    Router.prototype.stopHistory = function()
+    {
+        if (Backbone.History.started)
+        {
+            return Backbone.history.stop();
+        }
+    };
 
-	Router.prototype.findHandler = function(predicate)
-	{
-		var handler, _i, _len, _ref;
-		_ref = Backbone.history.handlers;
-		for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-			handler = _ref[_i];
-			if (predicate(handler)) {
-				return handler;
-			}
-		}
-	};
+    Router.prototype.findHandler = function(predicate)
+    {
+        var handler, _i, _len, _ref;
+        _ref = Backbone.history.handlers;
+        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+            handler = _ref[_i];
+            if (predicate(handler)) {
+                return handler;
+            }
+        }
+    };
 
-	Router.prototype.match = function(pattern, name, target, options)
-	{
-		var component, route, _ref;
+    Router.prototype.match = function(pattern, name, target, options)
+    {
+        var component, route, _ref;
 
-		options = options || {};
+        options = options || {};
 
-		_.defaults(options, {
-			trailing : this.options.trailing
-		});
+        _.defaults(options, {
+            trailing : this.options.trailing
+        });
 
-		options.name = name;
+        options.name = name;
 
-		route = new Route(pattern, target, options);
+        route = new Route(pattern, target, options);
 
-		Backbone.history.handlers.push({
-			route    : route,
-			callback : route.handler
-		});
+        Backbone.history.handlers.push({
+            route    : route,
+            callback : route.handler
+        });
 
-		return route;
-	};
+        return route;
+    };
 
-	Router.prototype.route = function(pathDesc, params, options)
-	{
-		var handler, path;
+    Router.prototype.route = function(pathDesc, params, options)
+    {
+        var handler, path;
 
-		if (typeof pathDesc === 'object')
-		{
-			path = pathDesc.url;
-			if ( ! params && pathDesc.params)
-			{
-				params = pathDesc.params;
-			}
-		}
+        if (typeof pathDesc === 'object')
+        {
+            path = pathDesc.url;
+            if ( ! params && pathDesc.params)
+            {
+                params = pathDesc.params;
+            }
+        }
 
-		params = params ? _.isArray(params) ? params.slice() : _.extend({}, params) : {};
+        params = params ? _.isArray(params) ? params.slice() : _.extend({}, params) : {};
 
-		if (path != null)
-		{
-			path    = path.replace(this.removeRoot, '');
+        if (path != null)
+        {
+            path    = path.replace(this.removeRoot, '');
 
-			handler = this.findHandler(function(handler)
-			{
-				return handler.route.test(path);
-			});
+            handler = this.findHandler(function(handler)
+            {
+                return handler.route.test(path);
+            });
 
-			options = params;
-			params  = null;
-		}
-		else
-		{
-			options = options ? _.extend({}, options) : {};
+            options = params;
+            params  = null;
+        }
+        else
+        {
+            options = options ? _.extend({}, options) : {};
 
-			handler = this.findHandler(function(handler)
-			{
-				if (handler.route.matches(pathDesc))
-				{
-					params = handler.route.normalizeParams(params);
+            handler = this.findHandler(function(handler)
+            {
+                if (handler.route.matches(pathDesc))
+                {
+                    params = handler.route.normalizeParams(params);
 
-					if (params)
-						return true;
+                    if (params)
+                        return true;
 
-				}
+                }
 
-				return false;
-			});
-		}
+                return false;
+            });
+        }
 
-		if (handler)
-		{
-			_.defaults(options, {
-				changeURL : true
-			});
+        if (handler)
+        {
+            _.defaults(options, {
+                changeURL : true
+            });
 
-			handler.callback(path || params, options);
+            handler.callback(path || params, options);
 
-			return true;
-		}
-		else
-		{
-			throw new Error('Router#route: request was not routed');
-		}
-	};
+            return true;
+        }
+        else
+        {
+            throw new Error('Router#route: request was not routed');
+        }
+    };
 
-	Router.prototype.reverse = function(criteria, params, query)
-	{
-		var handler, handlers, reversed, root, url, _i, _len;
+    Router.prototype.reverse = function(criteria, params, query)
+    {
+        var handler, handlers, reversed, root, url, _i, _len;
 
-		root = this.options.root;
+        root = this.options.root;
 
-		if ((params != null) && typeof params !== 'object')
-		{
-			throw new TypeError('Router#reverse: params must be an array or an ' + 'object');
-		}
+        if ((params != null) && typeof params !== 'object')
+        {
+            throw new TypeError('Router#reverse: params must be an array or an ' + 'object');
+        }
 
-		handlers = Backbone.history.handlers;
+        handlers = Backbone.history.handlers;
 
-		for (_i = 0, _len = handlers.length; _i < _len; _i++)
-		{
-			handler = handlers[_i];
-			if (!(handler.route.matches(criteria)))
-			{
-				continue;
-			}
+        for (_i = 0, _len = handlers.length; _i < _len; _i++)
+        {
+            handler = handlers[_i];
+            if (!(handler.route.matches(criteria)))
+            {
+                continue;
+            }
 
-			reversed = handler.route.reverse(params, query);
+            reversed = handler.route.reverse(params, query);
 
-			if (reversed !== false)
-			{
-				url = root ? root + reversed : reversed;
-				return url;
-			}
-		}
+            if (reversed !== false)
+            {
+                url = root ? root + reversed : reversed;
+                return url;
+            }
+        }
 
-		throw new Error('Router#reverse: invalid route specified');
-	};
+        throw new Error('Router#reverse: invalid route specified');
+    };
 
-	Router.prototype.changeURL = function(params, route, options)
-	{
-		var navigateOptions, url;
+    Router.prototype.changeURL = function(params, route, options)
+    {
+        var navigateOptions, url;
 
-		if ( ! ((route.path !== null) && options.changeURL)) {
-			return;
-		}
+        if ( ! ((route.path !== null) && options.changeURL)) {
+            return;
+        }
 
-		url = route.path + (route.query ? "?" + route.query : "");
+        url = route.path + (route.query ? "?" + route.query : "");
 
-		navigateOptions = {
-			trigger: options.trigger === true,
-			replace: options.replace === true
-		};
+        navigateOptions = {
+            trigger: options.trigger === true,
+            replace: options.replace === true
+        };
 
-		return Backbone.history.navigate(url, navigateOptions);
-	};
+        return Backbone.history.navigate(url, navigateOptions);
+    };
 
-	Router.prototype.disposed = false;
+    Router.prototype.disposed = false;
 
-	Router.prototype.dispose = function()
-	{
-		if (this.disposed)
-			return;
+    Router.prototype.dispose = function()
+    {
+        if (this.disposed)
+            return;
 
-		this.stopHistory();
+        this.stopHistory();
 
-		delete Backbone.history;
+        delete Backbone.history;
 
-		this.disposed = true;
+        this.disposed = true;
 
-		return typeof Object.freeze === "function" ? Object.freeze(this) : void 0;
-	};
+        return typeof Object.freeze === "function" ? Object.freeze(this) : void 0;
+    };
 
-	return Router;
+    return Router;
 
 });

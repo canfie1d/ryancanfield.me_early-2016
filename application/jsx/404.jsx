@@ -1,15 +1,15 @@
 /** @jsx React.DOM */
 define([
-	'react'
+    'react'
 ], function(
-	React
+    React
 ) {
-	return React.createClass({
+    return React.createClass({
 
-		render : function() {
-			return (
-				<h1>404</h1>
-			);
-		}
-	});
+        render : function() {
+            return (
+                <h1>404</h1>
+            );
+        }
+    });
 });

@@ -1,9 +1,9 @@
 /* global window:false, require:false, document:false */
 require([
-	'application'
+    'application'
 ], function (
-	Application
+    Application
 ) {
-	'use strict';
+    'use strict';
 
 });

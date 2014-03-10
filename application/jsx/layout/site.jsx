@@ -1,23 +1,23 @@
 /** @jsx React.DOM */
 define([
-	'react'
+    'react'
 ], function(
-	React
+    React
 ) {
 
-	return React.createClass({
+    return React.createClass({
 
-		getInitialState : function()
-		{
-			return {};
-		},
+        getInitialState : function()
+        {
+            return {};
+        },
 
-		render : function() {
-			return (
-				<div>
-						{this.props.children}
-				</div>
-			);
-		}
-	});
+        render : function() {
+            return (
+                <div>
+                        {this.props.children}
+                </div>
+            );
+        }
+    });
 });
