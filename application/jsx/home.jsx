@@ -1,10 +1,8 @@
 /** @jsx React.DOM */
 define([
-	'react',
-	'templates/home/index'
+	'react'
 ], function(
-	React,
-	IndexPage
+	React
 ) {
 
 	return React.createClass({
@@ -13,30 +11,11 @@ define([
 
 		getInitialState : function()
 		{
-			return {
-				showSegments : false
-			};
-		},
-
-		handleShowSegment : function()
-		{
-			this.setState({
-				showSegments : true
-			});
-		},
-
-		handleHideSegment : function()
-		{
-			this.setState({
-				showSegments : false
-			});
+			return {};
 		},
 
 		render : function() {
-			console.log(this.props.params);
-			var classes = (this.state.showSegments ? 'segments-active' : 'segments-inactive');
-
-			return <IndexPage className={classes} handleShowSegment={this.handleShowSegment} handleHideSegment={this.handleHideSegment} />;
+			return <div>Hello</div>;
 		}
 
 	});

@@ -17,7 +17,6 @@
   ],
   "dependencies": {
     "requirejs": "~2.1.9",
-    "jquery": "~2.0.3",
     "underscore": "~1.5.2",
     "foundation": "~5.0.2",
     "backbone.validation": "~0.7.1",
@@ -26,6 +25,6 @@
     "modernizr": "~2.7.1",
     "bourbon": "~3.1.8",
     "backbone": "~1.1.0",
-    "backbone.subroute": "~0.4.1"
+    "jquery": "~2.1.0"
   }
 }

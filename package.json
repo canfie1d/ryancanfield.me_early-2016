@@ -16,6 +16,7 @@
     "grunt-preprocess": "~3.0.1",
     "time-grunt": "~0.2.8",
     "grunt-sass": "~0.10.0",
-    "grunt-react": "~0.6.0"
+    "grunt-react": "~0.6.0",
+    "grunt-http-server": "0.0.4"
   }
 }
