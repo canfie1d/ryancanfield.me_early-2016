@@ -1,13 +1,16 @@
 /** @jsx React.DOM */
 define([
-    'react'
+    'react',
+    'templates/mixins/navigate'
 ], function(
-    React
+    React,
+    NavigateMixin
 ) {
 
     return React.createClass({
 
         displayName    : 'HomeModule',
+        mixins         : [NavigateMixin],
 
         getInitialState : function()
         {
@@ -15,7 +18,7 @@ define([
         },
 
         render : function() {
-            return <div>Hello</div>;
+            return <div>Hello. Please <a href="/login" onClick={this.navigate}>log in</a></div>;
         }
 
     });

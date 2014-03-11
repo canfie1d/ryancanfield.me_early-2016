@@ -4,12 +4,14 @@ define([
     'templates/mixins/router',
     'templates/layout/site',
     'templates/home',
+    'templates/login',
     'templates/404'
 ], function(
     React,
     RouterMixin,
     SiteLayoutComponent,
     HomeModule,
+    LoginModule,
     NotFoundComponent
 ) {
 
@@ -22,6 +24,12 @@ define([
             'home' : {
                 route     : '',
                 component : HomeModule,
+                container : SiteLayoutComponent
+            },
+
+            'login' : {
+                route     : 'login',
+                component : LoginModule,
                 container : SiteLayoutComponent
             },
 

@@ -151,6 +151,7 @@ module.exports = function ( grunt ) {
             libs: {
                 src: [
                     'bower_components/jquery/dist/jquery.js',
+                    'bower_components/store.js/store.js',
                     'bower_components/requirejs/require.js',
                     'bower_components/modernizr/modernizr.js',
                     'bower_components/foundation/js/foundation/foundation.js'

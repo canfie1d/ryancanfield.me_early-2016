@@ -15,8 +15,17 @@ define([
 ) {
     'use strict';
 
-    window.app          = {};
-    window.app.mediator = mediator;
-    window.app.react    = React.renderComponent(Body({}), document.body);
+    function Application() {
+        this.mediator = mediator;
+        this.react    = React.renderComponent(Body({}), document.body);
+
+        this.storage  = window.store;
+
+        if ( ! this.storage.enabled) {
+            throw "Storage not supported";
+        }
+    }
+
+    return Application;
 
 });

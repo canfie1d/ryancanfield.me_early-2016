@@ -4,6 +4,65 @@ define([
     mediator
 ) {
 
+    var queryParams = {
+        stringify: function(queryParams) {
+            var arrParam, encodedKey, key, query, stringifyKeyValuePair, value, _i, _len;
+            query = '';
+            stringifyKeyValuePair = function(encodedKey, value) {
+                if (value != null) {
+                    return '&' + encodedKey + '=' + encodeURIComponent(value);
+                } else {
+                    return '';
+                }
+            };
+            for (key in queryParams) {
+                if (!__hasProp.call(queryParams, key)) continue;
+                value = queryParams[key];
+                encodedKey = encodeURIComponent(key);
+                if (_.isArray(value)) {
+                    for (_i = 0, _len = value.length; _i < _len; _i++) {
+                        arrParam = value[_i];
+                        query += stringifyKeyValuePair(encodedKey, arrParam);
+                    }
+                } else {
+                    query += stringifyKeyValuePair(encodedKey, value);
+                }
+            }
+            return query && query.substring(1);
+        },
+        parse: function(queryString) {
+            var current, field, pair, pairs, params, value, _i, _len, _ref;
+            params = {};
+            if (!queryString) {
+                return params;
+            }
+            pairs = queryString.split('&');
+            for (_i = 0, _len = pairs.length; _i < _len; _i++) {
+                pair = pairs[_i];
+                if (!pair.length) {
+                    continue;
+                }
+                _ref = pair.split('='), field = _ref[0], value = _ref[1];
+                if (!field.length) {
+                    continue;
+                }
+                field = decodeURIComponent(field);
+                value = decodeURIComponent(value);
+                current = params[field];
+                if (current) {
+                    if (current.push) {
+                        current.push(value);
+                    } else {
+                        params[field] = [current, value];
+                    }
+                } else {
+                    params[field] = value;
+                }
+            }
+            return params;
+        }
+    };
+
     var escapeRegExp   = /[\-{}\[\]+?.,\\\^$|#\s]/g,
         optionalRegExp = /\((.*?)\)/g,
         paramRegExp    = /(?::|\*)(\w+)/g;
@@ -53,7 +112,7 @@ define([
             value      = queryParams[key];
             encodedKey = encodeURIComponent(key);
 
-            if (utils.isArray(value))
+            if (_.isArray(value))
             {
                 for (i = 0; i < value.length; i++)
                 {
@@ -317,7 +376,7 @@ define([
         var actionParams, params, path, query, route, _ref;
         options = options ? _.extend({}, options) : {};
         if (typeof pathParams === 'object') {
-            query = utils.queryParams.stringify(options.query);
+            query = queryParams.stringify(options.query);
             params = pathParams;
             path = this.reverse(params);
         } else {
@@ -325,7 +384,7 @@ define([
             if (!(query != null)) {
                 query = '';
             } else {
-                options.query = utils.queryParams.parse(query);
+                options.query = queryParams.parse(query);
             }
             params = this.extractParams(path);
             path = processTrailingSlash(path, this.options.trailing);
