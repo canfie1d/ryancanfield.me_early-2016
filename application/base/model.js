@@ -21,10 +21,15 @@ define([
         {
             var authToken = window.authToken;
 
+            options.headers = options.headers || {};
+
+            _.extend(options.headers, {
+                Accept         : 'application/json',
+                'Content-Type' : 'application/json',
+            });
+
             if (authToken)
             {
-                options.headers = options.headers || {};
-
                 _.extend(options.headers, {
                     Authorization: 'Bearer '+authToken
                 });
