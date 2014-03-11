@@ -19,7 +19,7 @@ define([
 
         sync : function(method, model, options)
         {
-            var authToken = window.authToken;
+            var token = window.token;
 
             options.headers = options.headers || {};
 
@@ -31,7 +31,7 @@ define([
             if (authToken)
             {
                 _.extend(options.headers, {
-                    Authorization: 'Bearer '+authToken
+                    Authorization: 'Bearer '+token.access_token
                 });
             }
 
