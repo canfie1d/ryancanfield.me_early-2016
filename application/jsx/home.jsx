@@ -12,13 +12,17 @@ define([
         displayName    : 'HomeModule',
         mixins         : [NavigateMixin],
 
-        getInitialState : function()
-        {
-            return {};
+        logout : function(event) {
+            event.preventDefault();
+            this.props.user.logout();
         },
 
         render : function() {
-            return <div>Hello. Please <a href="/login" onClick={this.navigate}>log in</a></div>;
+            if (this.props.loggedIn) {
+                return <div>Hello. You are logged in. <a onClick={this.logout}>Log out</a></div>;
+            } else {
+                return <div>Hello. Please <a href="/login" onClick={this.navigate}>log in</a></div>;
+            }
         }
 
     });
