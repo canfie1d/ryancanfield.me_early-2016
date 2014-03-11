@@ -1,14 +1,10 @@
 /** @jsx React.DOM */
 define([
     'react',
-    'backbone',
-    'templates/layout/internal',
-    'templates/mixins/navigate'
+    'backbone'
 ], function(
     React,
-    Backbone,
-    InternalLayoutTemplate,
-    navigateMixin
+    Backbone
 ) {
 
     var isExternalLink = function(link)
