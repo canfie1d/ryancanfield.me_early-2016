@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 define([
     'react',
+    'lib/mediator',
     'templates/mixins/router',
     'templates/layout/site',
     'templates/home',
@@ -8,6 +9,7 @@ define([
     'templates/404'
 ], function(
     React,
+    mediator,
     RouterMixin,
     SiteLayoutComponent,
     HomeModule,
@@ -41,17 +43,50 @@ define([
             }
         },
 
+        getInitialState : function()
+        {
+            if (window.app.token) {
+                return {
+                    loggedIn : true,
+                    loading  : true,
+                    user     : false
+                };
+            } else {
+                return {
+                    loggedIn : false,
+                    user     : false
+                };
+            }
+        },
+
+        componentWillMount : function()
+        {
+            mediator.subscribe('!user:auth', _.bind(function(loggedIn, user) {
+                this.setState({
+                    loggedIn : loggedIn,
+                    loading  : false,
+                    user     : user || false
+                });
+            }, this));
+
+            window.app.loadUserFromToken();
+        },
+
         render : function() {
 
             if (this.state.componentName !== null)
             {
                 var component = this.state.componentName;
 
-                return (
-                    <SiteLayoutComponent>
-                        <component params={this.state.params} />
-                    </SiteLayoutComponent>
-                );
+                if (this.state.loading) {
+                    return <div>LOADING!</div>;
+                } else {
+                    return (
+                        <SiteLayoutComponent>
+                            <component params={this.state.params} loggedIn={this.state.loggedIn} user={this.state.user} />
+                        </SiteLayoutComponent>
+                    );
+                }
             }
             else
             {
