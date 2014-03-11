@@ -50,6 +50,11 @@ define([
             Backbone.history.navigate(href, {trigger: true});
 
             event.preventDefault();
+        },
+
+        redirect : function(url)
+        {
+            Backbone.history.navigate(url, {trigger: true});
         }
 
     };
