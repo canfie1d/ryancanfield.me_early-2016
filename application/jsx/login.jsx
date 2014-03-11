@@ -1,15 +1,18 @@
 /** @jsx React.DOM */
 define([
     'react',
-    'models/user'
+    'models/user',
+    'templates/mixins/navigate'
 ], function(
     React,
-    UserModel
+    UserModel,
+    NavigateMixin
 ) {
 
     return React.createClass({
 
         displayName    : 'LoginModule',
+        mixins: [NavigateMixin],
 
         getInitialState : function()
         {
@@ -18,12 +21,19 @@ define([
 
         loginSuccess : function()
         {
-            console.log('success');
+            this.redirect('/');
         },
 
         loginFailure : function()
         {
             console.log('failure');
+        },
+
+        componentDidMount : function()
+        {
+            if (window.app.token) {
+                this.redirect('/');
+            }
         },
 
         handleSubmit : function(event)
