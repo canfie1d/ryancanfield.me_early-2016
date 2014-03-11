@@ -1,5 +1,7 @@
 define([
+    'lib/mediator'
 ], function(
+    mediator
 ) {
 
     var escapeRegExp   = /[\-{}\[\]+?.,\\\^$|#\s]/g,
@@ -336,7 +338,7 @@ define([
             query  : query
         };
 
-        return window.app.eventBroker.trigger('router:match', route, actionParams, options);
+        return mediator.publish('router:match', route, actionParams, options);
     };
 
     Route.prototype.extractParams = function(path) {
