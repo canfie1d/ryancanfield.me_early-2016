@@ -1,7 +1,9 @@
 define([
-    'base/model'
+    'base/model',
+    'lib/mediator'
 ], function(
-    Model
+    Model,
+    mediator
 ) {
     'use strict';
 
@@ -10,7 +12,7 @@ define([
 
         url : function()
         {
-            return 'http://project.vm/user/'+this.get('id');
+            return 'http://project.vm/users/'+this.get('id');
         },
 
         login : function(success, failure)
@@ -25,9 +27,18 @@ define([
                     grant_type : 'password',
                     client_id  : '123'
                 },
-                success : _.partial(this.loginSuccess, success),
+                success : _.bind(this.loginSuccess, this, success),
                 failure : failure
             });
+        },
+
+        logout : function(success)
+        {
+            window.app.clearAuth();
+
+            if (success) {
+                success();
+            }
         },
 
         loginSuccess : function(success, token)
@@ -35,8 +46,7 @@ define([
             // Run the other callback
             success(_.toArray(arguments).slice(1));
 
-            window.token = token;
-            window.sessionStorage.setItem('token', JSON.stringify(token));
+            window.app.setAuth(token, this);
         }
     });
 });
