@@ -2,12 +2,14 @@ define([
     'underscore',
     'react',
     'backbone',
-    'lib/router'
+    'lib/router',
+    'lib/mediator'
 ], function(
     _,
     React,
     Backbone,
-    Router
+    Router,
+    mediator
 ) {
 
     return {
@@ -65,7 +67,7 @@ define([
                 this.router.createHistory();
             }
 
-            window.app.eventBroker.on('router:match', _.bind(this.updatePage, this));
+            mediator.subscribe('router:match', _.bind(this.updatePage, this));
 
             _.each(this._routes, _.bind(function(data, name)
             {
