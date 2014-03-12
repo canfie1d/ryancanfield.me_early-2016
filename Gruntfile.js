@@ -14,6 +14,8 @@ module.exports = function ( grunt ) {
     // Time how long tasks take. Can help when optimizing build times
     require('time-grunt')(grunt);
 
+    var modRewrite = require('connect-modrewrite');
+
     /**
      * This is the configuration object Grunt uses to give each plugin its
      * instructions.
@@ -149,6 +151,7 @@ module.exports = function ( grunt ) {
             libs: {
                 src: [
                     'bower_components/jquery/dist/jquery.js',
+                    'bower_components/store.js/store.js',
                     'bower_components/requirejs/require.js',
                     'bower_components/modernizr/modernizr.js',
                     'bower_components/foundation/js/foundation/foundation.js'
@@ -183,16 +186,23 @@ module.exports = function ( grunt ) {
             }
         },
 
-        'http-server': {
-            'dev': {
-                root            : './build',
-                port            : 8282,
-                host            : "127.0.0.1",
-                cache           : 0,
-                showDir         : false,
-                autoIndex       : false,
-                defaultExt      : "html",
-                runInBackground : false
+        connect: {
+            server: {
+                options: {
+                    port             : 9000,
+                    hostname         : '127.0.0.1',
+                    base             : ['build'],
+                    useAvailablePort : true,
+                    keepalive        : true,
+                    middleware: function (connect, options, middlewares) {
+
+                        middlewares.unshift(modRewrite([
+                            '!\\..*$ /index.html [L]'
+                        ]));
+
+                        return middlewares;
+                    }
+                },
             }
         },
 

@@ -6,4 +6,6 @@ require([
 ) {
     'use strict';
 
+    window.app = new Application();
+    window.app.start();
 });

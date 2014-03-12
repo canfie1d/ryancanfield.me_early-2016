@@ -1,14 +1,10 @@
 /** @jsx React.DOM */
 define([
     'react',
-    'backbone',
-    'templates/layout/internal',
-    'templates/mixins/navigate'
+    'backbone'
 ], function(
     React,
-    Backbone,
-    InternalLayoutTemplate,
-    navigateMixin
+    Backbone
 ) {
 
     var isExternalLink = function(link)
@@ -54,6 +50,11 @@ define([
             Backbone.history.navigate(href, {trigger: true});
 
             event.preventDefault();
+        },
+
+        redirect : function(url)
+        {
+            Backbone.history.navigate(url, {trigger: true});
         }
 
     };

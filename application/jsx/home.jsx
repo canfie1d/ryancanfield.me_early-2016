@@ -1,21 +1,28 @@
 /** @jsx React.DOM */
 define([
-    'react'
+    'react',
+    'templates/mixins/navigate'
 ], function(
-    React
+    React,
+    NavigateMixin
 ) {
 
     return React.createClass({
 
         displayName    : 'HomeModule',
+        mixins         : [NavigateMixin],
 
-        getInitialState : function()
-        {
-            return {};
+        logout : function(event) {
+            event.preventDefault();
+            this.props.user.logout();
         },
 
         render : function() {
-            return <div>Hello</div>;
+            if (this.props.loggedIn) {
+                return <div>Hello. You are logged in. <a onClick={this.logout}>Log out</a></div>;
+            } else {
+                return <div>Hello. Please <a href="/login" onClick={this.navigate}>log in</a></div>;
+            }
         }
 
     });
