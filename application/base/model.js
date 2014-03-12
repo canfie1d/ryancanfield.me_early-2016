@@ -28,7 +28,7 @@ define([
                 'Content-Type' : 'application/json',
             });
 
-            if (authToken)
+            if (token)
             {
                 _.extend(options.headers, {
                     Authorization: 'Bearer '+token.access_token
