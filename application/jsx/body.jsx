@@ -6,6 +6,8 @@ define([
     'templates/layout/site',
     'templates/home',
     'templates/login',
+    'templates/account/change-email',
+    'templates/account/change-password',
     'templates/404'
 ], function(
     React,
@@ -14,6 +16,8 @@ define([
     SiteLayoutComponent,
     HomeModule,
     LoginModule,
+    ChangeEmailModule,
+    ChangePasswordModule,
     NotFoundComponent
 ) {
 
@@ -33,6 +37,18 @@ define([
                 route     : 'login',
                 component : LoginModule,
                 container : SiteLayoutComponent
+            },
+
+            'account-change-email' : {
+                route : 'account/change-email',
+                component: ChangeEmailModule,
+                container: SiteLayoutComponent
+            },
+
+            'account-change-password' : {
+                route : 'account/change-password',
+                component: ChangePasswordModule,
+                container: SiteLayoutComponent
             },
 
             // This must always be registered last or it will catch everything
