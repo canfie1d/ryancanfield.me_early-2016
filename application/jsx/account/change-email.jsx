@@ -1,11 +1,9 @@
 /** @jsx React.DOM */
 define([
     'react',
-    'models/change-email',
     'templates/mixins/navigate'
 ], function(
     React,
-    ChangeEmailModel,
     NavigateMixin
 ) {
 
