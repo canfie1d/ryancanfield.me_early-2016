@@ -18,11 +18,11 @@ define([
             event.preventDefault();
 
             var currentPassword = this.refs.current_password.getDOMNode().value.trim();
-            var newEmail = this.refs.email.getDOMNode().value.trim();
+            var newEmail        = this.refs.email.getDOMNode().value.trim();
 
             this.props.user.save({
-                current_password: currentPassword,
-                email: newEmail
+                current_password : currentPassword,
+                email            : newEmail
             });
         },
 

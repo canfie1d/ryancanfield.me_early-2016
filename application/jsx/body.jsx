@@ -40,13 +40,13 @@ define([
             },
 
             'account-change-email' : {
-                route : 'account/change-email',
+                route    : 'account/change-email',
                 component: ChangeEmailModule,
                 container: SiteLayoutComponent
             },
 
             'account-change-password' : {
-                route : 'account/change-password',
+                route    : 'account/change-password',
                 component: ChangePasswordModule,
                 container: SiteLayoutComponent
             },
