@@ -19,9 +19,24 @@ define([
 
         render : function() {
             if (this.props.loggedIn) {
-                return <div>Hello. You are logged in. <a onClick={this.logout}>Log out</a></div>;
+                return (
+                    <div>
+                        <p>
+                            Hello. You are logged in. <a onClick={this.logout}>Log out</a>
+                        </p>
+                        <p>
+                            Your email:
+                            <a href="/account/change-email" onClick={this.navigate}>Change email</a>
+                        </p>
+                        <p>
+                            <a href="/account/change-password" onClick={this.navigate}>Change password</a>
+                        </p>
+                    </div>
+                );
             } else {
-                return <div>Hello. Please <a href="/login" onClick={this.navigate}>log in</a></div>;
+                return (
+                    <div>Hello. Please <a href="/login" onClick={this.navigate}>log in</a></div>
+                );
             }
         }
 
