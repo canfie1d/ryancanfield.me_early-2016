@@ -6,6 +6,7 @@ define([
     'templates/layout/site',
     'templates/home',
     'templates/login',
+    'templates/register',
     'templates/receive-token',
     'templates/account/change-email',
     'templates/account/change-password',
@@ -17,6 +18,7 @@ define([
     SiteLayoutComponent,
     HomeModule,
     LoginModule,
+    RegisterModule,
     ReceiveTokenModule,
     ChangeEmailModule,
     ChangePasswordModule,
@@ -38,6 +40,12 @@ define([
             'login' : {
                 route     : 'login',
                 component : LoginModule,
+                container : SiteLayoutComponent
+            },
+
+            'register' : {
+                route     : 'register',
+                component : RegisterModule,
                 container : SiteLayoutComponent
             },
 

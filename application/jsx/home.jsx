@@ -37,7 +37,9 @@ define([
                 return (
                     <div>
                         <p>
-                            Hello. Please <a href="/login" onClick={this.navigate}>log in</a>.
+                            Hello. Please
+                            <a href="/login" onClick={this.navigate}>log in</a> or
+                            <a href="/register" onClick={this.navigate}>register</a>.
                         </p>
                         <p>
                             Or <a href="http://project.vm/social-login/github">log in with GitHub</a>.
