@@ -12,7 +12,13 @@ define([
 
         url : function()
         {
-            return 'http://project.vm/users/'+this.get('id');
+            var url = 'http://project.vm/users';
+
+            if (this.get('id')) {
+                url += '/'+this.get('id');
+            }
+
+            return url;
         },
 
         login : function(success, failure)

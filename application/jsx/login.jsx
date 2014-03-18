@@ -61,6 +61,9 @@ define([
         render : function() {
             return (
                 <form onSubmit={this.handleSubmit}>
+                    <p>
+                        Login:
+                    </p>
                     <label htmlFor="email">Email:</label>
                     <input type="text" name="email" ref="email" />
                     <label htmlFor="password">Password:</label>
