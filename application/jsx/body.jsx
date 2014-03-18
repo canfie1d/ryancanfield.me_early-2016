@@ -6,6 +6,7 @@ define([
     'templates/layout/site',
     'templates/home',
     'templates/login',
+    'templates/receive-token',
     'templates/account/change-email',
     'templates/account/change-password',
     'templates/404'
@@ -16,6 +17,7 @@ define([
     SiteLayoutComponent,
     HomeModule,
     LoginModule,
+    ReceiveTokenModule,
     ChangeEmailModule,
     ChangePasswordModule,
     NotFoundComponent
@@ -36,6 +38,12 @@ define([
             'login' : {
                 route     : 'login',
                 component : LoginModule,
+                container : SiteLayoutComponent
+            },
+
+            'receive-token' : {
+                route     : 'receive-token',
+                component : ReceiveTokenModule,
                 container : SiteLayoutComponent
             },
 
@@ -88,8 +96,8 @@ define([
             window.app.loadUserFromToken();
         },
 
-        render : function() {
-
+        render : function()
+        {
             if (this.state.componentName !== null)
             {
                 var component = this.state.componentName;
@@ -99,7 +107,12 @@ define([
                 } else {
                     return (
                         <SiteLayoutComponent>
-                            <component params={this.state.params} loggedIn={this.state.loggedIn} user={this.state.user} />
+                            <component
+                                params={this.state.params}
+                                loggedIn={this.state.loggedIn}
+                                user={this.state.user}
+                                queryParams={this.state.queryParams}
+                            />
                         </SiteLayoutComponent>
                     );
                 }

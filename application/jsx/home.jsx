@@ -35,7 +35,14 @@ define([
                 );
             } else {
                 return (
-                    <div>Hello. Please <a href="/login" onClick={this.navigate}>log in</a></div>
+                    <div>
+                        <p>
+                            Hello. Please <a href="/login" onClick={this.navigate}>log in</a>.
+                        </p>
+                        <p>
+                            Or <a href="http://project.vm/social-login/github">log in with GitHub</a>.
+                        </p>
+                    </div>
                 );
             }
         }
