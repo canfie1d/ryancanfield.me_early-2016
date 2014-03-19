@@ -8,7 +8,8 @@ define([
     'use strict';
 
     return Model.extend({
-        oauthTokenUrl : 'http://project.vm/oauth/token',
+        oauthTokenUrl  : 'http://project.vm/oauth/token',
+        oauthLogoutUrl : 'http://project.vm/logout',
 
         url : function()
         {
@@ -40,11 +41,33 @@ define([
 
         logout : function(success)
         {
-            window.app.clearAuth();
+            var headers = this.defaultHeaders();
 
-            if (success) {
-                success();
-            }
+            $.ajax({
+                url        : this.oauthLogoutUrl,
+                headers    : headers,
+                dataType   : 'json',
+                type       : 'POST',
+                beforeSend : function(xhr) {
+                    for (var header in headers) {
+                        xhr.setRequestHeader(header, headers[header]);
+                    }
+                },
+                success    : function () {
+                    window.app.clearAuth();
+
+                    if (success) {
+                        success();
+                    }
+                },
+                error      : function () {
+                    window.app.clearAuth();
+
+                    if (success) {
+                        success();
+                    }
+                }
+            });
         },
 
         loginSuccess : function(success, token)
