@@ -23,19 +23,29 @@ define([
 
             options.headers = options.headers || {};
 
-            _.extend(options.headers, {
+            _.extend(options.headers, this.defaultHeaders());
+
+            return Backbone.Model.prototype.sync.call(this, method, model, options);
+        },
+
+        defaultHeaders : function()
+        {
+            var token = window.app.storage.get('token');
+            var headers;
+
+            headers = {
                 Accept         : 'application/json',
-                'Content-Type' : 'application/json',
-            });
+                'Content-Type' : 'application/json'
+            };
 
             if (token)
             {
-                _.extend(options.headers, {
+                headers = _.extend(headers, {
                     Authorization: 'Bearer '+token.access_token
                 });
             }
 
-            return Backbone.Model.prototype.sync.call(this, method, model, options);
+            return headers;
         }
     });
 });
