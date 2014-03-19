@@ -41,13 +41,17 @@ define([
 
         logout : function(success)
         {
-            var headers = this.defaultHeaders();
+            var headers      = this.defaultHeaders();
+            var refreshToken = window.app.storage.get('token').refresh_token;
 
             $.ajax({
                 url        : this.oauthLogoutUrl,
                 headers    : headers,
                 dataType   : 'json',
                 type       : 'POST',
+                data       : JSON.stringify({
+                    refresh_token: refreshToken
+                }),
                 beforeSend : function(xhr) {
                     for (var header in headers) {
                         xhr.setRequestHeader(header, headers[header]);
