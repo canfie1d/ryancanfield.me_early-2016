@@ -12,6 +12,13 @@ define([
         displayName : 'ReceiveTokenModule',
         mixins      : [NavigateMixin],
 
+        getInitialState : function()
+        {
+            return {
+                loginFailure : this.props.queryParams.login_failure
+            };
+        },
+
         componentDidMount : function()
         {
             var params = this.props.queryParams;
@@ -24,13 +31,34 @@ define([
             };
 
             window.app.clearAuth();
+
+            if (this.state.loginFailure) {
+                return;
+            }
+
+            if (! params.access_token) {
+                return;
+            }
+
             window.app.setAuth(token, params.user_id);
 
             this.redirect('/');
         },
 
+        message : function()
+        {
+            if (this.state.loginFailure) {
+                return 'An account already exists with your email address. Do you need to link your social account?';
+            }
+        },
+
         render : function() {
-            return <div />;
+            return (
+                <div>
+                    {this.message()}
+                    <a href="/">Back</a>
+                </div>
+            );
         }
 
     });
