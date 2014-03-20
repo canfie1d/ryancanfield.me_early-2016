@@ -13,8 +13,16 @@ define([
         mixins         : [NavigateMixin],
 
         logout : function(event) {
+            var success = _.bind(
+                function() {
+                    this.redirect('/');
+                },
+                this
+            );
+
             event.preventDefault();
-            this.props.user.logout();
+
+            this.props.user.logout(success);
         },
 
         render : function() {
