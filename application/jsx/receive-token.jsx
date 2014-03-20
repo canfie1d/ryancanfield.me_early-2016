@@ -1,9 +1,13 @@
 /** @jsx React.DOM */
 define([
     'react',
+    'lib/mediator',
+    'models/user',
     'templates/mixins/navigate'
 ], function(
     React,
+    mediator,
+    UserModel,
     NavigateMixin
 ) {
 
@@ -40,9 +44,12 @@ define([
                 return;
             }
 
-            window.app.setAuth(token, params.user_id);
+            window.app.setAuth(token, false);
+            window.app.loadUserFromToken();
 
-            this.redirect('/');
+            mediator.subscribe('!user:auth', _.bind(function(loggedIn, user) {
+                this.redirect('/');
+            }, this));
         },
 
         message : function()
@@ -50,13 +57,15 @@ define([
             if (this.state.loginFailure) {
                 return 'An account already exists with your email address. Do you need to link your social account?';
             }
+
+            return 'LOADING!';
         },
 
-        render : function() {
+        render : function()
+        {
             return (
                 <div>
                     {this.message()}
-                    <a href="/">Back</a>
                 </div>
             );
         }

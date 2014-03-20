@@ -52,6 +52,9 @@ define([
                         <p>
                             Or <a href="http://project.vm/social-login/github">log in with GitHub</a>.
                         </p>
+                        <p>
+                            Or <a href="http://project.vm/social-login/facebook">log in with Facebook</a>.
+                        </p>
                     </div>
                 );
             }
