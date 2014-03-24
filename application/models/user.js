@@ -34,6 +34,9 @@ define([
                     grant_type : 'password',
                     client_id  : '123'
                 },
+                xhrFields: {
+                   withCredentials: true
+                },
                 success : _.bind(this.loginSuccess, this, success),
                 failure : failure
             });
@@ -52,6 +55,9 @@ define([
                 data       : JSON.stringify({
                     refresh_token: refreshToken
                 }),
+                xhrFields: {
+                   withCredentials: true
+                },
                 beforeSend : function(xhr) {
                     for (var header in headers) {
                         xhr.setRequestHeader(header, headers[header]);

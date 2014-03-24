@@ -34,8 +34,6 @@ define([
                 user_id       : params.user_id
             };
 
-            window.app.clearAuth();
-
             if (this.state.loginFailure) {
                 return;
             }
@@ -44,6 +42,7 @@ define([
                 return;
             }
 
+            window.app.clearAuth();
             window.app.setAuth(token, false);
             window.app.loadUserFromToken();
 
