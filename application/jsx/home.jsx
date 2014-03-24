@@ -12,7 +12,8 @@ define([
         displayName    : 'HomeModule',
         mixins         : [NavigateMixin],
 
-        logout : function(event) {
+        logout : function(event)
+        {
             var success = _.bind(
                 function() {
                     this.redirect('/');
@@ -25,19 +26,22 @@ define([
             this.props.user.logout(success);
         },
 
-        render : function() {
+        render : function()
+        {
             if (this.props.loggedIn) {
                 return (
                     <div>
                         <p>
-                            Hello. You are logged in. <a onClick={this.logout}>Log out</a>
+                            Logged in as <strong>{this.props.user.get('email')}</strong><br />
+                            <a onClick={this.logout}>Log out</a>
                         </p>
                         <p>
-                            Your email:
-                            <a href="/account/change-email" onClick={this.navigate}>Change email</a>
-                        </p>
-                        <p>
+                            <a href="/account/change-email" onClick={this.navigate}>Change email</a><br />
                             <a href="/account/change-password" onClick={this.navigate}>Change password</a>
+                        </p>
+                        <p>
+                            <a href="http://project.vm/social-login/github/link">Link GitHub account</a><br />
+                            <a href="http://project.vm/social-login/facebook/link">Link Facebook account</a>
                         </p>
                     </div>
                 );
