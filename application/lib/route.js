@@ -397,7 +397,7 @@ define([
             query  : query
         };
 
-        return mediator.publish('router:match', route, actionParams, options);
+        return mediator.publish('router:match', route, actionParams, this.options);
     };
 
     Route.prototype.extractParams = function(path) {
