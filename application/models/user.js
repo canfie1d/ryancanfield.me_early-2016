@@ -9,7 +9,7 @@ define([
 
     return Model.extend({
         oauthTokenUrl  : 'http://project.vm/oauth/token',
-        oauthLogoutUrl : 'http://project.vm/logout',
+        oauthLogoutUrl : 'http://project.vm/oauth/logout',
 
         url : function()
         {
