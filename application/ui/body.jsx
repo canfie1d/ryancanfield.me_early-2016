@@ -2,15 +2,15 @@
 define([
     'react',
     'lib/mediator',
-    'templates/mixins/router',
-    'templates/layout/site',
-    'templates/home',
-    'templates/login',
-    'templates/register',
-    'templates/receive-token',
-    'templates/account/change-email',
-    'templates/account/change-password',
-    'templates/404'
+    'compiled/mixins/router',
+    'compiled/layout/site',
+    'compiled/home',
+    'compiled/login',
+    'compiled/register',
+    'compiled/receive-token',
+    'compiled/account/change-email',
+    'compiled/account/change-password',
+    'compiled/404'
 ], function(
     React,
     mediator,

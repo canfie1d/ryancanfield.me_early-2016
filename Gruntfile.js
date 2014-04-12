@@ -179,9 +179,9 @@ module.exports = function ( grunt ) {
                 files: [
                     {
                         expand : true,
-                        cwd    : 'application/jsx',
+                        cwd    : 'application/ui',
                         src    : ['**/*.jsx'],
-                        dest   : 'application/templates',
+                        dest   : 'application/compiled',
                         ext    : '.js'
                     }
                 ]
@@ -247,7 +247,7 @@ module.exports = function ( grunt ) {
                 files: [
                     'application/**/*.{js,jsx}',
                     'application/**/*.hbs',
-                    '!application/templates/**/*.js',
+                    '!application/compiled/**/*.js',
                     'config.js',
                     'application.js',
                     '_index.html'

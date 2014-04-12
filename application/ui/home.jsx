@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 define([
     'react',
-    'templates/mixins/navigate'
+    'compiled/mixins/navigate'
 ], function(
     React,
     NavigateMixin

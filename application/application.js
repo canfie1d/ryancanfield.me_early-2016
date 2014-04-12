@@ -6,7 +6,7 @@ define([
     'cortex',
     'models/user',
     'lib/mediator',
-    'templates/body'
+    'compiled/body'
 ], function(
     _,
     $,

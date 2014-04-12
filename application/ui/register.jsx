@@ -2,7 +2,7 @@
 define([
     'react',
     'models/user',
-    'templates/mixins/navigate'
+    'compiled/mixins/navigate'
 ], function(
     React,
     UserModel,

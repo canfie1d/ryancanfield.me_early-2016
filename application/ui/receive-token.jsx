@@ -3,7 +3,7 @@ define([
     'react',
     'lib/mediator',
     'models/user',
-    'templates/mixins/navigate'
+    'compiled/mixins/navigate'
 ], function(
     React,
     mediator,
