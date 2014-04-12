@@ -11,8 +11,8 @@ define([
 
     return React.createClass({
 
-        displayName    : 'RegisterModule',
-        mixins: [NavigateMixin],
+        displayName : 'LoginModule',
+        mixins      : [NavigateMixin],
 
         getInitialState : function()
         {
@@ -21,7 +21,6 @@ define([
 
         loginSuccess : function()
         {
-            console.log('here');
             this.redirect('/');
         },
 
@@ -51,22 +50,19 @@ define([
                 return false;
             }
 
-            var user = new UserModel();
-
-            user.save({
+            var user = new UserModel({
                 email    : email,
                 password : password
-            }, {
-                success : this.loginSuccess,
-                error   : this.loginFailure
             });
+
+            user.login(this.loginSuccess, this.loginFailure);
         },
 
         render : function() {
             return (
                 <form onSubmit={this.handleSubmit}>
                     <p>
-                        Register an account:
+                        Login:
                     </p>
                     <label htmlFor="email">Email:</label>
                     <input type="text" name="email" ref="email" />

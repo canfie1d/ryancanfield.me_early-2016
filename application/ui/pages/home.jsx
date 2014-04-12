@@ -36,8 +36,8 @@ define([
                             <a onClick={this.logout}>Log out</a>
                         </p>
                         <p>
-                            <a href="/account/change-email" onClick={this.navigate}>Change email</a><br />
-                            <a href="/account/change-password" onClick={this.navigate}>Change password</a>
+                            <a href="/account/change-email">Change email</a><br />
+                            <a href="/account/change-password">Change password</a>
                         </p>
                         <p>
                             <a href="http://project.vm/social-login/github/link">Link GitHub account</a><br />
@@ -55,8 +55,8 @@ define([
                     <div>
                         <p>
                             Hello. Please
-                            <a href="/login" onClick={this.navigate}>log in</a> or
-                            <a href="/register" onClick={this.navigate}>register</a>.
+                            <a href="/login">log in</a> or
+                            <a href="/register">register</a>.
                         </p>
                         <p>
                             Or <a href="http://project.vm/social-login/github">log in with GitHub</a>.

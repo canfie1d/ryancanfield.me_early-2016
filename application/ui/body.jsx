@@ -3,14 +3,17 @@ define([
     'react',
     'lib/mediator',
     'compiled/mixins/router',
-    'compiled/layout/site',
-    'compiled/home',
-    'compiled/login',
-    'compiled/register',
-    'compiled/receive-token',
-    'compiled/account/change-email',
-    'compiled/account/change-password',
-    'compiled/404'
+    'compiled/components/layout/site',
+    'compiled/pages/home',
+    'compiled/pages/account/login',
+    'compiled/pages/account/register',
+    'compiled/pages/account/receive-token',
+    'compiled/pages/account/change-email',
+    'compiled/pages/account/change-password',
+    'compiled/pages/error/404',
+
+    // Replaces React.DOM.a but does not provide a component itself
+    'compiled/lib/routed-link'
 ], function(
     React,
     mediator,

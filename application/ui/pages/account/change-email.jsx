@@ -1,26 +1,23 @@
 /** @jsx React.DOM */
 define([
-    'react',
-    'compiled/mixins/navigate'
+    'react'
 ], function(
-    React,
-    NavigateMixin
+    React
 ) {
 
     return React.createClass({
 
-        displayName    : 'ChangePasswordModule',
-        mixins         : [NavigateMixin],
+        displayName    : 'ChangeEmailPage',
 
         handleSubmit : function(event) {
             event.preventDefault();
 
             var currentPassword = this.refs.current_password.getDOMNode().value.trim();
-            var newPassword     = this.refs.password.getDOMNode().value.trim();
+            var newEmail        = this.refs.email.getDOMNode().value.trim();
 
             this.props.user.save({
                 current_password : currentPassword,
-                password         : newPassword
+                email            : newEmail
             });
         },
 
@@ -30,11 +27,11 @@ define([
                     <label htmlFor="current_password">Current password:</label>
                     <input type="password" name="current_password" ref="current_password" />
 
-                    <label htmlFor="password">New password:</label>
-                    <input type="password" name="password" ref="password" />
+                    <label htmlFor="email">New email:</label>
+                    <input type="text" name="email" ref="email" />
 
                     <input type="submit" value="Submit" />
-                    <a href="/" onClick={this.navigate}>Back</a>
+                    <a href="/">Back</a>
                 </form>
             );
         }

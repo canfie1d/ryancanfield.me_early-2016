@@ -122,7 +122,9 @@ define([
                     continue;
                 }
 
-                _ref = pair.split('='), field = _ref[0], value = _ref[1];
+                _ref  = pair.split('=');
+                field = _ref[0];
+                value = _ref[1];
 
                 if (!field.length) {
                     continue;
