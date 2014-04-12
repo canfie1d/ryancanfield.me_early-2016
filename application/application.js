@@ -41,6 +41,7 @@ define([
                 this.react.setProps({ token : updatedToken });
             }, this));
 
+            React.initializeTouchEvents(true);
             this.react = React.renderComponent(Body({
                 token: tokenCortex
             }), document.body);
