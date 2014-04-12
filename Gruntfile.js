@@ -151,12 +151,26 @@ module.exports = function ( grunt ) {
             libs: {
                 src: [
                     'bower_components/jquery/dist/jquery.js',
+                    'bower_components/jquery-waypoints/waypoints.js',
                     'bower_components/store.js/store.js',
                     'bower_components/requirejs/require.js',
-                    'bower_components/modernizr/modernizr.js',
                     'bower_components/foundation/js/foundation/foundation.js'
                 ],
                 dest: '<%= distdir %>/js/vendor.js'
+            },
+
+            headerJs : {
+                src: [
+                    'bower_components/modernizr/modernizr.js'
+                ],
+                dest: '<%= distdir %>/js/vendor-header.js'
+            },
+
+            headerCss : {
+                src: [
+                    'bower_components/font-awesome/css/font-awesome.min.css'
+                ],
+                dest: '<%= distdir %>/css/vendor-header.css'
             }
         },
 
