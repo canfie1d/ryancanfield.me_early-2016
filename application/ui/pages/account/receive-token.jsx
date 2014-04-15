@@ -1,12 +1,12 @@
 /** @jsx React.DOM */
 define([
     'react',
-    'lib/mediator',
+    'compiled/mixins/events',
     'models/user',
     'compiled/mixins/navigate'
 ], function(
     React,
-    mediator,
+    EventsMixin,
     UserModel,
     NavigateMixin
 ) {
@@ -46,7 +46,7 @@ define([
             window.app.setAuth(token, false);
             window.app.loadUserFromToken();
 
-            mediator.subscribe('!user:auth', _.bind(function(loggedIn, user) {
+            this.subscribe('!user:auth', _.bind(function(loggedIn, user) {
                 this.redirect('/');
             }, this));
         },

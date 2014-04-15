@@ -47,7 +47,7 @@ define([
 
         navigate : function(handler)
         {
-            this.router.navigate.bind(this.router, callback, {
+            this.router.navigate.bind(this.router, handler, {
                 trigger : true
             });
         },

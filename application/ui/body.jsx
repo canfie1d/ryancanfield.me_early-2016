@@ -1,7 +1,7 @@
 /** @jsx React.DOM */
 define([
     'react',
-    'lib/mediator',
+    'compiled/mixins/events',
     'compiled/mixins/router',
     'compiled/components/layout/site',
     'compiled/pages/home',
@@ -16,7 +16,7 @@ define([
     'compiled/lib/routed-link'
 ], function(
     React,
-    mediator,
+    EventsMixin,
     RouterMixin,
     SiteLayoutComponent,
     HomeModule,
@@ -31,7 +31,7 @@ define([
     return React.createClass({
 
         displayName : 'PageRoot',
-        mixins      : [ RouterMixin ],
+        mixins      : [ RouterMixin, EventsMixin ],
 
         routes : {
             'home' : {
@@ -96,7 +96,7 @@ define([
 
         componentWillMount : function()
         {
-            mediator.subscribe('!user:auth', _.bind(function(loggedIn, user) {
+            this.subscribe('!user:auth', _.bind(function(loggedIn, user) {
                 this.setState({
                     loggedIn : loggedIn,
                     loading  : false,
