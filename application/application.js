@@ -5,6 +5,7 @@ define([
     'react',
     'cortex',
     'models/user',
+    'lib/router',
     'lib/mediator',
     'compiled/body'
 ], function(
@@ -14,6 +15,7 @@ define([
     React,
     Cortex,
     UserModel,
+    Router,
     mediator,
     Body
 ) {
@@ -35,7 +37,8 @@ define([
         var tokenCortex;
 
         this.start = function() {
-            this.react = null;
+            this.react  = null;
+            this.router = new Router();
 
             tokenCortex = new Cortex(token, _.bind(function(updatedToken) {
                 this.react.setProps({ token : updatedToken });
@@ -43,7 +46,8 @@ define([
 
             React.initializeTouchEvents(true);
             this.react = React.renderComponent(Body({
-                token: tokenCortex
+                token  : tokenCortex,
+                router : this.router
             }), document.body);
         };
 
