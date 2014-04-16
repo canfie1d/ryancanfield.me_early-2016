@@ -27,7 +27,6 @@ define([
         },
 
         render : function() {
-            console.log(this.props.user);
             return (
                 <div>
                     <p>Logged in as <strong>{this.props.user.get('email')}</strong>.</p>
