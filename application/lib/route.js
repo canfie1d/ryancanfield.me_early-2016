@@ -203,7 +203,7 @@ define([
             optional = this.optionalParams;
 
         // fill required params
-        for (i = 0; required.length; i++)
+        for (i = 0; i < required.length; i++)
         {
             name  = required[i];
             value = params[name];
