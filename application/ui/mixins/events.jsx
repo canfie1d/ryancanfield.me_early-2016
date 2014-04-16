@@ -15,6 +15,11 @@ define([
      * mediator.subscribe, but with the added benefit that your event handlers
      * will automatically be removed from the mediator when the component
      * unmounts.
+     *
+     * For the best results, you typically want to start listening to events
+     * during `componentWillMount`. Publishing events when a component is mounted
+     * should happen during `componentDidMount`. This will give all of your
+     * components the chance to start listening before any events are published.
      */
     return {
 
