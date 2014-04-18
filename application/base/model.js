@@ -10,11 +10,13 @@ define([
     'use strict';
 
     return Backbone.Model.extend({
-        initialize : function()
+        initialize : function(attributes, options)
         {
             _.extend(Backbone.Model.prototype, SyncMachine);
 
             Backbone.Model.prototype.initialize.apply(this, arguments);
+            
+            this.options = options || {};
         },
 
         sync : function(method, model, options)
