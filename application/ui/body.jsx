@@ -1,140 +1,129 @@
 /** @jsx React.DOM */
-define([
-    'react',
-    'compiled/mixins/events',
-    'compiled/mixins/router',
-    'compiled/components/layout/site',
-    'compiled/pages/home',
-    'compiled/pages/account/login',
-    'compiled/pages/account/register',
-    'compiled/pages/account/receive-token',
-    'compiled/pages/account/change-email',
-    'compiled/pages/account/change-password',
-    'compiled/pages/error/404',
+/* global window */
+'use strict';
 
-    // Replaces React.DOM.a but does not provide a component itself
-    'compiled/lib/routed-link'
-], function(
-    React,
-    EventsMixin,
-    RouterMixin,
-    SiteLayoutComponent,
-    HomeModule,
-    LoginModule,
-    RegisterModule,
-    ReceiveTokenModule,
-    ChangeEmailModule,
-    ChangePasswordModule,
-    NotFoundComponent
-) {
+var _                    = require('underscore');
+var React                = require('react');
+var EventsMixin          = require('./mixins/events.jsx');
+var RouterMixin          = require('./mixins/router.jsx');
+var SiteLayoutComponent  = require('./components/layout/site.jsx');
+var HomeModule           = require('./pages/home.jsx');
+var LoginModule          = require('./pages/account/login.jsx');
+var RegisterModule       = require('./pages/account/register.jsx');
+var ReceiveTokenModule   = require('./pages/account/receive-token.jsx');
+var ChangeEmailModule    = require('./pages/account/change-email.jsx');
+var ChangePasswordModule = require('./pages/account/change-password.jsx');
+var NotFoundComponent    = require('./pages/error/404.jsx');
 
-    return React.createClass({
+// Does not provide a component
+require('./lib/routed-link.jsx');
 
-        displayName : 'PageRoot',
-        mixins      : [ RouterMixin, EventsMixin ],
+module.exports = React.createClass({
 
-        routes : {
-            'home' : {
-                route     : '',
-                component : HomeModule,
-                container : SiteLayoutComponent
-            },
+    displayName : 'PageRoot',
+    mixins      : [ RouterMixin, EventsMixin ],
 
-            'login' : {
-                route     : 'login',
-                component : LoginModule,
-                container : SiteLayoutComponent
-            },
-
-            'register' : {
-                route     : 'register',
-                component : RegisterModule,
-                container : SiteLayoutComponent
-            },
-
-            'receive-token' : {
-                route     : 'receive-token',
-                component : ReceiveTokenModule,
-                container : SiteLayoutComponent
-            },
-
-            'account-change-email' : {
-                route    : 'account/change-email',
-                component: ChangeEmailModule,
-                container: SiteLayoutComponent
-            },
-
-            'account-change-password' : {
-                route    : 'account/change-password',
-                component: ChangePasswordModule,
-                container: SiteLayoutComponent
-            },
-
-            // This must always be registered last or it will catch everything
-            '*unknown' : {
-                route     : '*unknown',
-                component : NotFoundComponent,
-                container : SiteLayoutComponent
-            }
+    routes : {
+        'home' : {
+            route     : '',
+            component : HomeModule,
+            container : SiteLayoutComponent
         },
 
-        getInitialState : function()
+        'login' : {
+            route     : 'login',
+            component : LoginModule,
+            container : SiteLayoutComponent
+        },
+
+        'register' : {
+            route     : 'register',
+            component : RegisterModule,
+            container : SiteLayoutComponent
+        },
+
+        'receive-token' : {
+            route     : 'receive-token',
+            component : ReceiveTokenModule,
+            container : SiteLayoutComponent
+        },
+
+        'account-change-email' : {
+            route    : 'account/change-email',
+            component: ChangeEmailModule,
+            container: SiteLayoutComponent
+        },
+
+        'account-change-password' : {
+            route    : 'account/change-password',
+            component: ChangePasswordModule,
+            container: SiteLayoutComponent
+        },
+
+        // This must always be registered last or it will catch everything
+        '*unknown' : {
+            route     : '*unknown',
+            component : NotFoundComponent,
+            container : SiteLayoutComponent
+        }
+    },
+
+    getInitialState : function()
+    {
+        if (window.app.token) {
+            return {
+                loggedIn : true,
+                loading  : true,
+                user     : false
+            };
+        } else {
+            return {
+                loggedIn : false,
+                user     : false
+            };
+        }
+    },
+
+    componentWillMount : function()
+    {
+        this.subscribe('!user:auth', _.bind(function(loggedIn, user) {
+            this.setState({
+                loggedIn : loggedIn,
+                loading  : false,
+                user     : user || false
+            });
+        }, this));
+
+        window.app.loadUserFromToken();
+    },
+
+    render : function()
+    {
+        if (this.state.componentName !== null)
         {
-            if (window.app.token) {
-                return {
-                    loggedIn : true,
-                    loading  : true,
-                    user     : false
-                };
+            var component = this.state.componentName;
+
+            if (this.state.loading) {
+                return <div>LOADING!</div>;
             } else {
-                return {
-                    loggedIn : false,
-                    user     : false
-                };
-            }
-        },
-
-        componentWillMount : function()
-        {
-            this.subscribe('!user:auth', _.bind(function(loggedIn, user) {
-                this.setState({
-                    loggedIn : loggedIn,
-                    loading  : false,
-                    user     : user || false
-                });
-            }, this));
-
-            window.app.loadUserFromToken();
-        },
-
-        render : function()
-        {
-            if (this.state.componentName !== null)
-            {
-                var component = this.state.componentName;
-
-                if (this.state.loading) {
-                    return <div>LOADING!</div>;
-                } else {
-                    return (
-                        <SiteLayoutComponent
+                return (
+                    <SiteLayoutComponent
+                        loggedIn={this.state.loggedIn}
+                        user={this.state.user}>
+                        <component
+                            params={this.state.params}
                             loggedIn={this.state.loggedIn}
-                            user={this.state.user}>
-                            <component
-                                params={this.state.params}
-                                loggedIn={this.state.loggedIn}
-                                user={this.state.user}
-                                queryParams={this.state.queryParams}
-                            />
-                        </SiteLayoutComponent>
-                    );
-                }
-            }
-            else
-            {
-                return <div></div>;
+                            user={this.state.user}
+                            queryParams={this.state.queryParams}
+                        />
+                    </SiteLayoutComponent>
+                );
             }
         }
+        else
+        {
+            return <div></div>;
+        }
+    }
 
-    });
 });

@@ -1,158 +1,149 @@
-define([
-    'underscore',
-    'react',
-    'backbone',
-    'lib/router',
-    'lib/mediator'
-], function(
-    _,
-    React,
-    Backbone,
-    Router,
-    mediator
-) {
+/* global window */
+'use strict';
 
-    return {
+var _        = require('underscore');
+var Router   = require('../../lib/router');
+var mediator = require('../../lib/mediator');
 
-        router         : null,
-        routingStarted : false,
-        nextId         : 1,
+module.exports = {
 
-        componentDidMount : function()
+    router         : null,
+    routingStarted : false,
+    nextId         : 1,
+
+    componentDidMount : function()
+    {
+        this.initRouter();
+    },
+
+    getInitialState : function() {
+        return {
+            componentName : null,
+            props         : null
+        };
+    },
+
+    updatePage : function(routeMatch, params, routeOptions)
+    {
+        this.setState({
+            componentName : routeMatch.target,
+            params        : params,
+            queryParams   : this.getQueryParams(),
+            routeOptions  : routeOptions
+        });
+    },
+
+    getUrl : function()
+    {
+        return window.location.href;
+    },
+
+    navigate : function(handler)
+    {
+        this.router.navigate.bind(this.router, handler, {
+            trigger : true
+        });
+    },
+
+    navigateBack : function()
+    {
+        window.history.go.bind(window.history, -1);
+    },
+
+    initRouter : function()
+    {
+        this._routes      = this.routes || {};
+        this._routePrefix = this.routePrefix || '';
+
+        if (this.props.router)
         {
-            this.initRouter();
-        },
+            this.router = this.props.router;
+        }
 
-        getInitialState : function() {
-            return {
-                componentName : null,
-                props         : null
-            };
-        },
-
-        updatePage : function(routeMatch, params, routeOptions)
+        if ( ! this.router)
         {
-            this.setState({
-                componentName : routeMatch.target,
-                params        : params,
-                queryParams   : this.getQueryParams(),
-                routeOptions  : routeOptions
-            });
-        },
+            this.router = new Router();
+            this.router.createHistory();
+        }
 
-        getUrl : function()
+        mediator.subscribe('router:match', _.bind(this.updatePage, this));
+
+        _.each(this._routes, _.bind(function(data, name)
         {
-            return location.href;
-        },
+            var component = data.component,
+                _route    = data.route,
+                options   = data.options;
 
-        navigate : function(handler)
-        {
-            this.router.navigate.bind(this.router, handler, {
-                trigger : true
-            });
-        },
+            this.router.match(_route, name, component, options);
+        }, this));
 
-        navigateBack : function()
-        {
-            window.history.go.bind(window.history, -1);
-        },
+        this.router.startHistory();
+    },
 
-        initRouter : function()
-        {
-            this._routes      = this.routes || {};
-            this._routePrefix = this.routePrefix || '';
+    getQueryParams : function()
+    {
+        var uri, queryString, querySeparatorIndex;
 
-            if (this.props.router)
-            {
-                this.router = this.props.router;
-            }
+        uri = window.location.search;
 
-            if ( ! this.router)
-            {
-                this.router = new Router();
-                this.router.createHistory();
-            }
+        querySeparatorIndex = uri.indexOf('?');
 
-            mediator.subscribe('router:match', _.bind(this.updatePage, this));
-
-            _.each(this._routes, _.bind(function(data, name)
-            {
-                var component = data.component,
-                    _route    = data.route,
-                    options   = data.options;
-
-                this.router.match(_route, name, component, options);
-            }, this));
-
-            this.router.startHistory();
-        },
-
-        getQueryParams : function()
-        {
-            var uri, queryString, querySeparatorIndex;
-
-            uri = window.location.search;
-
-            querySeparatorIndex = uri.indexOf('?');
-
-            queryString = uri.substring(querySeparatorIndex + 1);
+        queryString = uri.substring(querySeparatorIndex + 1);
 
 
-            return this.extractQueryParams(queryString);
-        },
+        return this.extractQueryParams(queryString);
+    },
 
-        /**
-         * Extract params from a query string
-         *
-         * Borrowed from Chaplin.js v1.0.0 utils.queryParams.parse
-         * @param  string queryString
-         * @return object
-         */
-        extractQueryParams : function(queryString)
-        {
-            var current, field, pair, pairs, params, value, _i, _len, _ref;
+    /**
+     * Extract params from a query string
+     *
+     * Borrowed from Chaplin.js v1.0.0 utils.queryParams.parse
+     * @param  string queryString
+     * @return object
+     */
+    extractQueryParams : function(queryString)
+    {
+        var current, field, pair, pairs, params, value, _i, _len, _ref;
 
-            params = {};
+        params = {};
 
-            if (!queryString) {
-                return params;
-            }
-
-            pairs = queryString.split('&');
-
-            for (_i = 0, _len = pairs.length; _i < _len; _i++) {
-                pair = pairs[_i];
-
-                if (!pair.length) {
-                    continue;
-                }
-
-                _ref  = pair.split('=');
-                field = _ref[0];
-                value = _ref[1];
-
-                if (!field.length) {
-                    continue;
-                }
-
-                field = decodeURIComponent(field);
-                value = decodeURIComponent(value);
-
-                current = params[field];
-
-                if (current) {
-                    if (current.push) {
-                        current.push(value);
-                    } else {
-                        params[field] = [current, value];
-                    }
-                } else {
-                    params[field] = value;
-                }
-            }
-
+        if (!queryString) {
             return params;
         }
-    };
 
-});
+        pairs = queryString.split('&');
+
+        for (_i = 0, _len = pairs.length; _i < _len; _i+=1) {
+            pair = pairs[_i];
+
+            if (!pair.length) {
+                continue;
+            }
+
+            _ref  = pair.split('=');
+            field = _ref[0];
+            value = _ref[1];
+
+            if (!field.length) {
+                continue;
+            }
+
+            field = decodeURIComponent(field);
+            value = decodeURIComponent(value);
+
+            current = params[field];
+
+            if (current) {
+                if (current.push) {
+                    current.push(value);
+                } else {
+                    params[field] = [current, value];
+                }
+            } else {
+                params[field] = value;
+            }
+        }
+
+        return params;
+    }
+};

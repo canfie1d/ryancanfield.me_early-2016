@@ -1,61 +1,57 @@
 /** @jsx React.DOM */
-define([
-    'react',
-    'backbone'
-], function(
-    React,
-    Backbone
-) {
+/* global window */
+'use strict';
 
-    var isExternalLink = function(link)
+var Backbone = require('backbone');
+
+var isExternalLink = function(link)
+{
+    if (link.hasAttribute('target') && link.getAttribute('target') === '_blank')
+        return true;
+
+    if (link.hasAttribute('rel') && link.getAttribute('rel') === 'external')
+        return true;
+
+    if (link.protocol !== 'http:' && link.protocol !== 'https:' && link.protocol !== 'file:')
+        return true;
+
+    if (link.hostname !== window.location.hostname && link.hostname !== '')
+        return true;
+
+    return false;
+};
+
+module.exports = {
+
+    navigate : function(event)
     {
-        if (link.hasAttribute('target') && link.getAttribute('target') === '_blank')
-            return true;
+        var target   = event.currentTarget,
+            isAnchor = target.nodeName === 'A',
+            external = isExternalLink(target);
 
-        if (link.hasAttribute('rel') && link.getAttribute('rel') === 'external')
-            return true;
+        if ( ! isAnchor)
+            return;
 
-        if (link.protocol !== 'http:' && link.protocol !== 'https:' && link.protocol !== 'file:')
-            return true;
+        var href = target.getAttribute('href') || target.getAttribute('data-href') || null;
 
-        if (link.hostname !== location.hostname && link.hostname !== '')
-            return true;
+        if ( ! href || href === '' || href.charAt(0) === '#')
+            return;
 
-        return false;
-    };
-
-    return {
-
-        navigate : function(event)
+        if (isAnchor && external)
         {
-            var target   = event.currentTarget,
-                isAnchor = target.nodeName === 'A',
-                external = isExternalLink(target);
-
-            if ( ! isAnchor)
-                return;
-
-            var href = target.getAttribute('href') || target.getAttribute('data-href') || null;
-
-            if ( ! href || href === '' || href.charAt(0) === '#')
-                return;
-
-            if (isAnchor && external)
-            {
-                event.preventDefault();
-                window.open(href);
-                return;
-            }
-
-            Backbone.history.navigate(href, {trigger: true});
-
             event.preventDefault();
-        },
-
-        redirect : function(url)
-        {
-            Backbone.history.navigate(url, {trigger: true});
+            window.open(href);
+            return;
         }
 
-    };
-});
+        Backbone.history.navigate(href, {trigger: true});
+
+        event.preventDefault();
+    },
+
+    redirect : function(url)
+    {
+        Backbone.history.navigate(url, {trigger: true});
+    }
+
+};

@@ -1,11 +1,13 @@
-/* global window:false, require:false, document:false */
-require([
-    'application'
-], function (
-    Application
-) {
-    'use strict';
+/* global window */
 
-    window.app = new Application();
-    window.app.start();
-});
+'use strict';
+
+var Application = require('./application');
+
+var $ = require('jquery');
+var Backbone = require('backbone');
+
+Backbone.$ = $;
+
+window.app = new Application();
+window.app.start();

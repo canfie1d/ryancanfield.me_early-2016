@@ -1,40 +1,37 @@
 /** @jsx React.DOM */
-define([
-    'react'
-], function(
-    React
-) {
+'use strict';
 
-    return React.createClass({
+var React = require('react');
 
-        displayName    : 'ChangePasswordModule',
+module.exports = React.createClass({
 
-        handleSubmit : function(event) {
-            event.preventDefault();
+    displayName    : 'ChangePasswordModule',
 
-            var currentPassword = this.refs.current_password.getDOMNode().value.trim();
-            var newPassword     = this.refs.password.getDOMNode().value.trim();
+    handleSubmit : function(event) {
+        event.preventDefault();
 
-            this.props.user.save({
-                current_password : currentPassword,
-                password         : newPassword
-            });
-        },
+        var currentPassword = this.refs.current_password.getDOMNode().value.trim();
+        var newPassword     = this.refs.password.getDOMNode().value.trim();
 
-        render : function() {
-            return (
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="current_password">Current password:</label>
-                    <input type="password" name="current_password" ref="current_password" />
+        this.props.user.save({
+            current_password : currentPassword,
+            password         : newPassword
+        });
+    },
 
-                    <label htmlFor="password">New password:</label>
-                    <input type="password" name="password" ref="password" />
+    render : function() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor="current_password">Current password:</label>
+                <input type="password" name="current_password" ref="current_password" />
 
-                    <input type="submit" value="Submit" />
-                    <a href="/">Back</a>
-                </form>
-            );
-        }
+                <label htmlFor="password">New password:</label>
+                <input type="password" name="password" ref="password" />
 
-    });
+                <input type="submit" value="Submit" />
+                <a href="/">Back</a>
+            </form>
+        );
+    }
+
 });

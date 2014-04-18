@@ -148,16 +148,6 @@ module.exports = function ( grunt ) {
              * payload, but then concatenation order will obviously be important to
              * get right.
              */
-            libs: {
-                src: [
-                    'bower_components/jquery/dist/jquery.js',
-                    'bower_components/jquery-waypoints/waypoints.js',
-                    'bower_components/store.js/store.js',
-                    'bower_components/requirejs/require.js',
-                    'bower_components/foundation/js/foundation/foundation.js'
-                ],
-                dest: '<%= distdir %>/js/vendor.js'
-            },
 
             headerJs : {
                 src: [
@@ -200,6 +190,55 @@ module.exports = function ( grunt ) {
             }
         },
 
+        browserify: {
+            options: {
+                debug: true,
+                transform: ['reactify', 'browserify-shim'],
+                extensions: ['.jsx']
+            },
+            vendor: {
+                src: [
+                    //'bower_components/foundation/js/foundation/foundation.js'
+                ],
+                dest: '<%= distdir %>/js/vendor.js',
+                options: {
+                    transform: ['deamdify', 'browserify-shim'],
+                    alias: [
+                        'react:react',
+                        'underscore:underscore',
+                        'jquery:jquery',
+                        'backbone:Backbone',
+                        'react:react',
+                        'cortexjs:cortex',
+                        'store:store',
+                        'backbone-validation:backbone-validation',
+                        'jquery-waypoints/waypoints:waypoints'
+                    ],
+                    shim: {
+                        jquery: {
+                            exports: '$'
+                        }
+                    }
+                }
+            },
+            app : {
+                options: {
+                    external: [
+                        'underscore',
+                        'jquery',
+                        'backbone',
+                        'react',
+                        'cortex',
+                        'store',
+                        'backbone-validation',
+                        'waypoints'
+                    ]
+                },
+                src: ['application/**/*.{js,jsx}'],
+                dest: '<%= distdir %>/js/app.js'
+            }
+        },
+
         connect: {
             server: {
                 options: {
@@ -216,7 +255,7 @@ module.exports = function ( grunt ) {
 
                         return middlewares;
                     }
-                },
+                }
             }
         },
 
@@ -306,6 +345,8 @@ module.exports = function ( grunt ) {
     grunt.registerTask( 'qa', [ 'build', 'preprocess:qa' ] );
     grunt.registerTask( 'production', [ 'build', 'preprocess:production' ] );
     grunt.registerTask( 'build', ['clean', 'concat', 'react', 'requirejs', 'sass', 'copy'] );
+
+    grunt.registerTask( 'js', [ 'browserify:vendor', 'browserify:app'] );
 
     /**
      * A task to build the project, without some of the slower processes. This is

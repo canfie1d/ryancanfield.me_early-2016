@@ -1,81 +1,75 @@
 /** @jsx React.DOM */
-define([
-    'react',
-    'models/user',
-    'compiled/mixins/navigate'
-], function(
-    React,
-    UserModel,
-    NavigateMixin
-) {
+/* global window */
+'use strict';
 
-    return React.createClass({
+var React         = require('react');
+var UserModel     = require('../../../models/user');
+var NavigateMixin = require('../../mixins/navigate.jsx');
 
-        displayName : 'RegisterModule',
-        mixins      : [NavigateMixin],
+module.exports = React.createClass({
 
-        getInitialState : function()
-        {
-            return {};
-        },
+    displayName : 'RegisterModule',
+    mixins      : [NavigateMixin],
 
-        loginSuccess : function()
-        {
-            console.log('here');
+    getInitialState : function()
+    {
+        return {};
+    },
+
+    loginSuccess : function()
+    {
+        this.redirect('/');
+    },
+
+    loginFailure : function()
+    {
+    },
+
+    componentDidMount : function()
+    {
+        if (window.app.token) {
             this.redirect('/');
-        },
+        }
+    },
 
-        loginFailure : function()
-        {
-            console.log('failure');
-        },
+    handleSubmit : function(event)
+    {
+        // Don't let the browser submit the form
+        event.preventDefault();
 
-        componentDidMount : function()
-        {
-            if (window.app.token) {
-                this.redirect('/');
-            }
-        },
+        // this.refs is populated by setting the ref property in the component
+        var email    = this.refs.email.getDOMNode().value.trim(),
+            password = this.refs.password.getDOMNode().value.trim();
 
-        handleSubmit : function(event)
-        {
-            // Don't let the browser submit the form
-            event.preventDefault();
-
-            // this.refs is populated by setting the ref property in the component
-            var email    = this.refs.email.getDOMNode().value.trim(),
-                password = this.refs.password.getDOMNode().value.trim();
-
-            if (!email || !password) {
-                // TODO: error message
-                return false;
-            }
-
-            var user = new UserModel();
-
-            user.save({
-                email    : email,
-                password : password
-            }, {
-                success : this.loginSuccess,
-                error   : this.loginFailure
-            });
-        },
-
-        render : function() {
-            return (
-                <form onSubmit={this.handleSubmit}>
-                    <p>
-                        Register an account:
-                    </p>
-                    <label htmlFor="email">Email:</label>
-                    <input type="text" name="email" ref="email" />
-                    <label htmlFor="password">Password:</label>
-                    <input type="password" name="password" ref="password" />
-                    <input type="submit" value="Log in" />
-                </form>
-            );
+        if (!email || !password) {
+            // TODO: error message
+            return false;
         }
 
-    });
+        var user = new UserModel();
+
+        user.save({
+            email    : email,
+            password : password
+        }, {
+            success : this.loginSuccess,
+            error   : this.loginFailure
+        });
+    },
+
+    render : function() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <p>
+                    Register an account:
+                </p>
+                <label htmlFor="email">Email:</label>
+                <input type="text" name="email" ref="email" />
+                <label htmlFor="password">Password:</label>
+                <input type="password" name="password" ref="password" />
+                <input type="submit" value="Log in" />
+            </form>
+        );
+    }
+
 });

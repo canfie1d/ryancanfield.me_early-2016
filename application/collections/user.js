@@ -1,13 +1,8 @@
-define([
-    'base/collection',
-    'models/user'
-], function(
-    BaseCollection,
-    UserModel
-) {
-    'use strict';
+'use strict';
 
-    return BaseCollection.extend({
-        model: UserModel
-    });
+var BaseCollection = require('../base/collection');
+var UserModel      = require('../models/user');
+
+module.exports = BaseCollection.extend({
+    model: UserModel
 });

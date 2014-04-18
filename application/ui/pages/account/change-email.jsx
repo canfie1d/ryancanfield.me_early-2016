@@ -1,40 +1,37 @@
 /** @jsx React.DOM */
-define([
-    'react'
-], function(
-    React
-) {
+'use strict';
 
-    return React.createClass({
+var React = require('react');
 
-        displayName    : 'ChangeEmailPage',
+module.exports = React.createClass({
 
-        handleSubmit : function(event) {
-            event.preventDefault();
+    displayName    : 'ChangeEmailPage',
 
-            var currentPassword = this.refs.current_password.getDOMNode().value.trim();
-            var newEmail        = this.refs.email.getDOMNode().value.trim();
+    handleSubmit : function(event) {
+        event.preventDefault();
 
-            this.props.user.save({
-                current_password : currentPassword,
-                email            : newEmail
-            });
-        },
+        var currentPassword = this.refs.current_password.getDOMNode().value.trim();
+        var newEmail        = this.refs.email.getDOMNode().value.trim();
 
-        render : function() {
-            return (
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="current_password">Current password:</label>
-                    <input type="password" name="current_password" ref="current_password" />
+        this.props.user.save({
+            current_password : currentPassword,
+            email            : newEmail
+        });
+    },
 
-                    <label htmlFor="email">New email:</label>
-                    <input type="text" name="email" ref="email" />
+    render : function() {
+        return (
+            <form onSubmit={this.handleSubmit}>
+                <label htmlFor="current_password">Current password:</label>
+                <input type="password" name="current_password" ref="current_password" />
 
-                    <input type="submit" value="Submit" />
-                    <a href="/">Back</a>
-                </form>
-            );
-        }
+                <label htmlFor="email">New email:</label>
+                <input type="text" name="email" ref="email" />
 
-    });
+                <input type="submit" value="Submit" />
+                <a href="/">Back</a>
+            </form>
+        );
+    }
+
 });

@@ -1,38 +1,35 @@
 /** @jsx React.DOM */
-define([
-    'react',
-    'compiled/mixins/navigate'
-], function(
-    React,
-    NavigateMixin
-) {
+'use strict';
 
-    return React.createClass({
+var _             = require('underscore');
+var React         = require('react');
+var NavigateMixin = require('../../../mixins/navigate.jsx');
 
-        displayName : 'LoggedInHeaderSection',
-        mixins      : [NavigateMixin],
+module.exports = React.createClass({
 
-        logout : function(event)
-        {
-            var success = _.bind(
-                function() {
-                    this.redirect('/');
-                },
-                this
-            );
+    displayName : 'LoggedInHeaderSection',
+    mixins      : [NavigateMixin],
 
-            event.preventDefault();
+    logout : function(event)
+    {
+        var success = _.bind(
+            function() {
+                this.redirect('/');
+            },
+            this
+        );
 
-            this.props.user.logout(success);
-        },
+        event.preventDefault();
 
-        render : function() {
-            return (
-                <div>
-                    <p>Logged in as <strong>{this.props.user.get('email')}</strong>.</p>
-                    <p><a href="/logout" onClick={this.logout}>Logout</a></p>
-                </div>
-            );
-        }
-    });
+        this.props.user.logout(success);
+    },
+
+    render : function() {
+        return (
+            <div>
+                <p>Logged in as <strong>{this.props.user.get('email')}</strong>.</p>
+                <p><a href="/logout" onClick={this.logout}>Logout</a></p>
+            </div>
+        );
+    }
 });

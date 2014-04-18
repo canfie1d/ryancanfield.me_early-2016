@@ -1,15 +1,12 @@
 /** @jsx React.DOM */
-define([
-    'react'
-], function(
-    React
-) {
-    return React.createClass({
+'use strict';
 
-        render : function() {
-            return (
-                <h1>404</h1>
-            );
-        }
-    });
+var React = require('react');
+
+module.exports = React.createClass({
+    render : function() {
+        return (
+            <h1>404</h1>
+        );
+    }
 });

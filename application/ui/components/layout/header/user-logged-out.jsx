@@ -1,22 +1,19 @@
 /** @jsx React.DOM */
-define([
-    'react'
-], function(
-    React
-) {
+'use strict';
 
-    return React.createClass({
+var React = require('react');
 
-        displayName : 'LoggedOutHeaderSection',
+module.exports = React.createClass({
 
-        render : function() {
-            return (
-                <p>
-                    Please
-                    <a route="login">log in</a> or
-                    <a route="register">register</a>.
-                </p>
-            );
-        }
-    });
+    displayName : 'LoggedOutHeaderSection',
+
+    render : function() {
+        return (
+            <p>
+                Please
+                <a route="login">log in</a> or
+                <a route="register">register</a>.
+            </p>
+        );
+    }
 });

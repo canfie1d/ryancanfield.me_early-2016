@@ -1,26 +1,20 @@
 /** @jsx React.DOM */
-define([
-    'react',
-    'compiled/components/layout/header/user-logged-in',
-    'compiled/components/layout/header/user-logged-out'
-], function(
-    React,
-    LoggedIn,
-    LoggedOut
-) {
+'use strict';
 
-    return React.createClass({
+var React     = require('react');
+var LoggedIn  = require('./header/user-logged-in.jsx');
+var LoggedOut = require('./header/user-logged-out.jsx');
 
-        render : function() {
-            var Component = (this.props.loggedIn) ? LoggedIn : LoggedOut;
-            return (
-                <div>
-                    <header>
-                        <Component user={this.props.user} />
-                    </header>
-                    {this.props.children}
-                </div>
-            );
-        }
-    });
+module.exports = React.createClass({
+    render : function() {
+        var Component = (this.props.loggedIn) ? LoggedIn : LoggedOut;
+        return (
+            <div>
+                <header>
+                    <Component user={this.props.user} />
+                </header>
+                {this.props.children}
+            </div>
+        );
+    }
 });

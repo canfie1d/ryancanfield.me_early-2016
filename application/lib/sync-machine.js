@@ -1,105 +1,102 @@
 /**
  * Adapted from ChaplinJS (http://chaplinjs.org/)
  */
-define([
-], function(
-) {
-    'use strict';
 
-    var event, handlerFn;
+'use strict';
 
-    var UNSYNCED = 'unsynced',
-        SYNCING = 'syncing',
-        SYNCED = 'synced',
-        STATE_CHANGE = 'syncStateChange';
+var event, handlerFn;
 
-    var SyncMachine = {
+var UNSYNCED = 'unsynced',
+    SYNCING = 'syncing',
+    SYNCED = 'synced',
+    STATE_CHANGE = 'syncStateChange';
 
-        _syncState         : UNSYNCED,
-        _previousSyncState : null,
+var SyncMachine = {
 
-        syncState: function() {
-            return this._syncState;
-        },
+    _syncState         : UNSYNCED,
+    _previousSyncState : null,
 
-        isUnsynced: function() {
-            return this._syncState === UNSYNCED;
-        },
+    syncState: function() {
+        return this._syncState;
+    },
 
-        isSynced: function() {
-            return this._syncState === SYNCED;
-        },
+    isUnsynced: function() {
+        return this._syncState === UNSYNCED;
+    },
 
-        isSyncing: function() {
-            return this._syncState === SYNCING;
-        },
+    isSynced: function() {
+        return this._syncState === SYNCED;
+    },
 
-        unsync: function() {
-            var state;
+    isSyncing: function() {
+        return this._syncState === SYNCING;
+    },
 
-            if ((state = this._syncState) === SYNCING || state === SYNCED) {
-                this._previousSync = this._syncState;
-                this._syncState    = UNSYNCED;
+    unsync: function() {
+        var state;
 
-                this.trigger(this._syncState, this, this._syncState);
-                this.trigger(STATE_CHANGE, this, this._syncState);
-            }
-        },
-        beginSync: function() {
-            var state;
+        if ((state = this._syncState) === SYNCING || state === SYNCED) {
+            this._previousSync = this._syncState;
+            this._syncState    = UNSYNCED;
 
-            if ((state = this._syncState) === UNSYNCED || state === SYNCED) {
-                this._previousSync = this._syncState;
-                this._syncState    = SYNCING;
+            this.trigger(this._syncState, this, this._syncState);
+            this.trigger(STATE_CHANGE, this, this._syncState);
+        }
+    },
+    beginSync: function() {
+        var state;
 
-                this.trigger(this._syncState, this, this._syncState);
-                this.trigger(STATE_CHANGE, this, this._syncState);
-            }
-        },
-        finishSync: function() {
-            if (this._syncState === SYNCING) {
-                this._previousSync = this._syncState;
-                this._syncState    = SYNCED;
+        if ((state = this._syncState) === UNSYNCED || state === SYNCED) {
+            this._previousSync = this._syncState;
+            this._syncState    = SYNCING;
 
-                this.trigger(this._syncState, this, this._syncState);
-                this.trigger(STATE_CHANGE, this, this._syncState);
-            }
-        },
-        abortSync: function() {
-            if (this._syncState === SYNCING) {
-                this._syncState    = this._previousSync;
-                this._previousSync = this._syncState;
+            this.trigger(this._syncState, this, this._syncState);
+            this.trigger(STATE_CHANGE, this, this._syncState);
+        }
+    },
+    finishSync: function() {
+        if (this._syncState === SYNCING) {
+            this._previousSync = this._syncState;
+            this._syncState    = SYNCED;
 
-                this.trigger(this._syncState, this, this._syncState);
-                this.trigger(STATE_CHANGE, this, this._syncState);
-            }
+            this.trigger(this._syncState, this, this._syncState);
+            this.trigger(STATE_CHANGE, this, this._syncState);
+        }
+    },
+    abortSync: function() {
+        if (this._syncState === SYNCING) {
+            this._syncState    = this._previousSync;
+            this._previousSync = this._syncState;
+
+            this.trigger(this._syncState, this, this._syncState);
+            this.trigger(STATE_CHANGE, this, this._syncState);
+        }
+    }
+};
+
+var states = [UNSYNCED, SYNCING, SYNCED, STATE_CHANGE];
+
+handlerFn = function(event) {
+    return SyncMachine[event] = function(callback, context) {
+        if (context == null) {
+            context = this;
+        }
+
+        this.on(event, callback, context);
+
+        if (this._syncState === event) {
+            return callback.call(context);
         }
     };
+};
 
-    var states = [UNSYNCED, SYNCING, SYNCED, STATE_CHANGE];
+for (var i = 0, len = states.length; i < len; i+=1) {
+    event = states[i];
+    handlerFn(event);
+}
 
-    handlerFn = function(event) {
-        return SyncMachine[event] = function(callback, context) {
-            if (context == null) {
-                context = this;
-            }
+if (typeof Object.freeze === "function") {
+    Object.freeze(SyncMachine);
+}
 
-            this.on(event, callback, context);
-
-            if (this._syncState === event) {
-                return callback.call(context);
-            }
-        };
-    };
-
-    for (var i = 0, len = states.length; i < len; i++) {
-        event = states[i];
-        handlerFn(event);
-    }
-
-    if (typeof Object.freeze === "function") {
-        Object.freeze(SyncMachine);
-    }
-
-    return SyncMachine;
-});
+module.exports = SyncMachine;
