@@ -66,16 +66,30 @@ define([
         };
 
         this.loadUserFromToken = function() {
+            var user, success;
+
             if (! this.token) {
                 return;
             }
 
-            var user = new UserModel({id : this.token.user_id});
-            user.fetch({
-                success: _.bind(function() {
-                    this.auth = user;
+            user = new UserModel({id : this.token.user_id});
 
-                    this.mediator.publish('!user:auth', true, user);
+            success = _.bind(function() {
+                this.auth = user;
+
+                this.mediator.publish('!user:auth', true, user);
+            }, this);
+
+            user.fetch({
+                success : success,
+                error   : _.bind(function(user, xhr) {
+                    if (xhr.status === 401) {
+                        user.refreshToken(this.token.refresh_token, function() {
+                            user.fetch({
+                                success : success
+                            });
+                        });
+                    }
                 }, this)
             });
         }

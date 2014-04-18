@@ -42,6 +42,25 @@ define([
             });
         },
 
+        refreshToken : function(token, success, failure)
+        {
+            $.ajax({
+                url      : this.oauthTokenUrl,
+                dataType : 'json',
+                type     : 'POST',
+                data     : {
+                    grant_type    : 'refresh_token',
+                    client_id     : '123',
+                    refresh_token : token
+                },
+                xhrFields : {
+                    withCredentials: true
+                },
+                success : _.bind(this.loginSuccess, this, success),
+                failure : failure
+            });
+        },
+
         logout : function(success)
         {
             var headers      = this.defaultHeaders();
