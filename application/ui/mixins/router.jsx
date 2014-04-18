@@ -62,6 +62,11 @@ define([
             this._routes      = this.routes || {};
             this._routePrefix = this.routePrefix || '';
 
+            if (this.props.router)
+            {
+                this.router = this.props.router;
+            }
+
             if ( ! this.router)
             {
                 this.router = new Router();

@@ -117,7 +117,9 @@ define([
                     return <div>LOADING!</div>;
                 } else {
                     return (
-                        <SiteLayoutComponent>
+                        <SiteLayoutComponent
+                            loggedIn={this.state.loggedIn}
+                            user={this.state.user}>
                             <component
                                 params={this.state.params}
                                 loggedIn={this.state.loggedIn}

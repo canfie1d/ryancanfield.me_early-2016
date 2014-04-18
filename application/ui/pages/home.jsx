@@ -1,30 +1,13 @@
 /** @jsx React.DOM */
 define([
-    'react',
-    'compiled/mixins/navigate'
+    'react'
 ], function(
-    React,
-    NavigateMixin
+    React
 ) {
 
     return React.createClass({
 
         displayName    : 'HomeModule',
-        mixins         : [NavigateMixin],
-
-        logout : function(event)
-        {
-            var success = _.bind(
-                function() {
-                    this.redirect('/');
-                },
-                this
-            );
-
-            event.preventDefault();
-
-            this.props.user.logout(success);
-        },
 
         render : function()
         {
@@ -32,12 +15,8 @@ define([
                 return (
                     <div>
                         <p>
-                            Logged in as <strong>{this.props.user.get('email')}</strong><br />
-                            <a onClick={this.logout}>Log out</a>
-                        </p>
-                        <p>
-                            <a href="/account/change-email">Change email</a><br />
-                            <a href="/account/change-password">Change password</a>
+                            <a route='account-change-password'>Change email</a><br />
+                            <a route='account-change-password'>Change password</a>
                         </p>
                         <p>
                             <a href="http://project.vm/social-login/github/link">Link GitHub account</a><br />
@@ -53,11 +32,6 @@ define([
             } else {
                 return (
                     <div>
-                        <p>
-                            Hello. Please
-                            <a href="/login">log in</a> or
-                            <a href="/register">register</a>.
-                        </p>
                         <p>
                             Or <a href="http://project.vm/social-login/github">log in with GitHub</a>.
                         </p>

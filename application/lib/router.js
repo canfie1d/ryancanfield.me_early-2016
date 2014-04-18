@@ -166,7 +166,9 @@ define([
         for (_i = 0, _len = handlers.length; _i < _len; _i++)
         {
             handler = handlers[_i];
-            if (!(handler.route.matches(criteria)))
+
+            // Reverse match routes by name only
+            if (handler.route.name !== criteria)
             {
                 continue;
             }
