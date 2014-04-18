@@ -23,7 +23,8 @@
     "browserify": "^3.43.0",
     "grunt-browserify": "^2.0.7",
     "reactify": "^0.11.0",
-    "deamdify": "^0.1.1"
+    "deamdify": "^0.1.1",
+    "browserify-shim": "^3.4.1"
   },
   "dependencies": {
     "react": "^0.10.0",
@@ -36,7 +37,9 @@
     "jquery-waypoints": "git://github.com/imakewebthings/jquery-waypoints"
   },
   "browserify": {
-    "transform": [ "browserify-shim" ]
+    "transform": [
+      "browserify-shim"
+    ]
   },
   "browserify-shim": {
     "jquery/dist/jquery.js": "$"

@@ -192,18 +192,17 @@ module.exports = function ( grunt ) {
 
         browserify: {
             options: {
-                debug: true,
-                transform: ['reactify', 'browserify-shim'],
-                extensions: ['.jsx']
+                debug: true
             },
             vendor: {
-                src: [
-                    //'bower_components/foundation/js/foundation/foundation.js'
-                ],
+                src: [],
                 dest: '<%= distdir %>/js/vendor.js',
                 options: {
-                    transform: ['deamdify', 'browserify-shim'],
-                    alias: [
+                    bundleOptions : {
+                        debug : true
+                    },
+                    transform : ['browserify-shim'],
+                    alias     : [
                         'react:react',
                         'underscore:underscore',
                         'jquery:jquery',
@@ -223,6 +222,11 @@ module.exports = function ( grunt ) {
             },
             app : {
                 options: {
+                    bundleOptions : {
+                        debug : true
+                    },
+                    transform  : ['reactify'],
+                    extensions : ['.jsx'],
                     external: [
                         'underscore',
                         'jquery',
@@ -234,8 +238,8 @@ module.exports = function ( grunt ) {
                         'waypoints'
                     ]
                 },
-                src: ['application/**/*.{js,jsx}'],
-                dest: '<%= distdir %>/js/app.js'
+                src  : ['application/**/*.{js,jsx}'],
+                dest : '<%= distdir %>/js/app.js'
             }
         },
 
