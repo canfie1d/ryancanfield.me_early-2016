@@ -3,8 +3,8 @@
 'use strict';
 
 var React         = require('react');
-var UserModel     = require('../../../models/user');
-var NavigateMixin = require('../../mixins/navigate.jsx');
+var UserModel     = require('models/user');
+var NavigateMixin = require('ui/mixins/navigate');
 
 module.exports = React.createClass({
 

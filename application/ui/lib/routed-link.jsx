@@ -4,7 +4,7 @@
 
 var _             = require('underscore');
 var React         = require('react');
-var NavigateMixin = require('../mixins/navigate.jsx');
+var NavigateMixin = require('ui/mixins/navigate');
 
 React.DOM.$a = React.DOM.a;
 

@@ -2,8 +2,8 @@
 'use strict';
 
 var _        = require('underscore');
-var Router   = require('../../lib/router');
-var mediator = require('../../lib/mediator');
+var Router   = require('lib/router');
+var mediator = require('lib/mediator');
 
 module.exports = {
 

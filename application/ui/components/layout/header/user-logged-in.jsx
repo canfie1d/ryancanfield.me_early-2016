@@ -3,7 +3,7 @@
 
 var _             = require('underscore');
 var React         = require('react');
-var NavigateMixin = require('../../../mixins/navigate.jsx');
+var NavigateMixin = require('ui/mixins/navigate');
 
 module.exports = React.createClass({
 

@@ -1,7 +1,7 @@
 'use strict';
 
 var _        = require('underscore');
-var mediator = require('../../lib/mediator');
+var mediator = require('lib/mediator');
 
 /**
  * This is a React component mixin that handles subscribing to mediator events

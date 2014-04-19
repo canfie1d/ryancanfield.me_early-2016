@@ -1,4 +1,6 @@
+/* jshint node: true */
 /* global require, module */
+
 module.exports = function ( grunt ) {
     'use strict';
 
@@ -199,9 +201,41 @@ module.exports = function ( grunt ) {
                     bundleOptions : {
                         debug : true
                     },
-                    transform  : ['reactify'],
+                    transform  : [ 'reactify' ],
                     extensions : ['.jsx'],
-                    external: [
+                    plugin    : [
+                        [
+                            'mapify',
+                            { entries: [
+                                {
+                                    cwd : 'application/ui',
+                                    pattern: '**/*.{js,jsx}',
+                                    expose: 'ui'
+                                },
+                                {
+                                    cwd : 'application/models',
+                                    pattern: '**/*.{js,jsx}',
+                                    expose: 'models'
+                                },
+                                {
+                                    cwd : 'application/lib',
+                                    pattern: '**/*.{js,jsx}',
+                                    expose: 'lib'
+                                },
+                                {
+                                    cwd : 'application/collections',
+                                    pattern: '**/*.{js,jsx}',
+                                    expose: 'collections'
+                                }
+                                ,{
+                                    cwd : 'application/base',
+                                    pattern: '**/*.{js,jsx}',
+                                    expose: 'base'
+                                }
+                            ]}
+                        ]
+                    ],
+                    external   : [
                         'underscore',
                         'jquery',
                         'backbone',

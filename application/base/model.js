@@ -3,7 +3,7 @@
 
 var _           = require('underscore');
 var Backbone    = require('backbone');
-var SyncMachine = require('../lib/sync-machine');
+var SyncMachine = require('lib/sync-machine');
 
 module.exports = Backbone.Model.extend({
     initialize : function(attributes, options)

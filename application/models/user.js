@@ -3,7 +3,7 @@
 
 var _        = require('underscore');
 var $        = require('jquery');
-var Model    = require('../base/model');
+var Model    = require('base/model');
 
 module.exports = Model.extend({
     oauthTokenUrl  : 'http://project.vm/oauth/token',
