@@ -164,32 +164,6 @@ module.exports = function ( grunt ) {
             }
         },
 
-        react : {
-            dynamic_mappings: {
-                files: [
-                    {
-                        expand : true,
-                        cwd    : 'application/ui',
-                        src    : ['**/*.jsx'],
-                        dest   : 'application/compiled',
-                        ext    : '.js'
-                    }
-                ]
-            }
-        },
-
-        requirejs: {
-            compile: {
-                options: {
-                    baseUrl        : './application',
-                    mainConfigFile : './application/config.js',
-                    name           : 'bootstrap',
-                    out            : '<%= distdir %>/js/app.js',
-                    optimize       : 'none'
-                }
-            }
-        },
-
         browserify: {
             options: {
                 debug: true
@@ -286,16 +260,22 @@ module.exports = function ( grunt ) {
             /**
              * When our source files change, we want to run most of our build tasks.
              */
-            scripts: {
+            app: {
                 files: [
                     'application/**/*.{js,jsx}',
-                    'application/**/*.hbs',
-                    '!application/compiled/**/*.js',
-                    'config.js',
-                    'application.js',
-                    '_index.html'
+                    'application/*.js'
                 ],
-                tasks: ['react', 'requirejs', 'preprocess:development'],
+                tasks: ['browserify:app'],
+                options: {
+                    interrupt: true
+                }
+            },
+
+            preproc : {
+                files: [
+                    'application/_index.html'
+                ],
+                tasks: ['preprocess:development'],
                 options: {
                     interrupt: true
                 }
@@ -348,7 +328,7 @@ module.exports = function ( grunt ) {
     grunt.registerTask( 'development', [ 'build', 'preprocess:development' ] );
     grunt.registerTask( 'qa', [ 'build', 'preprocess:qa' ] );
     grunt.registerTask( 'production', [ 'build', 'preprocess:production' ] );
-    grunt.registerTask( 'build', ['clean', 'concat', 'react', 'requirejs', 'sass', 'copy'] );
+    grunt.registerTask( 'build', ['clean', 'concat', 'browserify:vendor', 'browserify:app', 'sass', 'copy'] );
 
     grunt.registerTask( 'js', [ 'browserify:vendor', 'browserify:app'] );
 
