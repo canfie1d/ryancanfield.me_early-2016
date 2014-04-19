@@ -226,8 +226,8 @@ module.exports = function ( grunt ) {
                                     cwd : 'application/collections',
                                     pattern: '**/*.{js,jsx}',
                                     expose: 'collections'
-                                }
-                                ,{
+                                },
+                                {
                                     cwd : 'application/base',
                                     pattern: '**/*.{js,jsx}',
                                     expose: 'base'
