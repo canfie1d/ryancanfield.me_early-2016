@@ -4,11 +4,11 @@
 var _         = require('underscore'),
     store     = require('store'),
     React     = require('react'),
-    Cortex    = require('cortex'),
-    UserModel = require('models/user'),
-    Router    = require('lib/router'),
-    mediator  = require('lib/mediator'),
-    Body      = require('ui/body');
+    Cortex    = require('cortexjs'),
+    UserModel = require('./models/user'),
+    Router    = require('./lib/router'),
+    mediator  = require('./lib/mediator'),
+    Body      = require('./ui/body');
 
 function Application() {
     this.mediator = mediator;

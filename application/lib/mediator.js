@@ -67,7 +67,7 @@ mediator.removeHandlers = function(instanceOrNames) {
         mediator._handlers = {};
     }
     if (_.isArray(instanceOrNames)) {
-        for (_i = 0, _len = instanceOrNames.length; _i < _len; _i++) {
+        for (_i = 0, _len = instanceOrNames.length; _i < _len; _i+=1) {
             name = instanceOrNames[_i];
             delete handlers[name];
         }

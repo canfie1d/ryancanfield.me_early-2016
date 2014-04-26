@@ -3,14 +3,14 @@
 
 var _           = require('underscore');
 var Backbone    = require('backbone');
-var SyncMachine = require('lib/sync-machine');
+var SyncMachine = require('../lib/sync-machine');
 
-module.exports = Backbone.Model.extend({
-    initialize : function(attributes, options)
+module.exports = Backbone.Collection.extend({
+    initialize : function(models, options)
     {
-        _.extend(Backbone.Model.prototype, SyncMachine);
+        _.extend(Backbone.Collection.prototype, SyncMachine);
 
-        Backbone.Model.prototype.initialize.apply(this, arguments);
+        Backbone.Collection.prototype.initialize.apply(this, arguments);
 
         this.options = options || {};
     },
@@ -21,7 +21,7 @@ module.exports = Backbone.Model.extend({
 
         _.extend(options.headers, this.defaultHeaders());
 
-        return Backbone.Model.prototype.sync.call(this, method, model, options);
+        return Backbone.Collection.prototype.sync.call(this, method, model, options);
     },
 
     defaultHeaders : function()

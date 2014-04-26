@@ -4,7 +4,7 @@
 
 var Application = require('./application');
 
-var $ = require('jquery');
+var $        = require('jquery');
 var Backbone = require('backbone');
 
 Backbone.$ = $;

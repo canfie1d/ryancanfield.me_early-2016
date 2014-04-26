@@ -395,7 +395,11 @@ Route.prototype.handler = function(pathParams, options) {
         query  : query
     };
 
-    return mediator.publish('router:match', route, actionParams, this.options);
+    if (this.options.useMediator !== false) {
+        return mediator.publish('router:match', route, actionParams, this.options);
+    } else {
+        return [route, actionParams, this.options];
+    }
 };
 
 Route.prototype.extractParams = function(path) {

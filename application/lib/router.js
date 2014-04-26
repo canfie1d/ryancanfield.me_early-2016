@@ -17,7 +17,12 @@ function Router(options)
 
     this.options = options != null ? options : {};
     this.match   = _.bind(this.match, this);
-    isWebFile    = window.location.protocol !== 'file:';
+
+    try {
+        isWebFile    = window.location.protocol !== 'file:';
+    } catch (e) {
+        isWebFile    = false;
+    }
 
     _.defaults(this.options, {
         pushState : isWebFile,

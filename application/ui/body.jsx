@@ -4,16 +4,16 @@
 
 var _                    = require('underscore');
 var React                = require('react');
-var EventsMixin          = require('ui/mixins/events');
-var RouterMixin          = require('ui/mixins/router');
-var SiteLayoutComponent  = require('ui/components/layout/site');
-var HomeModule           = require('ui/pages/home');
-var LoginModule          = require('ui/pages/account/login');
-var RegisterModule       = require('ui/pages/account/register');
-var ReceiveTokenModule   = require('ui/pages/account/receive-token');
-var ChangeEmailModule    = require('ui/pages/account/change-email');
-var ChangePasswordModule = require('ui/pages/account/change-password');
-var NotFoundComponent    = require('ui/pages/error/404');
+var EventsMixin          = require('./mixins/events');
+var RouterMixin          = require('./mixins/router');
+var SiteLayoutComponent  = require('./components/layout/site');
+var HomeModule           = require('./pages/home');
+var LoginModule          = require('./pages/account/login');
+var RegisterModule       = require('./pages/account/register');
+var ReceiveTokenModule   = require('./pages/account/receive-token');
+var ChangeEmailModule    = require('./pages/account/change-email');
+var ChangePasswordModule = require('./pages/account/change-password');
+var NotFoundComponent    = require('./pages/error/404');
 
 // Does not provide a component
 require('./lib/routed-link.jsx');
