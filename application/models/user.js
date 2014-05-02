@@ -1,9 +1,9 @@
-/* global window */
 'use strict';
 
-var _        = require('underscore');
-var $        = require('jquery');
-var Model    = require('./base');
+var _      = require('underscore');
+var window = require('jswindow-shim');
+var $      = require('synapse-common').loaders.jquery(window);
+var Model  = require('./base');
 
 module.exports = Model.extend({
     oauthTokenUrl  : 'http://project.vm/oauth/token',

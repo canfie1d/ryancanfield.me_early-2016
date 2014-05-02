@@ -4,7 +4,7 @@
 
 var React         = require('react');
 var UserModel     = require('../../../models/user');
-var NavigateMixin = require('../../mixins/navigate');
+var NavigateMixin = require('synapse-common').mixins.navigate;
 
 module.exports = React.createClass({
 

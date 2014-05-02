@@ -3,7 +3,7 @@
 
 var _           = require('underscore');
 var Backbone    = require('backbone');
-var SyncMachine = require('../lib/sync-machine');
+var SyncMachine = require('synapse-common').lib.SyncMachine;
 
 module.exports = Backbone.Collection.extend({
     initialize : function(models, options)

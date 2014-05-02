@@ -3,7 +3,7 @@
 
 var _             = require('underscore');
 var React         = require('react');
-var NavigateMixin = require('../../../mixins/navigate');
+var NavigateMixin = require('synapse-common').mixins.navigate;
 
 module.exports = React.createClass({
 

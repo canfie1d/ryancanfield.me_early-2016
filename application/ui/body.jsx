@@ -4,8 +4,8 @@
 
 var _                    = require('underscore');
 var React                = require('react');
-var EventsMixin          = require('./mixins/events');
-var RouterMixin          = require('./mixins/router');
+var EventsMixin          = require('synapse-common').mixins.events;
+var RouterMixin          = require('synapse-common').mixins.router;
 var SiteLayoutComponent  = require('./components/layout/site');
 var HomeModule           = require('./pages/home');
 var LoginModule          = require('./pages/account/login');
@@ -14,9 +14,6 @@ var ReceiveTokenModule   = require('./pages/account/receive-token');
 var ChangeEmailModule    = require('./pages/account/change-email');
 var ChangePasswordModule = require('./pages/account/change-password');
 var NotFoundComponent    = require('./pages/error/404');
-
-// Does not provide a component
-require('./lib/routed-link.jsx');
 
 module.exports = React.createClass({
 

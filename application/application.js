@@ -6,8 +6,8 @@ var _         = require('underscore'),
     React     = require('react'),
     Cortex    = require('cortexjs'),
     UserModel = require('./models/user'),
-    Router    = require('./lib/router'),
-    mediator  = require('./lib/mediator'),
+    Router    = require('synapse-common').lib.Router,
+    mediator  = require('synapse-common').lib.mediator,
     Body      = require('./ui/body');
 
 function Application() {
@@ -29,6 +29,9 @@ function Application() {
     this.start = function() {
         this.react  = null;
         this.router = new Router();
+
+        // Doesn't provide a component
+        require('synapse-common').lib.routedLink(React, this.router);
 
         tokenCortex = new Cortex(token, _.bind(function(updatedToken) {
             this.react.setProps({ token : updatedToken });
