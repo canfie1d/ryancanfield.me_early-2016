@@ -19,3 +19,5 @@
     1. Change `baseUrl` reference to "example.com" with the project's domain
     1. Default priority and frequency may need updating too
 1. Update `application/index.html` to replace `@todo` references with proper values
+1. Update `application/application.js` to replace `@todo` references with proper values
+1. Update `application/ui/routes.js` to replace `@todo` references with proper values
