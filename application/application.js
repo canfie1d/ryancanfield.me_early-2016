@@ -1,4 +1,4 @@
-/* global document */
+/* global window, document */
 'use strict';
 
 var _         = require('underscore'),
@@ -27,7 +27,19 @@ function Application() {
     var tokenCortex;
 
     this.start = function() {
-        this.react  = null;
+        window.clicky_custom = {
+            history_disable: true
+        };
+
+        $.ajax({
+            dataType : 'script',
+            cache    : true,
+            url      : '//static.getclicky.com/js',
+            success  : function(data, status, xhr) {
+                window.clicky.init(@todo add clicky site id);
+            }
+        });
+
         this.router = new Router();
 
         // Doesn't provide a component
@@ -38,6 +50,7 @@ function Application() {
         }, this));
 
         React.initializeTouchEvents(true);
+
         this.react = React.renderComponent(Body({
             token  : tokenCortex,
             router : this.router
