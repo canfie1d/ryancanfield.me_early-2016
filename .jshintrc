@@ -1,6 +1,6 @@
 {
     "predef"        : [         // Extra globals.
-      "require", "module"
+      "require", "module", "exports"
     ],
     "maxerr"        : 100,      // Maximum errors before stopping.
     "bitwise"       : true,     // Prohibit bitwise operators (&, |, ^, etc.).
