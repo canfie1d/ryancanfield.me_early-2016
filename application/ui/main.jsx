@@ -16,11 +16,6 @@ module.exports = React.createClass({
 
     routes : require('./routes'),
 
-    componentWillMount : function()
-    {
-        this.subscribe('router:match', this.onRouteMatch, this);
-    },
-
     onRouteMatch : function(route, params, options)
     {
         var windowScrollTop = $(window).scrollTop();
@@ -54,21 +49,43 @@ module.exports = React.createClass({
     getInitialState : function()
     {
         return {
-             routeData : {}
+             routeData : {},
+             loading : (window.app.token) ? true : false,
+             loggedIn : (window.app.token) ? true : false,
+             user     : false
         };
+    },
+
+    componentWillMount : function()
+    {
+        this.subscribe('router:match', this.onRouteMatch, this);
+        this.subscribe('!user:auth', _.bind(function(loggedIn, user) {
+            this.setState({
+                loggedIn : loggedIn,
+                loading  : false,
+                user     : user || false
+            });
+        }, this));
+
+        window.app.loadUserFromToken();
     },
 
     render : function()
     {
         if (this.state.componentName !== null)
         {
-            var component = this.state.componentName;
+            var site,
+                component = this.state.componentName;
 
-            var site = (
-                <SiteLayoutComponent routeData={this.state.routeData}>
-                    <component params={this.state.params} />
-                </SiteLayoutComponent>
-            );
+            if (this.state.loading) {
+                site = (<div>{'Loading...'}</div>);
+            } else {
+                site = (
+                    <SiteLayoutComponent routeData={this.state.routeData} loggedIn={this.state.loggedIn} user={this.state.user}>
+                        <component params={this.state.params} loggedIn={this.state.loggedIn} user={this.state.user} queryParams={this.state.queryParams} />
+                    </SiteLayoutComponent>
+                );
+            }
 
             return site;
         }
