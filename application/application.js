@@ -8,7 +8,7 @@ var _         = require('underscore'),
     UserModel = require('./models/user'),
     Router    = require('synapse-common').lib.Router,
     mediator  = require('synapse-common').lib.mediator,
-    Body      = require('./ui/body');
+    Body      = require('./ui/main');
 
 function Application() {
     this.mediator = mediator;
