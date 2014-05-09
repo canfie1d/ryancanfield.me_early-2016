@@ -1,6 +1,6 @@
 'use strict';
 
-var SiteLayoutComponent  = require('./pages/layout/site');
+var SiteLayoutComponent  = require('./layouts/site');
 var HomeModule           = require('./pages/home');
 var LoginModule          = require('./pages/account/login');
 var RegisterModule       = require('./pages/account/register');

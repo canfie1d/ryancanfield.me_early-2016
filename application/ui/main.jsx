@@ -7,7 +7,7 @@ var React               = require('react');
 var $                   = require('synapse-common').loaders.jquery(window);
 var EventsMixin         = require('synapse-common').mixins.events;
 var RouterMixin         = require('synapse-common').mixins.router;
-var SiteLayoutComponent = require('./pages/layout/site');
+var SiteLayoutComponent = require('./layouts/site');
 
 module.exports = React.createClass({
 
