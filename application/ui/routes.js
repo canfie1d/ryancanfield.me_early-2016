@@ -1,8 +1,13 @@
 'use strict';
 
-var SiteLayoutComponent = require('./pages/layout/site');
-var HomeModule          = require('./pages/home');
-var NotFoundComponent   = require('./pages/404');
+var SiteLayoutComponent  = require('./pages/layout/site');
+var HomeModule           = require('./pages/home');
+var LoginModule          = require('./pages/account/login');
+var RegisterModule       = require('./pages/account/register');
+var ReceiveTokenModule   = require('./pages/account/receive-token');
+var ChangeEmailModule    = require('./pages/account/change-email');
+var ChangePasswordModule = require('./pages/account/change-password');
+var NotFoundComponent    = require('./pages/404');
 
 module.exports = {
     'home' : {
@@ -11,7 +16,6 @@ module.exports = {
         container : SiteLayoutComponent,
         options   : {
             title   : '@todo replace with page title',
-            favicon : '/images/favicons/favicon.png',
             meta    : [
                 {
                     name    : 'description',
@@ -37,14 +41,58 @@ module.exports = {
         }
     },
 
+    'login' : {
+        route     : 'login',
+        component : LoginModule,
+        container : SiteLayoutComponent,
+        options   : {
+            title   : '@todo replace with page title'
+        }
+    },
+
+    'register' : {
+        route     : 'register',
+        component : RegisterModule,
+        container : SiteLayoutComponent,
+        options   : {
+            title   : '@todo replace with page title'
+        }
+    },
+
+    'receive-token' : {
+        route     : 'receive-token',
+        component : ReceiveTokenModule,
+        container : SiteLayoutComponent,
+        options   : {
+            title   : '@todo replace with page title'
+        }
+    },
+
+    'account-change-email' : {
+        route    : 'account/change-email',
+        component: ChangeEmailModule,
+        container: SiteLayoutComponent,
+        options   : {
+            title   : '@todo replace with page title'
+        }
+    },
+
+    'account-change-password' : {
+        route    : 'account/change-password',
+        component: ChangePasswordModule,
+        container: SiteLayoutComponent,
+        options   : {
+            title   : '@todo replace with page title'
+        }
+    },
+
     // This must always be registered last or it will catch everything
     '*unknown' : {
         route     : '*unknown',
         component : NotFoundComponent,
         container : SiteLayoutComponent,
         options   : {
-            favicon : contextToFavicon,
-            title   : '@todo replace with page title'
+            title : '@todo replace with page title'
         }
     }
 };
