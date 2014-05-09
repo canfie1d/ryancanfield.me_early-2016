@@ -10,9 +10,7 @@ module.exports = React.createClass({
     render : function() {
         return (
             <p>
-                Please
-                <a route="login">log in</a> or
-                <a route="register">register</a>.
+                {'Please '}<a route="login">{'log in'}</a>{' or '}<a route="register">{'register'}</a>.
             </p>
         );
     }

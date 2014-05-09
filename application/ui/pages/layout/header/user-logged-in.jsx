@@ -27,8 +27,8 @@ module.exports = React.createClass({
     render : function() {
         return (
             <div>
-                <p>Logged in as <strong>{this.props.user.get('email')}</strong>.</p>
-                <p><a href="/logout" onClick={this.logout}>Logout</a></p>
+                <p>{'Logged in as '}<strong>{this.props.user.get('email')}</strong>{'.'}</p>
+                <p><a href="/logout" onClick={this.logout}>{'Logout'}</a></p>
             </div>
         );
     }
