@@ -71,7 +71,6 @@ module.exports = React.createClass({
 
     render : function()
     {
-        console.log(this.props);
         var errorText = this.state.error ? 'There was an error completing your log in' : 'Please Log In';
         return (
             <div>
