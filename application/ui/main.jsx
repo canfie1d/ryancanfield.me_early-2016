@@ -2,9 +2,12 @@
 'use strict';
 
 // Libraries
-var React      = require('react');
-var dispatcher = require('synapse-common/lib/dispatcher');
-var _          = require('underscore');
+var _           = require('underscore');
+var React       = require('react');
+var dispatcher  = require('synapse-common/lib/dispatcher');
+var ReactRouter = require('react-nested-router');
+var Router      = ReactRouter.Router;
+var Route       = ReactRouter.Route;
 
 // Mixins and components
 var Router              = require('react-router-component');
