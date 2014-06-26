@@ -13,7 +13,6 @@
     "sitemap": "npm install && bower install && node sitemap-gen.js > application/sitemap.xml"
   },
   "devDependencies": {
-    "connect-modrewrite": "^0.6.4-pre",
     "browserify": "^3.43.0",
     "reactify": "^0.11.0",
     "browserify-shim": "^3.4.1",
@@ -30,7 +29,8 @@
     "gulp-streamify": "0.0.5",
     "gulp-uglify": "^0.2.1",
     "envify": "^1.2.1",
-    "watchify": "^0.10.2"
+    "watchify": "^0.10.2",
+    "connect-history-api-fallback": "0.0.4"
   },
   "dependencies": {
     "react": "^0.10.0",
