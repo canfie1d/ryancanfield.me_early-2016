@@ -5,11 +5,11 @@ var React = require('react');
 
 module.exports = React.createClass({
 
-    displayName    : 'HomeModule',
+    displayName : 'HomeModule',
 
     render : function()
     {
-        if (this.props.loggedIn) {
+        if (this.props.user) {
             return (
                 <div>
                     <p>

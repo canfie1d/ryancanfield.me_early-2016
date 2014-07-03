@@ -3,18 +3,16 @@
 
 var _             = require('underscore');
 var React         = require('react');
-var NavigateMixin = require('synapse-common').mixins.navigate;
 
 module.exports = React.createClass({
 
     displayName : 'LoggedInHeaderSection',
-    mixins      : [NavigateMixin],
 
     logout : function(event)
     {
         var success = _.bind(
             function() {
-                this.redirect('/');
+                //this.redirect('/');
             },
             this
         );

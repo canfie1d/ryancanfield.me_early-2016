@@ -15,7 +15,7 @@ require('./gulp-tasks/sass');
 gulp.task('default', ['build']);
 
 // Alias
-gulp.task('browserify', ['browserify:vendor', 'browserify:app']);
+gulp.task('browserify', ['browserify:config', 'browserify:app']);
 
 // Task that builds our entire application
 gulp.task('build', ['html', 'media', 'concat', 'sass', 'browserify']);
@@ -25,7 +25,6 @@ gulp.task('watch', ['build', 'connect', 'delta']);
 
 // Watch definitions
 gulp.task('delta', function() {
-    gulp.watch(['./application/**/*.{js,jsx}'], ['browserify:app']);
     gulp.watch(['./application/ui/scss/**/*.scss'], ['sass']);
     gulp.watch(['./application/**/*.html'], ['html']);
     gulp.watch(['./media/**/*.*'], ['media']);

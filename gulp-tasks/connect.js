@@ -2,7 +2,7 @@
 
 var gulp       = require('gulp'),
     connect    = require('gulp-connect'),
-    modRewrite = require('connect-modrewrite');
+    fallback   = require('connect-history-api-fallback');
 
 gulp.task('connect', function() {
     connect.server({
@@ -10,9 +10,7 @@ gulp.task('connect', function() {
         port       : 9000,
         livereload : true,
         middleware : function (connect, options) {
-            return [
-                modRewrite(['!\\..*$ /index.html [L]'])
-            ];
+            return [fallback];
         }
     });
 });
