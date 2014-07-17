@@ -38,10 +38,6 @@ Application.prototype.start = function() {
         Router.transitionTo.apply(Router, arguments);
     });
 
-    dispatcher.on('forward', function(route, params) {
-        ReactRouter.replaceWith(route, params || {});
-    });
-
     dispatcher.on('token:update', _.bind(function(tokenData) {
         this.tokenStore.setToken(tokenData);
         this.userStore.fetch();
