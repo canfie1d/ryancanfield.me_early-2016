@@ -12,10 +12,15 @@ var Route       = ReactRouter.Route;
 var TokenStore  = require('./store/token');
 var UserStore   = require('./store/user');
 
-var SiteLayout   = require('./ui/layouts/site');
-var HomePage     = require('./ui/pages/home');
-var LoginPage    = require('./ui/pages/login');
-var NotFoundPage = require('./ui/pages/404');
+var SiteLayout         = require('./ui/layouts/site');
+var HomePage           = require('./ui/pages/home');
+var LoginPage          = require('./ui/pages/login');
+var NotFoundPage       = require('./ui/pages/404');
+var RegisterPage       = require('./ui/pages/account/register');
+var ReceiveTokenPage   = require('./ui/pages/account/receive-token');
+var ChangeEmailPage    = require('./ui/pages/account/change-email');
+var ChangePasswordPage = require('./ui/pages/account/change-password');
+
 
 function Application() {
     this.dispatcher = dispatcher;
@@ -66,6 +71,19 @@ Application.prototype.start = function() {
             <Route name='login'
                    path='/login'
                    handler={LoginPage}
+                   stores={this.stores} />
+            <Route name='register'
+                   path='/register'
+                   handler={RegisterPage}
+                   stores={this.stores} />
+            <Route name='receive-token'
+                   path='/receive-token'
+                   stores={this.stores} />
+            <Route name='account-change-email'
+                   path='/account-change-email'
+                   stores={this.stores} />
+            <Route name='account-change-password'
+                   path='/account-change-password'
                    stores={this.stores} />
             <Route path='*'
                    handler={NotFoundPage} />
