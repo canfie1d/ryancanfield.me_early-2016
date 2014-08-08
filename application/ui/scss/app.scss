@@ -9,7 +9,6 @@
     @import "dependencies/colors";
     @import "dependencies/extends";
     @import "dependencies/fonts";
-    @import "dependencies/icons";
     @import "dependencies/mixins";
     @import "dependencies/typography";
 
@@ -43,6 +42,3 @@
     @import "components/regions/panel";
     @import "components/regions/lightbox";
     @import "components/regions/section";
-
-// page & section imports
-    @import "pages/page-content";

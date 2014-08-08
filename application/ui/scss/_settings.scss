@@ -14,10 +14,6 @@ $row-width     : rem-calc(1280);
 $column-gutter : rem-calc(20);
 // $total-columns: 12;
 
-// We use these to control various global styles
-
-$body-font-family : $sans-reg;
-
 // Media Query Ranges
 $small-range   : (0em, 30em); // 0px to 480px
 $medium-range  : (30.063em, 48em); // 481px to 768px
