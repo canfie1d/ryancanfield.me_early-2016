@@ -1,0 +1,179 @@
+// *******************************************
+// *******************************************
+
+    // Dropdown Styles
+
+// *******************************************
+// *******************************************
+
+
+// dropdown vars
+
+$dropdown-font                              : $sans-reg;
+$dropdown-font-color                        : $white;
+$dropdown-bg-color                          : $themeDGray;
+$dropdown-bg-color--current                 : rgba($black, .2);
+$dropdown-arrow-border-color                : $white transparent transparent;
+
+$dropdown-list-bg-color                     : rgba($themeDDGray, .75);
+$dropdown-list-border-color                 : rgba($themeDDGray, .95);
+$dropdown-list-box-shadow                   : inset 0 0 1px rgba($white, .15);
+
+$dropdown-list-item-border-color--top       : rgba($white, .05);
+$dropdown-list-item-border-color--bottom    : rgba($themeDDGray, .25);
+$dropdown-list-item-bg-color                : rgba($themeMLGray, .95);
+$dropdown-list-item-bg-color--selected      : rgba($themeMLGray, .95);
+$dropdown-list-item-bg-color--hover         : rgba($themeMGray, .95);
+$dropdown-list-item-odd-num-border-right    : rgba($themeDDGray, .25);
+$dropdown-list-item-even-num-border-left    : rgba($white, .05);
+
+// <div class="dropdown">
+//      <span class="dropdown__label">Company</span>
+//      <span class="dropdown__current">Synapse</span>
+//      <ul class="dropdown__list dropdown__list--active">
+//          <li class="dropdown__item dropdown__item--selected">
+//              <a>Synapse</a>
+//          </li>
+//          <li class="dropdown__item">
+//              <a>Synapse</a>
+//          </li>
+//      </ul>
+// </div>
+
+.dropdown {
+    position             : relative;
+    width                : 100%;
+    height               : rem-calc(60);
+    background-color     : $dropdown-bg-color;
+    cursor               : pointer;
+    user-select          : none;
+
+    a {
+        color            : $dropdown-font-color;
+    }
+
+    .dropdown__label,
+    .dropdown__current {
+        position         : relative;
+        color            : $dropdown-font-color;
+    }
+
+    .dropdown__label {
+        width            : 25%;
+        font-family      : $dropdown-font;
+        float            : left;
+        font-size        : rem-calc(13);
+        height           : rem-calc(60);
+        line-height      : rem-calc(60);
+        padding-left     : rem-calc(5);
+        text-transform   : capitalize;
+        text-align       : center;
+
+        @media #{$medium-up} {
+            font-size    : rem-calc(16);
+        }
+
+    }
+
+    .dropdown__current {
+        width            : 75%;
+        font-family      : $dropdown-font;
+        float            : left;
+        margin           : rem-calc(10 5 10 5);
+        padding          : rem-calc(12 0 12 10);
+        height           : rem-calc(40);
+        background       : $dropdown-bg-color--current;
+        box-sizing       : content-box;
+
+        &:after {
+            content      : '';
+            width        : 0;
+            height       : 0;
+            border-style : solid;
+            border-width : 10px 5px 0;
+            border-color : $dropdown-arrow-border-color;
+            display      : block;
+            position     : absolute;
+            top          : 15px;
+            right        : 15px;
+            transition   : border-color 200ms ease-in-out;
+        }
+
+    }
+
+    .dropdown__list {
+        @extend .normalize-list;
+        width            : 100%;
+        opacity          : 0;
+        visibility       : hidden;
+        position         : absolute;
+        top              : 100%;
+        left             : 0;
+        background       : $dropdown-list-bg-color;
+        border           : 1px solid;
+        border-color     : $dropdown-list-border-color;
+        border-right     : 0;
+        border-left      : 0;
+        box-shadow       : $dropdown-list-box-shadow;
+        transition       : opacity 300ms ease;
+    }
+
+    .dropdown__list--active {
+        opacity          : 1;
+        visibility       : visible;
+    }
+
+    .dropdown__item {
+        font-family                  : $dropdown-font;
+        position                     : relative;
+        display                      : inline-block;
+        width                        : 50%;
+        cursor                       : pointer;
+        padding                      : 0;
+        font-size                    : rem-calc(15);
+        text-align                   : center;
+        border                       : 1px solid;
+        border-top-color             : $dropdown-list-item-border-color--top;
+        border-bottom-color          : $dropdown-list-item-border-color--bottom;
+        background-color             : $dropdown-list-item-bg-color;
+        transition                   : background-color 300ms ease;
+        user-select                  : none;
+
+        &.dropdown__item--selected {
+            font-family              : $dropdown-font;
+            background-color         : $dropdown-list-item-bg-color--selected;
+
+            &::after {
+                content              : '';
+                height               : 8px;
+                width                : 8px;
+                background           : url('/images/logomark.svg') no-repeat;
+                position             : absolute;
+                top                  : rem-calc(26);
+                right                : rem-calc(26);
+            }
+
+        }
+
+        a {
+            display      : block;
+            padding      : rem-calc(18.5 0);
+        }
+
+        &:hover {
+            background-color         : $dropdown-list-item-bg-color--hover;
+        }
+
+        &:nth-child(odd) {
+            border-right             : 1px solid;
+            border-right-color       : $dropdown-list-item-odd-num-border-right;
+        }
+
+        &:nth-child(even) {
+            border-left              : 1px solid;
+            border-left-color        : $dropdown-list-item-even-num-border-left;
+        }
+
+    }
+
+}
