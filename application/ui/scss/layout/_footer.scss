@@ -6,6 +6,10 @@
 // *******************************************
 // *******************************************
 
+// <footer className='footer'>
+//     {this.props.children}
+// </footer>
+
 // footer vars
 $footer-bg-color         : $themeDGray;
 
@@ -15,4 +19,3 @@ footer,
     width                : 100%;
     background-color     : $footer-bg-color;
 }
-

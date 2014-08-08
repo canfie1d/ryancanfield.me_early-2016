@@ -9,7 +9,7 @@
 // form validation vars
 
 $validation-field-error-font-color   : $white;
-$validation-field-message-font       : $source-bold, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$validation-field-message-font       : $sans-bold;
 $validation-field-message-font-color : $white;
 
 // validation input wrapper
@@ -22,27 +22,27 @@ $validation-field-message-font-color : $white;
 // </div>
 
 .validate {
-	position  :  relative;
+	position : relative;
 }
 
 // error over input on right side
 // <span class="validate__field-error">&#215;</span>
 
 .validate__field-error {
-    position     :  absolute;
-    top          :  rem-calc(7.5);
-    right        :  rem-calc(7.5);
-    display      :  none;
-    text-align   :  center;
-    font-size    :  rem-calc(21);
-    color        :  $validation-field-error-font-color;
+    position   : absolute;
+    top        : rem-calc(7.5);
+    right      : rem-calc(7.5);
+    display    : none;
+    text-align : center;
+    font-size  : rem-calc(21);
+    color      : $validation-field-error-font-color;
 }
 
 // adjust dimensions for large inputs
 
 .input--large ~ .validate__field-error {
-	height       :  rem-calc(21);
-    width        :  rem-calc(21);
+	height : rem-calc(21);
+    width  : rem-calc(21);
 }
 
 // adjust radius for rounded inputs
@@ -77,13 +77,13 @@ $validation-field-message-font-color : $white;
 .validate--passed {
 
 	.validate__field-error {
-		background   :  $statusGreen;
-		border       :  1px solid $statusGreen;
+		background : $statusGreen;
+		border     : 1px solid $statusGreen;
 	}
 
 	.validate__field-message {
-		background  :  $statusGreen;
-		border      :  1px solid $statusGreen;
+		background : $statusGreen;
+		border     : 1px solid $statusGreen;
 	}
 
 }
@@ -91,16 +91,16 @@ $validation-field-message-font-color : $white;
 // FAILED
 
 .validate--failed {
-    margin-bottom    : 0;
+    margin-bottom : 0;
 
 	.validate__field-error {
-		background   :  $statusRed;
-		border       :  1px solid $statusRed;
+		background : $statusRed;
+		border     : 1px solid $statusRed;
 	}
 
 	.validate__field-message {
-		background  :  $statusRed;
-		border      :  1px solid $statusRed;
+		background : $statusRed;
+		border     : 1px solid $statusRed;
 	}
 
 }
@@ -110,13 +110,13 @@ $validation-field-message-font-color : $white;
 .validate--warnings {
 
 	.validate__field-error {
-		background   :  $statusOrange;
-		border       :  1px solid $statusOrange;
+		background : $statusOrange;
+		border     : 1px solid $statusOrange;
 	}
 
 	.validate__field-message {
-		background  :  $statusOrange;
-		border      :  1px solid $statusOrange;
+		background : $statusOrange;
+		border     : 1px solid $statusOrange;
 	}
 
 }
@@ -127,7 +127,7 @@ $validation-field-message-font-color : $white;
 
 	.validate__field-error,
 	.validate__field-message {
-		display  :  block;
+		display : block;
 	}
 
 }

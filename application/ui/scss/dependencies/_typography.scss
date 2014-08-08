@@ -1,6 +1,6 @@
 html,
 body {
-    color                : $themeDDGray;
+    color : $themeDDGray;
 }
 
 h1,
@@ -9,24 +9,24 @@ h3,
 h4,
 h5,
 h6 {
-    @extend .ff-source-bold;
+    font-family : $sans-bold;
 }
 
 p,
 a,
 span {
-    @extend .ff-source;
+    font-family : $sans-reg;
 }
 
 a.inline-link {
-    @extend .ff-source-bold;
-    color                : $themeDDGray;
-    text-decoration      : none;
-    border-bottom        : 1px solid $themeDGray;
-    transition           : color 300ms ease-in-out;
+    font-family     : $sans-bold;
+    color           : $themeDDGray;
+    text-decoration : none;
+    border-bottom   : 1px solid $themeDGray;
+    transition      : color 300ms ease-in-out;
 
     &:hover {
-        color: $themeMLGray;
+        color : $themeMLGray;
     }
 
 }

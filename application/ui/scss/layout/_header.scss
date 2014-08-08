@@ -6,93 +6,108 @@
 // *******************************************
 // *******************************************
 
-// header vars
-$header-font-color       : $white;
-$header-bg-color         : $themeDDGray;
+// <header className='header'>
+//     <div className='header__branding'>
+//         <a href='/'>
+//             <span className='logomark'></span>
+//             <span className='logotype'></span>
+//         </a>
+//     </div>
+//     <div className='header__toggle-nav'>
+//         <span className='title'>menu</span>
+//         <span className='navicon-button'>
+//             <span className='navicon'></span>
+//         </span>
+//     </div>
+// </header>
 
-$header-height           : rem-calc(60);
+// header vars
+$header-font-color : $white;
+$header-bg-color   : $themeDDGray;
+$header-height     : rem-calc(60);
+$navicon-size : rem-calc(24);
 
 .header {
-    width                : 100%;
-    height               : $header-height;
-    z-index              : 1000;
-    color                : $header-font-color;
-    background-color     : $header-bg-color;
-    user-select          : none;
+    width            : 100%;
+    height           : $header-height;
+    z-index          : 1000;
+    color            : $header-font-color;
+    background-color : $header-bg-color;
+    user-select      : none;
 
     .header__branding {
-        position         : absolute;
-        top              : 0;
-        left             : 0;
-        margin           : 0;
-        float            : left;
-        width            : rem-calc(250);
-        height           : $header-height;
-        transition       : all 300ms ease-in-out;
+        position   : absolute;
+        top        : 0;
+        left       : 0;
+        margin     : 0;
+        float      : left;
+        width      : rem-calc(250);
+        height     : $header-height;
+        transition : all 300ms ease-in-out;
 
         a {
-            display          : block;
+            display : block;
         }
 
-        .hexagon-logomark {
-            padding      : rem-calc(21);
-            top          : 0;
-            left         : 0;
-            width        : rem-calc(18);
-            height       : rem-calc(18);
-            box-sizing   : content-box;
-            transition   : all 300ms ease-in-out;
+        .logomark {
+            padding    : rem-calc(21);
+            top        : 0;
+            left       : 0;
+            width      : rem-calc(18);
+            height     : rem-calc(18);
+            box-sizing : content-box;
+            transition : all 300ms ease-in-out;
         }
 
         .logotype {
-            position     : absolute;
-            top          : rem-calc(22);
-            left         : rem-calc(50);
-            width        : rem-calc(200);
-            opacity      : 1;
-            transition   : all 300ms ease-in-out;
+            position   : absolute;
+            top        : rem-calc(22);
+            left       : rem-calc(50);
+            width      : rem-calc(200);
+            opacity    : 1;
+            transition : all 300ms ease-in-out;
         }
 
     }
 
     .header__toggle-nav {
-        position         : absolute;
-        top              : 0;
-        right            : 0;
-        margin           : 0;
-        float            : right;
-        height           : $header-height;
-        width            : rem-calc(60);
-        display          : block;
-        transition       : all 300ms ease-in-out;
+        position   : absolute;
+        top        : 0;
+        right      : 0;
+        margin     : 0;
+        float      : right;
+        height     : $header-height;
+        width      : rem-calc(60);
+        display    : block;
+        transition : all 300ms ease-in-out;
 
         @media #{$medium-up} {
-            width        : rem-calc(120);
+            width : rem-calc(120);
         }
 
         .title {
-            position         : absolute;
-            top              : 0;
-            right            : rem-calc(60);
-            height           : $header-height;
-            line-height      : rem-calc(60);
-            color            : $white;
-            text-transform   : uppercase;
-            transition       : all 300ms ease-in-out;
+            position       : absolute;
+            top            : 0;
+            right          : rem-calc(60);
+            height         : $header-height;
+            line-height    : rem-calc(60);
+            color          : $white;
+            text-transform : uppercase;
+            transition     : all 300ms ease-in-out;
         }
 
         [class*="label"] {
-            width            : rem-calc(50);
-            height           : $header-height;
-            display          : block;
-            position         : relative;
-            text-align       : center;
-            line-height      : rem-calc(50);
-            transition       : margin 300ms ease-in-out 500ms;
+            width       : rem-calc(50);
+            height      : $header-height;
+            display     : block;
+            position    : relative;
+            text-align  : center;
+            line-height : rem-calc(50);
+            transition  : margin 300ms ease-in-out 500ms;
         }
 
         .switch-icon__label--default {
-            margin-top       : 0;
+            margin-top : 0;
         }
 
     }
@@ -100,48 +115,45 @@ $header-height           : rem-calc(60);
 }
 
 // --------- transformicon ----------- //
-
-$navicon-size : rem-calc(24);
-
 @mixin line {
-    display              : inline-block;
-    width                : $navicon-size;
-    height               : $navicon-size/8;
-    background-color     : $white;
-    transition           : 300ms;
+    display          : inline-block;
+    width            : $navicon-size;
+    height           : $navicon-size/8;
+    background-color : $white;
+    transition       : 300ms;
 }
 
 .navicon-button {
-    position             : absolute;
-    top                  : 0;
-    right                : 0;
-    padding              : rem-calc(18);
-    width                : rem-calc(24);
-    height               : rem-calc(24);
-    background           : transparent;
-    cursor               : pointer;
-    box-sizing           : content-box;
-    transition           : 300ms;
+    position   : absolute;
+    top        : 0;
+    right      : 0;
+    padding    : rem-calc(18);
+    width      : rem-calc(24);
+    height     : rem-calc(24);
+    background : transparent;
+    cursor     : pointer;
+    box-sizing : content-box;
+    transition : 300ms;
 
     .navicon {
-        position         : relative;
+        position : relative;
         @include line;
 
         &:before,
         &:after {
-            content      : '';
-            position     : absolute;
-            background-color: $white;
+            content          : '';
+            position         : absolute;
+            background-color : $white;
             transform-origin : $navicon-size/14 center;
             @include line;
         }
 
         &:before {
-            top          : -8px;
+            top : -8px;
         }
 
         &:after {
-            top          : 8px;
+            top : 8px;
         }
 
     }
@@ -149,22 +161,22 @@ $navicon-size : rem-calc(24);
     &.open {
         .navicon {
             // hide the middle line
-            background   : transparent;
+            background : transparent;
             // overlay the lines by setting both their top values to 0
             &:before,
             &:after {
-                top                  :  0;
-                width                : $navicon-size;
-                transform-origin     : 50% 50%;
+                top              :  0;
+                width            : $navicon-size;
+                transform-origin : 50% 50%;
             }
 
             // rotate the lines to form the x shape
             &:before {
-                transform            : rotate3d(0, 0, 1, 45deg);
+                transform : rotate3d(0, 0, 1, 45deg);
             }
 
             &:after {
-                transform            : rotate3d(0, 0, 1, -45deg);
+                transform : rotate3d(0, 0, 1, -45deg);
             }
 
         }

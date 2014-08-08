@@ -7,24 +7,24 @@
 // *******************************************
 
 .section {
-	width                : 100%;
-	height               : auto;
-	position             : relative; //for hero-image--content
-    background-color     : $white;
+	width            : 100%;
+	height           : auto;
+	position         : relative; //for hero-image--content
+    background-color : $white;
 
     &.section--active {
         background-color : $white;
     }
 
     &.section--transparent { //contact page
-        background-color: transparent !important;
+        background-color : transparent !important;
     }
 
     &.section--hero {
-        height           : 768px;
+        height : 768px;
 
         .row {
-            padding          : 0;
+            padding : 0;
         }
 
     }
@@ -38,7 +38,7 @@
             }
 
             &::after {
-                border-color     : shade($white, 3%) transparent transparent;
+                border-color : shade($white, 3%) transparent transparent;
             }
 
         }
@@ -46,53 +46,53 @@
     }
 
     .row {
-        clear            : both;
-        height           : inherit;
-        padding          : rem-calc(100 0);
+        clear   : both;
+        height  : inherit;
+        padding : rem-calc(100 0);
 
         .columns {
-            height       : inherit;
-            position     : relative;
+            height   : inherit;
+            position : relative;
 
             .section__image {
-                width    : 100%;
+                width : 100%;
             }
 
         }
 
         &.row--max-width {
-            max-width    : 1120px;
+            max-width : 1120px;
         }
 
     }
 
     h3 {
-        color            : $themeDDGray;
-        font-size        : rem-calc(36);
-        text-align       : center;
+        color      : $themeDDGray;
+        font-size  : rem-calc(36);
+        text-align : center;
 
         @media #{$medium-up} {
-            font-size    : rem-calc(40);
-            text-align   : left;
+            font-size  : rem-calc(40);
+            text-align : left;
         }
 
         @media #{$xlarge-up} {
-            font-size    : rem-calc(60);
+            font-size : rem-calc(60);
         }
 
     }
 
     p {
-        color            : $themeDDGray;
-        font-size        : rem-calc(14);
-        padding-bottom   : rem-calc(20);
+        color          : $themeDDGray;
+        font-size      : rem-calc(14);
+        padding-bottom : rem-calc(20);
 
         @media #{$medium-up} {
-            font-size    : rem-calc(18);
+            font-size : rem-calc(18);
         }
 
         @media #{$xlarge-up} {
-            font-size    : rem-calc(24);
+            font-size : rem-calc(24);
         }
 
     }
