@@ -1,0 +1,256 @@
+// *******************************************
+// *******************************************
+
+    // Sticky Navigation Styles
+
+// *******************************************
+// *******************************************
+
+// sticky navigation vars
+
+$sticky-nav-height       : rem-calc(120);
+$sticky-nav-bg-color    : $themeDDGray;
+
+//on page navigation
+//waypoint nav
+
+.sticky-nav__placeholder { //keeps content from jumping up when actual menu switches to fixed pos. (removed from document flow)
+    width                : 100%;
+    height               : $sticky-nav-height;
+    position             : relative;
+    background-color     : $white;
+    z-index              : 998; //to hide hex button
+
+    @media #{$medium-up} {
+        height               : rem-calc(160);
+    }
+
+}
+
+.sticky-nav {
+    position             : relative;
+    width                : 100%;
+    height               : $sticky-nav-height;
+    background-color     : $sticky-nav-bg-color;
+    padding              : 0;
+    margin               : 0;
+    transition           : height 300ms ease-in-out;
+    user-select          : none;
+    @include noFlicker();
+    @include clearfix;
+
+    @media #{$medium-up} {
+        height               : rem-calc(160);
+    }
+
+    &.startups {
+        background-color : $primary;
+    }
+
+    &.enterprise {
+        background-color : $secondary;
+    }
+
+    &.govedu {
+        background-color : $tertiary;
+    }
+
+	.page-nav {
+		margin           : 0 auto;
+        width            : 100%;
+		max-width        : 1080px;
+        transition       : width 300ms ease-in-out;
+
+		.nav__item {
+            padding      : 12px 0;
+
+            @media #{$medium-up} {
+                padding              : 22px 0;
+            }
+
+			.nav__link {
+				margin               : 0 auto;
+                transition           : all 300ms ease-in-out;
+
+                .nav__icon {
+                    margin-bottom    : 0;
+                    opacity          : 1;
+                    text-align       : center;
+                    height           : rem-calc(60);
+                    width            : rem-calc(50);
+                    transition       : all 300ms ease-in-out;
+
+                    @media #{$medium-up} {
+                        height       : 80px;
+                        width        : 80px;
+                    }
+
+                }
+
+                span,
+                span>span {
+                    @extend .ff-source-bold;
+                    font-size        : rem-calc(12);
+
+                    @media screen and (min-width: 480px) {
+                        font-size    : rem-calc(14);
+                    }
+
+                    @media screen and (min-width: 523px) {
+                        font-size    : rem-calc(16);
+                    }
+
+                }
+
+				&.current {
+					position                : relative;
+					border-radius           : 3px;
+					background-color        : rgba($black, .3);
+
+					&:after {
+						content             : '';
+						width               : 8px;
+						height              : 8px;
+						position            : absolute;
+						bottom              : -12px;
+						left                : 50%;
+						margin-left         : -10px;
+						border              : solid transparent;
+						pointer-events      : none;
+						border-color        : rgba($black, 0);
+						border-bottom-color : $white;
+						border-width        : 10px;
+                        opacity             : 1;
+                        transition          : opacity 300ms ease-in-out;
+
+                        @media #{$medium-up} {
+                            width           : 10px;
+                            height          : 10px;
+                            bottom          : -22px;
+                        }
+
+					}
+
+				}
+
+			}
+
+		}
+
+	}
+
+    &.sticky-nav--fixed {
+        position         : fixed;
+        top              : 0;
+        z-index          : 999;
+        height           : rem-calc(60);
+
+        .page-nav {
+            width            : calc(100% - 120px); //make room for the sticky icons
+        }
+
+        .nav__item {
+            @media #{$medium-up} {
+                padding: 12px 0;
+            }
+
+            .nav__link {
+
+
+                .nav__icon {
+                    opacity      : 0;
+                    height       : 0px;
+                    overflow     : hidden;
+                }
+
+                &.current {
+
+                    &:after {
+                        opacity: 0;
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+    &.sticky-nav--short {
+        height           : rem-calc(60);
+
+        .page-nav {
+            max-width    : rem-calc(820);
+        }
+    }
+
+}
+
+.sticky-waypoints-nav {
+    width                : 20px;
+    position             : fixed;
+    top                  : 50%;
+    left                 : 1%;
+    margin-top           : rem-calc(-160);
+    z-index              : 999;
+
+    .sticky-waypoints-nav--icon {
+        height           : 20px;
+        width            : 20px;
+        margin           : rem-calc(12.857 0);
+
+        .waypoint-marker {
+            fill         : transparent;
+            stroke       : $themeMLGray;
+        }
+
+    }
+
+    .sticky-waypoints-nav--link {
+        &.current {
+            .waypoint-marker {
+                fill     : $themeMLGray;
+            }
+
+        }
+
+    }
+
+}
+
+.back-link { //used on articles
+    @extend .ff-source;
+    font-size            : rem-calc(20);
+    line-height          : rem-calc(60);
+    position             : relative;
+    left                 : rem-calc(60);
+    color                : $white;
+
+    &::before {
+        content                  : '';
+        position                 : absolute;
+        top                      : rem-calc(-17);
+        left                     : rem-calc(-60);
+        cursor                   : pointer;
+        color                    : $white;
+        height                   : rem-calc(60);
+        width                    : rem-calc(60);
+        z-index                  : 2;
+        background               : url('/images/icons/arrow-large.svg') no-repeat;
+        background-size          : 50px 40px;
+        background-position      : center center;
+        transition               : all 300ms ease-in-out;
+        transform                : rotate(90deg);
+    }
+
+    &:hover {
+        color            : $white;
+
+        &::before {
+            left                 : rem-calc(-65);
+        }
+
+    }
+
+}

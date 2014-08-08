@@ -1,17 +1,51 @@
 // vendor imports
 
-    // normalize
+    @import "reset";
+    @import "settings";
+    @import "syndation";
+    @import "tequila";
 
-    @import "../../../bower_components/foundation/scss/normalize";
+// dependency imports
+    @import "dependencies/colors";
+    @import "dependencies/extends";
+    @import "dependencies/fonts";
+    @import "dependencies/icons";
+    @import "dependencies/mixins";
+    @import "dependencies/typography";
 
-    // bourbon
+// layout
+    @import "layout/base";
+    @import "layout/header";
+    @import "layout/footer";
+    @import "layout/layout";
 
-    @import "../../../bower_components/bourbon/app/assets/stylesheets/bourbon";
+// component imports
 
-    // foundation
+    // buttons
+    @import "components/buttons/buttons";
 
-    @import "vendor/foundation/foundation-loader";
+    // dropdown
+    @import "components/dropdown/dropdown-menu";
 
-// shame imports
+    // forms
+    @import "components/forms/form-base";
+    @import "components/forms/form-validation";
 
-    @import "shame";
+    // grid
+    @import "components/grids/default";
+
+    // navigation
+    @import "components/navigation/slide-out-nav";
+    @import "components/navigation/basic-nav";
+    @import "components/navigation/sticky-nav";
+
+    // regions
+    @import "components/regions/panel";
+    @import "components/regions/lightbox";
+    @import "components/regions/section";
+
+// page & section imports
+    @import "pages/page-content";
+
+    // homepage
+    @import "pages/home";

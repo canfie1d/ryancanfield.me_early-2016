@@ -1,0 +1,32 @@
+html,
+body {
+    color                : $themeDDGray;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @extend .ff-source-bold;
+}
+
+p,
+a,
+span {
+    @extend .ff-source;
+}
+
+a.inline-link {
+    @extend .ff-source-bold;
+    color                : $themeDDGray;
+    text-decoration      : none;
+    border-bottom        : 1px solid $themeDGray;
+    transition           : color 300ms ease-in-out;
+
+    &:hover {
+        color: $themeMLGray;
+    }
+
+}

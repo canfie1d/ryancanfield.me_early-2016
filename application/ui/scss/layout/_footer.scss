@@ -1,0 +1,18 @@
+// *******************************************
+// *******************************************
+
+    // Footer Styles
+
+// *******************************************
+// *******************************************
+
+// footer vars
+$footer-bg-color         : $themeDGray;
+
+footer,
+.footer {
+    height               : inherit;
+    width                : 100%;
+    background-color     : $footer-bg-color;
+}
+

@@ -1,0 +1,25 @@
+// *******************************************
+// *******************************************
+
+	// Interior - Main content
+
+// *******************************************
+// *******************************************
+
+.content-wrapper {
+	width                    : 100%;
+	position                 : relative;
+}
+
+.page-content {
+	position                 : relative;
+	max-width                : rem-calc(1120);
+	margin                   : auto;
+	padding                  : rem-calc(20 20 75);
+	@include clearfix;
+
+    &.page-content--collapse {
+        padding              : rem-calc(20 0 75);
+    }
+
+}
