@@ -5,7 +5,7 @@ var _           = require('underscore');
 var React       = require('react');
 var dispatcher  = require('synapse-common/lib/dispatcher');
 
-var ReactRouter = require('react-nested-router');
+var ReactRouter = require('react-router');
 var Router      = ReactRouter.Router;
 var Route       = ReactRouter.Route;
 
@@ -58,7 +58,7 @@ Application.prototype.start = function() {
     }
 
     this.routes = (
-        <Route location='history' handler={SiteLayout} stores={this.stores}>
+        <Route handler={SiteLayout} stores={this.stores}>
             <Route name='home'
                    path='/'
                    handler={HomePage}

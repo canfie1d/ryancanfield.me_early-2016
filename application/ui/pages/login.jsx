@@ -4,7 +4,7 @@
 
 var qs     = require('querystring');
 var React  = require('react');
-var Router = require('react-router-component');
+var Router = require('react-router');
 var config = require('config');
 var dispatcher = require('synapse-common/lib/dispatcher');
 
@@ -71,7 +71,6 @@ module.exports = React.createClass({
 
     render : function()
     {
-        var errorText = this.state.error ? 'There was an error completing your log in' : 'Please Log In';
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>

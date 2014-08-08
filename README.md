@@ -8,6 +8,8 @@
 ### Customizing for your project
 1. Update `package.json`
     1. Change `author`, `name`, `version`, `description`, `repository.url`
+    1. Run `npm outdated --depth=0` to see if there are new versions of dependencies.
+       If so, consider updating them in the front-end template as well as the project.
 1. Update `Vagrantfile`
     1. Update `config.vm.box` and `app_name` to replace "frontend-template" with the project name
     1. Switch `example.com` references with the test deploy domain
