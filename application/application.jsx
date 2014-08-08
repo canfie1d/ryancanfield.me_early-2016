@@ -8,7 +8,6 @@ var dispatcher  = require('synapse-common/lib/dispatcher');
 var ReactRouter = require('react-router');
 var Router      = ReactRouter.Router;
 var Route       = ReactRouter.Route;
-var Routes      = ReactRouter.Routes;
 
 var TokenStore  = require('./store/token');
 var UserStore   = require('./store/user');
@@ -59,7 +58,7 @@ Application.prototype.start = function() {
     }
 
     this.routes = (
-        <Routes>
+        <Route handler={SiteLayout} stores={this.stores}>
             <Route name='home'
                    path='/'
                    handler={HomePage}
@@ -70,7 +69,7 @@ Application.prototype.start = function() {
                    stores={this.stores} />
             <Route path='*'
                    handler={NotFoundPage} />
-        </Routes>
+        </Route>
     );
 
     this.react = React.renderComponent(this.routes, window.document.body);

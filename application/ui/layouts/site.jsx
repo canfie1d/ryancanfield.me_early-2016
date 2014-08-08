@@ -31,7 +31,7 @@ module.exports = React.createClass({
                 <header>
                     <Component user={this.state.user} />
                 </header>
-                {this.props.activeRoute}
+                {this.props.activeRouteHandler()}
             </div>
         );
     }
