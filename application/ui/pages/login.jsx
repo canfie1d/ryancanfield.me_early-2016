@@ -2,16 +2,17 @@
 /* global window */
 'use strict';
 
-var qs     = require('querystring');
-var React  = require('react');
-var Router = require('react-router');
-var config = require('config');
+var qs         = require('querystring');
+var React      = require('react');
+var Router     = require('react-router');
+var config     = require('config');
 var dispatcher = require('synapse-common/lib/dispatcher');
 
 module.exports = React.createClass({
 
     displayName : 'LoginPage',
-    mixins      : [ Router.NavigatableMixin ],
+
+    mixins      : [Router.NavigatableMixin],
 
     seo : {
         title : 'Command Synter | Login'
@@ -66,7 +67,7 @@ module.exports = React.createClass({
             return false;
         }
 
-        this.props.stores.token.login(email, password);
+        this.getFlux().actions.login(email, password);
     },
 
     render : function()

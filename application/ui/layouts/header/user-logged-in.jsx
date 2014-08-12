@@ -1,12 +1,28 @@
 /** @jsx React.DOM */
 'use strict';
 
-var _             = require('underscore');
-var React         = require('react');
+var _               = require('underscore');
+var React           = require('react');
+var FluxChildMixin  = require('fluxxor').FluxChildMixin(React);
+var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
 
 module.exports = React.createClass({
 
     displayName : 'LoggedInHeaderSection',
+
+    mixins : [FluxChildMixin, StoreWatchMixin('UserStore')],
+
+    getStateFromFlux : function()
+    {
+        var userStore;
+
+        userStore = this.getFlux().store('UserStore');
+
+        return {
+            loggedIn : !! userStore.email,
+            email    : userStore.email
+        };
+    },
 
     logout : function(event)
     {
@@ -25,7 +41,7 @@ module.exports = React.createClass({
     render : function() {
         return (
             <div>
-                <p>{'Logged in as '}<strong>{this.props.user.get('email')}</strong>{'.'}</p>
+                <p>{'Logged in as '}<strong>{this.state.email}</strong>{'.'}</p>
                 <p><a href="/logout" onClick={this.logout}>{'Logout'}</a></p>
             </div>
         );
