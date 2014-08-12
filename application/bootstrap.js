@@ -1,8 +1,11 @@
 /* global window */
-
 'use strict';
 
-var Application = require('./application');
+var React       = require('react');
+var flux        = require('./flux');
+var getRoutes   = require('./routes');
 
-window.app = new Application();
-window.app.start();
+window.React = React;
+React.initializeTouchEvents(true);
+
+React.renderComponent(getRoutes(flux), window.document.body);
