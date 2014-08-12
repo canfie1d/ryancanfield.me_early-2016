@@ -1,22 +1,23 @@
 'use strict';
 
+var constants = require('../constants');
 var store     = require('store');
 var Fluxxor   = require('fluxxor');
 
 var TokenStore = Fluxxor.createStore({
-
-    actions : {
-        'LOGIN'            : 'onLogin',
-        'LOGIN_SUCCESSFUL' : 'onLoginSuccessful',
-        'LOGIN_FAILED'     : 'onLoginFailed',
-        'LOGOUT'           : 'onLogout'
-    },
 
     initialize : function()
     {
         this.loading  = false;
         this.error    = false;
         this.loggedIn = !! store.get('token');
+
+        this.bindActions(
+            constants.LOGGING_IN, 'onLogin',
+            constants.LOGIN_SUCCESSFUL, 'onLoginSuccessful',
+            constants.LOGIN_FAILED, 'onLoginFailed',
+            constants.LOGOUT, 'onLogout'
+        );
     },
 
     onLogin : function()
