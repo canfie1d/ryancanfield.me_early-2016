@@ -42,10 +42,7 @@ module.exports = React.createClass({
                     <p>
                         <a href="http://project.vm/social-login/github/link">Link GitHub account</a><br />
                         <a href="http://project.vm/social-login/facebook/link">Link Facebook account</a><br />
-                        {/*
-                            Google only allows 'localhost" as a non-public domain for callback URLs.
-                            This link won't work unless the URLs in models/user.js are also changed to 'localhost'.
-                        */}
+                        {/* Google only allows 'localhost" as a non-public domain for callback URLs. */}
                         <a href="http://localhost/social-login/google/link">Link Google account</a><br />
                     </p>
                 </div>
