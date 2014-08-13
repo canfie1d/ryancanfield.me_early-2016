@@ -14,20 +14,6 @@ module.exports = React.createClass({
 
     mixins      : [FluxMixin, StoreWatchMixin('UserStore')],
 
-    getInitialState : function()
-    {
-        return {};
-    },
-
-    loginSuccess : function()
-    {
-        this.redirect('/');
-    },
-
-    loginFailure : function()
-    {
-    },
-
     handleSubmit : function(event)
     {
         var email, password;
@@ -43,12 +29,21 @@ module.exports = React.createClass({
 
     getStateFromFlux : function()
     {
-        var store = this.getFlux().store('TokenStore');
+        var store = this.getFlux().store('UserStore');
 
         return {
             loading  : store.loading,
             hasError : store.error
         };
+    },
+
+    renderErrorMessage : function()
+    {
+        if (this.state.hasError) {
+            return <p>Registration Failed</p>;
+        }
+
+        return null;
     },
 
     render : function()
@@ -64,6 +59,7 @@ module.exports = React.createClass({
                     <label htmlFor="password">Password:</label>
                     <input type="password" name="password" ref="password" />
                     <input type="submit" value="Log in" />
+                    {this.renderErrorMessage()}
                 </form>
                 <Link to='home'>Home</Link>
             </div>
