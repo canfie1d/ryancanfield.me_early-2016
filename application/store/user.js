@@ -5,7 +5,7 @@ var Fluxxor   = require('fluxxor');
 var store     = require('store');
 
 var UserStore = Fluxxor.createStore({
-    initialize : function(tokenStore)
+    initialize : function()
     {
         this.data = store.get('user') || {};
 
