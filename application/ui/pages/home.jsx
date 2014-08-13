@@ -36,10 +36,6 @@ module.exports = React.createClass({
             return (
                 <div>
                     <p>
-                        <a route='account-change-password'>Change email</a><br />
-                        <a route='account-change-password'>Change password</a>
-                    </p>
-                    <p>
                         <a href="http://project.vm/social-login/github/link">Link GitHub account</a><br />
                         <a href="http://project.vm/social-login/facebook/link">Link Facebook account</a><br />
                         {/* Google only allows 'localhost" as a non-public domain for callback URLs. */}
