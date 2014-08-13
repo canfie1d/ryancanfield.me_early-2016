@@ -1,8 +1,8 @@
 'use strict';
 
 var constants = require('../constants');
-var store     = require('store');
 var Fluxxor   = require('fluxxor');
+var store     = require('store');
 
 var TokenStore = Fluxxor.createStore({
 
@@ -50,11 +50,6 @@ var TokenStore = Fluxxor.createStore({
         this.loggedIn = false;
 
         this.emit('change');
-    },
-
-    clearToken : function()
-    {
-        this.setToken({});
     }
 });
 

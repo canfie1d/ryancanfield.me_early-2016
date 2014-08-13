@@ -19,8 +19,8 @@ module.exports = React.createClass({
         userStore = this.getFlux().store('UserStore');
 
         return {
-            loggedIn : !! userStore.email,
-            email    : userStore.email
+            loggedIn : !! userStore.data.email,
+            email    : userStore.data.email
         };
     },
 

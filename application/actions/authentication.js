@@ -1,7 +1,8 @@
 'use strict';
 
 var constants   = require('../constants');
-var oauthClient = require('../client/oauth.js');
+var oauthClient = require('../client/oauth');
+var userClient  = require('../client/user');
 
 module.exports = {
     login : function(username, password) {
@@ -11,7 +12,21 @@ module.exports = {
 
         oauthClient.login(username, password)
             .then(function(tokenData) {
-                flux.dispatch(constants.LOGIN_SUCCESSFUL, tokenData);
+                // Authenticated, but still need user data
+                userClient.setToken(tokenData);
+                userClient.getCurrentUser()
+                    .then(function(userData) {
+                        flux.dispatch(
+                            constants.LOGIN_SUCCESSFUL,
+                            {
+                                tokenData : tokenData,
+                                userData  : userData
+                            }
+                        );
+                    })
+                    .fail(function() {
+                        flux.dispatch(constants.LOGIN_FAILED);
+                    });
             })
             .fail(function() {
                 flux.dispatch(constants.LOGIN_FAILED);
