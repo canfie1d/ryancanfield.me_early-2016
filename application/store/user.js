@@ -7,7 +7,7 @@ var store     = require('store');
 var UserStore = Fluxxor.createStore({
     initialize : function(tokenStore)
     {
-        this.data = store.get('userData') || {};
+        this.data = store.get('user') || {};
 
         this.bindActions(
             constants.LOGIN_SUCCESSFUL, 'onLogin',
