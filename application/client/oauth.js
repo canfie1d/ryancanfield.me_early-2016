@@ -57,17 +57,13 @@ var OAuthClient = HttpGateway.extend({
 
     _getRequestOptions : function(method, path)
     {
-        var config = this.getConfig();
+        var options;
 
-        return {
-            hostname : config.hostname,
-            port     : config.port,
-            method   : method,
-            path     : path,
-            headers  : {
-                'Content-Type' : 'application/x-www-form-urlencoded'
-            }
-        };
+        options = HttpGateway.prototype._getRequestOptions.call(this, method, path);
+
+        options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
+
+        return options;
     }
 });
 
