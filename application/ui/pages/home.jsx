@@ -1,6 +1,7 @@
 /** @jsx React.DOM */
 'use strict';
 
+var config          = require('config');
 var React           = require('react');
 var Fluxxor         = require("fluxxor");
 var FluxMixin       = Fluxxor.FluxMixin(React);
@@ -36,10 +37,19 @@ module.exports = React.createClass({
             return (
                 <div>
                     <p>
-                        <a href="http://project.vm/social-login/github/link">Link GitHub account</a><br />
-                        <a href="http://project.vm/social-login/facebook/link">Link Facebook account</a><br />
+                        <a href={'http://' + config.api.hostname + '/social-login/github/link'}>
+                            Link GitHub account
+                        </a>
+                        <br />
+                        <a href={'http://' + config.api.hostname + '/social-login/facebook/link'}>
+                            Link Facebook account
+                        </a>
+                        <br />
                         {/* Google only allows 'localhost" as a non-public domain for callback URLs. */}
-                        <a href="http://localhost/social-login/google/link">Link Google account</a><br />
+                        <a href='http://localhost/social-login/google/link'>
+                            Link Google account
+                        </a>
+                        <br />
                     </p>
                 </div>
             );
@@ -52,14 +62,23 @@ module.exports = React.createClass({
                         <button onClick={this.handleLogin}>Submit</button>
                     </div>
                     <p>
-                        Or <a href="http://project.vm/social-login/github">log in with GitHub</a>.
+                        Or&nbsp;
+                        <a href={'http://' + config.api.hostname + '/social-login/github'}>
+                            log in with GitHub
+                        </a>.
                     </p>
                     <p>
-                        Or <a href="http://project.vm/social-login/facebook">log in with Facebook</a>.
+                        Or&nbsp;
+                        <a href={'http://' + config.api.hostname + '/social-login/facebook'}>
+                            log in with Facebook
+                        </a>.
                     </p>
                     <p>
                         {/* Google only allows "localhost" as a non-public domain for callback URLs. */}
-                        Or <a href="http://localhost/social-login/google">log in with Google</a>.
+                        Or&nbsp;
+                        <a href={'http://localhost/social-login/google'}>
+                            log in with Google
+                        </a>.
                     </p>
                 </div>
             );
