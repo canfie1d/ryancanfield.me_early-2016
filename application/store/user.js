@@ -8,16 +8,19 @@ var UserStore = Fluxxor.createStore({
     initialize : function()
     {
         this.data = store.get('user') || {};
+        this.error = false;
 
         this.bindActions(
             constants.LOGIN_SUCCESSFUL, 'onLogin',
-            constants.LOGOUT, 'onLogout'
+            constants.LOGOUT, 'onLogout',
+            constants.REGISTRATION_FAILED, 'onRegistrationFailed'
         );
     },
 
     onLogin : function(payload)
     {
         this.data = payload.userData;
+        this.error = false;
 
         store.set('user', this.data);
 
@@ -27,8 +30,16 @@ var UserStore = Fluxxor.createStore({
     onLogout : function()
     {
         this.data = {};
+        this.error = false;
 
         store.remove('user');
+
+        this.emit('change');
+    },
+
+    onRegistrationFailed : function()
+    {
+        this.error = true;
 
         this.emit('change');
     }

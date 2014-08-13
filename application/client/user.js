@@ -13,6 +13,11 @@ var UserClient = HttpGateway.extend({
         return this.apiRequest('GET', '/user');
     },
 
+    createUser : function(userData)
+    {
+        return this.apiRequest('POST', '/users', userData);
+    },
+
     setToken : function(tokenData)
     {
         this.token = tokenData;

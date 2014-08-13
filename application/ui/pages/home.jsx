@@ -53,6 +53,9 @@ module.exports = React.createClass({
                         <Link to='login'>Log in with credentials</Link>
                     </p>
                     <p>
+                        <Link to='register'>Register</Link>
+                    </p>
+                    <p>
                         Or&nbsp;
                         <a href={'http://' + config.api.hostname + '/social-login/github'}>
                             log in with GitHub
