@@ -5,7 +5,8 @@ var oauthClient = require('../client/oauth');
 var userClient  = require('../client/user');
 
 module.exports = {
-    login : function(username, password) {
+    login : function(username, password)
+    {
         var flux = this;
 
         flux.dispatch(constants.LOGGING_IN);
@@ -31,5 +32,13 @@ module.exports = {
             .fail(function() {
                 flux.dispatch(constants.LOGIN_FAILED);
             });
+    },
+
+    logout : function()
+    {
+        // Assume the logout worked, since it doesn't make a difference to the user
+        oauthClient.logout();
+
+        this.dispatch(constants.LOGOUT);
     }
 };

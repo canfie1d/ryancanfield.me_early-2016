@@ -1,8 +1,9 @@
 'use strict';
 
-var HttpGateway = require('synapse-common/http/gateway');
 var config      = require('config');
+var HttpGateway = require('synapse-common/http/gateway');
 var qs          = require('querystring');
+var store       = require('store');
 
 var OAuthClient = HttpGateway.extend({
 
@@ -24,8 +25,24 @@ var OAuthClient = HttpGateway.extend({
         );
     },
 
-    refresh : function(tokenData)
+    logout : function()
     {
+        var token = store.get('token') || {};
+
+        return this.apiRequest.call(
+            this,
+            'POST',
+            '/oauth/logout',
+            {
+                refresh_token : token.refresh_token
+            }
+        );
+    },
+
+    refresh : function()
+    {
+        var token = store.get('token') || {};
+
         return this.apiRequest.call(
             this,
             'POST',
@@ -33,7 +50,7 @@ var OAuthClient = HttpGateway.extend({
             qs.stringify({
                 grant_type    : 'refresh_token',
                 client_id     : this.config.client_id,
-                refresh_token : tokenData.refresh_token
+                refresh_token : token.refresh_token
             })
         );
     },

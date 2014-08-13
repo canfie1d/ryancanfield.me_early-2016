@@ -1,20 +1,17 @@
 'use strict';
 
+var constants   = require('constants');
 var Fluxxor     = require('fluxxor');
 var ReactRouter = require('react-router');
 var Router      = ReactRouter.Router;
 
 var RoutingStore = Fluxxor.createStore({
-    actions: {
-        'NAVIGATE' : 'navigate',
-        'FORWARD'  : 'forward'
-    },
-
     initialize: function()
     {
         this.bindActions(
-            'NAVIGATE', this.navigate,
-            'FORWARD', this.forward
+            constants.NAVIGATE, 'navigate',
+            constants.FORWARD, 'forward',
+            constants.LOGOUT, 'onLogout'
         );
     },
 
@@ -26,6 +23,11 @@ var RoutingStore = Fluxxor.createStore({
     forward: function(payload)
     {
         Router.replaceWith(payload.route, payload.params || {}, payload.query || {});
+    },
+
+    onLogout : function()
+    {
+        Router.transitionTo('home');
     }
 });
 

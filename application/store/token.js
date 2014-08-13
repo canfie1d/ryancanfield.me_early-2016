@@ -50,6 +50,11 @@ var TokenStore = Fluxxor.createStore({
         this.loggedIn = false;
 
         this.emit('change');
+    },
+
+    getTokenData : function()
+    {
+        return store.get('token');
     }
 });
 

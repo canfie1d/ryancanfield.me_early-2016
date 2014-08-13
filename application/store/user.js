@@ -10,7 +10,8 @@ var UserStore = Fluxxor.createStore({
         this.data = store.get('userData') || {};
 
         this.bindActions(
-            constants.LOGIN_SUCCESSFUL, 'onLogin'
+            constants.LOGIN_SUCCESSFUL, 'onLogin',
+            constants.LOGOUT, 'onLogout'
         );
     },
 
@@ -19,6 +20,15 @@ var UserStore = Fluxxor.createStore({
         this.data = payload.userData;
 
         store.set('user', this.data);
+
+        this.emit('change');
+    },
+
+    onLogout : function()
+    {
+        this.data = {};
+
+        store.remove('user');
 
         this.emit('change');
     }
