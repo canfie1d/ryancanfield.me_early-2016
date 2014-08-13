@@ -23,12 +23,19 @@ module.exports = React.createClass({
         };
     },
 
+    logout : function(event)
+    {
+        event.preventDefault();
+
+        this.getFlux().actions.logout();
+    },
+
     render : function() {
         return (
             <div>
                 <p>{'Logged in as '}<strong>{this.state.email}</strong>{'.'}</p>
                 <p>
-                    <a href='' onClick={this.getFlux().actions.logout}>{'Logout'}</a>
+                    <a href='' onClick={this.logout}>{'Logout'}</a>
                 </p>
             </div>
         );

@@ -27,11 +27,12 @@ var TokenStore = Fluxxor.createStore({
         this.emit('change');
     },
 
-    onLoginSuccessful : function(tokenData)
+    onLoginSuccessful : function(payload)
     {
-        this.token    = tokenData;
+        this.token    = payload.tokenData;
         this.loggedIn = true;
-        store.set('token', tokenData);
+
+        store.set('token', this.token);
 
         this.emit('change');
     },

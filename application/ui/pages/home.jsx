@@ -2,6 +2,7 @@
 'use strict';
 
 var config          = require('config');
+var Link            = require('react-router').Link;
 var React           = require('react');
 var Fluxxor         = require("fluxxor");
 var FluxMixin       = Fluxxor.FluxMixin(React);
@@ -12,14 +13,6 @@ module.exports = React.createClass({
     displayName : 'HomeModule',
 
     mixins : [FluxMixin, StoreWatchMixin('TokenStore')],
-
-    handleLogin : function()
-    {
-        this.getFlux().actions.login(
-            this.refs.username.getDOMNode().value,
-            this.refs.password.getDOMNode().value
-        );
-    },
 
     getStateFromFlux : function()
     {
@@ -56,11 +49,9 @@ module.exports = React.createClass({
         } else {
             return (
                 <div>
-                    <div>
-                        <input type='text' ref='username' name='username' placeholder='username'/>
-                        <input type='password' ref='password' name='password' placeholder='password'/>
-                        <button onClick={this.handleLogin}>Submit</button>
-                    </div>
+                    <p>
+                        <Link to='login'>Log in with credentials</Link>
+                    </p>
                     <p>
                         Or&nbsp;
                         <a href={'http://' + config.api.hostname + '/social-login/github'}>

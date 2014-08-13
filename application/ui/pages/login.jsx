@@ -2,17 +2,20 @@
 /* global window */
 'use strict';
 
-var qs         = require('querystring');
-var React      = require('react');
-var Router     = require('react-router');
-var config     = require('config');
-var dispatcher = require('synapse-common/lib/dispatcher');
+var config          = require('config');
+var Link            = require('react-router').Link;
+var qs              = require('querystring');
+
+var React           = require('react');
+var Fluxxor         = require('fluxxor');
+var FluxMixin       = Fluxxor.FluxMixin(React);
+var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
 module.exports = React.createClass({
 
     displayName : 'LoginPage',
 
-    mixins      : [Router.NavigatableMixin],
+    mixins : [FluxMixin, StoreWatchMixin('TokenStore')],
 
     seo : {
         title : 'Command Synter | Login'
@@ -31,26 +34,11 @@ module.exports = React.createClass({
         };
     },
 
-    componentDidMount : function()
+    componentWillMount : function()
     {
-        var token  = {
-            access_token  : this.state.params.access_token,
-            expires_in    : this.state.params.expires_in,
-            token_type    : this.state.params.token_type,
-            refresh_token : this.state.params.refresh_token,
-            user_id       : this.state.params.user_id
-        };
-
-        if (this.state.loginFailure) {
-            return;
+        if (this.state.loggedIn) {
+            this.getFlux().actions.navigate('home');
         }
-
-        if (! this.state.params.access_token) {
-            return;
-        }
-
-        dispatcher.emit('token:update', token);
-        dispatcher.emit('navigate', '/');
     },
 
     handleSubmit : function(event)
@@ -58,16 +46,30 @@ module.exports = React.createClass({
         // Don't let the browser submit the form
         event.preventDefault();
 
-        // this.refs is populated by setting the ref property in the component
-        var email    = this.refs.email.getDOMNode().value.trim(),
-            password = this.refs.password.getDOMNode().value.trim();
+        this.getFlux().actions.login(
+            this.refs.email.getDOMNode().value.trim(),
+            this.refs.password.getDOMNode().value.trim()
+        );
+    },
 
-        if (!email || !password) {
-            // TODO: error message
-            return false;
+    getStateFromFlux : function()
+    {
+        var store = this.getFlux().store('TokenStore');
+
+        return {
+            loading  : store.loading,
+            loggedIn : store.loggedIn,
+            hasError : store.error
+        };
+    },
+
+    renderErrorMessage : function()
+    {
+        if (this.state.hasError) {
+            return <p>Authentication Failed</p>;
         }
 
-        this.getFlux().actions.login(email, password);
+        return null;
     },
 
     render : function()
@@ -83,8 +85,9 @@ module.exports = React.createClass({
                     <label htmlFor="password">Password:</label>
                     <input type="password" name="password" ref="password" />
                     <input type="submit" value="Log in" />
+                    {this.renderErrorMessage()}
                 </form>
-                Or <a href={this.loginWithGithubUrl}>{'Login with GitHub'}</a>
+                <Link to='home'>Home</Link>
             </div>
         );
     }

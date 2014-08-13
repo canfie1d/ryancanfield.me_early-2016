@@ -1,9 +1,8 @@
 'use strict';
 
-var constants   = require('constants');
-var Fluxxor     = require('fluxxor');
-var ReactRouter = require('react-router');
-var Router      = ReactRouter.Router;
+var constants = require('../constants');
+var Fluxxor   = require('fluxxor');
+var Router    = require('react-router');
 
 var RoutingStore = Fluxxor.createStore({
     initialize: function()
@@ -11,7 +10,8 @@ var RoutingStore = Fluxxor.createStore({
         this.bindActions(
             constants.NAVIGATE, 'navigate',
             constants.FORWARD, 'forward',
-            constants.LOGOUT, 'onLogout'
+            constants.LOGOUT, 'onLogout',
+            constants.LOGIN_SUCCESSFUL, 'onLoginSuccessful'
         );
     },
 
@@ -26,6 +26,11 @@ var RoutingStore = Fluxxor.createStore({
     },
 
     onLogout : function()
+    {
+        Router.transitionTo('home');
+    },
+
+    onLoginSuccessful : function()
     {
         Router.transitionTo('home');
     }
