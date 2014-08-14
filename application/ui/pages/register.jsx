@@ -24,7 +24,7 @@ module.exports = React.createClass({
         email    = this.refs.email.getDOMNode().value.trim();
         password = this.refs.password.getDOMNode().value.trim();
 
-        this.getFlux().actions.registerUser(email, password);
+        this.getFlux().actions.auth.registerUser(email, password);
     },
 
     getStateFromFlux : function()

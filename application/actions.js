@@ -3,41 +3,8 @@
 var authenticationActions = require('./actions/authentication');
 var constants = require('./constants');
 
-var oauthClient = require('./client/oauth');
-var userClient = require('./client/user');
-
 module.exports = {
     auth : authenticationActions,
-    registerUser : function(email, password) {
-        var flux = this;
-
-        this.dispatch(constants.REGISTERING);
-
-        userClient.createUser(
-            {
-                email    : email,
-                password : password
-            })
-            .then(function(userData) {
-                // User created, now log in
-                oauthClient.login(email, password)
-                    .then(function(tokenData) {
-                        flux.dispatch(
-                            constants.LOGIN_SUCCESSFUL,
-                            {
-                                tokenData : tokenData,
-                                userData  : userData
-                            }
-                        );
-                    })
-                    .fail(function() {
-                        flux.dispatch(constants.LOGIN_FAILED);
-                    });
-            })
-            .fail(function() {
-                flux.dispatch(constants.REGISTRATION_FAILED);
-            });
-    },
     navigate : function(route, params, query) {
         this.dispatch(
             constants.NAVIGATE,
