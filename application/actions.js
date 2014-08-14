@@ -1,10 +1,10 @@
 'use strict';
 
 var authenticationActions = require('./actions/authentication');
-var constants = require('./constants');
+var constants             = require('./constants');
 
 module.exports = {
-    auth : authenticationActions,
+    auth     : authenticationActions,
     navigate : function(route, params, query) {
         this.dispatch(
             constants.NAVIGATE,
@@ -15,7 +15,9 @@ module.exports = {
             }
         );
     },
-    forward : function(route, params, query) {
+
+    forward : function(route, params, query)
+    {
         this.dispatch(
             constants.FORWARD,
             {
