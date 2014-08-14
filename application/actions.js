@@ -1,15 +1,17 @@
 'use strict';
 
 var authenticationActions = require('./actions/authentication');
-var constants = require('./constants');
+var constants             = require('./constants');
 
 var oauthClient = require('./client/oauth');
-var userClient = require('./client/user');
+var userClient  = require('./client/user');
 
 module.exports = {
-    login : authenticationActions.login,
-    logout : authenticationActions.logout,
-    registerUser : function(email, password) {
+    login        : authenticationActions.login,
+    logout       : authenticationActions.logout,
+    
+    registerUser : function(email, password)
+    {
         var flux = this;
 
         this.dispatch(constants.REGISTERING);
@@ -39,7 +41,9 @@ module.exports = {
                 flux.dispatch(constants.REGISTRATION_FAILED);
             });
     },
-    navigate : function(route, params, query) {
+    
+    navigate : function(route, params, query)
+    {
         this.dispatch(
             constants.NAVIGATE,
             {
@@ -49,7 +53,9 @@ module.exports = {
             }
         );
     },
-    forward : function(route, params, query) {
+    
+    forward : function(route, params, query)
+    {
         this.dispatch(
             constants.FORWARD,
             {
