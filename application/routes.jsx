@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 'use strict';
 
-var flux        = require('./flux');
-var Route       = require('react-router').Route;
+var flux  = require('./flux');
+var Route = require('react-router').Route;
 
 var SiteLayout       = require('./ui/layouts/site');
 var HomePage         = require('./ui/pages/home');
