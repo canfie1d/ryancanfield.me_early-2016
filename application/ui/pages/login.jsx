@@ -2,14 +2,15 @@
 /* global window */
 'use strict';
 
-var config          = require('config');
-var Link            = require('react-router').Link;
-var qs              = require('querystring');
-
 var React           = require('react');
 var Fluxxor         = require('fluxxor');
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+
+var config = require('config');
+var Input  = require('../components/form/input');
+var Link   = require('react-router').Link;
+var qs     = require('querystring');
 
 module.exports = React.createClass({
 
@@ -47,8 +48,8 @@ module.exports = React.createClass({
         event.preventDefault();
 
         this.getFlux().actions.auth.login(
-            this.refs.email.getDOMNode().value.trim(),
-            this.refs.password.getDOMNode().value.trim()
+            this.state.email,
+            this.state.password
         );
     },
 
@@ -61,6 +62,15 @@ module.exports = React.createClass({
             loggedIn : store.loggedIn,
             hasError : store.error
         };
+    },
+
+    updateStateValue : function(key, value)
+    {
+        var stateChanges = {};
+
+        stateChanges[key] = value;
+
+        this.setState(stateChanges);
     },
 
     renderErrorMessage : function()
@@ -81,9 +91,17 @@ module.exports = React.createClass({
                         Login:
                     </p>
                     <label htmlFor="email">Email:</label>
-                    <input type="text" name="email" ref="email" />
+                    <Input
+                        type     = "text"
+                        name     = "email"
+                        onChange = {this.updateStateValue.bind(this, 'email')}
+                    />
                     <label htmlFor="password">Password:</label>
-                    <input type="password" name="password" ref="password" />
+                    <Input
+                        type     = "password"
+                        name     = "password"
+                        onChange = {this.updateStateValue.bind(this, 'password')}
+                    />
                     <input type="submit" value="Log in" />
                     {this.renderErrorMessage()}
                 </form>
