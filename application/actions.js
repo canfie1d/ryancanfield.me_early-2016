@@ -7,8 +7,7 @@ var oauthClient = require('./client/oauth');
 var userClient = require('./client/user');
 
 module.exports = {
-    login : authenticationActions.login,
-    logout : authenticationActions.logout,
+    auth : authenticationActions,
     registerUser : function(email, password) {
         var flux = this;
 

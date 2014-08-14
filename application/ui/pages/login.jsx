@@ -46,7 +46,7 @@ module.exports = React.createClass({
         // Don't let the browser submit the form
         event.preventDefault();
 
-        this.getFlux().actions.login(
+        this.getFlux().actions.auth.login(
             this.refs.email.getDOMNode().value.trim(),
             this.refs.password.getDOMNode().value.trim()
         );
