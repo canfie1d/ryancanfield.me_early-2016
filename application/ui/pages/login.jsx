@@ -18,10 +18,6 @@ module.exports = React.createClass({
 
     mixins : [FluxMixin, StoreWatchMixin('TokenStore')],
 
-    seo : {
-        title : 'Command Synter | Login'
-    },
-
     loginWithGithubUrl : config.loginWithGithubUrl,
 
     getInitialState : function()
