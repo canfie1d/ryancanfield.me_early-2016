@@ -31,7 +31,8 @@ module.exports = React.createClass({
         return {
             loginFailure : queryParams.login_failure,
             params       : queryParams,
-            error        : false
+            email        : '',
+            password     : ''
         };
     },
 
@@ -95,12 +96,14 @@ module.exports = React.createClass({
                         type     = "text"
                         name     = "email"
                         onChange = {this.updateStateValue.bind(this, 'email')}
+                        value    = {this.state.email}
                     />
                     <label htmlFor="password">Password:</label>
                     <Input
                         type     = "password"
                         name     = "password"
                         onChange = {this.updateStateValue.bind(this, 'password')}
+                        value    = {this.state.password}
                     />
                     <input type="submit" value="Log in" />
                     {this.renderErrorMessage()}

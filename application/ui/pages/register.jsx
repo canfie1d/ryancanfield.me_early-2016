@@ -16,6 +16,14 @@ module.exports = React.createClass({
 
     mixins      : [FluxMixin, StoreWatchMixin('UserStore')],
 
+    getInitialState : function()
+    {
+        return {
+            email    : '',
+            password : '',
+        };
+    },
+
     handleSubmit : function(event)
     {
         // Don't let the browser submit the form
@@ -66,12 +74,14 @@ module.exports = React.createClass({
                         type     = "text"
                         name     = "email"
                         onChange = {this.updateStateValue.bind(this, 'email')}
+                        value    = {this.state.email}
                     />
                     <label htmlFor="password">Password:</label>
                     <Input
                         type     = "password"
                         name     = "password"
                         onChange = {this.updateStateValue.bind(this, 'password')}
+                        value    = {this.state.password}
                     />
                     <input type="submit" value="Log in" />
                     {this.renderErrorMessage()}
