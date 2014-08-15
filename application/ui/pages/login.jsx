@@ -1,5 +1,4 @@
 /** @jsx React.DOM */
-/* global window */
 'use strict';
 
 var React           = require('react');
@@ -10,7 +9,6 @@ var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 var config = require('config');
 var Input  = require('../components/form/input');
 var Link   = require('react-router').Link;
-var qs     = require('querystring');
 
 module.exports = React.createClass({
 
@@ -22,11 +20,7 @@ module.exports = React.createClass({
 
     getInitialState : function()
     {
-        var queryParams = qs.parse(window.location.search.substring(1));
-
         return {
-            loginFailure : queryParams.login_failure,
-            params       : queryParams,
             email        : '',
             password     : ''
         };
