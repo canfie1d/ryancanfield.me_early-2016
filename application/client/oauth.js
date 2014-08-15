@@ -11,8 +11,7 @@ var OAuthClient = HttpGateway.extend({
 
     login : function(email, password)
     {
-        return this.apiRequest.call(
-            this,
+        return this.apiRequest(
             'POST',
             '/oauth/token',
             qs.stringify({
@@ -29,8 +28,7 @@ var OAuthClient = HttpGateway.extend({
     {
         var token = store.get('token') || {};
 
-        return this.apiRequest.call(
-            this,
+        return this.apiRequest(
             'POST',
             '/oauth/logout',
             {
