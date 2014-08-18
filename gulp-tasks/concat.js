@@ -6,8 +6,8 @@ var gulp    = require('gulp'),
 
 gulp.task('concat', function() {
     gulp.src([
-        'bower_components/modernizr/modernizr.js'
-    ])
+            'bower_components/modernizr/modernizr.js'
+        ])
         .pipe(concat('vendor-header.js'))
         .pipe(gulp.dest('./build/js'))
         .pipe(connect.reload());
