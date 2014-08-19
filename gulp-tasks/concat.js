@@ -6,7 +6,8 @@ var gulp    = require('gulp'),
 
 gulp.task('concat', function() {
     gulp.src([
-            'bower_components/modernizr/modernizr.js'
+            // Add file paths here to include in vendor header
+            // This task is has to be added back into the gulpfile runlist for 'build'
         ])
         .pipe(concat('vendor-header.js'))
         .pipe(gulp.dest('./build/js'))
