@@ -11,10 +11,6 @@ module.exports = {
     api : {
         hostname      : backend,
         port          : 80,
-        client_id     : '123',
-        client_secret : ''
-    },
-    socialLoginUrls : {
-        facebook : 'http://' + backend + '/social-login/facebook'
+        client_id     : 'js-client'
     }
 };

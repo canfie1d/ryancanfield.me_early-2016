@@ -1,36 +1,27 @@
 /** @jsx React.DOM */
 'use strict';
 
+
 var React           = require('react');
 var Fluxxor         = require('fluxxor');
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var config = require('config');
-var Input  = require('../components/form/input');
-var Link   = require('react-router').Link;
+var Link  = require('react-router').Link;
+var Input = require('../components/form/input');
 
 module.exports = React.createClass({
 
-    displayName : 'LoginPage',
+    displayName : 'RegisterModule',
 
-    mixins : [FluxMixin, StoreWatchMixin('TokenStore')],
-
-    loginWithGithubUrl : config.loginWithGithubUrl,
+    mixins      : [FluxMixin, StoreWatchMixin('UserStore')],
 
     getInitialState : function()
     {
         return {
-            email        : '',
-            password     : ''
+            email    : '',
+            password : '',
         };
-    },
-
-    componentWillMount : function()
-    {
-        if (this.state.loggedIn) {
-            this.getFlux().actions.navigate('home');
-        }
     },
 
     handleSubmit : function(event)
@@ -38,7 +29,7 @@ module.exports = React.createClass({
         // Don't let the browser submit the form
         event.preventDefault();
 
-        this.getFlux().actions.auth.login(
+        this.getFlux().actions.auth.registerUser(
             this.state.email,
             this.state.password
         );
@@ -46,11 +37,10 @@ module.exports = React.createClass({
 
     getStateFromFlux : function()
     {
-        var store = this.getFlux().store('TokenStore');
+        var store = this.getFlux().store('UserStore');
 
         return {
             loading  : store.loading,
-            loggedIn : store.loggedIn,
             hasError : store.error
         };
     },
@@ -67,7 +57,7 @@ module.exports = React.createClass({
     renderErrorMessage : function()
     {
         if (this.state.hasError) {
-            return <p>Authentication Failed</p>;
+            return <p>Registration Failed</p>;
         }
 
         return null;
@@ -78,9 +68,7 @@ module.exports = React.createClass({
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <p>
-                        Login:
-                    </p>
+                    <p>Register an account:</p>
                     <label htmlFor="email">Email:</label>
                     <Input
                         type     = "text"
