@@ -8,9 +8,9 @@
     "url"  : "https://github.com/synapsestudios/frontend-template.git"
   },
   "scripts" : {
-    "dev"        : "npm install && bower install && gulp watch",
-    "production" : "npm install && bower install && gulp clean && gulp build --build production",
-    "sitemap"    : "npm install && bower install && node sitemap-gen.js > application/sitemap.xml"
+    "dev"        : "npm install && gulp watch",
+    "production" : "npm install && gulp clean && gulp build --build production",
+    "sitemap"    : "npm install && node sitemap-gen.js > application/sitemap.xml"
   },
   "devDependencies" : {
     "connect-history-api-fallback" : "0.0.4",
@@ -35,9 +35,9 @@
     "watchify"                     : "0.10.2"
   },
   "dependencies": {
+    "fluxxor"        : "1.3.2",
     "react"          : "0.11.0",
     "react-router"   : "0.4.1",
-    "fluxxor"        : "1.3.2",
     "request"        : "2.34.0",
     "store"          : "1.3.16",
     "synapse-common" : "0.1.0",
