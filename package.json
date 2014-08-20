@@ -9,8 +9,7 @@
   },
   "scripts" : {
     "dev"        : "npm install && gulp watch",
-    "production" : "npm install && gulp clean && gulp build --build production",
-    "sitemap"    : "npm install && node sitemap-gen.js > application/sitemap.xml"
+    "production" : "npm install && gulp clean && gulp build --build production"
   },
   "devDependencies" : {
     "connect-history-api-fallback" : "0.0.4",
