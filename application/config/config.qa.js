@@ -4,8 +4,10 @@ var backend = '<%- BACKEND %>';
 
 if (! backend.length)
 {
-    backend = 'api.project.vm';
+    backend = 'api-project-com-qa';
 }
+
+backend += '.synsit.es';
 
 module.exports = {
     api : {

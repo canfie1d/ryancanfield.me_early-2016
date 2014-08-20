@@ -2,30 +2,28 @@
 'use strict';
 
 var React           = require('react');
-var StoreWatchMixin = require('synapse-common/ui/mixins/store-watch');
 var LoggedIn        = require('./header/user-logged-in.jsx');
 var LoggedOut       = require('./header/user-logged-out.jsx');
+var FluxMixin       = require('fluxxor').FluxMixin(React);
+var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
 
 module.exports = React.createClass({
 
     displayName : 'SiteLayout',
 
-    mixins : [ StoreWatchMixin ],
+    mixins : [ FluxMixin, StoreWatchMixin('TokenStore') ],
 
-    getInitialState : function()
+    getStateFromFlux : function()
     {
-        return this.getStateFromStores();
-    },
+        var store = this.getFlux().store('TokenStore');
 
-    getStateFromStores : function()
-    {
         return {
-            user : this.props.stores ? this.props.stores.user.getUser() : false
+            loggedIn : store.loggedIn
         };
     },
 
     render : function() {
-        var Component = (this.props.loggedIn) ? LoggedIn : LoggedOut;
+        var Component = (this.state.loggedIn) ? LoggedIn : LoggedOut;
         return (
             <div>
                 <header>

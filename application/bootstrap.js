@@ -1,8 +1,11 @@
 /* global window */
-
 'use strict';
 
-var Application = require('./application');
+var React  = require('react');
+var routes = require('./routes');
 
-window.app = new Application();
-window.app.start();
+window.React = React;
+
+React.initializeTouchEvents(true);
+
+React.renderComponent(routes, window.document.body);

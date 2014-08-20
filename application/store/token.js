@@ -1,154 +1,62 @@
 'use strict';
 
-var _         = require('underscore');
-var HttpStore = require('synapse-common/store/http');
+var constants = require('../constants');
+var Fluxxor   = require('fluxxor');
 var store     = require('store');
-var config    = require('config');
-var qs        = require('querystring');
-var http      = require('http');
 
-var TokenStore = HttpStore.extend({
+var TokenStore = Fluxxor.createStore({
 
-    clientId : '123',
-    clientSecret : 'abc',
-
-    constructor : function()
+    initialize : function()
     {
-        this.token  = {};
-        this.config = config.api;
+        this.loading  = false;
+        this.error    = false;
+        this.loggedIn = !! store.get('token');
+
+        this.bindActions(
+            constants.LOGGING_IN, 'onLogin',
+            constants.LOGIN_SUCCESSFUL, 'onLoginSuccessful',
+            constants.LOGIN_FAILED, 'onLoginFailed',
+            constants.LOGOUT, 'onLogout'
+        );
     },
 
-    getTokenData : function() {
-        var tokenData = store.get('token');
-        if (tokenData) {
-            return tokenData;
-        }
-
-        return false;
-    },
-
-    getAccessToken : function() {
-        var tokenData = this.getTokenData();
-        if (tokenData) {
-            return this.getTokenData().access_token;
-        }
-
-        return false;
-    },
-
-    login : function(email, password)
+    onLogin : function()
     {
-        this.beginSync();
-        var options = this._getRequestOptions('POST', '/oauth/token');
+        this.loading = true;
 
-        options.headers['Content-Type'] = 'application/x-www-form-urlencoded';
-
-        var self = this;
-
-        var req = http.request(options, function(response) {
-            var responseText = '';
-
-            response.on('data', function(chunk) {
-                responseText += chunk;
-            });
-
-            response.on('end', function() {
-                var data = JSON.parse(responseText);
-                self.setToken(data);
-                self.finishSync();
-            });
-        });
-
-        req.on('error', function(e) {
-            this.abortSync();
-            self.emit('error', e);
-        });
-
-        req.write(qs.stringify({
-            username      : email,
-            password      : password,
-            grant_type    : 'password',
-            client_id     : this.clientId,
-            client_secret : this.clientSecret
-        }));
-
-        req.end();
-    },
-
-    setToken : function(tokenData)
-    {
-        this.token = tokenData;
-        store.set('token', tokenData);
         this.emit('change');
     },
 
-    refreshToken : function(cb) {
-        var tokenData = this.getTokenData();
-        if (! tokenData) {
-            return false;
-        }
+    onLoginSuccessful : function(payload)
+    {
+        this.token    = payload.tokenData;
+        this.loggedIn = true;
 
-        this.apiRequest('POST', '/oauth/token', {
-            grant_type    : 'refresh_token',
-            client_id     : this.config.client_id,
-            refresh_token : tokenData.refresh_token
-        }, function(err, resp) {
-            if (! err) {
-                store.set('token');
-            }
+        store.set('token', this.token);
 
-            if (_.isFunction(cb)) {
-                cb(err, resp);
-            }
-        });
+        this.emit('change');
+    },
+
+    onLoginFailed : function()
+    {
+        this.loading = false;
+        this.error   = true;
+
+        this.emit('change');
+    },
+
+    onLogout : function()
+    {
+        store.remove('token');
+        this.loggedIn = false;
+
+        this.emit('change');
+    },
+
+    getTokenData : function()
+    {
+        return store.get('token');
     }
 });
 
 module.exports = TokenStore;
-
-
-// logout : function(success)
-// {
-//     var headers      = this.defaultHeaders();
-//     var refreshToken = window.app.storage.get('token').refresh_token;
-
-//     $.ajax({
-//         url        : this.oauthLogoutUrl,
-//         headers    : headers,
-//         dataType   : 'json',
-//         type       : 'POST',
-//         data       : JSON.stringify({
-//             refresh_token: refreshToken
-//         }),
-//         xhrFields: {
-//            withCredentials: true
-//         },
-//         beforeSend : function(xhr) {
-//             for (var header in headers) {
-//                 xhr.setRequestHeader(header, headers[header]);
-//             }
-//         },
-//         success    : function () {
-//             window.app.clearAuth();
-
-//             if (success) {
-//                 success();
-//             }
-//         },
-//         error      : function () {
-//             window.app.clearAuth();
-
-//             if (success) {
-//                 success();
-//             }
-//         }
-//     });
-// },
-
-// loginSuccess : function(success, token)
-// {
-//     // Run the other callback
-//     success(_.toArray(arguments).slice(1));
-
-//     window.app.setAuth(token, this);
-// }
