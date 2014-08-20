@@ -16,7 +16,6 @@ gulp.task('default', ['build', 'connect']);
 
 // Alias
 gulp.task('browserify', ['browserify:config', 'browserify:app']);
-gulp.task('preprocess', ['preprocess:config', 'preprocess:html']);
 
 // Task that builds our entire application
 gulp.task('build', ['preprocess', 'media', 'sass', 'browserify']);
