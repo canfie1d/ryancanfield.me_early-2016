@@ -1,8 +1,8 @@
 /* jshint node: true */
 'use strict';
 
-var gulp  = require('gulp'),
-    clean = require('gulp-clean');
+var gulp   = require('gulp'),
+    rimraf = require('rimraf');
 
 // Require all our tasks
 require('./gulp-tasks/browserify');
@@ -33,6 +33,5 @@ gulp.task('delta', function() {
 
 // Clean the build dir
 gulp.task('clean', function(cb) {
-    gulp.src('./build', {read: false})
-        .pipe(clean());
+    rimraf('./build', cb);
 });
