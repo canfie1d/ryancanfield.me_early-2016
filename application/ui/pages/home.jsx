@@ -4,7 +4,7 @@
 var config          = require('config');
 var Link            = require('react-router').Link;
 var React           = require('react');
-var Fluxxor         = require("fluxxor");
+var Fluxxor         = require('fluxxor');
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
