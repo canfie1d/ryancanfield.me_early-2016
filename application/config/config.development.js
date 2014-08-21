@@ -1,6 +1,6 @@
 'use strict';
 
-var backend = '/* @echo BACKEND */' || 'api.project.vm';
+var backend = '/* @echo BACKEND */' || '%DEV_API_HOST%';
 
 module.exports = {
     api : {

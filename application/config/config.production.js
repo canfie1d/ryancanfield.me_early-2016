@@ -1,6 +1,6 @@
 module.exports = {
     api : {
-        hostname : 'api.project.vm',
+        hostname : '%PRODUCTION_API_HOST%',
         port     : 80
     }
 };

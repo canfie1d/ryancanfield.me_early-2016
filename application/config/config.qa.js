@@ -1,10 +1,10 @@
 'use strict';
 
-var backend = '/* @echo BACKEND */' || 'api-project-com';
+var backend = '/* @echo BACKEND */' || '%QA_APP_NAME%';
 
 module.exports = {
     api : {
-        hostname  : backend + '.synsit.es',
+        hostname  : backend + '.%QA_HOST%',
         port      : 80,
         client_id : 'js-client'
     }
