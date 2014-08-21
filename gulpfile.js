@@ -1,8 +1,8 @@
 /* jshint node: true */
 'use strict';
 
-var gulp   = require('gulp'),
-    rimraf = require('rimraf');
+var gulp   = require('gulp');
+var rimraf = require('rimraf');
 
 // Require all our tasks
 require('./gulp-tasks/browserify');
