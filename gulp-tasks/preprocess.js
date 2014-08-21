@@ -3,8 +3,7 @@
 var gulp       = require('gulp'),
     gutil      = require('gulp-util'),
     connect    = require('gulp-connect'),
-    preprocess = require('gulp-preprocess'),
-    rename     = require('gulp-rename');
+    preprocess = require('gulp-preprocess');
 
 gulp.task('preprocess', function() {
     var env = gutil.env.env || 'development';
