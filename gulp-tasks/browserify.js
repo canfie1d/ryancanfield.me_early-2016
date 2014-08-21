@@ -12,7 +12,7 @@ var browserify = require('browserify'),
     source     = require('vinyl-source-stream'),
     watchify   = require('watchify');
 
-gulp.task('browserify:app', ['browserify:config'], function() {
+gulp.task('browserify:app', function() {
     var bundler = watchify(browserify({
             debug        : (gutil.env.env !== 'production'),
             entries      : ['./application/bootstrap.js'],
