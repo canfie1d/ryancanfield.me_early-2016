@@ -33,6 +33,7 @@ gulp.task('clean', ['clean:app', 'clean:test']);
 gulp.task('delta:app', function() {
     gulp.watch(['./application/ui/scss/**/*.scss'], ['sass']);
     gulp.watch(['./application/**/*.html'], ['preprocess:app']);
+    gulp.watch(['./application/config/config.*.js'], ['build']);
     gulp.watch(['./media/**/*.*'], ['media']);
 });
 

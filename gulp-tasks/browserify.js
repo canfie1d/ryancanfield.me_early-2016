@@ -28,6 +28,7 @@ gulp.task('browserify:app', function() {
         })
         .external('config')
         .transform(reactify)
+        .on('log', gutil.log)
     );
 
     rebundle = function() {
@@ -39,7 +40,6 @@ gulp.task('browserify:app', function() {
             .pipe(connect.reload());
     };
 
-    bundler.on('log', gutil.log);
     bundler.on('update', rebundle);
 
     return rebundle();
@@ -52,18 +52,16 @@ gulp.task('browserify:config', function() {
     env      = gutil.env.env || 'development';
     filepath = './application/config/config.' + env + '.js';
 
-    bundler = watchify(
-        browserify({
+    bundler = browserify({
             debug        : (gutil.env.env !== 'production'),
             cache        : {},
             packageCache : {},
             fullPaths    : true
         })
         .require(filepath, { expose : 'config' })
-    );
+        .on('log', gutil.log);
 
-    rebundle = function() {
-        return bundler.bundle()
+    return bundler.bundle()
             .on('error', error('browserify:config'))
             .pipe(source('config.js'))
             .pipe(streamify(
@@ -74,16 +72,10 @@ gulp.task('browserify:config', function() {
             .pipe((env === 'production' ? streamify(uglify()) : gutil.noop()))
             .pipe(gulp.dest('./build/js'))
             .pipe(connect.reload());
-    };
-
-    bundler.on('log', gutil.log);
-    bundler.on('update', rebundle);
-
-    return rebundle();
 });
 
 gulp.task('browserify:test', function () {
-    var bundler, rebundler, path;
+    var bundler, filepath, rebundle;
 
     filepath = gutil.env.path || './tests/index.js';
     bundler  = watchify(
@@ -96,6 +88,7 @@ gulp.task('browserify:test', function () {
             fullPaths    : true
         })
         .transform(reactify)
+        .on('log', gutil.log)
     );
 
     rebundle = function() {
@@ -106,7 +99,6 @@ gulp.task('browserify:test', function () {
             .pipe(connect.reload());
     };
 
-    bundler.on('log', gutil.log);
     bundler.on('update', rebundle);
 
     return rebundle();
