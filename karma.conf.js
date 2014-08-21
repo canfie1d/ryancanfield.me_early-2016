@@ -11,16 +11,16 @@ module.exports = function(config) {
         // list of files / patterns to load in the browser
         files : [
             './node_modules/es5-shim/es5-shim.js',
-            './tests/index.js'
+            './tests/**/*.js'
         ],
 
         // list of files to exclude
-        exclude : [],
+        exclude : [ 'index.js' ],
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors : {
-            './tests/index.js' : [ 'browserify' ]
+            './tests/**/*.js' : [ 'browserify' ]
         },
 
         browserify : {

@@ -3,6 +3,7 @@
 
 var browserify = require('browserify');
 var connect    = require('gulp-connect');
+var glob       = require('glob');
 var gulp       = require('gulp');
 var gutil      = require('gulp-util');
 var preprocess = require('gulp-preprocess');
@@ -75,13 +76,15 @@ gulp.task('browserify:config', function() {
 });
 
 gulp.task('browserify:test', function () {
-    var bundler, filepath, rebundle;
+    var bundler, files, path, rebundle;
 
-    filepath = gutil.env.path || './tests/index.js';
-    bundler  = watchify(
+    path  = gutil.env.path || './tests/**/*.js';
+    files = glob.sync(path);
+
+    bundler = watchify(
         browserify({
             debug        : (gutil.env.env !== 'production'),
-            entries      : [filepath],
+            entries      : files,
             extensions   : ['.js', '.jsx'],
             cache        : {},
             packageCache : {},

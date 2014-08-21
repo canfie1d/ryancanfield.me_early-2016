@@ -24,4 +24,3 @@
     - Run a specific test with `gulp test --path './tests/path/to/test.js'`
 1. Run all tests with Karma in Chrome and Firefox with `npm test-react`
 1. Run all tests with Karma in PhantomJS with `./node_modules/karma/bin/karma start --single-run --browsers PhantomJS`
-1. To include a test require it in `tests/index.js`
