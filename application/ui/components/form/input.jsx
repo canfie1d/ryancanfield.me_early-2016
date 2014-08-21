@@ -8,7 +8,7 @@ module.exports = React.createClass({
     displayName : 'InputElement',
 
     propTypes : {
-        value    : React.PropTypes.oneOfType([
+        value : React.PropTypes.oneOfType([
             React.PropTypes.string,
             React.PropTypes.number
         ]),

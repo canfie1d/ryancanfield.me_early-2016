@@ -34,19 +34,14 @@ while [[ ! $dev_api_host =~ $host_pattern ]] || [[ $dev_api_host =~ $protocol_pa
   read -p "Enter Dev API Host [api.project.vm]: " dev_api_host
 done
 
+qa_api_host=""
+while [[ ! $qa_api_host =~ $host_pattern ]] || [[ $qa_api_host =~ $protocol_pattern ]]; do
+  read -p "Enter QA API Host [api-project-com.example.com]: " qa_api_host
+done
+
 production_api_host=""
 while [[ ! $production_api_host =~ $host_pattern ]] || [[ $production_api_host =~ $protocol_pattern ]]; do
   read -p "Enter Production API Host [api.project.com]: " production_api_host
-done
-
-qa_app_name=""
-while [[ $qa_app_name == "" ]]; do
-  read -p "Enter QA App Name [project-name]: " qa_app_name
-done
-
-qa_host=""
-while [[ ! $qa_host =~ $host_pattern ]] || [[ $qa_host =~ $protocol_pattern ]]; do
-  read -p "Enter QA Host [domain only]: " qa_host
 done
 
 # Confirm settings are correct
@@ -56,9 +51,8 @@ if [[ $test_init == false ]]; then
 fi
 
 echo -e "Dev API Host\t\t$dev_api_host"
+echo -e "QA API Host\t\t$qa_api_host"
 echo -e "Production API Host\t$production_api_host"
-echo -e "QA App Name\t\t$qa_app_name"
-echo -e "QA Host\t\t\t$qa_host"
 echo -e "\n"
 
 read -p "Are these settings correct? " confirm
@@ -76,9 +70,8 @@ if [[ $confirm =~ ^[yY] ]]; then
 
   echo "Updating config files"
   sed -i "" s/%DEV_API_HOST%/$dev_api_host/g "./application/config/config.development.js"
+  sed -i "" s/%QA_API_HOST%/$qa_api_host/g "./application/config/config.qa.js"
   sed -i "" s/%PRODUCTION_API_HOST%/$production_api_host/g "./application/config/config.production.js"
-  sed -i "" s/%QA_APP_NAME%/$qa_app_name/g "./application/config/config.qa.js"
-  sed -i "" s/%QA_HOST%/$qa_host/g "./application/config/config.qa.js"
 
   if [[ $test_init == false ]]; then
     rm initialize.sh
