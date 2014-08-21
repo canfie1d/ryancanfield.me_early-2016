@@ -1,13 +1,14 @@
 'use strict';
 
-var gulp    = require('gulp'),
-    concat  = require('gulp-concat'),
-    connect = require('gulp-connect');
+var gulp    = require('gulp');
+var concat  = require('gulp-concat');
+var connect = require('gulp-connect');
 
 gulp.task('concat', function() {
-    gulp.src([
-            // Add file paths here to include in vendor header
+    return gulp.src([
+            // Add file paths here to include in vendor header.
             // This task is has to be added back into the gulpfile runlist for 'build'
+            // and the vender-header line in index.js needs to be uncommented
         ])
         .pipe(concat('vendor-header.js'))
         .pipe(gulp.dest('./build/js'))

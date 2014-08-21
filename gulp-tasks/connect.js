@@ -1,14 +1,16 @@
 'use strict';
 
-var gulp       = require('gulp'),
-    gutil      = require('gulp-util'),
-    connect    = require('gulp-connect'),
-    fallback   = require('connect-history-api-fallback');
+var gulp       = require('gulp');
+var gutil      = require('gulp-util');
+var connect    = require('gulp-connect');
+var fallback   = require('connect-history-api-fallback');
 
 gulp.task('connect:app', function() {
-    var env = gutil.env.env || 'development';
+    var env;
 
-    connect.server({
+    env = gutil.env.env || 'development';
+
+    return connect.server({
         root       : 'build',
         port       : 9001,
         livereload : env === 'development',
@@ -19,7 +21,7 @@ gulp.task('connect:app', function() {
 });
 
 gulp.task('connect:test', function() {
-    connect.server({
+    return connect.server({
         root       : 'test-build',
         port       : 9002,
         livereload : true,

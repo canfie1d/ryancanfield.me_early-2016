@@ -1,24 +1,20 @@
 'use strict';
 
-var gulp       = require('gulp'),
-    gutil      = require('gulp-util'),
-    connect    = require('gulp-connect'),
-    preprocess = require('gulp-preprocess');
+var gulp       = require('gulp');
+var gutil      = require('gulp-util');
+var connect    = require('gulp-connect');
+var preprocess = require('gulp-preprocess');
 
 gulp.task('preprocess:app', function() {
-    var env = gutil.env.env || 'development';
-
     return gulp.src('./application/index.html')
         .pipe(preprocess({
-            context: { ENVIRONMENT : env }
+            context: { ENVIRONMENT : gutil.env.env || 'development' }
         }))
         .pipe(gulp.dest('./build'))
         .pipe(connect.reload());
 });
 
 gulp.task('preprocess:test', function() {
-    var env = gutil.env.env || 'development';
-
     return gulp.src([
             './tests/index.html',
             './node_modules/mocha/mocha.css',
