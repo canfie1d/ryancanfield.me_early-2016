@@ -14,6 +14,6 @@
     1. QA Host
     - If you want to start without a remote repo initialize with `./initialize.sh -t`
 1. Update `package.json`
-    1. Update `@todo` with proper values
+    1. Update `author`, `name`, `version`, `description`, and `repository url` with proper values
     1. Run `npm outdated --depth=0` to see if there are new versions of dependencies. If so, consider updating them in the frontend template as well as the project
 1. Update `application/index.html` to replace `@todo` with proper values
