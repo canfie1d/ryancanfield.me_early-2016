@@ -26,7 +26,8 @@ gulp.task('watch', ['build', 'connect', 'delta']);
 // Watch definitions
 gulp.task('delta', function() {
     gulp.watch(['./application/ui/scss/**/*.scss'], ['sass']);
-    gulp.watch(['./application/**/*.html'], ['html']);
+    gulp.watch(['./application/**/*.html'], ['preprocess']);
+    gulp.watch(['./application/config/config.*.js'], ['build']);
     gulp.watch(['./media/**/*.*'], ['media']);
 });
 

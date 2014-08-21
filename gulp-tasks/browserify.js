@@ -12,7 +12,7 @@ var browserify = require('browserify'),
     source     = require('vinyl-source-stream'),
     watchify   = require('watchify');
 
-gulp.task('browserify:app', function() {
+gulp.task('browserify:app', ['browserify:config'], function() {
     var bundler = watchify(browserify({
             debug        : (gutil.env.env !== 'production'),
             entries      : ['./application/bootstrap.js'],
@@ -48,35 +48,25 @@ gulp.task('browserify:config', function() {
         filepath = './application/config/config.' + env + '.js',
         backend  = gutil.env.backend || '';
 
-    var bundler = watchify(
-            browserify({
-                debug        : (gutil.env.env !== 'production'),
-                cache        : {},
-                packageCache : {},
-                fullPaths    : true
-            }).require(filepath, { expose : 'config' })
-        );
-
-    var rebundle = function() {
-        var stream = bundler.bundle();
-
-        stream.on('error', gutil.log);
-
-        stream = stream.pipe(source('config.js'))
-            .pipe(streamify(
-                preprocess({
-                    context : { BACKEND : backend }
-                }))
-            )
-            .pipe((env === 'production' ? streamify(uglify()) : gutil.noop()))
-            .pipe(gulp.dest('./build/js'))
-            .pipe(connect.reload());
-
-        return stream;
-    };
+    var bundler = browserify({
+            debug        : (gutil.env.env !== 'production'),
+            cache        : {},
+            packageCache : {},
+            fullPaths    : true
+        })
+        .require(filepath, { expose : 'config' });
 
     bundler.on('log', gutil.log);
-    bundler.on('update', rebundle);
 
-    return rebundle();
+    return bundler.bundle()
+        .on('error', gutil.log)
+        .pipe(source('config.js'))
+        .pipe(streamify(
+            preprocess({
+                context : { BACKEND : backend }
+            }))
+        )
+        .pipe((env === 'production' ? streamify(uglify()) : gutil.noop()))
+        .pipe(gulp.dest('./build/js'))
+        .pipe(connect.reload());
 });
