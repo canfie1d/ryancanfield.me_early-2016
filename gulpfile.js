@@ -16,7 +16,6 @@ gulp.task('default', ['build', 'connect']);
 
 // Alias
 gulp.task('browserify', ['browserify:config', 'browserify:app']);
-gulp.task('preprocess', ['preprocess:config', 'preprocess:html']);
 
 // Task that builds our entire application
 gulp.task('build', ['preprocess', 'media', 'sass', 'browserify']);
@@ -27,7 +26,8 @@ gulp.task('watch', ['build', 'connect', 'delta']);
 // Watch definitions
 gulp.task('delta', function() {
     gulp.watch(['./application/ui/scss/**/*.scss'], ['sass']);
-    gulp.watch(['./application/**/*.html'], ['html']);
+    gulp.watch(['./application/**/*.html'], ['preprocess']);
+    gulp.watch(['./application/config/config.*.js'], ['build']);
     gulp.watch(['./media/**/*.*'], ['media']);
 });
 

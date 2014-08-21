@@ -5,16 +5,15 @@
 1. `gulp watch`
 
 ### Customizing for your project
+1. Clone or copy this repository into a new directory
+1. Run the initialization script `chmod +x initialize.sh; ./initialize.sh`. It will ask for:
+    1. Repository SSH clone URL
+    1. Development API Host
+    1. Production API Host - if unknown give best guess
+    1. QA App Name
+    1. QA Host
+    - If you want to start without a remote repo initialize with `./initialize.sh -t`
 1. Update `package.json`
-    1. Change `author`, `name`, `version`, `description`, `repository.url`
-    1. Run `npm outdated --depth=0` to see if there are new versions of dependencies.
-       If so, consider updating them in the front-end template as well as the project
-1. Update `server.js`
-    1. Replace all `@todo` references with proper values
-    1. Default HTML near bottom of file may need updating too
-1. Update `sitemap-gen.js`
-    1. Change `baseUrl` reference to "example.com" with the project's domain
-    1. Default priority and frequency may need updating too
-1. Update `application/index.html` to replace `@todo` references with proper values
-1. Update `application/application.js` to replace `@todo` references with proper values
-1. Update `application/ui/routes.js` to replace `@todo` references with proper values
+    1. Update `author`, `name`, `version`, `description`, and `repository url` with proper values
+    1. Run `npm outdated --depth=0` to see if there are new versions of dependencies. If so, consider updating them in the frontend template as well as the project
+1. Update `application/index.html` to replace `@todo` with proper values
