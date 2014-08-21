@@ -1,0 +1,2 @@
+/* global window */
+'use strict';
