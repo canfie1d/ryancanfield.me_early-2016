@@ -8,9 +8,10 @@
     "url"  : "https://github.com/synapsestudios/frontend-template.git"
   },
   "scripts" : {
-    "dev"        : "npm install && gulp watch",
-    "production" : "npm install && gulp clean && gulp build --build production",
-     "test"      : "./node_modules/karma/bin/karma start karma.conf.js"
+     "dev"        : "npm install && gulp watch",
+     "production" : "npm install && gulp clean && gulp build --build production",
+     "test"       : "jest",
+     "test-react" : "./node_modules/karma/bin/karma start karma.conf.js"
   },
   "devDependencies" : {
     "browserify"                   : "5.10.1",
