@@ -12,9 +12,8 @@ module.exports = function(config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'test/client/support/phantomjs-shims.js',
-            'tests/**/*.js'
-//      'server/**/*.js'
+            './node_modules/es5-shim/es5-shim.js',
+            './tests/index.js'
         ],
 
 
@@ -26,8 +25,7 @@ module.exports = function(config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'tests/**/*.js': ['browserify']
-//      'server/**/*.js': ['browserify']
+            './tests/index.js': ['browserify']
         },
 
 
