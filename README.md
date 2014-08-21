@@ -14,6 +14,13 @@
     1. QA Host
     - If you want to start without a remote repo initialize with `./initialize.sh -t`
 1. Update `package.json`
-    1. Update `@todo` with proper values
+    1. Update `author`, `name`, `version`, `description`, and `repository url` with proper values
     1. Run `npm outdated --depth=0` to see if there are new versions of dependencies. If so, consider updating them in the frontend template as well as the project
 1. Update `application/index.html` to replace `@todo` with proper values
+
+### Running Tests
+1. Run all tests with gulp at `localhost:9002` with `gulp test`
+    - Run a specific test with `gulp test --path './tests/path/to/test.js'`
+1. Run all tests with Karma in Chrome and Firefox with `npm test`
+1. Run all tests with Karma in PhantomJS with `./node_modules/karma/bin/karma start --single-run --browsers PhantomJS`
+1. To include a test require it in `tests/index.js`
