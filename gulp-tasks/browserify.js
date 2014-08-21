@@ -1,7 +1,8 @@
 /* jshint node: true */
 'use strict';
 
-var connect    = require('gulp-connect'),
+var browserify = require('browserify'),
+    connect    = require('gulp-connect'),
     gulp       = require('gulp'),
     gutil      = require('gulp-util'),
     preprocess = require('gulp-preprocess'),
@@ -12,17 +13,19 @@ var connect    = require('gulp-connect'),
     watchify   = require('watchify');
 
 gulp.task('browserify:app', function() {
-    var bundler = watchify({
-            entries    : ['./application/bootstrap.js'],
-            extensions : ['.js', '.jsx']
+    var bundler = watchify(browserify({
+            debug        : (gutil.env.env !== 'production'),
+            entries      : ['./application/bootstrap.js'],
+            extensions   : ['.js', '.jsx'],
+            cache        : {},
+            packageCache : {},
+            fullPaths    : true
         })
         .external('config')
-        .transform(reactify);
+        .transform(reactify));
 
     var rebundle = function() {
-        var stream = bundler.bundle({
-            debug : (gutil.env.env !== 'production')
-        });
+        var stream = bundler.bundle();
 
         stream.on('error', gutil.log);
 
@@ -45,12 +48,17 @@ gulp.task('browserify:config', function() {
         filepath = './application/config/config.' + env + '.js',
         backend  = gutil.env.backend || '';
 
-    var bundler = watchify({ entries : [filepath] });
+    var bundler = watchify(
+            browserify({
+                debug        : (gutil.env.env !== 'production'),
+                cache        : {},
+                packageCache : {},
+                fullPaths    : true
+            }).require(filepath, { expose : 'config' })
+        );
 
     var rebundle = function() {
-        var stream = bundler.bundle({
-            debug : (gutil.env.env !== 'production')
-        });
+        var stream = bundler.bundle();
 
         stream.on('error', gutil.log);
 
