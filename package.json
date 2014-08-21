@@ -1,11 +1,11 @@
 {
-  "author"      : "Synapse Studios",
-  "name"        : "frontend-template",
+  "author"      : "@todo",
+  "name"        : "@todo",
   "version"     : "0.0.0",
-  "description" : "A quickstart frontend template that expects to be paired with a backend based off of synapsestudios/api-template",
+  "description" : "@tood",
   "repository"  : {
     "type" : "git",
-    "url"  : "https://github.com/synapsestudios/frontend-template.git"
+    "url"  : "@todo"
   },
   "scripts" : {
     "dev"        : "npm install && gulp watch",
