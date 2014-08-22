@@ -17,3 +17,4 @@
     1. Update `author`, `name`, `version`, `description`, and `repository url` with proper values
     1. Run `npm outdated --depth=0` to see if there are new versions of dependencies. If so, consider updating them in the frontend template as well as the project
 1. Update `application/index.html` to replace `@todo` with proper values
+1. Update/replace/remove the license based on your project's actual needs
