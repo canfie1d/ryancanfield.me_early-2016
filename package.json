@@ -3,6 +3,7 @@
   "name"        : "frontend-template",
   "version"     : "0.0.0",
   "description" : "A quickstart frontend template that expects to be paired with a backend based off of synapsestudios/api-template",
+  "license"     : "MIT",
   "repository"  : {
     "type" : "git",
     "url"  : "https://github.com/synapsestudios/frontend-template.git"
