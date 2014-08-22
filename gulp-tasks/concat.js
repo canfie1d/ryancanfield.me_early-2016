@@ -8,7 +8,7 @@ gulp.task('concat', function() {
     return gulp.src([
             // Add file paths here to include in vendor header.
             // This task is has to be added back into the gulpfile runlist for 'build'
-            // and the vender-header line in index.js needs to be uncommented
+            // and the vendor-header line in index.js needs to be uncommented
         ])
         .pipe(concat('vendor-header.js'))
         .pipe(gulp.dest('./build/js'))
