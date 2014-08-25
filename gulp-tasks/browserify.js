@@ -1,19 +1,25 @@
 /* jshint node: true */
 'use strict';
 
-var browserify = require('browserify'),
-    connect    = require('gulp-connect'),
-    gulp       = require('gulp'),
-    gutil      = require('gulp-util'),
-    preprocess = require('gulp-preprocess'),
-    streamify  = require('gulp-streamify'),
-    uglify     = require('gulp-uglify'),
-    reactify   = require('reactify'),
-    source     = require('vinyl-source-stream'),
-    watchify   = require('watchify');
+var browserify = require('browserify');
+var connect    = require('gulp-connect');
+var glob       = require('glob');
+var gulp       = require('gulp');
+var gutil      = require('gulp-util');
+var preprocess = require('gulp-preprocess');
+var streamify  = require('gulp-streamify');
+var uglify     = require('gulp-uglify');
+var reactify   = require('reactify');
+var source     = require('vinyl-source-stream');
+var watchify   = require('watchify');
+
+var error = require('./error');
 
 gulp.task('browserify:app', function() {
-    var bundler = watchify(browserify({
+    var bundler, rebundle;
+
+    bundler = watchify(
+        browserify({
             debug        : (gutil.env.env !== 'production'),
             entries      : ['./application/bootstrap.js'],
             extensions   : ['.js', '.jsx'],
@@ -22,51 +28,81 @@ gulp.task('browserify:app', function() {
             fullPaths    : true
         })
         .external('config')
-        .transform(reactify));
+        .transform(reactify)
+        .on('log', gutil.log)
+    );
 
-    var rebundle = function() {
-        var stream = bundler.bundle();
-
-        stream.on('error', gutil.log);
-
-        stream = stream.pipe(source('app.js'))
+    rebundle = function() {
+        return bundler.bundle()
+            .on('error', error('browserify:app'))
+            .pipe(source('app.js'))
             .pipe(gutil.env.env === 'production' ? streamify(uglify()) : gutil.noop())
             .pipe(gulp.dest('./build/js'))
             .pipe(connect.reload());
-
-        return stream;
     };
 
-    bundler.on('log', gutil.log);
     bundler.on('update', rebundle);
 
     return rebundle();
 });
 
 gulp.task('browserify:config', function() {
-    var env      = gutil.env.env || 'development',
-        filepath = './application/config/config.' + env + '.js',
-        backend  = gutil.env.backend || '';
+    var backend, bundler, env, filepath, rebundle;
 
-    var bundler = browserify({
+    backend  = gutil.env.backend || '';
+    env      = gutil.env.env || 'development';
+    filepath = './application/config/config.' + env + '.js';
+
+    bundler = browserify({
             debug        : (gutil.env.env !== 'production'),
             cache        : {},
             packageCache : {},
             fullPaths    : true
         })
-        .require(filepath, { expose : 'config' });
-
-    bundler.on('log', gutil.log);
+        .require(filepath, { expose : 'config' })
+        .on('log', gutil.log);
 
     return bundler.bundle()
-        .on('error', gutil.log)
-        .pipe(source('config.js'))
-        .pipe(streamify(
-            preprocess({
-                context : { BACKEND : backend }
-            }))
-        )
-        .pipe((env === 'production' ? streamify(uglify()) : gutil.noop()))
-        .pipe(gulp.dest('./build/js'))
-        .pipe(connect.reload());
+            .on('error', error('browserify:config'))
+            .pipe(source('config.js'))
+            .pipe(streamify(
+                preprocess({
+                    context : { BACKEND : backend }
+                }))
+            )
+            .pipe((env === 'production' ? streamify(uglify()) : gutil.noop()))
+            .pipe(gulp.dest('./build/js'))
+            .pipe(connect.reload());
+});
+
+gulp.task('browserify:test', function () {
+    var bundler, files, path, rebundle;
+
+    path  = gutil.env.path || './tests/**/*.js';
+    files = glob.sync(path);
+
+    bundler = watchify(
+        browserify({
+            debug        : (gutil.env.env !== 'production'),
+            entries      : files,
+            extensions   : ['.js', '.jsx'],
+            cache        : {},
+            packageCache : {},
+            fullPaths    : true
+        })
+        .transform(reactify)
+        .on('log', gutil.log)
+    );
+
+    rebundle = function() {
+        return bundler.bundle()
+            .on('error', error('browserify:test'))
+            .pipe(source('index.js'))
+            .pipe(gulp.dest('./test-build'))
+            .pipe(connect.reload());
+    };
+
+    bundler.on('update', rebundle);
+
+    return rebundle();
 });

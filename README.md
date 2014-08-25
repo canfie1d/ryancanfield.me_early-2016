@@ -18,3 +18,11 @@
     1. Run `npm outdated --depth=0` to see if there are new versions of dependencies. If so, consider updating them in the frontend template as well as the project
 1. Update `application/index.html` to replace `@todo` with proper values
 1. Replace or remove the MIT license (and related reference in the `package.json`) based on your project's requirements
+
+
+### Running Tests
+1. Run jest tests with `npm test`
+1. Run react tests with gulp at `localhost:9002` with `gulp test`
+    - Run a specific test with `gulp test --path './tests/path/to/test.js'`
+1. Run all tests with Karma in Chrome and Firefox with `npm test-react`
+1. Run all tests with Karma in PhantomJS with `./node_modules/karma/bin/karma start --single-run --browsers PhantomJS`

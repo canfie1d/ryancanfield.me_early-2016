@@ -1,46 +1,20 @@
 /* jshint node: true */
 'use strict';
 
-var gulp         = require('gulp'),
-    gutil        = require('gulp-util'),
-    path         = require('path'),
-    sass         = require('gulp-sass'),
-    minifyCss    = require('gulp-minify-css'),
-    connect      = require('gulp-connect'),
-    autoPrefixer = require('gulp-autoprefixer');
+var gulp         = require('gulp');
+var gutil        = require('gulp-util');
+var path         = require('path');
+var sass         = require('gulp-sass');
+var minifyCss    = require('gulp-minify-css');
+var connect      = require('gulp-connect');
+var autoPrefixer = require('gulp-autoprefixer');
 
-var isProduction = gutil.env.build === 'production',
-    includePaths = [];
+gulp.task('sass', function() {
+    var isProduction;
 
-gulp.task('sass:legacy', function() {
-    gulp.src('./application/ui/scss/legacy.scss')
-        .on('data', function(file) {
-            if (process.platform === 'win32') {
-                file.path = path.relative('.', file.path);
-                file.path = file.path.replace(/\\/g, '/');
-            }
-        })
-        .pipe(sass({
-            errLogToConsole : true,
-            sourceComments : isProduction ? 'none' : 'map',
-            sourceMap      : 'sass',
-            outputStyle    : 'compressed',
-            includePaths   : includePaths
-        }))
-        .pipe(autoPrefixer({
-            cascade : true,
-            to      : 'legacy.css',
-            from    : './application/ui/scss'
-        }))
-        // production only because it breaks source maps
-        .pipe(isProduction ? minifyCss({keepSpecialComments : '*'}) : gutil.noop())
-        .pipe(gulp.dest('./build/css'))
-        .pipe(connect.reload());
-});
+    isProduction = gutil.env.env === 'production';
 
-
-gulp.task('sass:app', function() {
-    gulp.src('./application/ui/scss/app.scss')
+    return gulp.src('./application/ui/scss/app.scss')
         .on('data', function(file) {
             if (process.platform === 'win32') {
                 file.path = path.relative('.', file.path);
@@ -52,7 +26,9 @@ gulp.task('sass:app', function() {
             sourceComments : isProduction ? 'none' : 'none',
             sourceMap      : 'sass',
             outputStyle    : 'compressed',
-            includePaths   : includePaths
+            includePaths   : [
+                // Add additional files to be included here
+            ]
         }))
         .pipe(autoPrefixer({
             cascade : true,
@@ -64,5 +40,3 @@ gulp.task('sass:app', function() {
         .pipe(gulp.dest('./build/css'))
         .pipe(connect.reload());
 });
-
-gulp.task('sass', [ 'sass:legacy', 'sass:app' ]);
