@@ -34,7 +34,7 @@ gulp.task('delta:app', function() {
 });
 
 gulp.task('delta:test', function() {
-    gulp.watch(['./__karma__/index.html'], ['preprocess:test']);
+    gulp.watch(['./__react-tests__/index.html'], ['preprocess:test']);
 });
 
 // Clean definitions

@@ -13,8 +13,8 @@ gulp.task('preprocess:app', function() {
 
 gulp.task('preprocess:test', function() {
     return gulp.src([
-            './__karma__/index.html',
-            './__karma__/favicon.png',
+            './__react-tests__/index.html',
+            './__react-tests__/favicon.png',
             './node_modules/mocha/mocha.css',
             './node_modules/mocha/mocha.js'
         ])

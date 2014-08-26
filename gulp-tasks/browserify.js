@@ -64,7 +64,7 @@ gulp.task('browserify:test', function () {
 
     backend = gutil.env.backend || '';
     env     = gutil.env.env || 'development';
-    path    = gutil.env.path || './__karma__/**/*.js';
+    path    = gutil.env.path || './__react-tests__/**/*.js';
     entries = glob.sync(path);
 
     bundler = watchify(
@@ -76,7 +76,7 @@ gulp.task('browserify:test', function () {
             packageCache : {},
             fullPaths    : true
         })
-        .ignore('./__karma__/globals.js')
+        .ignore('./__react-tests__/globals.js')
         .transform(reactify)
         .on('log', gutil.log)
     );
