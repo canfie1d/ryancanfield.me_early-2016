@@ -24,5 +24,5 @@
 1. Run Jest tests with `npm test`
 1. Run React with Karma in Chrome and Firefox with `npm karma`
 1. Run React tests with gulp at `localhost:9002` with `gulp test`
-    - Run a specific test or glob of tests with `gulp test --path './__karma__/path/to/test/*/**.js'`
+    - Run a specific test or glob of tests with `gulp test --path './__react-tests__/path/to/test/*/**.js'`
 1. Run React from the commandl line with `./node_modules/karma/bin/karma start --single-run --browsers PhantomJS`
