@@ -22,7 +22,7 @@ gulp.task('connect:app', function() {
 
 gulp.task('connect:test', function() {
     return connect.server({
-        root       : 'test-build',
+        root       : 'test',
         port       : 9002,
         livereload : true,
         middleware : function (connect, options) {

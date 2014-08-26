@@ -21,8 +21,8 @@
 
 
 ### Running Tests
-1. Run jest tests with `npm test`
-1. Run react tests with gulp at `localhost:9002` with `gulp test`
-    - Run a specific test with `gulp test --path './tests/path/to/test.js'`
-1. Run all tests with Karma in Chrome and Firefox with `npm test-react`
-1. Run all tests with Karma in PhantomJS with `./node_modules/karma/bin/karma start --single-run --browsers PhantomJS`
+1. Run Jest tests with `npm test`
+1. Run React with Karma in Chrome and Firefox with `npm karma`
+1. Run React tests with gulp at `localhost:9002` with `gulp test`
+    - Run a specific test or glob of tests with `gulp test --path './__karma__/path/to/test/*/**.js'`
+1. Run React from the commandl line with `./node_modules/karma/bin/karma start --single-run --browsers PhantomJS`

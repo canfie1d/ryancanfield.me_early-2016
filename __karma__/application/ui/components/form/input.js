@@ -8,7 +8,7 @@ var expect = chai.expect;
 
 chai.use(spies);
 
-describe('UI\\Components\\Form\\Input', function() {
+describe('Application\\UI\\Components\\Form\\Input', function() {
     var Input = require('../../../../../application/ui/components/form/input.jsx');
 
     var input, spy, tag;
