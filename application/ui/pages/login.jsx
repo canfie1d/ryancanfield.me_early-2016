@@ -4,11 +4,11 @@
 var React           = require('react');
 var Fluxxor         = require('fluxxor');
 var FluxMixin       = Fluxxor.FluxMixin(React);
+var Link            = require('react-router').Link;
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
 
-var config = require('config');
+var config = require('../../config');
 var Input  = require('../components/form/input');
-var Link   = require('react-router').Link;
 
 module.exports = React.createClass({
 

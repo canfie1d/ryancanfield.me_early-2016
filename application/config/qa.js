@@ -1,6 +1,9 @@
 'use strict';
+/* global __BACKEND__ */
 
-var backend = '/* @echo BACKEND */' || '%QA_API_HOST%';
+var backend;
+
+backend = __BACKEND__ || '%QA_API_HOST%';
 
 module.exports = {
     api : {
