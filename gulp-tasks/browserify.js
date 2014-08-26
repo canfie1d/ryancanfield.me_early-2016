@@ -67,8 +67,6 @@ gulp.task('browserify:test', function () {
     path    = gutil.env.path || './__karma__/**/*.js';
     entries = glob.sync(path);
 
-    gutil.log(entries);
-
     bundler = watchify(
         browserify({
             debug        : (env !== 'production'),
