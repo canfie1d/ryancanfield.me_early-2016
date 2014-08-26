@@ -14,6 +14,7 @@ gulp.task('preprocess:app', function() {
 gulp.task('preprocess:test', function() {
     return gulp.src([
             './__karma__/index.html',
+            './__karma__/favicon.png',
             './node_modules/mocha/mocha.css',
             './node_modules/mocha/mocha.js'
         ])
