@@ -1,12 +1,13 @@
 /** @jsx React.DOM */
 'use strict';
 
-var config          = require('config');
-var Link            = require('react-router').Link;
 var React           = require('react');
 var Fluxxor         = require('fluxxor');
 var FluxMixin       = Fluxxor.FluxMixin(React);
+var Link            = require('react-router').Link;
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+
+var config = require('../../config');
 
 module.exports = React.createClass({
 

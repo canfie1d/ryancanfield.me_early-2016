@@ -1,6 +1,6 @@
-node_modules
 bower_components
 build
 cache
-test-build
+node_modules
+test
 .vagrant
