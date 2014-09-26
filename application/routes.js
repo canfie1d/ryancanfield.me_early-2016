@@ -2,8 +2,9 @@
 /* globals __ENVIRONMENT__ */
 'use strict';
 
-var flux  = require('./flux');
-var Route = require('react-router').Route;
+var flux   = require('./flux');
+var Route  = require('react-router').Route;
+var Routes = require('react-router').Routes;
 
 var SiteLayout       = require('./ui/layouts/site');
 var HomePage         = require('./ui/pages/home');
@@ -36,11 +37,14 @@ var getEnvironmentDependentRoutes = function()
     return routes;
 };
 
-module.exports = Route(
-    {handler : SiteLayout, location : 'history', flux : flux},
-    Route(props('home', '/', HomePage)),
-    Route(props('login', '/login', LoginPage)),
-    Route(props('register', '/register', RegistrationPage)),
-    getEnvironmentDependentRoutes(),
-    Route(props('404', '*', NotFoundPage))
+module.exports = Routes(
+    {location : 'history'},
+    Route(
+        {handler : SiteLayout, location : 'history', flux : flux},
+        Route(props('home', '/', HomePage)),
+        Route(props('login', '/login', LoginPage)),
+        Route(props('register', '/register', RegistrationPage)),
+        getEnvironmentDependentRoutes(),
+        Route(props('404', '*', NotFoundPage))
+    )
 );

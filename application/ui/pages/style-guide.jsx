@@ -10,7 +10,9 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <div></div>
+            <div>
+                <h1>Style Guide</h1>
+            </div>
         );
     }
 
