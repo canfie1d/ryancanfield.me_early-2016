@@ -9,6 +9,6 @@ module.exports = {
     api : {
         hostname  : backend,
         port      : 80,
-        client_id : 'js-client'
+        client_id : '123'
     }
 };
