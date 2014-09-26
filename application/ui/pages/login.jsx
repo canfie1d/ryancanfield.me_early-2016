@@ -1,55 +1,35 @@
 /** @jsx React.DOM */
-/* global window */
 'use strict';
 
-var qs     = require('querystring');
-var React  = require('react');
-var Router = require('react-router');
-var config = require('config');
-var dispatcher = require('synapse-common/lib/dispatcher');
+var React           = require('react');
+var Fluxxor         = require('fluxxor');
+var FluxMixin       = Fluxxor.FluxMixin(React);
+var Link            = require('react-router').Link;
+var StoreWatchMixin = Fluxxor.StoreWatchMixin;
+var config          = require('../../config');
+var Input           = require('../components/form/input');
 
 module.exports = React.createClass({
 
     displayName : 'LoginPage',
-    mixins      : [ Router.NavigatableMixin ],
 
-    seo : {
-        title : 'Command Synter | Login'
-    },
+    mixins : [FluxMixin, StoreWatchMixin('TokenStore')],
 
     loginWithGithubUrl : config.loginWithGithubUrl,
 
     getInitialState : function()
     {
-        var queryParams = qs.parse(window.location.search.substring(1));
-
         return {
-            loginFailure : queryParams.login_failure,
-            params       : queryParams,
-            error        : false
+            email        : '',
+            password     : ''
         };
     },
 
-    componentDidMount : function()
+    componentWillMount : function()
     {
-        var token  = {
-            access_token  : this.state.params.access_token,
-            expires_in    : this.state.params.expires_in,
-            token_type    : this.state.params.token_type,
-            refresh_token : this.state.params.refresh_token,
-            user_id       : this.state.params.user_id
-        };
-
-        if (this.state.loginFailure) {
-            return;
+        if (this.state.loggedIn) {
+            this.getFlux().actions.navigate('home');
         }
-
-        if (! this.state.params.access_token) {
-            return;
-        }
-
-        dispatcher.emit('token:update', token);
-        dispatcher.emit('navigate', '/');
     },
 
     handleSubmit : function(event)
@@ -57,16 +37,39 @@ module.exports = React.createClass({
         // Don't let the browser submit the form
         event.preventDefault();
 
-        // this.refs is populated by setting the ref property in the component
-        var email    = this.refs.email.getDOMNode().value.trim(),
-            password = this.refs.password.getDOMNode().value.trim();
+        this.getFlux().actions.auth.login(
+            this.state.email,
+            this.state.password
+        );
+    },
 
-        if (!email || !password) {
-            // TODO: error message
-            return false;
+    getStateFromFlux : function()
+    {
+        var store = this.getFlux().store('TokenStore');
+
+        return {
+            loading  : store.loading,
+            loggedIn : store.loggedIn,
+            hasError : store.error
+        };
+    },
+
+    updateStateValue : function(key, value)
+    {
+        var stateChanges = {};
+
+        stateChanges[key] = value;
+
+        this.setState(stateChanges);
+    },
+
+    renderErrorMessage : function()
+    {
+        if (this.state.hasError) {
+            return <p>Authentication Failed</p>;
         }
 
-        this.props.stores.token.login(email, password);
+        return null;
     },
 
     render : function()
@@ -78,12 +81,23 @@ module.exports = React.createClass({
                         Login:
                     </p>
                     <label htmlFor="email">Email:</label>
-                    <input type="text" name="email" ref="email" />
+                    <Input
+                        type     = "text"
+                        name     = "email"
+                        onChange = {this.updateStateValue.bind(this, 'email')}
+                        value    = {this.state.email}
+                    />
                     <label htmlFor="password">Password:</label>
-                    <input type="password" name="password" ref="password" />
+                    <Input
+                        type     = "password"
+                        name     = "password"
+                        onChange = {this.updateStateValue.bind(this, 'password')}
+                        value    = {this.state.password}
+                    />
                     <input type="submit" value="Log in" />
+                    {this.renderErrorMessage()}
                 </form>
-                Or <a href={this.loginWithGithubUrl}>{'Login with GitHub'}</a>
+                <Link to='home'>Home</Link>
             </div>
         );
     }

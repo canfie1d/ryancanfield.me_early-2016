@@ -1,35 +1,34 @@
 /* jshint node: true */
 'use strict';
 
-var gulp         = require('gulp'),
-    gutil        = require('gulp-util'),
-    sass         = require('gulp-sass'),
-    minifyCss    = require('gulp-minify-css'),
-    connect      = require('gulp-connect'),
-    autoPrefixer = require('gulp-autoprefixer');
-
-var isProduction = gutil.env.build === 'production',
-    sourceComments,
-    includePaths = [
-        './bower_components/foundation/scss'
-    ];
-
-if (isProduction) {
-    sourceComments = 'none';
-} else if (process.platform === 'win32') {
-    sourceComments = 'normal';
-} else {
-    sourceComments = 'map';
-}
+var gulp         = require('gulp');
+var gutil        = require('gulp-util');
+var path         = require('path');
+var sass         = require('gulp-sass');
+var minifyCss    = require('gulp-minify-css');
+var connect      = require('gulp-connect');
+var autoPrefixer = require('gulp-autoprefixer');
 
 gulp.task('sass', function() {
-    gulp.src('./application/ui/scss/app.scss')
+    var isProduction;
+
+    isProduction = gutil.env.env === 'production';
+
+    return gulp.src('./application/ui/scss/app.scss')
+        .on('data', function(file) {
+            if (process.platform === 'win32') {
+                file.path = path.relative('.', file.path);
+                file.path = file.path.replace(/\\/g, '/');
+            }
+        })
         .pipe(sass({
             errLogToConsole : true,
-            sourceComments  : sourceComments,
-            outputStyle     : 'compressed',
-            sourceMap       : 'sass',
-            includePaths    : includePaths
+            sourceComments : isProduction ? 'none' : 'none',
+            sourceMap      : 'sass',
+            outputStyle    : 'compressed',
+            includePaths   : [
+                // Add additional files to be included here
+            ]
         }))
         .pipe(autoPrefixer({
             cascade : true,

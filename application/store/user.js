@@ -1,46 +1,47 @@
 'use strict';
 
-var _         = require('underscore');
-var AuthStore = require('synapse-common/store/auth');
-var config    = require('config');
+var constants = require('../constants');
+var Fluxxor   = require('fluxxor');
+var store     = require('store');
 
-var UserStore = AuthStore.extend({
-    config : config.api,
+var UserStore = Fluxxor.createStore({
+    initialize : function()
+    {
+        this.data = store.get('user') || {};
+        this.error = false;
 
-    constructor : function(tokenStore) {
-        this.user       = false;
-        this.tokenStore = tokenStore;
-
-        this.tokenStore.on('change', _.bind(function() {
-            this.fetch();
-        }, this));
+        this.bindActions(
+            constants.LOGIN_SUCCESSFUL, 'onLogin',
+            constants.LOGOUT, 'onLogout',
+            constants.REGISTRATION_FAILED, 'onRegistrationFailed'
+        );
     },
 
-    fetch : function() {
-        var userId = this.tokenStore.getTokenData().user_id,
-            path   = '/users/' + userId;
+    onLogin : function(payload)
+    {
+        this.data = payload.userData;
+        this.error = false;
 
-        if (! userId) {
-            this.user = false;
-            return;
-        }
+        store.set('user', this.data);
 
-        this.apiRequest('GET', path, null, _.bind(function(err, resp) {
-            if (err) {
-                this.user = false;
-
-                if (resp.statusCode === 401) {
-                    this.tokenStore.refreshToken();
-                }
-            } else {
-                this.user = resp;
-                this.emit('change');
-            }
-        }, this));
+        this.emit('change');
     },
 
-    getUser : function() {
-        return this.user;
+    onLogout : function()
+    {
+        this.data = {};
+        this.error = false;
+
+        store.remove('user');
+
+        this.emit('change');
+    },
+
+    onRegistrationFailed : function()
+    {
+        this.error = true;
+
+        this.emit('change');
     }
 });
 

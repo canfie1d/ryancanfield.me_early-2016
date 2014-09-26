@@ -1,8 +1,8 @@
 /* jshint node: true */
 'use strict';
 
-var gulp       = require('gulp'),
-    clean      = require('gulp-clean');
+var gulp   = require('gulp');
+var rimraf = require('rimraf');
 
 // Require all our tasks
 require('./gulp-tasks/browserify');
@@ -12,26 +12,36 @@ require('./gulp-tasks/media');
 require('./gulp-tasks/preprocess');
 require('./gulp-tasks/sass');
 
-gulp.task('default', ['build']);
-
-// Alias
-gulp.task('browserify', ['browserify:config', 'browserify:app']);
+gulp.task('default', ['build', 'connect:app']);
 
 // Task that builds our entire application
-gulp.task('build', ['html', 'media', 'concat', 'sass', 'browserify']);
+gulp.task('build', ['preprocess:app', 'media', 'sass', 'browserify:app']);
 
 // Development mode (runs a web server and watches)
-gulp.task('watch', ['build', 'connect', 'delta']);
+gulp.task('watch', ['build', 'connect:app', 'delta:app']);
+
+// Run tests
+gulp.task('test', ['preprocess:test', 'browserify:test', 'connect:test', 'delta:test']);
+
+// Clean up the build dirs
+gulp.task('clean', ['clean:app', 'clean:test']);
 
 // Watch definitions
-gulp.task('delta', function() {
+gulp.task('delta:app', function() {
     gulp.watch(['./application/ui/scss/**/*.scss'], ['sass']);
-    gulp.watch(['./application/**/*.html'], ['html']);
+    gulp.watch(['./application/**/*.html'], ['preprocess:app']);
     gulp.watch(['./media/**/*.*'], ['media']);
 });
 
-// Clean the build dir
-gulp.task('clean', function(cb) {
-    gulp.src('./build', {read: false})
-        .pipe(clean());
+gulp.task('delta:test', function() {
+    gulp.watch(['./__react-tests__/index.html'], ['preprocess:test']);
+});
+
+// Clean definitions
+gulp.task('clean:app', function(cb) {
+    rimraf('./build', cb);
+});
+
+gulp.task('clean:test', function(cb) {
+    rimraf('./test', cb);
 });

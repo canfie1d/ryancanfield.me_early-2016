@@ -1,0 +1,32 @@
+html,
+body {
+    color : $themeDDGray;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family : $sans-bold;
+}
+
+p,
+a,
+span {
+    font-family : $sans-reg;
+}
+
+a.inline-link {
+    font-family     : $sans-bold;
+    color           : $themeDDGray;
+    text-decoration : none;
+    border-bottom   : 1px solid $themeDGray;
+    transition      : color 300ms ease-in-out;
+
+    &:hover {
+        color : $themeMLGray;
+    }
+
+}

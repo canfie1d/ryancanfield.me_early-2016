@@ -1,0 +1,121 @@
+// *******************************************
+// *******************************************
+
+    // Lightbox Styles
+
+// *******************************************
+// *******************************************
+
+.lightbox {
+    position    : relative;
+    margin      : auto;
+    padding     : rem-calc(100 35);
+    width       : 100%;
+    max-width   : rem-calc(1120);
+    user-select : none;
+    @include clearfix;
+
+    @media screen and (min-width: 1024px) and (min-height: 768px) {
+        position  : absolute;
+        top       : 50%;
+        left      : 50%;
+        margin    : 0 auto;
+        transform : translate(-50%, -50%);
+    }
+
+    .lightbox__image-wrapper {
+        position     : relative;
+        float        : left;
+        margin-right : rem-calc(3);
+        width        : 100%;
+        padding      : 5px;
+        transition   : all 300ms ease-in-out;
+        @include noFlicker();
+
+        &:last-of-type {
+            margin-right : 0;
+        }
+
+        &.active {
+            display : none;
+
+            @media screen and (min-width: 1024px) and (min-height: 768px) {
+                display   : inline-block;
+                position  : absolute;
+                top       : 50%;
+                left      : 50%;
+                width     : 75%;
+                max-width : 1070px;
+                z-index   : 1;
+                transform : translate(-50%, -50%);
+
+                &:hover {
+
+                    &::after {
+                        display : none;
+                    }
+
+                }
+
+            }
+        }
+
+        @media screen and (min-width: 768px) {
+            width         : 33%;
+            margin-bottom : 50px;
+        }
+
+        .lightbox__image {
+            width  : 100%;
+            margin : auto;
+
+            a {
+                display : block;
+                height  : auto;
+
+                @media screen and (min-width: 1024px) and (min-height: 768px) {
+                    cursor : pointer;
+
+                    &::after {
+                        content     : '';
+                        font-size   : rem-calc(60);
+                        color       : $white;
+                        text-shadow : 0 1px 2px rgba($black, .3);
+                        height      : rem-calc(60);
+                        width       : rem-calc(60);
+                        position    : absolute;
+                        top         : 50%;
+                        left        : 50%;
+                        margin      : rem-calc(-30 0 0 -30);
+                        opacity     : 0;
+                        transition  : 300ms opacity ease-in-out;
+                    }
+
+                    &:hover {
+
+                        &::after {
+                            opacity : 1;
+                        }
+
+                    }
+
+                }
+
+            }
+        }
+
+    }
+
+}
+
+.lightbox__overlay {
+    position   : absolute;
+    top        : 0;
+    left       : 0;
+    height     : 100%;
+    width      : 100%;
+    z-index    : 999;
+    overflow   : hidden;
+    background : url(''), rgba($themeDGray, .9);
+    transition : opacity 300ms ease-in-out;
+}

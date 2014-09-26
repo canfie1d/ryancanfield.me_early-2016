@@ -1,0 +1,67 @@
+// *******************************************
+// *******************************************
+
+    // Layout Styles
+    // (Includes Stickyfooter)
+
+// *******************************************
+// *******************************************
+
+// <div className='layout__main'>
+//     <div className='layout__header--fixed'>
+
+//     </div>
+//     <div className='layout--max-width'>
+
+//     </div>
+// </div>
+// <div className='layout__footer--sticky'>
+// </div>
+
+// layout vars
+$footer-height : rem-calc(150);
+
+// wraps main content
+.layout__main {
+    width    : 100%;
+    position : relative;
+
+    // for stickyfooter
+    min-height    : 100%;
+    margin-bottom : -$footer-height;
+
+    &.layout__main::after {
+        content : '';
+        display : block;
+    }
+}
+
+.layout__footer--sticky,
+.layout__main::after {
+    height : $footer-height;
+}
+
+// max width and center
+.layout--max-width {
+	max-width : rem-calc(1120);
+	margin    : auto;
+	padding   : rem-calc(0 15);
+}
+
+.layout__header--fixed {
+	position : fixed;
+	z-index  : 1000;
+	top      : 0;
+	right    : 0;
+	left     : 0;
+	@include noFlicker();
+}
+
+.layout__main-content {
+	height      : 100%;
+    padding-top : $header-height;
+}
+
+.layout__footer--sticky {
+    width : 100%;
+}
