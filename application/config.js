@@ -4,6 +4,9 @@
 // __ENVIRONMENT__ is replaced in build or set by Jest
 switch(__ENVIRONMENT__)
 {
+    case 'ci':
+        module.exports = require('./config/ci');
+        break;
     case 'development':
         module.exports = require('./config/development');
         break;

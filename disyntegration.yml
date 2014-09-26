@@ -1,0 +1,6 @@
+pluginFiles:
+    - 'node_modules/jasmine-jquery/lib/jasmine-jquery.js'
+    - 'test-helpers/spec-functions.js'
+
+specFiles:
+    - '__specs__/**/*[Ss]pec.js'
