@@ -1,15 +1,13 @@
 var getDataLoadedFunction = function(page) {
     return function() {
-        return true;
+        // Wait for the first react element to render
+        return page.find('div[data-reactid=".0"]').length;
     }
 };
 
 var expectToBeOnHomepage = function(page) {
-    var pageTitle;
-
-    pageTitle = '@todo update with page title';
-
-    expect(page.find('title')).toHaveText(pageTitle);
+    expect(page.find('title')).toHaveText('@todo update with page title');
+    expect(page.find('p[data-reactid=".0.0.0"]')).toHaveText('Please log in or register.');
 };
 
 var clearLocalStorage = function() {
