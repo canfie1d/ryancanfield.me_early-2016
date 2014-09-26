@@ -1,4 +1,4 @@
-
+/* global window */
 /* global __ENVIRONMENT__ */
 'use strict';
 
