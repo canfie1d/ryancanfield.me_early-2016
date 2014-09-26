@@ -15,14 +15,13 @@ var watchify   = require('watchify');
 
 var error = require('./error');
 
-gulp.task('browserify:app', function() {
+var bundleApp = function(watch) {
     var backend, bundler, env, rebundle;
 
-    env     = gutil.env.env || 'development';
+    env     = gutil.env.env;
     backend = gutil.env.backend || '';
 
-    bundler = watchify(
-        browserify({
+    bundler = browserify({
             debug        : (env !== 'production'),
             entries      : ['./application/bootstrap.js'],
             extensions   : ['.js', '.jsx'],
@@ -31,8 +30,11 @@ gulp.task('browserify:app', function() {
             fullPaths    : true
         })
         .transform(reactify)
-        .on('log', gutil.log)
-    );
+        .on('log', gutil.log);
+
+    if (watch) {
+        watchify(bundler);
+    }
 
     rebundle = function() {
         return bundler.bundle()
@@ -51,20 +53,28 @@ gulp.task('browserify:app', function() {
             ))
             .pipe(env === 'production' ? streamify(uglify()) : gutil.noop())
             .pipe(gulp.dest('./build/js'))
-            .pipe(connect.reload());
+            .pipe(connect.reload(true));
     };
 
     bundler.on('update', rebundle);
 
     return rebundle();
+};
+
+gulp.task('browserify:app', function() {
+    return bundleApp(false);
 });
 
-gulp.task('browserify:test', function () {
+gulp.task('watchify:app', function() {
+    return bundleApp(true);
+});
+
+gulp.task('watchify:test', function () {
     var backend, bundler, entries, env, path, rebundle;
 
     backend = gutil.env.backend || '';
-    env     = gutil.env.env || 'development';
-    path    = gutil.env.path || './__react-tests__/**/*.js';
+    env     = gutil.env.env;
+    path    = gutil.env.path || './__react-tests__/**/*.js*';
     entries = glob.sync(path);
 
     bundler = watchify(
@@ -97,7 +107,7 @@ gulp.task('browserify:test', function () {
                 })
             ))
             .pipe(gulp.dest('./test'))
-            .pipe(connect.reload());
+            .pipe(connect.reload(true));
     };
 
     bundler.on('update', rebundle);
