@@ -6,9 +6,8 @@ var Fluxxor         = require('fluxxor');
 var FluxMixin       = Fluxxor.FluxMixin(React);
 var Link            = require('react-router').Link;
 var StoreWatchMixin = Fluxxor.StoreWatchMixin;
-
-var config = require('../../config');
-var Input  = require('../components/form/input');
+var config          = require('../../config');
+var Input           = require('../components/form/input');
 
 module.exports = React.createClass({
 
