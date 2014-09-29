@@ -1,28 +1,33 @@
+var specHelper = require('../test-helpers/spec-helper');
+
 describe('application', function() {
     var email, password;
 
+    email    = 'user-' + Date.now() + '@syn0.com';
+    password = 'synapse1';
+
     beforeEach(function() {
-        clearLocalStorage();
+        specHelper.clearLocalStorage();
     });
 
     describe('home page', function() {
         beforeEach(function(done) {
             page = visit('/');
 
-            page.ready(function() {
-                page.waitFor(getDataLoadedFunction(page), done);
+            page.waitForReady(function() {
+                page.waitFor(specHelper.getDataLoadedFunction(page), done);
             });
         });
 
         it('loads the home page', function() {
-            expectToBeOnHomepage(page);
+            specHelper.expectToBeOnHomepage(page);
         });
 
         it('links to registration page', function(done) {
             page.click('a[href="/register"]');
 
             setTimeout(function() {
-                expect(page.find('p[data-reactid=".0.1.0.0"]')).toHaveText('Register an account:');
+                expect(page.find('p[data-reactid=".0.1.0.0"]').text()).toEqual('Register an account:');
                 done();
             });
         });
@@ -31,21 +36,18 @@ describe('application', function() {
             page.click('a[href="/login"]');
 
             setTimeout(function() {
-                expect(page.find('p[data-reactid=".0.1.0.0"]')).toHaveText('Login:');
+                expect(page.find('p[data-reactid=".0.1.0.0"]').text()).toEqual('Login:');
                 done();
             });
         });
     });
 
-    email    = 'user-' + Date.now() + '@syn0.com';
-    password = 'synapse1';
-
     describe('registration', function() {
         beforeEach(function(done) {
             page = visit('/register');
 
-            page.ready(function() {
-                page.waitFor(getDataLoadedFunction(page), done);
+            page.waitForReady(function() {
+                page.waitFor(specHelper.getDataLoadedFunction(page), done);
             });
         });
 
@@ -53,7 +55,7 @@ describe('application', function() {
             page.click('a[href="/login"]');
 
             setTimeout(function() {
-                expect(page.find('p[data-reactid=".0.1.0.0"]')).toHaveText('Register an account:');
+                expect(page.find('p[data-reactid=".0.1.0.0"]').text()).toEqual('Register an account:');
                 done();
             });
         });
@@ -62,7 +64,7 @@ describe('application', function() {
             page.click('a[href="/"]');
 
             setTimeout(function() {
-                expectToBeOnHomepage(page);
+                specHelper.expectToBeOnHomepage(page);
                 done();
             });
         });
@@ -71,7 +73,7 @@ describe('application', function() {
             page.click('[data-reactid=".0.1.0.5"]');
 
             page.waitForElement('[data-reactid=".0.1.0.6"]', function() {
-                expect(page.find('[data-reactid=".0.1.0.6"]')).toHaveText('Registration Failed');
+                expect(page.find('[data-reactid=".0.1.0.6"]').text()).toEqual('Registration Failed');
                 done();
             }, 5000);
         });
@@ -83,8 +85,7 @@ describe('application', function() {
             page.click('[data-reactid=".0.1.0.5"]');
 
             page.waitForBodyChange(function() {
-                expect(page.find('[data-reactid=".0.0.0.0"]')).toHaveText('Logged in as ' + email + '.');
-                resetJasmineTimeout();
+                expect(page.find('[data-reactid=".0.0.0.0"]').text()).toEqual('Logged in as ' + email + '.');
                 done();
             }, 5000);
         });
@@ -94,8 +95,8 @@ describe('application', function() {
         beforeEach(function(done) {
             page = visit('/login');
 
-            page.ready(function() {
-                page.waitFor(getDataLoadedFunction(page), done);
+            page.waitForReady(function() {
+                page.waitFor(specHelper.getDataLoadedFunction(page), done);
             });
         });
 
@@ -103,7 +104,7 @@ describe('application', function() {
             page.click('a[href="/login"]');
 
             setTimeout(function() {
-                expect(page.find('p[data-reactid=".0.1.0.0"]')).toHaveText('Login:');
+                expect(page.find('p[data-reactid=".0.1.0.0"]').text()).toEqual('Login:');
                 done();
             });
         });
@@ -112,7 +113,7 @@ describe('application', function() {
             page.click('a[href="/"]');
 
             setTimeout(function() {
-                expectToBeOnHomepage(page);
+                specHelper.expectToBeOnHomepage(page);
                 done();
             });
         });
@@ -124,8 +125,7 @@ describe('application', function() {
             page.click('[data-reactid=".0.1.0.5"]');
 
             page.waitForBodyChange(function() {
-                expect(page.find('[data-reactid=".0.0.0.0"]')).toHaveText('Logged in as ' + email + '.');
-                resetJasmineTimeout();
+                expect(page.find('[data-reactid=".0.0.0.0"]').text()).toEqual('Logged in as ' + email + '.');
                 done();
             }, 5000);
         });

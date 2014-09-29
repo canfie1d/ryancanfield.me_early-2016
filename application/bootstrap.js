@@ -3,8 +3,7 @@
 'use strict';
 
 if (__ENVIRONMENT__ === 'ci') {
-    require('es5-shim');
-    require('../node_modules/disyntegration/shim/click');
+    require('../node_modules/disyntegration/phantom-shims');
 }
 
 var React  = require('react');
