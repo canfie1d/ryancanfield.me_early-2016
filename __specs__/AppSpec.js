@@ -4,7 +4,7 @@ describe('application', function() {
     var actualText, expectedText, randomEmail, randomPassword;
 
     randomEmail    = 'user-' + Date.now() + '@example.com';
-    randomPassword = Math.random().toString(36).substring(8);;
+    randomPassword = Math.random().toString(36).substring(8);
 
     beforeEach(function() {
         specHelper.clearLocalStorage();
