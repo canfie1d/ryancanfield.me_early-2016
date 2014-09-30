@@ -1,10 +1,10 @@
 var specHelper = require('../test-helpers/spec-helper');
 
 describe('application', function() {
-    var email, password;
+    var actualText, expectedText, randomEmail, randomPassword;
 
-    email    = 'user-' + Date.now() + '@syn0.com';
-    password = 'synapse1';
+    randomEmail    = 'user-' + Date.now() + '@example.com';
+    randomPassword = Math.random().toString(36).substring(8);;
 
     beforeEach(function() {
         specHelper.clearLocalStorage();
@@ -24,19 +24,27 @@ describe('application', function() {
         });
 
         it('links to registration page', function(done) {
-            page.click('a[href="/register"]');
+            expectedText = 'Register an account:';
+
+            page.click(specHelper.registrationLink);
 
             setTimeout(function() {
-                expect(page.find('p[data-reactid=".0.1.0.0"]').text()).toEqual('Register an account:');
+                actualText = page.find(specHelper.formLabel).text();
+
+                expect(actualText).toEqual(expectedText);
                 done();
             });
         });
 
         it('links to login page', function(done) {
-            page.click('a[href="/login"]');
+            expectedText = 'Login:';
+
+            page.click(specHelper.loginLink);
 
             setTimeout(function() {
-                expect(page.find('p[data-reactid=".0.1.0.0"]').text()).toEqual('Login:');
+                actualText = page.find(specHelper.formLabel).text();
+
+                expect(actualText).toEqual(expectedText);
                 done();
             });
         });
@@ -51,17 +59,15 @@ describe('application', function() {
             });
         });
 
-        it('loads the registration page', function(done) {
-            page.click('a[href="/login"]');
+        it('loads the registration page', function() {
+            expectedText = 'Register an account:';
+            actualText   = page.find(specHelper.formLabel).text();
 
-            setTimeout(function() {
-                expect(page.find('p[data-reactid=".0.1.0.0"]').text()).toEqual('Register an account:');
-                done();
-            });
+            expect(actualText).toEqual(expectedText);
         });
 
         it('returns to the home page', function(done) {
-            page.click('a[href="/"]');
+            page.click(specHelper.homeLink);
 
             setTimeout(function() {
                 specHelper.expectToBeOnHomepage(page);
@@ -70,22 +76,30 @@ describe('application', function() {
         });
 
         it('won\'t register without input', function(done) {
-            page.click('[data-reactid=".0.1.0.5"]');
+            expectedText = 'Registration Failed';
 
-            page.waitForElement('[data-reactid=".0.1.0.6"]', function() {
-                expect(page.find('[data-reactid=".0.1.0.6"]').text()).toEqual('Registration Failed');
+            page.click(specHelper.loginButton);
+
+            page.waitForElement(specHelper.formErrorMessage, function() {
+                actualText = page.find(specHelper.formErrorMessage).text();
+
+                expect(actualText).toEqual(expectedText);
                 done();
             }, 5000);
         });
 
         it('logs user in on success', function(done) {
-            page.fillField('input[name="email"]', email);
-            page.fillField('input[name="password"]', password);
+            expectedText = 'Logged in as ' + randomEmail + '.';
 
-            page.click('[data-reactid=".0.1.0.5"]');
+            page.fillField(specHelper.emailField, randomEmail);
+            page.fillField(specHelper.passwordField, randomPassword);
+
+            page.click(specHelper.loginButton);
 
             page.waitForBodyChange(function() {
-                expect(page.find('[data-reactid=".0.0.0.0"]').text()).toEqual('Logged in as ' + email + '.');
+                actualText = page.find(specHelper.headerText).text();
+
+                expect(actualText).toEqual(expectedText);
                 done();
             }, 5000);
         });
@@ -101,16 +115,20 @@ describe('application', function() {
         });
 
         it('loads the page', function(done) {
-            page.click('a[href="/login"]');
+            expectedText = 'Login:';
+
+            page.click(specHelper.loginLink);
 
             setTimeout(function() {
-                expect(page.find('p[data-reactid=".0.1.0.0"]').text()).toEqual('Login:');
+                actualText = page.find(specHelper.formLabel).text();
+
+                expect(actualText).toEqual(expectedText);
                 done();
             });
         });
 
         it('returns to the home page', function(done) {
-            page.click('a[href="/"]');
+            page.click(specHelper.homeLink);
 
             setTimeout(function() {
                 specHelper.expectToBeOnHomepage(page);
@@ -119,13 +137,17 @@ describe('application', function() {
         });
 
         it('logs in successfully', function(done) {
-            page.fillField('input[name="email"]', email);
-            page.fillField('input[name="password"]', password);
+            expectedText = 'Logged in as ' + randomEmail + '.';
 
-            page.click('[data-reactid=".0.1.0.5"]');
+            page.fillField(specHelper.emailField, randomEmail);
+            page.fillField(specHelper.passwordField, randomPassword);
+
+            page.click(specHelper.loginButton);
 
             page.waitForBodyChange(function() {
-                expect(page.find('[data-reactid=".0.0.0.0"]').text()).toEqual('Logged in as ' + email + '.');
+                actualText = page.find(specHelper.headerText).text();
+
+                expect(actualText).toEqual(expectedText);
                 done();
             }, 5000);
         });
