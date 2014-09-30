@@ -1,6 +1,6 @@
-/* @jsx React.DOM */
+/** @jsx React.DOM */
 /* globals describe, it */
-/*jshint expr: true*/
+/* jshint expr: true */
 'use strict';
 
 var _         = require('underscore');
