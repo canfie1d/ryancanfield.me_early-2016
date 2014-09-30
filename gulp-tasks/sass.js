@@ -14,7 +14,7 @@ gulp.task('sass', function() {
 
     isProduction = gutil.env.env === 'production';
 
-    return gulp.src('./application/ui/scss/app.scss')
+    return gulp.src('./application/ui/scss/*.scss')
         .on('data', function(file) {
             if (process.platform === 'win32') {
                 file.path = path.relative('.', file.path);
@@ -33,6 +33,11 @@ gulp.task('sass', function() {
         .pipe(autoPrefixer({
             cascade : true,
             to      : 'app.css',
+            from    : './application/ui/scss'
+        }))
+        .pipe(autoPrefixer({
+            cascade : true,
+            to      : 'style-guide.css',
             from    : './application/ui/scss'
         }))
         // production only because it breaks source maps

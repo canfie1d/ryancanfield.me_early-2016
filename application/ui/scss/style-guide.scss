@@ -1,0 +1,14 @@
+// vendor imports
+
+    @import "vendor/syndation/settings";
+    @import "vendor/syndation/syndation";
+    @import "vendor/tequila/tequila";
+
+// dependency imports
+    @import "dependencies/colors";
+    @import "dependencies/extends";
+    @import "dependencies/fonts";
+    @import "dependencies/mixins";
+
+// layout imports
+    @import "style-guide/layout";
