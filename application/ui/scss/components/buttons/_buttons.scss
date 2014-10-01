@@ -8,18 +8,18 @@
 
 // button thematic vars
 $button-font             : $sans-reg !default;
-$button-color            : $white !default;
-$button-background-color : $primary !default;
-$button-border-color     : $primary !default;
-$button-border-width     : 1px !default;
-$button-border-style     : solid !default;
-$button-border-radius    : 2px !default;
+$button-color            : $white    !default;
+$button-background-color : $primary  !default;
+$button-border-color     : $primary  !default;
+$button-border-width     : 1px       !default;
+$button-border-style     : solid     !default;
+$button-border-radius    : 2px       !default;
 
 // button size vars
-$button-tiny    : rem-calc(7) !default;
-$button-small   : rem-calc(9) !default;
-$button-medium  : rem-calc(12) !default;
-$button-large   : rem-calc(16) !default;
+$button-tiny    : rem-calc(7)    !default;
+$button-small   : rem-calc(9)    !default;
+$button-medium  : rem-calc(12)   !default;
+$button-large   : rem-calc(16)   !default;
 $button-default : $button-medium !default;
 
 // button max-width factor
@@ -28,15 +28,15 @@ $button-default : $button-medium !default;
 $button-max-width-factor : 10;
 
 // button font size vars
-$button-font-size-tiny    : rem-calc(12) !default;
-$button-font-size-small   : rem-calc(14) !default;
-$button-font-size-medium  : rem-calc(16) !default;
-$button-font-size-large   : rem-calc(18) !default;
+$button-font-size-tiny    : rem-calc(12)             !default;
+$button-font-size-small   : rem-calc(14)             !default;
+$button-font-size-medium  : rem-calc(16)             !default;
+$button-font-size-large   : rem-calc(18)             !default;
 $button-font-size-default : $button-font-size-medium !default;
 
 // button display and spacing vars
 $button-display       : inline-block !default;
-$button-margin-sides  : rem-calc(3) !default;
+$button-margin-sides  : rem-calc(3)  !default;
 $button-margin-bottom : rem-calc(15) !default;
 
 // set opacity of disabled buttons
