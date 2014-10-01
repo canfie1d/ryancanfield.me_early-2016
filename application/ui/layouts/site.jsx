@@ -25,10 +25,10 @@ module.exports = React.createClass({
     render : function() {
         var Component = (this.state.loggedIn) ? LoggedIn : LoggedOut;
         return (
-            <div>
-                <header>
+            <div className='l--app-wrapper'>
+                <div className='l--user'>
                     <Component user={this.state.user} />
-                </header>
+                </div>
                 {this.props.activeRouteHandler()}
             </div>
         );

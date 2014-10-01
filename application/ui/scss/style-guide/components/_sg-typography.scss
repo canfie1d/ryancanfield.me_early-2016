@@ -1,0 +1,18 @@
+// *******************************************
+// *******************************************
+
+    // Style Guide typography styles
+
+// *******************************************
+// *******************************************
+
+// headers
+
+.sg-h1 {
+    margin      : rem-calc(0 0 25 0);
+    font-weight : bold;
+    font-size   : rem-calc(32);
+    line-height : 1.125em;
+    color       : $gray--400;
+    text-shadow : 1px 1px 1px rgba($white, .5);
+}
