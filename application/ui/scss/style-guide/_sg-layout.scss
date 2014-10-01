@@ -25,6 +25,7 @@ $sg-page-header-height : rem-calc(64);
     top          : 0;
     left         : 0;
     bottom       : 0;
+    z-index      : 10;
     width        : rem-calc(240px);
     height       : 100%;
     padding      : rem-calc(30);
@@ -37,8 +38,9 @@ $sg-page-header-height : rem-calc(64);
 // centered for mobile
 .sg-content {
     position    : relative;
+    z-index     : 1;
     width       : auto;
-    height      : 100%;
+    min-height  : 100%;
     margin-left : rem-calc(240px);
     background  : tint($black, 96%);
     border      : 1px solid transparent;
@@ -59,6 +61,7 @@ $sg-page-header-height : rem-calc(64);
     position    : fixed;
     top         : 0;
     right       : 0;
+    z-index     : 10;
     left        : $sg-header-width;
     height      : $sg-page-header-height;
     padding     : rem-calc(0 30);
