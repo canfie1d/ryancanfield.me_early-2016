@@ -16,8 +16,8 @@ module.exports = React.createClass({
     getDefaultProps : function()
     {
         return {
-            size   : 'regular',
-            color  : 'regular',
+            size   : 'medium',
+            color  : 'primary',
             expand : false
         };
     },
