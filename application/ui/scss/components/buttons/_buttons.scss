@@ -6,88 +6,92 @@
 // *******************************************
 // *******************************************
 
-// button vars
+// button thematic vars
+$button-font             : $sans-reg !default;
+$button-color            : $white !default;
+$button-background-color : $primary !default;
+$button-border-color     : $primary !default;
+$button-border-width     : 1px !default;
+$button-border-style     : solid !default;
+$button-border-rounding  : 2px !default;
 
-$include-html-button-classes : $include-html-classes;
-$button-font                 : $sans-reg;
-$button-default-font-color   : $white;
-$button-default-color        : $primary;
+// button size vars
+$button-tiny    : rem-calc(7) !default;
+$button-small   : rem-calc(9) !default;
+$button-medium  : rem-calc(12) !default;
+$button-large   : rem-calc(16) !default;
+$button-default : $button-medium !default;
 
-// We use these to build padding for buttons.
-$button-tny : rem-calc(7);
-$button-sml : rem-calc(9);
-$button-med : rem-calc(12);
-$button-lrg : rem-calc(16);
+// button max-width factor
+// used to set a max width as a multiple
+// of the button's font size
+$button-max-width-factor : 10;
 
-// We use this to control the display property.
-$button-display       : inline-block;
-$button-margin-bottom : rem-calc(15);
+// button font size vars
+$button-font-size-tiny    : rem-calc(12) !default;
+$button-font-size-small   : rem-calc(14) !default;
+$button-font-size-medium  : rem-calc(16) !default;
+$button-font-size-large   : rem-calc(18) !default;
+$button-font-size-default : $button-font-size-medium !default;
 
-// We use these to control button text styles.
-$button-font-color     : $white;
-$button-font-color-alt : $themeDDGray;
-$button-font-tny       : rem-calc(11);
-$button-font-sml       : rem-calc(13);
-$button-font-med       : rem-calc(16);
-$button-font-lrg       : rem-calc(20);
-$button-font-weight    : bold;
-$button-font-align     : center;
-$button-font-family    : $button-font;
+// button display and spacing vars
+$button-display       : inline-block !default;
+$button-margin-sides  : rem-calc(3) !default;
+$button-margin-bottom : rem-calc(15) !default;
 
-
-// We use these to control button border styles.
-$button-border-width : 1px;
-$button-border-style : solid;
-
-// We use this to set default opacity for disabled buttons.
-$button-disabled-opacity : .6;
+// set opacity of disabled buttons
+$button-disabled-opacity : .6 !default;
 
 // default buttons
 // <a class="button" href="#">Start Up</a>
 .button {
     position         : relative;
-    min-width        : rem-calc(140);
-    margin           : rem-calc(0 3 15);
-    display          : inline-block;
+    min-width        : $button-font-size-default * $button-max-width-factor;
+    margin           : 0 $button-margin-sides $button-margin-bottom;
+    display          : $button-display;
     text-align       : center;
     text-decoration  : none;
     font-weight      : normal;
-    font-size        : rem-calc(16);
+    font-size        : $button-font-size-default;
     line-height      : 1.5em;
-    font-family      : $button-font-family;
-    color            : $button-default-font-color;
+    font-family      : $button-font;
+    color            : $button-color;
+    text-shadow      : none;
     border           : $button-border-width $button-border-style;
-    background-color : $button-default-color;
-    border-color     : $button-default-color;
+    background-color : $button-background-color;
+    border-color     : $button-background-color;
+    border-radius    : $button-border-rounding;
+    box-shadow       : none;
     cursor           : pointer;
-    transition       : background-color 300ms ease;
+    transition       : color 300ms ease,
+                       background-color 300ms ease;
 
     &:hover,
     &:focus {
-        background-color : darken($button-default-color, 5%);
+        background-color : darken($primary, 5%);
     }
 
-    // normalize buttons and anchors
+    // normalize buttons, anchors and
+    // direct child elements
     // inside of button component element
-    > a,
-    > button,
-    > span {
+    > * {
         height                 : auto;
         width                  : auto;
-        display                : inline-block;
+        display                : $button-display;
         margin                 : 0;
-        padding                : $button-med;
+        padding                : $button-medium;
         overflow               : visible;
         vertical-align         : baseline;
         text-decoration        : none;
         font-weight            : normal;
         font-size              : inherit;
         font-size              : 100%;
-        font-size              : rem-calc(16);
+        font-size              : $button-font-size-default;
         -webkit-font-smoothing : inherit; // very important, button els will look bolder without it
         line-height            : 1.5em;
-        font-family            : $button-font-family;
-        color                  : $white;
+        font-family            : $button-font;
+        color                  : $button-color;
+        text-shadow            : none;
         background             : transparent;
         border                 : 0;
         border-width           : 0;
@@ -97,9 +101,56 @@ $button-disabled-opacity : .6;
         appearance             : none;
     }
 
+    // FF proprietary button fix
     > button::-moz-focus-inner {
         border  : 0;
         padding : 0;
+    }
+
+}
+
+// size modifiers
+
+// tiny buttons
+.button--tiny {
+    min-width: $button-font-size-tiny * $button-max-width-factor;
+
+    > * {
+        padding   : $button-tiny;
+        font-size : $button-font-size-tiny;
+    }
+
+}
+
+// small buttons
+.button--small {
+    min-width : $button-font-size-small * $button-max-width-factor;
+
+    > * {
+        padding   : $button-small;
+        font-size : $button-font-size-small;
+    }
+
+}
+
+// medium buttons
+.button--medium {
+    min-width : $button-font-size-medium * $button-max-width-factor;
+
+    > * {
+        padding   : $button-medium;
+        font-size : $button-font-size-medium;
+    }
+
+}
+
+// large buttons
+.button--large {
+    min-width : $button-font-size-large * $button-max-width-factor;
+
+    > * {
+        padding   : $button-large;
+        font-size : $button-font-size-large;
     }
 
 }

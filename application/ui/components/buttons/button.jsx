@@ -8,7 +8,7 @@ module.exports = React.createClass({
     displayName : 'Button',
 
     propTypes : {
-        size   : React.PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
+        size   : React.PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'default']),
         color  : React.PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
         expand : React.PropTypes.bool
     },
@@ -16,7 +16,7 @@ module.exports = React.createClass({
     getDefaultProps : function()
     {
         return {
-            size   : 'medium',
+            size   : 'default',
             color  : 'primary',
             expand : false
         };
