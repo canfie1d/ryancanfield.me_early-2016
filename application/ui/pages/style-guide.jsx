@@ -4,7 +4,7 @@
 var React    = require('react');
 var SGHeader = require('../components/style-guide/sg-header');
 
-var ButtionSection = require('../components/style-guide/sections/sg-buttons');
+var ButtonSection = require('../components/style-guide/sections/sg-buttons');
 
 module.exports = React.createClass({
 
@@ -29,7 +29,7 @@ module.exports = React.createClass({
             <div className='sg'>
                 <SGHeader />
                 <div className='sg-content'>
-                    <ButtionSection />
+                    <ButtonSection />
                 </div>
             </div>
         );
