@@ -1,0 +1,224 @@
+@import "global";
+
+// @variables
+$include-html-form-classes : $include-html-classes !default;
+
+// We use this to set the base for lots of form spacing and positioning styles
+$form-spacing : rem-calc(16) !default;
+
+// We use these to style the labels in different ways
+$form-label-pointer           : pointer !default;
+$form-label-font-size         : rem-calc(14) !default;
+$form-label-font-weight       : normal !default;
+$form-label-font-color        : tint($black, 30%) !default;
+$form-label-bottom-margin     : rem-calc(8) !default;
+$input-font-family            : inherit !default;
+$input-font-color             : rgba($black, .75) !default;
+$input-font-size              : rem-calc(14) !default;
+$input-bg-color               : #fff !default;
+$input-focus-bg-color         : shade($white, 2%) !default;
+$input-border-color           : shade($white, 20%) !default;
+$input-focus-border-color     : shade($white, 40%) !default;
+$input-border-style           : solid !default;
+$input-border-width           : 1px !default;
+$input-border-radius          : 0 !default;
+$input-disabled-bg            : #ddd !default;
+$input-box-shadow             : inset 0 1px 2px rgba(0, 0, 0, .1) !default;
+$input-include-glowing-effect : true !default;
+
+// We use these to style the fieldset border and spacing.
+$fieldset-border-style : solid !default;
+$fieldset-border-width : 1px !default;
+$fieldset-border-color : #ddd !default;
+$fieldset-padding      : rem-calc(20) !default;
+$fieldset-margin       : rem-calc(18 0) !default;
+
+// We use these to style the legends when you use them
+$legend-bg          : $white !default;
+$legend-font-weight : bold !default;
+$legend-padding     : rem-calc(0 3) !default;
+
+// We use these to style the prefix and postfix input elements
+$input-prefix-bg             : shade($white, 5%) !default;
+$input-prefix-border-color   : shade($white, 20%) !default;
+$input-prefix-border-size    : 1px !default;
+$input-prefix-border-type    : solid !default;
+$input-prefix-overflow       : hidden !default;
+$input-prefix-font-color     : #333 !default;
+$input-prefix-font-color-alt : $white !default;
+
+// We use these to style the error states for inputs and labels
+$input-error-message-padding        : rem-calc(6 9 9) !default;
+$input-error-message-top            : -1px;
+$input-error-message-font-size      : rem-calc(12) !default;
+$input-error-message-font-weight    : normal !default;
+$input-error-message-font-style     : italic !default;
+$input-error-message-font-color     : $white !default;
+$input-error-message-font-color-alt : shade($white, 5%) !default;
+
+// We use this to style the glowing effect of inputs when focused
+$glowing-effect-fade-time : 450ms !default;
+$glowing-effect-color     : $input-focus-border-color !default;
+
+// Select variables
+$select-bg-color : shade($white, 2%) !default;
+
+// Standard Forms
+form {
+    margin: 0 0 $form-spacing;
+}
+
+// Label Styles
+label {
+    @include form-label;
+
+    &.right {
+        @include form-label(right, false);
+    }
+
+    &.inline {
+        @include form-label(inline, false);
+    }
+
+    .error {
+        @include form-label-error-color;
+    }
+
+    small {
+        text-transform : capitalize;
+        color          : tint($form-label-font-color, 15%);
+    }
+
+}
+
+select {
+    -webkit-appearance    : none !important;
+    height                : ($input-font-size + ($form-spacing * 1.5) - rem-calc(1));
+    background            :
+        $select-bg-color
+        url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
+    background-position-x : 97%;
+    background-position-y : center;
+    border                : $input-border-width $input-border-style $input-border-color;
+    padding               : $form-spacing / 2;
+    font-size             : $input-font-size;
+    border-radius         : 0;
+
+    &.radius {
+        border-radius : $global-radius;
+    }
+
+    &:hover {
+        background            :
+            shade($select-bg-color, 3%)
+            url('data:image/svg+xml;base64, PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeD0iMHB4IiB5PSIwcHgiIHdpZHRoPSI2cHgiIGhlaWdodD0iM3B4IiB2aWV3Qm94PSIwIDAgNiAzIiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA2IDMiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwb2x5Z29uIHBvaW50cz0iNS45OTIsMCAyLjk5MiwzIC0wLjAwOCwwICIvPjwvc3ZnPg==') no-repeat;
+        background-position-x : 97%;
+        background-position-y : center;
+        border-color          : $input-focus-border-color;
+    }
+
+}
+
+select::-ms-expand {
+    display : none;
+}
+
+// We use this to get basic styling on all basic form elements
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="month"],
+input[type="week"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea {
+    -webkit-appearance : none;
+    border-radius      : $input-border-radius;
+}
+
+// Adjust margin for form elements below
+input[type="file"],
+input[type="checkbox"],
+input[type="radio"],
+select {
+    margin: 0 0 $form-spacing;
+}
+
+input[type="checkbox"] + label,
+input[type="radio"] + label {
+    display                       : inline-block;
+    margin-#{$default-float}      : $form-spacing * .5;
+    margin-#{$opposite-direction} : $form-spacing;
+    margin-bottom                 : 0;
+    vertical-align                : baseline;
+}
+
+// Normalize file input width
+input[type="file"] {
+    width : 100%;
+}
+
+// Error Handling
+[data-abide] {
+    .error small.error,
+    span.error,
+    small.error {
+        @include form-error-message;
+    }
+
+    span.error,
+    small.error {
+        display: none;
+    }
+}
+
+span.error,
+small.error {
+    @include form-error-message;
+}
+
+.error {
+    input,
+    textarea,
+    select {
+        margin-bottom: 0;
+    }
+
+    label,
+    label.error {
+        @include form-label-error-color;
+    }
+
+    > small,
+        small.error {
+            @include form-error-message;
+        }
+
+    > label {
+        > small {
+            color          : tint($form-label-font-color, 15%);
+            background     : transparent;
+            padding        : 0;
+            text-transform : capitalize;
+            font-style     : normal;
+            font-size      : 60%;
+            margin         : 0;
+            display        : inline;
+        }
+    }
+
+    span.error-message {
+        display : block;
+    }
+}
+
+input.error,
+textarea.error {
+    margin-bottom : 0;
+}
