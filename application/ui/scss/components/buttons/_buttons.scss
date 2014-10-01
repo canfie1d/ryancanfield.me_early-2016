@@ -24,7 +24,6 @@ $button-display       : inline-block;
 $button-margin-bottom : rem-calc(15);
 
 // We use these to control button text styles.
-$button-font-family    : inherit;
 $button-font-color     : $white;
 $button-font-color-alt : $themeDDGray;
 $button-font-tny       : rem-calc(11);
@@ -46,19 +45,61 @@ $button-disabled-opacity : .6;
 // default buttons
 // <a class="button" href="#">Start Up</a>
 .button {
+    position         : relative;
     min-width        : rem-calc(140);
-    padding          : $button-med;
+    margin           : rem-calc(0 3 15);
     display          : inline-block;
+    text-align       : center;
     text-decoration  : none;
+    font-weight      : normal;
+    font-size        : rem-calc(16);
+    line-height      : 1.5em;
     font-family      : $button-font-family;
     color            : $button-default-font-color;
     border           : $button-border-width $button-border-style;
     background-color : $button-default-color;
     border-color     : $button-default-color;
+    cursor           : pointer;
+    transition       : background-color 300ms ease;
 
     &:hover,
     &:focus {
         background-color : darken($button-default-color, 5%);
+    }
+
+    // normalize buttons and anchors
+    // inside of button component element
+    > a,
+    > button,
+    > span {
+        height                 : auto;
+        width                  : auto;
+        display                : inline-block;
+        margin                 : 0;
+        padding                : $button-med;
+        overflow               : visible;
+        vertical-align         : baseline;
+        text-decoration        : none;
+        font-weight            : normal;
+        font-size              : inherit;
+        font-size              : 100%;
+        font-size              : rem-calc(16);
+        -webkit-font-smoothing : inherit; // very important, button els will look bolder without it
+        line-height            : 1.5em;
+        font-family            : $button-font-family;
+        color                  : $white;
+        background             : transparent;
+        border                 : 0;
+        border-width           : 0;
+        cursor                 : pointer;
+        -webkit-appearance     : none;
+        -moz-appearance        : none;
+        appearance             : none;
+    }
+
+    > button::-moz-focus-inner {
+        border  : 0;
+        padding : 0;
     }
 
 }
