@@ -7,61 +7,93 @@ $include-html-form-classes : $include-html-classes !default;
 $form-spacing : rem-calc(16) !default;
 
 // We use these to style the labels in different ways
-$form-label-pointer           : pointer !default;
-$form-label-font-size         : rem-calc(14) !default;
-$form-label-font-weight       : normal !default;
-$form-label-font-color        : tint($black, 30%) !default;
-$form-label-bottom-margin     : rem-calc(8) !default;
-$input-font-family            : inherit !default;
-$input-font-color             : rgba($black, .75) !default;
-$input-font-size              : rem-calc(14) !default;
-$input-bg-color               : #fff !default;
-$input-focus-bg-color         : shade($white, 2%) !default;
-$input-border-color           : shade($white, 20%) !default;
-$input-focus-border-color     : shade($white, 40%) !default;
-$input-border-style           : solid !default;
-$input-border-width           : 1px !default;
-$input-border-radius          : 0 !default;
-$input-disabled-bg            : #ddd !default;
+$form-label-pointer           : pointer                          !default;
+$form-label-font-size         : rem-calc(14)                     !default;
+$form-label-font-weight       : normal                           !default;
+$form-label-font-color        : tint($black, 30%)                !default;
+$form-label-bottom-margin     : rem-calc(8)                      !default;
+$input-font-family            : inherit                          !default;
+$input-font-color             : rgba($black, .75)                !default;
+$input-font-size              : rem-calc(14)                     !default;
+$input-bg-color               : $white                           !default;
+$input-focus-bg-color         : shade($white, 2%)                !default;
+$input-border-color           : shade($white, 20%)               !default;
+$input-focus-border-color     : shade($white, 40%)               !default;
+$input-border-style           : solid                            !default;
+$input-border-width           : 1px                              !default;
+$input-border-radius          : 0                                !default;
+$input-disabled-bg            : #ddd                             !default;
 $input-box-shadow             : inset 0 1px 2px rgba($black, .1) !default;
-$input-include-glowing-effect : true !default;
-
-// We use these to style the fieldset border and spacing.
-$fieldset-border-style : solid !default;
-$fieldset-border-width : 1px !default;
-$fieldset-border-color : #ddd !default;
-$fieldset-padding      : rem-calc(20) !default;
-$fieldset-margin       : rem-calc(18 0) !default;
-
-// We use these to style the legends when you use them
-$legend-bg          : $white !default;
-$legend-font-weight : bold !default;
-$legend-padding     : rem-calc(0 3) !default;
-
-// We use these to style the prefix and postfix input elements
-$input-prefix-bg             : shade($white, 5%) !default;
-$input-prefix-border-color   : shade($white, 20%) !default;
-$input-prefix-border-size    : 1px !default;
-$input-prefix-border-type    : solid !default;
-$input-prefix-overflow       : hidden !default;
-$input-prefix-font-color     : #333 !default;
-$input-prefix-font-color-alt : $white !default;
 
 // We use these to style the error states for inputs and labels
-$input-error-message-padding        : rem-calc(6 9 9) !default;
+$input-error-message-padding        : rem-calc(6 9 9)   !default;
 $input-error-message-top            : -1px;
-$input-error-message-font-size      : rem-calc(12) !default;
-$input-error-message-font-weight    : normal !default;
-$input-error-message-font-style     : italic !default;
-$input-error-message-font-color     : $white !default;
+$input-error-message-font-size      : rem-calc(12)      !default;
+$input-error-message-font-weight    : normal            !default;
+$input-error-message-font-style     : italic            !default;
+$input-error-message-font-color     : $white            !default;
 $input-error-message-font-color-alt : shade($white, 5%) !default;
-
-// We use this to style the glowing effect of inputs when focused
-$glowing-effect-fade-time : 450ms !default;
-$glowing-effect-color     : $input-focus-border-color !default;
 
 // Select variables
 $select-bg-color : shade($white, 2%) !default;
+
+//
+// FORM LABEL MIXIN
+//
+@mixin form-label($alignment:false) {
+    font-size     : $form-label-font-size;
+    color         : $form-label-font-color;
+    cursor        : $form-label-pointer;
+    display       : block;
+    font-weight   : $form-label-font-weight;
+    margin-bottom : $form-label-bottom-margin;
+
+    // Alignment options
+    @if $alignment == right {
+        float      : none;
+        text-align : right;
+    }
+
+    @else if $alignment == inline {
+        margin  : 0 0 $form-spacing;
+        padding : $form-spacing / 2 + rem-calc($input-border-width * 2) 0;
+    }
+}
+
+//
+// FORM INPUT ERROR MIXIN
+//
+@mixin form-error-color($color:$alert-color) {
+    border-color     : $color;
+    background-color : rgba($color, .1);
+
+    // Go back to normal on focus
+    &:focus {
+        background   : $input-focus-bg-color;
+        border-color : $input-focus-border-color;
+    }
+}
+
+//
+// FORM ERROR LABEL MIXIN
+//
+@mixin form-label-error-color($color:$alert-color) {
+    color: $color;
+}
+
+//
+// FORM ERROR MESSAGE MIXIN
+//
+@mixin form-error-message($bg:$alert-color) {
+    display       : block;
+    padding       : $input-error-message-padding;
+    margin-top    : $input-error-message-top;
+    margin-bottom : $form-spacing;
+    font-size     : $input-error-message-font-size;
+    font-weight   : $input-error-message-font-weight;
+    font-style    : $input-error-message-font-style;
+    background    : $bg;
+}
 
 // Standard Forms
 form {
@@ -72,15 +104,15 @@ form {
 label {
     @include form-label;
 
-    &.right {
+    &.label--right {
         @include form-label(right, false);
     }
 
-    &.inline {
+    &.label--inline {
         @include form-label(inline, false);
     }
 
-    .error {
+    .label--error {
         @include form-label-error-color;
     }
 
@@ -104,7 +136,7 @@ select {
     font-size             : $input-font-size;
     border-radius         : 0;
 
-    &.radius {
+    &.select--radius {
         border-radius : $global-radius;
     }
 
