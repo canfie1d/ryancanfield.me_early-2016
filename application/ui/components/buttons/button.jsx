@@ -8,17 +8,19 @@ module.exports = React.createClass({
     displayName : 'Button',
 
     propTypes : {
-        size   : React.PropTypes.oneOf(['tiny', 'small', 'medium', 'large']),
-        color  : React.PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
-        expand : React.PropTypes.bool
+        size     : React.PropTypes.oneOf(['tiny', 'small', 'medium', 'large', 'default']),
+        color    : React.PropTypes.oneOf(['primary', 'secondary', 'tertiary']),
+        block    : React.PropTypes.bool,
+        disabled : React.PropTypes.bool
     },
 
     getDefaultProps : function()
     {
         return {
-            size   : 'medium',
-            color  : 'primary',
-            expand : false
+            size     : 'default',
+            color    : 'primary',
+            expand   : false,
+            disabled : false
         };
     },
 
@@ -33,7 +35,8 @@ module.exports = React.createClass({
             'button--primary'   : this.props.color === 'primary',
             'button--secondary' : this.props.color === 'secondary',
             'button--tertiary'  : this.props.color === 'tertiary',
-            'button--expand'    : this.props.expand === true
+            'button--block'     : this.props.block === true,
+            'button-disabled'   : this.props.disabled === true
         });
 
         return this.transferPropsTo(
