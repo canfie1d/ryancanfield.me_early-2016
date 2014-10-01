@@ -7,32 +7,23 @@ $include-html-form-classes : $include-html-classes !default;
 $form-spacing : rem-calc(16) !default;
 
 // We use these to style the labels in different ways
-$form-label-pointer           : pointer                          !default;
-$form-label-font-size         : rem-calc(14)                     !default;
-$form-label-font-weight       : normal                           !default;
-$form-label-font-color        : tint($black, 30%)                !default;
-$form-label-bottom-margin     : rem-calc(8)                      !default;
-$input-font-family            : inherit                          !default;
-$input-font-color             : rgba($black, .75)                !default;
-$input-font-size              : rem-calc(14)                     !default;
-$input-bg-color               : $white                           !default;
-$input-focus-bg-color         : shade($white, 2%)                !default;
-$input-border-color           : shade($white, 20%)               !default;
-$input-focus-border-color     : shade($white, 40%)               !default;
-$input-border-style           : solid                            !default;
-$input-border-width           : 1px                              !default;
-$input-border-radius          : 0                                !default;
-$input-disabled-bg            : #ddd                             !default;
-$input-box-shadow             : inset 0 1px 2px rgba($black, .1) !default;
-
-// We use these to style the error states for inputs and labels
-$input-error-message-padding        : rem-calc(6 9 9)   !default;
-$input-error-message-top            : -1px;
-$input-error-message-font-size      : rem-calc(12)      !default;
-$input-error-message-font-weight    : normal            !default;
-$input-error-message-font-style     : italic            !default;
-$input-error-message-font-color     : $white            !default;
-$input-error-message-font-color-alt : shade($white, 5%) !default;
+$form-label-pointer       : pointer                          !default;
+$form-label-font-size     : rem-calc(14)                     !default;
+$form-label-font-weight   : normal                           !default;
+$form-label-font-color    : tint($black, 30%)                !default;
+$form-label-bottom-margin : rem-calc(8)                      !default;
+$input-font-family        : inherit                          !default;
+$input-font-color         : rgba($black, .75)                !default;
+$input-font-size          : rem-calc(14)                     !default;
+$input-bg-color           : $white                           !default;
+$input-focus-bg-color     : shade($white, 2%)                !default;
+$input-border-color       : shade($white, 20%)               !default;
+$input-focus-border-color : shade($white, 40%)               !default;
+$input-border-style       : solid                            !default;
+$input-border-width       : 1px                              !default;
+$input-border-radius      : 0                                !default;
+$input-disabled-bg        : #ddd                             !default;
+$input-box-shadow         : inset 0 1px 2px rgba($black, .1) !default;
 
 // Select variables
 $select-bg-color : shade($white, 2%) !default;
@@ -60,41 +51,6 @@ $select-bg-color : shade($white, 2%) !default;
     }
 }
 
-//
-// FORM INPUT ERROR MIXIN
-//
-@mixin form-error-color($color:$alert-color) {
-    border-color     : $color;
-    background-color : rgba($color, .1);
-
-    // Go back to normal on focus
-    &:focus {
-        background   : $input-focus-bg-color;
-        border-color : $input-focus-border-color;
-    }
-}
-
-//
-// FORM ERROR LABEL MIXIN
-//
-@mixin form-label-error-color($color:$alert-color) {
-    color: $color;
-}
-
-//
-// FORM ERROR MESSAGE MIXIN
-//
-@mixin form-error-message($bg:$alert-color) {
-    display       : block;
-    padding       : $input-error-message-padding;
-    margin-top    : $input-error-message-top;
-    margin-bottom : $form-spacing;
-    font-size     : $input-error-message-font-size;
-    font-weight   : $input-error-message-font-weight;
-    font-style    : $input-error-message-font-style;
-    background    : $bg;
-}
-
 // Standard Forms
 form {
     margin: 0 0 $form-spacing;
@@ -110,10 +66,6 @@ label {
 
     &.label--inline {
         @include form-label(inline, false);
-    }
-
-    .label--error {
-        @include form-label-error-color;
     }
 
     small {
@@ -194,63 +146,4 @@ input[type="radio"] + label {
 // Normalize file input width
 input[type="file"] {
     width : 100%;
-}
-
-// Error Handling
-[data-abide] {
-    .error small.error,
-    span.error,
-    small.error {
-        @include form-error-message;
-    }
-
-    span.error,
-    small.error {
-        display: none;
-    }
-}
-
-span.error,
-small.error {
-    @include form-error-message;
-}
-
-.error {
-    input,
-    textarea,
-    select {
-        margin-bottom: 0;
-    }
-
-    label,
-    label.error {
-        @include form-label-error-color;
-    }
-
-    > small,
-        small.error {
-            @include form-error-message;
-        }
-
-    > label {
-        > small {
-            color          : tint($form-label-font-color, 15%);
-            background     : transparent;
-            padding        : 0;
-            text-transform : capitalize;
-            font-style     : normal;
-            font-size      : 60%;
-            margin         : 0;
-            display        : inline;
-        }
-    }
-
-    span.error-message {
-        display : block;
-    }
-}
-
-input.error,
-textarea.error {
-    margin-bottom : 0;
 }
