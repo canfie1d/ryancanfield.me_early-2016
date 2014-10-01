@@ -1,5 +1,3 @@
-var specHelper = require('../test-helpers/spec-helper');
-
 describe('application', function() {
     var actualText, expectedText, randomEmail, randomPassword;
 
@@ -114,17 +112,11 @@ describe('application', function() {
             });
         });
 
-        it('loads the page', function(done) {
+        it('loads the page', function() {
             expectedText = 'Login:';
+            actualText   = page.find(specHelper.formLabel).text();
 
-            page.click(specHelper.loginLink);
-
-            setTimeout(function() {
-                actualText = page.find(specHelper.formLabel).text();
-
-                expect(actualText).toEqual(expectedText);
-                done();
-            });
+            expect(actualText).toEqual(expectedText);
         });
 
         it('returns to the home page', function(done) {

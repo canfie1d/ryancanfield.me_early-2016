@@ -1,1 +1,2 @@
-testRunner: jasmine
+pluginFiles:
+    - 'test-helpers/spec-helper.js'

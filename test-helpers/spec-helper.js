@@ -49,4 +49,4 @@ specHelper.setJasmineTimeout = function(timeout) {
     jasmine.DEFAULT_TIMEOUT_INTERVAL = timeout;
 };
 
-module.exports = specHelper;
+window.specHelper = specHelper;

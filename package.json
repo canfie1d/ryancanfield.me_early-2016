@@ -18,7 +18,7 @@
     "browserify"                   : "5.10.1",
     "chai"                         : "1.9.1",
     "connect-history-api-fallback" : "0.0.4",
-    "disyntegration"               : "git://github.com/synapsestudios/disyntegration.git#v0.3.2",
+    "disyntegration"               : "git://github.com/synapsestudios/disyntegration.git#v0.3.4",
     "envify"                       : "3.0.0",
     "es5-shim"                     : "4.0.2",
     "fluxxor-jest-utils"           : "0.0.6",
