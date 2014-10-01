@@ -73,6 +73,18 @@ module.exports = React.createClass({
                         {'Tertiary Color Button'}
                     </a>
                 </Button>
+                <hr className='sg-hr' />
+                <h2 className='sg-h2'>{'Button Display Types'}</h2>
+                <Button block={true}>
+                    <a>
+                        {'Block Level Button'}
+                    </a>
+                </Button>
+                <Button disabled={true}>
+                    <a>
+                        {'Disabled Button'}
+                    </a>
+                </Button>
             </div>
         );
     }

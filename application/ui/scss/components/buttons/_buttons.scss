@@ -159,14 +159,23 @@ $button-disabled-opacity : .6 !default;
 
 // display button as block level element
 .button--block {
-    display : block;
-    margin  : rem-calc(15);
+    margin-right : 0;
+    margin-left  : 0;
+    display      : block;
 }
 
 // disabled button display
 .button--disabled,
 .button[disabled] {
-    opacity : $button-disabled-opacity;
+    opacity      : $button-disabled-opacity;
+    cursor       : default;
+    background   : #666;
+    border-color : #666;
+
+    > * {
+        cursor: default;
+    }
+
 }
 
 // color modifiers
