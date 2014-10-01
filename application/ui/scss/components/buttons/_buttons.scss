@@ -13,7 +13,7 @@ $button-background-color : $primary !default;
 $button-border-color     : $primary !default;
 $button-border-width     : 1px !default;
 $button-border-style     : solid !default;
-$button-border-rounding  : 2px !default;
+$button-border-radius    : 2px !default;
 
 // button size vars
 $button-tiny    : rem-calc(7) !default;
@@ -60,7 +60,7 @@ $button-disabled-opacity : .6 !default;
     border           : $button-border-width $button-border-style;
     background-color : $button-background-color;
     border-color     : $button-background-color;
-    border-radius    : $button-border-rounding;
+    border-radius    : $button-border-radius  ;
     box-shadow       : none;
     cursor           : pointer;
     transition       : color 300ms ease,
@@ -68,7 +68,7 @@ $button-disabled-opacity : .6 !default;
 
     &:hover,
     &:focus {
-        background-color : darken($primary, 5%);
+        background-color : shade($primary, 5%);
     }
 
     // normalize buttons, anchors and
@@ -185,7 +185,7 @@ $button-disabled-opacity : .6 !default;
 
     &:hover,
     &:focus {
-        background-color : darken($secondary, 5%);
+        background-color : shade($secondary, 5%);
     }
 
 }
@@ -196,7 +196,7 @@ $button-disabled-opacity : .6 !default;
 
     &:hover,
     &:focus {
-        background-color : darken($tertiary, 5%);
+        background-color : shade($tertiary, 5%);
     }
 
 }
