@@ -5,7 +5,8 @@ var connect = require('gulp-connect');
 
 gulp.task('preprocess:app', function() {
     return gulp.src([
-            './application/index.html'
+            './application/index.html',
+            './application/.htaccess'
         ])
         .pipe(gulp.dest('./build'))
         .pipe(connect.reload());

@@ -1,5 +1,5 @@
-var gutil  = require('gulp-util'),
-    notify = require('gulp-notify');
+var gutil  = require('gulp-util');
+var notify = require('gulp-notify');
 
 module.exports = function (task) {
     return function(err) {

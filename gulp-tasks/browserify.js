@@ -1,7 +1,9 @@
 /* jshint node: true */
 'use strict';
 
+var _          = require('underscore');
 var browserify = require('browserify');
+var proxyquire = require('proxyquireify');
 var connect    = require('gulp-connect');
 var glob       = require('glob');
 var gulp       = require('gulp');
@@ -12,17 +14,17 @@ var source     = require('vinyl-source-stream');
 var streamify  = require('gulp-streamify');
 var uglify     = require('gulp-uglify');
 var watchify   = require('watchify');
+var watchr     = require('watchr');
 
 var error = require('./error');
 
-gulp.task('browserify:app', function() {
+var bundleApp = function(watch) {
     var backend, bundler, env, rebundle;
 
-    env     = gutil.env.env || 'development';
+    env     = gutil.env.env;
     backend = gutil.env.backend || '';
 
-    bundler = watchify(
-        browserify({
+    bundler = browserify({
             debug        : (env !== 'production'),
             entries      : ['./application/bootstrap.js'],
             extensions   : ['.js', '.jsx'],
@@ -31,8 +33,11 @@ gulp.task('browserify:app', function() {
             fullPaths    : true
         })
         .transform(reactify)
-        .on('log', gutil.log)
-    );
+        .on('log', gutil.log);
+
+    if (watch) {
+        watchify(bundler);
+    }
 
     rebundle = function() {
         return bundler.bundle()
@@ -51,56 +56,85 @@ gulp.task('browserify:app', function() {
             ))
             .pipe(env === 'production' ? streamify(uglify()) : gutil.noop())
             .pipe(gulp.dest('./build/js'))
-            .pipe(connect.reload());
+            .pipe(connect.reload(true));
     };
 
     bundler.on('update', rebundle);
 
     return rebundle();
+};
+
+gulp.task('browserify:app', function() {
+    return bundleApp(false);
 });
 
-gulp.task('browserify:test', function () {
-    var backend, bundler, entries, env, path, rebundle;
+gulp.task('watchify:app', function() {
+    return bundleApp(true);
+});
+
+gulp.task('watchify:test', function () {
+    var backend, bundle, bundler, entries, env, path, rebundle;
 
     backend = gutil.env.backend || '';
-    env     = gutil.env.env || 'development';
-    path    = gutil.env.path || './__react-tests__/**/*.js';
-    entries = glob.sync(path);
+    env     = gutil.env.env;
+    path    = gutil.env.path || './__tests__/**/*.js*';
 
-    bundler = watchify(
-        browserify({
-            debug        : (env !== 'production'),
-            entries      : entries,
-            extensions   : ['.js', '.jsx'],
-            cache        : {},
-            packageCache : {},
-            fullPaths    : true
-        })
-        .ignore('./__react-tests__/globals.js')
-        .transform(reactify)
-        .on('log', gutil.log)
-    );
+    bundle = function() {
+        entries = glob.sync(path);
 
-    rebundle = function() {
-        return bundler.bundle()
-            .on('error', error('browserify:test'))
-            .pipe(source('tests.js'))
-            .pipe(streamify(
-                replace({
-                    patterns : [{
-                        match       : /__ENVIRONMENT__/g,
-                        replacement : '\''+env+'\''
-                    }, {
-                        match       : /__BACKEND__/g,
-                        replacement : '\''+backend+'\''
-                    }]
-                })
-            ))
-            .pipe(gulp.dest('./test'))
-            .pipe(connect.reload());
+        bundler = watchify(
+            browserify({
+                debug        : (env !== 'production'),
+                entries      : entries,
+                extensions   : ['.js', '.jsx'],
+                cache        : {},
+                packageCache : {},
+                fullPaths    : true
+            })
+            .plugin(proxyquire.plugin)
+            .ignore('./__tests__/globals.js')
+            .transform(reactify)
+            .on('log', gutil.log)
+        );
+
+        rebundle = function() {
+            return bundler.bundle()
+                .on('error', error('browserify:test'))
+                .pipe(source('tests.js'))
+                .pipe(streamify(
+                    replace({
+                        patterns : [{
+                            match       : /__ENVIRONMENT__/g,
+                            replacement : '\''+env+'\''
+                        }, {
+                            match       : /__BACKEND__/g,
+                            replacement : '\''+backend+'\''
+                        }]
+                    })
+                ))
+                .pipe(gulp.dest('./test'))
+                .pipe(connect.reload(true));
+        };
+
+        bundler.on('update', function(paths) {
+            // Prevent double reload. Watchify updates on new files but doesn't do anything
+            if (_.intersection(entries, paths).length) {
+                rebundle();
+            }
+        });
+
+        return rebundle();
     };
 
-    bundler.on('update', rebundle);
+    watchr.watch({
+        path     : './__tests__',
+        listener : function(changeType) {
+            // Ignore changes to existing files
+            if (changeType !== 'update') {
+               bundle();
+            }
+        }
+    });
 
-    return rebundle();
+    return bundle();
 });

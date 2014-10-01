@@ -6,14 +6,10 @@ var connect    = require('gulp-connect');
 var fallback   = require('connect-history-api-fallback');
 
 gulp.task('connect:app', function() {
-    var env;
-
-    env = gutil.env.env || 'development';
-
     return connect.server({
         root       : 'build',
         port       : 9000,
-        livereload : env === 'development',
+        livereload : gutil.env.env === 'development',
         middleware : function (connect, options) {
             return [fallback];
         }

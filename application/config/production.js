@@ -2,7 +2,8 @@
 
 module.exports = {
     api : {
-        hostname : '%PRODUCTION_API_HOST%',
-        port     : 80
+        hostname  : '%PRODUCTION_API_HOST%',
+        port      : 80,
+        client_id : '123'
     }
 };
