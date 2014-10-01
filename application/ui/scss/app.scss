@@ -1,16 +1,15 @@
 // vendor imports
 
-    @import "reset";
-    @import "settings";
-    @import "syndation";
-    @import "tequila";
+    @import "vendor/reset";
+    @import "vendor/syndation/settings";
+    @import "vendor/syndation/syndation";
+    @import "vendor/tequila/tequila";
 
 // dependency imports
     @import "dependencies/colors";
     @import "dependencies/extends";
     @import "dependencies/fonts";
     @import "dependencies/mixins";
-    @import "dependencies/typography";
 
 // layout
     @import "layout/base";
@@ -29,14 +28,6 @@
     // forms
     @import "components/forms/form-base";
     @import "components/forms/form-validation";
-
-    // grid
-    @import "components/grids/default";
-
-    // navigation
-    @import "components/navigation/slide-out-nav";
-    @import "components/navigation/basic-nav";
-    @import "components/navigation/sticky-nav";
 
     // regions
     @import "components/regions/panel";

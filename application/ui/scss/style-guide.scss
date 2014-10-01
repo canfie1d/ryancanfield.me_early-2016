@@ -1,0 +1,15 @@
+// vendor imports
+    @import "vendor/syndation/settings";
+    @import "vendor/syndation/syndation";
+    @import "vendor/tequila/tequila";
+
+// dependency imports
+    @import "style-guide/sg-colors";
+
+// layout imports
+    @import "style-guide/sg-layout";
+
+// component imports
+    @import "style-guide/components/sg-branding";
+    @import "style-guide/components/sg-main-nav";
+    @import "style-guide/components/sg-typography";

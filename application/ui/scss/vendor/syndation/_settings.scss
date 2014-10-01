@@ -8,6 +8,11 @@
 // This is the default html and body font-size for the base rem value.
 $rem-base : 16px;
 
+// font-size base
+$font-size-base : rem-calc(16);
+// base line height
+$line-height-base : 1.5em;
+
 // Grid
 
 $row-width     : rem-calc(1280);
