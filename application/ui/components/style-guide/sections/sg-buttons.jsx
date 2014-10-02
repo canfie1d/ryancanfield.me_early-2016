@@ -12,9 +12,6 @@ module.exports = React.createClass({
     {
         return (
             <div className='sg-page'>
-                <div className='sg-page__header'>
-                    <h1 className='sg-page__title'>{'Style Guide'}</h1>
-                </div>
                 <h1 className='sg-h1'>{'Buttons'}</h1>
                 <div>
                     <Button>
