@@ -69,9 +69,9 @@ if [[ $confirm =~ ^[yY] ]]; then
   fi
 
   echo "Updating config files"
-  sed -i "" s/%DEV_API_HOST%/$dev_api_host/g "./application/config/config.development.js"
-  sed -i "" s/%QA_API_HOST%/$qa_api_host/g "./application/config/config.qa.js"
-  sed -i "" s/%PRODUCTION_API_HOST%/$production_api_host/g "./application/config/config.production.js"
+  sed -i "" s/%DEV_API_HOST%/$dev_api_host/g "./application/config/development.js"
+  sed -i "" s/%QA_API_HOST%/$qa_api_host/g "./application/config/qa.js"
+  sed -i "" s/%PRODUCTION_API_HOST%/$production_api_host/g "./application/config/production.js"
 
   if [[ $test_init == false ]]; then
     rm initialize.sh
