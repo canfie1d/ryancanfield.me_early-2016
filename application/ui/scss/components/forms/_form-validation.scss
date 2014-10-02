@@ -1,133 +1,54 @@
-// *******************************************
-// *******************************************
+@import "global";
 
-    // Form Validation Styles
+// variables
+$input-error-message-padding        : rem-calc(6 9 9)   !default;
+$input-error-message-top            : -1px;
+$input-error-message-font-size      : rem-calc(12)      !default;
+$input-error-message-font-weight    : normal            !default;
+$input-error-message-font-style     : italic            !default;
+$input-error-message-font-color     : $white            !default;
+$input-error-message-font-color-alt : shade($white, 5%) !default;
 
-// *******************************************
-// *******************************************
+//
+// FORM INPUT ERROR MIXIN
+//
+@mixin form-error-color($color:$alert-color) {
+    border-color     : $color;
+    background-color : rgba($color, .1);
 
-// form validation vars
-
-$validation-field-error-font-color   : $white;
-$validation-field-message-font       : $sans-bold;
-$validation-field-message-font-color : $white;
-
-// validation input wrapper
-// validate single field inputs
-
-// <div class="form__input validate validate--failed validate--show">
-// 	<input class="input--large input--rounded" type="text" placeholder="Name" />
-// 	<span class="validate__field-error">&#215;</span>
-// 	<span class="validate__field-message">Please enter your name</span>
-// </div>
-
-.validate {
-	position : relative;
+    // Go back to normal on focus
+    &:focus {
+        background   : $input-focus-bg-color;
+        border-color : $input-focus-border-color;
+    }
 }
 
-// error over input on right side
-// <span class="validate__field-error">&#215;</span>
-
-.validate__field-error {
-    position   : absolute;
-    top        : rem-calc(7.5);
-    right      : rem-calc(7.5);
-    display    : none;
-    text-align : center;
-    font-size  : rem-calc(21);
-    color      : $validation-field-error-font-color;
+//
+// FORM ERROR LABEL MIXIN
+//
+@mixin form-label-error-color($color:$alert-color) {
+    color: $color;
 }
 
-// adjust dimensions for large inputs
-
-.input--large ~ .validate__field-error {
-	height : rem-calc(21);
-    width  : rem-calc(21);
+//
+// FORM ERROR MESSAGE MIXIN
+//
+@mixin form-error-message($bg:$alert-color) {
+    display       : block;
+    padding       : $input-error-message-padding;
+    margin-top    : $input-error-message-top;
+    margin-bottom : $form-spacing;
+    font-size     : $input-error-message-font-size;
+    font-weight   : $input-error-message-font-weight;
+    font-style    : $input-error-message-font-style;
+    background    : $bg;
 }
 
-// adjust radius for rounded inputs
+// Label Styles
+label {
 
-.input--rounded ~ .validate__field-error {
-    border-radius: 50%;
-}
-
-// error message under field
-
-// <span class="validate__field-message">Please enter your name</span>
-
-.validate__field-message {
-	font-family : $validation-field-message-font;
-	color       : $validation-field-message-font-color;
-    position    : absolute;
-    bottom      : -26px;
-    width       : 100%;
-    margin      : rem-calc(-2 0 0 0);
-    padding     : rem-calc(6);
-    display     : none;
-    font-size   : rem-calc(12);
-	box-shadow  : inset 0 0 1px rgba($white, .5);
-}
-
-// color coding error states
-// validate--passed, validate--failed, validate--warnings
-// add state
-
-// PASSED
-
-.validate--passed {
-
-	.validate__field-error {
-		background : $statusGreen;
-		border     : 1px solid $statusGreen;
-	}
-
-	.validate__field-message {
-		background : $statusGreen;
-		border     : 1px solid $statusGreen;
-	}
-
-}
-
-// FAILED
-
-.validate--failed {
-    margin-bottom : 0;
-
-	.validate__field-error {
-		background : $statusRed;
-		border     : 1px solid $statusRed;
-	}
-
-	.validate__field-message {
-		background : $statusRed;
-		border     : 1px solid $statusRed;
-	}
-
-}
-
-// WARNING
-
-.validate--warnings {
-
-	.validate__field-error {
-		background : $statusOrange;
-		border     : 1px solid $statusOrange;
-	}
-
-	.validate__field-message {
-		background : $statusOrange;
-		border     : 1px solid $statusOrange;
-	}
-
-}
-
-// when validation is triggered, show messages
-
-.validate--show {
-
-	.validate__field-error,
-	.validate__field-message {
-		display : block;
-	}
+    .label--error {
+        @include form-label-error-color;
+    }
 
 }

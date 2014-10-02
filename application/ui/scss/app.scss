@@ -1,7 +1,5 @@
 // vendor imports
     @import "vendor/reset";
-    @import "vendor/synfrastructure/settings";
-    @import "vendor/synfrastructure/synfrastructure";
 
 // dependency imports
     @import "dependencies/colors";
@@ -11,8 +9,6 @@
 
 // layout
     @import "layout/base";
-    @import "layout/header";
-    @import "layout/footer";
     @import "layout/layout";
 
 // component imports
@@ -20,14 +16,9 @@
     // buttons
     @import "components/buttons/buttons";
 
-    // dropdown
-    @import "components/dropdown/dropdown-menu";
-
     // forms
     @import "components/forms/form-base";
     @import "components/forms/form-validation";
 
-    // regions
-    @import "components/regions/panel";
-    @import "components/regions/lightbox";
-    @import "components/regions/section";
+// pages
+    @import "components/pages/page-layout";
