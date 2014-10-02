@@ -60,7 +60,7 @@ $button-disabled-opacity : .6 !default;
     border           : $button-border-width $button-border-style;
     background-color : $button-background-color;
     border-color     : $button-background-color;
-    border-radius    : $button-border-radius  ;
+    border-radius    : $button-border-radius;
     box-shadow       : none;
     cursor           : pointer;
     transition       : color 300ms ease,
@@ -173,7 +173,7 @@ $button-disabled-opacity : .6 !default;
     border-color : #666;
 
     > * {
-        cursor: default;
+        cursor : default;
     }
 
 }

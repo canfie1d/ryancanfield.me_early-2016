@@ -19,7 +19,7 @@ module.exports = React.createClass({
     {
         return {
             email    : '',
-            password : '',
+            password : ''
         };
     },
 
