@@ -1,24 +1,26 @@
-// Base Values
+//////////////////////////////
+//      Color Vars          //
+//////////////////////////////
 
-$white                   : #fff;
-$black                   : #000;
+$white   : #fff;
+$black   : #000;
 
-// Slate Gray Colors
-
-$themeLGray              : #8291ab;
-$themeMLGray             : #3b4658;
-$themeMGray              : #2f3846;
-$themeDGray              : #27303e;
-$themeDDGray             : #18202a;
+$gray--1 : tint($black, 90%);
+$gray--2 : tint($black, 80%);
+$gray--3 : tint($black, 70%);
+$gray--4 : tint($black, 60%);
+$gray--5 : tint($black, 50%);
+$gray--6 : tint($black, 40%);
+$gray--7 : tint($black, 30%);
+$gray--8 : tint($black, 20%);
+$gray--9 : tint($black, 10%);
 
 // Thematic Colors
-
-$primary                 : #25c0d7;
-$secondary               : #e88a51;
-$tertiary                : #e8bf51;
+$primary   : #25c0d7;
+$secondary : #e88a51;
+$tertiary  : #e8bf51;
 
 // Status colors
-
-$statusGreen             : #25d785;
-$statusOrange            : #f27225;
-$statusRed               : #ea4626;
+$status--success : #25d785;
+$status--warning : #f27225;
+$status--error   : #ea4626;

@@ -50,6 +50,7 @@
     "rimraf"                       : "2.2.8",
     "sinon"                        : "1.10.3",
     "sinon-chai"                   : "2.5.0",
+    "synfrastructure"              : "git://github.com/synapsestudios/synfrastructure.git#master",
     "vinyl-source-stream"          : "0.1.1",
     "watchify"                     : "1.0.2",
     "watchr"                       : "2.4.11"

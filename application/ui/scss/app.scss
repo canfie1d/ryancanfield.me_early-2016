@@ -1,9 +1,8 @@
 // vendor imports
-
     @import "vendor/reset";
-    @import "vendor/syndation/settings";
-    @import "vendor/syndation/syndation";
-    @import "vendor/tequila/tequila";
+    @import "../../../node_modules/synfrastructure/scss/global";
+    @import "../../../node_modules/synfrastructure/scss/settings";
+    @import "../../../node_modules/synfrastructure/scss/synfrastructure";
 
 // dependency imports
     @import "dependencies/colors";
@@ -13,8 +12,6 @@
 
 // layout
     @import "layout/base";
-    @import "layout/header";
-    @import "layout/footer";
     @import "layout/layout";
 
 // component imports
@@ -25,14 +22,9 @@
     //icons
     @import "components/icons/icons-base";
 
-    // dropdown
-    @import "components/dropdown/dropdown-menu";
-
     // forms
     @import "components/forms/form-base";
     @import "components/forms/form-validation";
 
-    // regions
-    @import "components/regions/panel";
-    @import "components/regions/lightbox";
-    @import "components/regions/section";
+// pages
+    @import "pages/page-layout";
