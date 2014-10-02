@@ -4,7 +4,8 @@
 var React    = require('react');
 var SGHeader = require('../components/style-guide/sg-header');
 
-var ButtionSection = require('../components/style-guide/sections/sg-buttons');
+var ButtonSection = require('../components/style-guide/sections/sg-buttons');
+var IconSection   = require('../components/style-guide/sections/sg-icons');
 
 module.exports = React.createClass({
 
@@ -29,7 +30,11 @@ module.exports = React.createClass({
             <div className='sg'>
                 <SGHeader />
                 <div className='sg-content'>
-                    <ButtionSection />
+                    <div className='sg-content__header'>
+                        <h1 className='sg-content__title'>{'Style Guide'}</h1>
+                    </div>
+                    <ButtonSection />
+                    <IconSection />
                 </div>
             </div>
         );
