@@ -1,7 +1,6 @@
 /* jshint node: true */
 'use strict';
 
-var _          = require('underscore');
 var browserify = require('browserify');
 var proxyquire = require('proxyquireify');
 var connect    = require('gulp-connect');
@@ -73,13 +72,13 @@ gulp.task('watchify:app', function() {
 });
 
 gulp.task('watchify:test', function () {
-    var backend, bundle, bundler, entries, env, path, rebundle;
+    var backend, updateBundler, bundler, entries, env, path, rebundle;
 
     backend = gutil.env.backend || '';
     env     = gutil.env.env;
     path    = gutil.env.path || './__tests__/**/*.js*';
 
-    bundle = function() {
+    updateBundler = function() {
         entries = glob.sync(path);
 
         bundler = watchify(
@@ -116,25 +115,19 @@ gulp.task('watchify:test', function () {
                 .pipe(connect.reload(true));
         };
 
-        bundler.on('update', function(paths) {
-            // Prevent double reload. Watchify updates on new files but doesn't do anything
-            if (_.intersection(entries, paths).length) {
-                rebundle();
-            }
-        });
+        bundler.on('update', rebundle);
 
-        return rebundle();
+        rebundle();
     };
+
+    updateBundler();
 
     watchr.watch({
         path     : './__tests__',
         listener : function(changeType) {
-            // Ignore changes to existing files
             if (changeType !== 'update') {
-               bundle();
+                updateBundler();
             }
         }
     });
-
-    return bundle();
 });
