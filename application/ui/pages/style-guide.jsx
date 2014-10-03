@@ -1,8 +1,10 @@
 /** @jsx React.DOM */
+/* global document */
 'use strict';
 
-var React    = require('react');
-var SGHeader = require('../components/style-guide/sg-header');
+var React     = require('react');
+var FluxMixin = require('fluxxor').FluxMixin(React);
+var SGHeader  = require('../components/style-guide/sg-header');
 
 var ButtonSection = require('../components/style-guide/sections/sg-buttons');
 var IconSection   = require('../components/style-guide/sections/sg-icons');
@@ -10,6 +12,8 @@ var IconSection   = require('../components/style-guide/sections/sg-icons');
 module.exports = React.createClass({
 
     displayName : 'StyleGuide',
+
+    mixins : [FluxMixin],
 
     componentWillMount: function()
     {
@@ -24,17 +28,35 @@ module.exports = React.createClass({
         doc.getElementsByTagName('head')[0].appendChild(styleGuideCSSLink);
     },
 
+    getComponentConstructors : function()
+    {
+        return [
+            ButtonSection,
+            IconSection
+        ];
+    },
+
+    renderSections : function()
+    {
+        var section = this.props.params.section;
+
+        return this.getComponentConstructors().map(function(Page) {
+            if (! section || section === Page.displayName) {
+                return <Page key={Page.displayName} />;
+            }
+        });
+    },
+
     render : function()
     {
         return (
             <div className='sg'>
-                <SGHeader />
+                <SGHeader sections={this.getComponentConstructors()} activeSection={this.props.params.section}/>
                 <div className='sg-content'>
                     <div className='sg-content__header'>
                         <h1 className='sg-content__title'>{'Style Guide'}</h1>
                     </div>
-                    <ButtonSection />
-                    <IconSection />
+                    {this.renderSections()}
                 </div>
             </div>
         );

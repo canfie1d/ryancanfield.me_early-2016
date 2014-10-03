@@ -6,7 +6,7 @@ var Icon  = require('../../icon/icon');
 
 module.exports = React.createClass({
 
-    displayName : 'StyleGuideIconsSection',
+    displayName : 'Icons',
 
     render : function()
     {
