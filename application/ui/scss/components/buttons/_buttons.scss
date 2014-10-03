@@ -40,7 +40,7 @@ $button-margin-sides  : rem-calc(3)  !default;
 $button-margin-bottom : rem-calc(15) !default;
 
 // set opacity of disabled buttons
-$button-disabled-opacity : .6 !default;
+$button-disabled-opacity : .3 !default;
 
 // default buttons
 // <a class="button" href="#">Start Up</a>
@@ -60,7 +60,7 @@ $button-disabled-opacity : .6 !default;
     border           : $button-border-width $button-border-style;
     background-color : $button-background-color;
     border-color     : $button-background-color;
-    border-radius    : $button-border-radius  ;
+    border-radius    : $button-border-radius;
     box-shadow       : none;
     cursor           : pointer;
     transition       : color 300ms ease,
@@ -169,11 +169,9 @@ $button-disabled-opacity : .6 !default;
 .button[disabled] {
     opacity      : $button-disabled-opacity;
     cursor       : default;
-    background   : #666;
-    border-color : #666;
 
     > * {
-        cursor: default;
+        cursor : default;
     }
 
 }
