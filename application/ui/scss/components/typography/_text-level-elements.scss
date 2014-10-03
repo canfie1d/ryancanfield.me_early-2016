@@ -1,14 +1,16 @@
 // *******************************************
 // *******************************************
 
-    // Typographical inlineline element styles
+    // Typographical inline element styles
 
 // *******************************************
 // *******************************************
 
-// Text-level 1
-////////////////////////
-
+////////////////////////////
+// //
+// Text-level 1 //
+// //
+////////////////////////////
 // links
 .a {
     color      : $primary;
@@ -25,14 +27,13 @@
     &:hover,
     &:active {
         text-decoration : underline;
-        color           : darken($primary, 10%);
+        color           : shade($primary, 10%);
         outline         : 0;
     }
 
 }
 
 // inline modifiers
-
 .b,
 .strong {
     font-weight : bold;
@@ -78,8 +79,11 @@
     quotes : "\201C" "\201D" "\2018" "\2019";
 }
 
-// Text-level 2
-////////////////////////
+////////////////////////////
+// //
+// Text-level 2 //
+// //
+////////////////////////////
 
 .code,
 .kbd,
