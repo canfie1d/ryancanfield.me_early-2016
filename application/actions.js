@@ -1,30 +1,9 @@
 'use strict';
 
-var authenticationActions = require('./actions/authentication');
-var constants             = require('./constants');
+var authActions  = require('./action/auth');
+var routeActions = require('./action/route');
 
 module.exports = {
-    auth     : authenticationActions,
-    navigate : function(route, params, query) {
-        this.dispatch(
-            constants.NAVIGATE,
-            {
-                route  : route,
-                params : params,
-                query  : query
-            }
-        );
-    },
-
-    forward : function(route, params, query)
-    {
-        this.dispatch(
-            constants.FORWARD,
-            {
-                route  : route,
-                params : params,
-                query  : query
-            }
-        );
-    }
+    auth  : authActions,
+    route : routeActions
 };
