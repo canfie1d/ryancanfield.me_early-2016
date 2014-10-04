@@ -15,7 +15,8 @@ module.exports = React.createClass({
         displayName : React.PropTypes.string
     },
 
-    getDefaultProps : function() {
+    getDefaultProps : function()
+    {
         return {
             active      : false,
             displayName : ''
