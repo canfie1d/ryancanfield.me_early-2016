@@ -46,7 +46,7 @@ module.exports = React.createClass({
         return (
             <li className='sg-nav__menu-item'>
                 <a className={linkClasses} onClick={this.onClick}>
-                    {this.props.displayName || this.props.children}
+                    {this.props.children || this.props.displayName}
                 </a>
             </li>
         );

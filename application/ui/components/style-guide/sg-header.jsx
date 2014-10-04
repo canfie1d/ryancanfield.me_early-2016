@@ -105,7 +105,7 @@ module.exports = React.createClass({
                 </h1>
                 <nav className='sg-nav'>
                     <menu className='sg-nav__menu'>
-                    <SGNavItem active={! this.props.activeSection}>Kitchen Sink</SGNavItem>
+                    <SGNavItem active={this.props.activeSection === 'all'} displayName='all'>Kitchen Sink</SGNavItem>
                         {this.renderNavItems()}
                     </menu>
                 </nav>

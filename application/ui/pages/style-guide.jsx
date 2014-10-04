@@ -43,7 +43,7 @@ module.exports = React.createClass({
         var section = this.props.params.section;
 
         return this.getComponentConstructors().map(function(Page) {
-            if (! section || section === Page.displayName) {
+            if (section === 'all' || section === Page.displayName) {
                 return <Page key={Page.displayName} />;
             }
         });
