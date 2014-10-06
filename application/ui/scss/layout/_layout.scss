@@ -1,11 +1,8 @@
-// *******************************************
-// *******************************************
-
-    // Layout Styles
-    // (Includes Stickyfooter)
-
-// *******************************************
-// *******************************************
+///////////////////////////
+//                       //
+//     Layout Styles     //
+//                       //
+///////////////////////////
 
 // element that contains all of the React app
 .l--app-wrapper {
@@ -17,4 +14,16 @@
 
 .l--user {
     display: none;
+}
+
+// size dependent styles
+.l--expand-on-small {
+
+    @media #{$small-only} {
+        width      : 100%;
+        min-width  : auto;
+        display    : block;
+        text-align : center;
+    }
+
 }
