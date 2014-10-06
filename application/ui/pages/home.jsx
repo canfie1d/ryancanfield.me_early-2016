@@ -1,83 +1,35 @@
 /** @jsx React.DOM */
 'use strict';
 
-var React           = require('react');
-var Fluxxor         = require('fluxxor');
-var FluxMixin       = Fluxxor.FluxMixin(React);
-var Link            = require('react-router').Link;
-var StoreWatchMixin = Fluxxor.StoreWatchMixin;
-
-var config = require('../../config');
+var React = require('react');
 
 module.exports = React.createClass({
 
     displayName : 'HomeModule',
 
-    mixins : [FluxMixin, StoreWatchMixin('TokenStore')],
+    render : function() {
+        var style1,
+            style2;
 
-    getStateFromFlux : function()
-    {
-        var store = this.getFlux().store('TokenStore');
-
-        return {
-            loading  : store.loading,
-            loggedIn : store.loggedIn
+        style1 = {
+            'text-align'  : 'center',
+            'margin-top'  : '200px',
+            'font-size'   : '80px',
+            'font-weight' : 'bold'
         };
-    },
 
-    render : function()
-    {
-        if (this.state.loggedIn) {
-            return (
-                <div>
-                    <p>
-                        <a href={'http://' + config.api.hostname + '/social-login/github/link'}>
-                            Link GitHub account
-                        </a>
-                        <br />
-                        <a href={'http://' + config.api.hostname + '/social-login/facebook/link'}>
-                            Link Facebook account
-                        </a>
-                        <br />
-                        {/* Google only allows 'localhost" as a non-public domain for callback URLs. */}
-                        <a href='http://localhost/social-login/google/link'>
-                            Link Google account
-                        </a>
-                        <br />
-                    </p>
-                </div>
-            );
-        } else {
-            return (
-                <div>
-                    <p>
-                        <Link to='login'>Log in with credentials</Link>
-                    </p>
-                    <p>
-                        <Link to='register'>Register</Link>
-                    </p>
-                    <p>
-                        Or&nbsp;
-                        <a href={'http://' + config.api.hostname + '/social-login/github'}>
-                            log in with GitHub
-                        </a>.
-                    </p>
-                    <p>
-                        Or&nbsp;
-                        <a href={'http://' + config.api.hostname + '/social-login/facebook'}>
-                            log in with Facebook
-                        </a>.
-                    </p>
-                    <p>
-                        {/* Google only allows "localhost" as a non-public domain for callback URLs. */}
-                        Or&nbsp;
-                        <a href={'http://localhost/social-login/google'}>
-                            log in with Google
-                        </a>.
-                    </p>
-                </div>
-            );
-        }
+        style2 = {
+            'text-align' : 'center',
+            'font-size'  : '20px'
+        };
+
+        return (
+            <div>
+                <h1 style={style1}>{'Frontend Template'}</h1>
+                <h2 style={style2}>{'...sorry the name isn\'t better.'}</h2>
+            </div>
+        );
+
     }
 
 });

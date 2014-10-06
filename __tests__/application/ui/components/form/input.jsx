@@ -1,19 +1,12 @@
 /** @jsx React.DOM */
-/* globals describe, it */
+/* globals describe, it, beforeEach */
 /* jshint expr: true */
 'use strict';
 
-var _         = require('underscore');
-var chai      = require('chai');
+var expect    = require('chai').expect;
 var React     = require('react/addons');
 var sinon     = require('sinon');
-var sinonChai = require('sinon-chai');
 var TestUtils = React.addons.TestUtils;
-
-var expect = chai.expect;
-
-chai.should();
-chai.use(sinonChai);
 
 describe('Application\\UI\\Components\\Form\\Input', function() {
     var Input = require('../../../../../application/ui/components/form/input.jsx');

@@ -87,6 +87,11 @@ module.exports = React.createClass({
                         </li>
                         <li className='sg-nav__menu-item'>
                             <a className='sg-nav__menu-link'>
+                                {'Typography'}
+                            </a>
+                        </li>
+                        <li className='sg-nav__menu-item'>
+                            <a className='sg-nav__menu-link'>
                                 {'Buttons'}
                             </a>
                         </li>

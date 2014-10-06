@@ -14,8 +14,8 @@ gulp.task('preprocess:app', function() {
 
 gulp.task('preprocess:test', function() {
     return gulp.src([
-            './__react-tests__/index.html',
-            './__react-tests__/favicon.png',
+            './__tests__/index.html',
+            './__tests__/favicon.png',
             './node_modules/mocha/mocha.css',
             './node_modules/mocha/mocha.js'
         ])
