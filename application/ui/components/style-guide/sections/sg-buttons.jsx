@@ -6,7 +6,7 @@ var Button = require('../../buttons/button');
 
 module.exports = React.createClass({
 
-    displayName : 'StyleGuideButtonsSection',
+    displayName : 'Buttons',
 
     render : function()
     {

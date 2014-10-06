@@ -27,9 +27,14 @@ var getEnvironmentDependentRoutes = function()
     var routes = [];
 
     if (__ENVIRONMENT__ !== 'production') {
-        routes.push(
-            Route(props('style-guide', '/style-guide', StyleGuidePage, {key : 'style-guide'}))
-        );
+        routes = routes.concat([
+            Route(
+                props('style-guide', '/style-guide', StyleGuidePage, {key : 'style-guide'})
+            ),
+            Route(
+                props('style-guide-section', '/style-guide/:section', StyleGuidePage, {key : 'style-guide-section'})
+            )
+        ]);
     }
 
     return routes;

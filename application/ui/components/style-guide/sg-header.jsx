@@ -1,11 +1,36 @@
 /** @jsx React.DOM */
 'use strict';
 
-var React = require('react');
+var React          = require('react');
+var FluxChildMixin = require('fluxxor').FluxChildMixin(React);
+var SGNavItem      = require('./sg-nav-item');
 
 module.exports = React.createClass({
 
     displayName : 'StyleGuideHeader',
+
+    mixins : [FluxChildMixin],
+
+    propTypes : {
+        // Component constructors for sections
+        activeSection : React.PropTypes.string,
+        sections      : React.PropTypes.arrayOf(React.PropTypes.func)
+    },
+
+    renderNavItems : function()
+    {
+        var activeSection = this.props.activeSection;
+
+        return this.props.sections.map(function(Page) {
+            return (
+                <SGNavItem
+                    displayName = {Page.displayName}
+                    key         = {Page.displayName}
+                    active      = {activeSection === Page.displayName}
+                />
+            );
+        });
+    },
 
     render : function()
     {
@@ -80,26 +105,8 @@ module.exports = React.createClass({
                 </h1>
                 <nav className='sg-nav'>
                     <menu className='sg-nav__menu'>
-                        <li className='sg-nav__menu-item'>
-                            <a className='sg-nav__menu-link sg-nav__menu-link--is-current'>
-                                {'Kitchen Sink'}
-                            </a>
-                        </li>
-                        <li className='sg-nav__menu-item'>
-                            <a className='sg-nav__menu-link'>
-                                {'Typography'}
-                            </a>
-                        </li>
-                        <li className='sg-nav__menu-item'>
-                            <a className='sg-nav__menu-link'>
-                                {'Buttons'}
-                            </a>
-                        </li>
-                        <li className='sg-nav__menu-item'>
-                            <a className='sg-nav__menu-link'>
-                                {'Icons'}
-                            </a>
-                        </li>
+                    <SGNavItem active={this.props.activeSection === 'all'} displayName='all'>Kitchen Sink</SGNavItem>
+                        {this.renderNavItems()}
                     </menu>
                 </nav>
             </div>

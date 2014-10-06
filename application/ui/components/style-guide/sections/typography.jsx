@@ -5,7 +5,7 @@ var React  = require('react');
 
 module.exports = React.createClass({
 
-    displayName : 'TypographySection',
+    displayName : 'Typography',
 
     render : function()
     {

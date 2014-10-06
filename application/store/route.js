@@ -4,7 +4,7 @@ var constants = require('../constants');
 var Fluxxor   = require('fluxxor');
 var Router    = require('react-router');
 
-var RoutingStore = Fluxxor.createStore({
+var RouteStore = Fluxxor.createStore({
     initialize: function()
     {
         this.bindActions(
@@ -36,4 +36,4 @@ var RoutingStore = Fluxxor.createStore({
     }
 });
 
-module.exports = RoutingStore;
+module.exports = RouteStore;
