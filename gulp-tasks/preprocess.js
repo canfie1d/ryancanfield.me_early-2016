@@ -1,13 +1,16 @@
 'use strict';
 
-var gulp    = require('gulp');
-var connect = require('gulp-connect');
+var connect    = require('gulp-connect');
+var gulp       = require('gulp');
+var gutil      = require('gulp-util');
+var preprocess = require('gulp-preprocess');
 
 gulp.task('preprocess:app', function() {
     return gulp.src([
             './application/index.html',
             './application/.htaccess'
         ])
+        .pipe(preprocess({context : {ENVIRONMENT : gutil.env.env}}))
         .pipe(gulp.dest('./build'))
         .pipe(connect.reload());
 });
