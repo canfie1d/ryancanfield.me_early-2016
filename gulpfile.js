@@ -32,10 +32,10 @@ if (gutil.env.backend) {
 gulp.task('default', ['build', 'connect:app']);
 
 // Build app and don't run server or watch for changes
-gulp.task('build', ['preprocess:app', 'media', 'sass', 'browserify:app']);
+gulp.task('build', ['preprocess:app', 'concat', 'media', 'sass', 'browserify:app']);
 
 // Build app, run server, and watch for changes
-gulp.task('watch', ['preprocess:app', 'media', 'sass', 'watchify:app', 'connect:app', 'delta:app']);
+gulp.task('watch', ['preprocess:app', 'concat', 'media', 'sass', 'watchify:app', 'connect:app', 'delta:app']);
 
 // Build tests, run server, and watch for changes
 gulp.task('test', ['preprocess:test', 'watchify:test', 'connect:test', 'delta:test']);

@@ -4,13 +4,13 @@ var gulp    = require('gulp');
 var concat  = require('gulp-concat');
 var connect = require('gulp-connect');
 
-gulp.task('concat', function() {
+gulp.task('concat', ['concat:ci']);
+
+gulp.task('concat:ci', function() {
     return gulp.src([
-            // Add file paths here to include in vendor header.
-            // This task is has to be added back into the gulpfile runlist for 'build'
-            // and the vendor-header line in index.js needs to be uncommented
+            './node_modules/disyntegration/phantom-shims/click.js',
+            './node_modules/es5-shim/es5-shim.js'
         ])
-        .pipe(concat('vendor-header.js'))
-        .pipe(gulp.dest('./build/js'))
-        .pipe(connect.reload());
+        .pipe(concat('ci-shims.js'))
+        .pipe(gulp.dest('./build/js'));
 });
