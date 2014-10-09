@@ -1,7 +1,7 @@
-'use strict';
 /* global __ENVIRONMENT__ */
+'use strict';
 
-// __ENVIRONMENT__ is replaced in build or set by Jest
+// __ENVIRONMENT__ is replaced by gulp during build
 switch(__ENVIRONMENT__)
 {
     case 'ci':
