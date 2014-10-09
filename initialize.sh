@@ -70,6 +70,7 @@ if [[ $confirm =~ ^[yY] ]]; then
 
   echo "Updating config files"
   sed -i "" s/%DEV_API_HOST%/$dev_api_host/g "./application/config/development.js"
+  sed -i "" s/%DEV_API_HOST%/$dev_api_host/g "./__tests__/globals.js"
   sed -i "" s/%QA_API_HOST%/$qa_api_host/g "./application/config/qa.js"
   sed -i "" s/%PRODUCTION_API_HOST%/$production_api_host/g "./application/config/production.js"
 
