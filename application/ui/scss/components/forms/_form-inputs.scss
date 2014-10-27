@@ -92,14 +92,16 @@ $form-placeholder-font-color : $gray-theme--400 !default;
 
 // select inputs
 .input--select__arrow {
-    position   : absolute;
-    top        : 50%;
-    right      : rem-calc(15);
-    margin-top : rem-calc(-9);
+    position    : absolute;
+    top         : 50%;
+    right       : rem-calc(15);
+    margin-top  : rem-calc(-4.5);
+    line-height : 0;
 
     .input--select__arrow-icon {
         width  : rem-calc(9);
         height : rem-calc(9);
+        fill : $gray-theme--500;
     }
 
 }
