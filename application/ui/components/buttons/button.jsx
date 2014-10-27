@@ -24,7 +24,7 @@ module.exports = React.createClass({
             'primary',
             'secondary',
             'tertiary',
-            'plain'
+            'inherit'
         ]),
         status : React.PropTypes.oneOf([
             'warning',
@@ -65,7 +65,7 @@ module.exports = React.createClass({
             'button--primary'      : this.props.color === 'primary',
             'button--secondary'    : this.props.color === 'secondary',
             'button--tertiary'     : this.props.color === 'tertiary',
-            'button--plain'        : this.props.color === 'plain',
+            'button--inherit'      : this.props.color === 'inherit',
             'button--warning'      : this.props.status === 'warning',
             'button--warning-alt'  : this.props.status === 'warning-alt',
             'button--positive'     : this.props.status === 'positive',

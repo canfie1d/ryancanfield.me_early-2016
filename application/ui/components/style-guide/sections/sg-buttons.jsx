@@ -138,9 +138,9 @@ module.exports = React.createClass({
                         {'Tertiary Color Button'}
                     </a>
                 </Button>
-                <Button color='plain'>
+                <Button color='inherit'>
                     <a>
-                        {'Plain Button'}
+                        {'Inherit Button'}
                     </a>
                 </Button>
                 <h2 className='sg-h2'>{'Status Buttons'}</h2>

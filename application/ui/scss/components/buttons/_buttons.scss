@@ -120,16 +120,17 @@ $button-disabled-opacity : .3 !default;
 
 }
 
-// plain button modifier
-.button--plain {
-    background : $white;
-    border     : 1px solid $white;
+// button that inherits the look
+// of the surrounding UI
+.button--inherit {
+    background : transparent;
+    border     : 1px solid transparent;
     box-shadow : none;
 
     &:hover,
     &:focus {
         text-shadow : -1px -1px 1px rgba($white, .5);
-        background  : $gray-theme--100;
+        background  : $gray-theme--050;
 
         > * {
             text-shadow : -1px -1px 1px rgba($white, .5);
@@ -243,7 +244,7 @@ $button-disabled-opacity : .3 !default;
 
 // status modifiers
 .button--positive {
-    @extend .button--plain;
+    @extend .button--inherit;
     text-shadow : none;
 
     > * {
@@ -264,7 +265,7 @@ $button-disabled-opacity : .3 !default;
 }
 
 .button--warning {
-    @extend .button--plain;
+    @extend .button--inherit;
     text-shadow : none;
 
     > * {
@@ -285,7 +286,7 @@ $button-disabled-opacity : .3 !default;
 }
 
 .button--warning-alt {
-    @extend .button--plain;
+    @extend .button--inherit;
 
     > * {
         color : $status--error;
