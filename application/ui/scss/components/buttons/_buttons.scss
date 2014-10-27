@@ -28,11 +28,13 @@ $button-default : $button-medium !default;
 $button-max-width-factor : 10;
 
 // button font size vars
-$button-font-size-tiny    : rem-calc(12)             !default;
-$button-font-size-small   : rem-calc(14)             !default;
-$button-font-size-medium  : rem-calc(16)             !default;
-$button-font-size-large   : rem-calc(18)             !default;
-$button-font-size-default : $button-font-size-medium !default;
+$button-font-size-tiny    : rem-calc(12)                   !default;
+$button-font-size-small   : rem-calc(14)                   !default;
+$button-font-size-medium  : rem-calc(16)                   !default;
+$button-font-size-large   : rem-calc(18)                   !default;
+$button-font-size-default : $button-font-size-medium       !default;
+$button-text-shadow       : 1px 1px 0px rgba($black, .15)  !default;
+$button-hover-text-shadow : -1px -1px 1px rgba($white, .5) !default;
 
 // button display and spacing vars
 $button-display       : inline-block !default;
@@ -102,7 +104,7 @@ $button-disabled-opacity : .3 !default;
         line-height            : 1.5em;
         font-family            : $button-font;
         color                  : $button-color;
-        text-shadow            : 1px 1px 0px rgba($black, .15);
+        text-shadow            : $button-text-shadow;
         background             : transparent;
         border                 : 0;
         border-width           : 0;
@@ -129,7 +131,7 @@ $button-disabled-opacity : .3 !default;
 
     &:hover,
     &:focus {
-        text-shadow : -1px -1px 1px rgba($white, .5);
+        text-shadow : $button-hover-text-shadow;
         background  : $gray-theme--050;
 
         > * {
@@ -315,17 +317,17 @@ $button-disabled-opacity : .3 !default;
 // adjust icon sizes
 .button--split-right,
 .button--split-left {
-    position      : relative;
+    position : relative;
 
     // icon element that will split the button
     .button--split__icon {
-        position    : absolute;
-        top         : 0;
-        bottom      : 0;
-        width       : rem-calc(50);
-        height      : auto;
-        fill        : $white;
-        filter      : drop-shadow( 1px 1px 0px rgba($black, .25) );
+        position : absolute;
+        top      : 0;
+        bottom   : 0;
+        width    : rem-calc(50);
+        height   : auto;
+        fill     : $white;
+        filter   : drop-shadow( 1px 1px 0px rgba($black, .25) );
 
         // position svg element within
         // icon element
@@ -400,7 +402,7 @@ $button-disabled-opacity : .3 !default;
     }
 
     .button--split__icon {
-        right       : 0;
+        right : 0;
     }
 
     // size adustments to pad out
@@ -431,7 +433,7 @@ $button-disabled-opacity : .3 !default;
     }
 
     .button--split__icon {
-        left         : 0;
+        left : 0;
     }
 
     // size adustments to pad out

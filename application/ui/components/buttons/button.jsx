@@ -56,23 +56,23 @@ module.exports = React.createClass({
     render : function()
     {
         var classes = cx({
-            'button'               : true,
-            'button--tiny'         : this.props.size === 'tiny',
-            'button--small'        : this.props.size === 'small',
-            'button--medium'       : this.props.size === 'medium',
-            'button--large'        : this.props.size === 'large',
-            'button--auto'         : this.props.display === 'auto',
-            'button--primary'      : this.props.color === 'primary',
-            'button--secondary'    : this.props.color === 'secondary',
-            'button--tertiary'     : this.props.color === 'tertiary',
-            'button--inherit'      : this.props.color === 'inherit',
-            'button--warning'      : this.props.status === 'warning',
-            'button--warning-alt'  : this.props.status === 'warning-alt',
-            'button--positive'     : this.props.status === 'positive',
-            'button--split-left'   : this.props.split === 'left',
-            'button--split-right'  : this.props.split === 'right',
-            'button--block'        : this.props.block === true,
-            'button-disabled'      : this.props.disabled === true
+            'button'              : true,
+            'button--tiny'        : this.props.size === 'tiny',
+            'button--small'       : this.props.size === 'small',
+            'button--medium'      : this.props.size === 'medium',
+            'button--large'       : this.props.size === 'large',
+            'button--auto'        : this.props.display === 'auto',
+            'button--primary'     : this.props.color === 'primary',
+            'button--secondary'   : this.props.color === 'secondary',
+            'button--tertiary'    : this.props.color === 'tertiary',
+            'button--inherit'     : this.props.color === 'inherit',
+            'button--warning'     : this.props.status === 'warning',
+            'button--warning-alt' : this.props.status === 'warning-alt',
+            'button--positive'    : this.props.status === 'positive',
+            'button--split-left'  : this.props.split === 'left',
+            'button--split-right' : this.props.split === 'right',
+            'button--block'       : this.props.block === true,
+            'button-disabled'     : this.props.disabled === true
         });
 
         return this.transferPropsTo(
