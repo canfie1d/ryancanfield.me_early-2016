@@ -6,9 +6,10 @@ var React     = require('react');
 var FluxMixin = require('fluxxor').FluxMixin(React);
 var SGHeader  = require('../components/style-guide/sg-header');
 
-var TypographySection = require('../components/style-guide/sections/sg-typography');
-var ButtonSection     = require('../components/style-guide/sections/sg-buttons');
-var IconSection       = require('../components/style-guide/sections/sg-icons');
+var TypographySection   = require('../components/style-guide/sections/sg-typography');
+var ButtonSection       = require('../components/style-guide/sections/sg-buttons');
+var IconSection         = require('../components/style-guide/sections/sg-icons');
+var FormElementsSection = require('../components/style-guide/sections/sg-form-elements');
 
 module.exports = React.createClass({
 
@@ -34,7 +35,8 @@ module.exports = React.createClass({
         return [
             TypographySection,
             ButtonSection,
-            IconSection
+            IconSection,
+            FormElementsSection
         ];
     },
 

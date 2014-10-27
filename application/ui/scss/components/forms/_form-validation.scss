@@ -1,52 +1,141 @@
-// variables
-$input-error-message-padding        : rem-calc(6 9 9)   !default;
-$input-error-message-top            : -1px;
-$input-error-message-font-size      : rem-calc(12)      !default;
-$input-error-message-font-weight    : normal            !default;
-$input-error-message-font-style     : italic            !default;
-$input-error-message-font-color     : $white            !default;
-$input-error-message-font-color-alt : shade($white, 5%) !default;
+// *******************************************
+// *******************************************
 
-//
-// FORM INPUT ERROR MIXIN
-//
-@mixin form-error-color($color:$alert-color) {
-    border-color     : $color;
-    background-color : rgba($color, .1);
+    // Form validation components
 
-    // Go back to normal on focus
-    &:focus {
-        background   : $input-focus-bg-color;
-        border-color : $input-focus-border-color;
-    }
+// *******************************************
+// *******************************************
+
+// <div className='validation [validation--warning validation--success]'>
+//     <label className='label'>[Label]</label>
+//     <div className='input-wrap'>
+//         <input className='input' />
+//     </div>
+//     <span className='validation__msg [validation__msg--warning validation__msg--success]'>
+//         [Messages]
+//     </span>
+// </div>
+
+// container element
+.validation {
+    position : relative;
 }
 
-//
-// FORM ERROR LABEL MIXIN
-//
-@mixin form-label-error-color($color:$alert-color) {
-    color: $color;
+// let validation container handle bottom margin
+// see _form-inputs.scss
+.validation--visible {
+    margin-bottom : rem-calc(24);
 }
 
-//
-// FORM ERROR MESSAGE MIXIN
-//
-@mixin form-error-message($bg:$alert-color) {
+// message elements
+.validation__msg {
+    position      : relative;
     display       : block;
-    padding       : $input-error-message-padding;
-    margin-top    : $input-error-message-top;
-    margin-bottom : $form-spacing;
-    font-size     : $input-error-message-font-size;
-    font-weight   : $input-error-message-font-weight;
-    font-style    : $input-error-message-font-style;
-    background    : $bg;
+    margin        : rem-calc(6 0);
+    padding       : rem-calc(9);
+    font-family   : $sans-bold;
+    font-size     : rem-calc(13);
+    color         : $white;
+    text-shadow   : 1px 1px 0px rgba($black, .1);
+    background    : $status--warning;
+    border-radius : 2px;
 }
 
-// Label Styles
-label {
+// status modifiers
+.validation--error {
 
-    .label--error {
-        @include form-label-error-color;
+    .label {
+        color : $status--error;
+    }
+
+    .input,
+    .textarea {
+        background-color : rgba($status--error, .1);
+        border-color     : $status--error;
+    }
+
+
+    .validation__msg {
+        background : $status--error;
+    }
+
+}
+
+.validation--warning {
+
+    .label {
+        color : $status--warning;
+    }
+
+    .input,
+    .textarea {
+        background-color : rgba($status--warning, .05);
+        border-color     : $status--warning;
+    }
+
+    .validation__msg {
+        background : $status--warning;
+    }
+
+}
+
+.validation--success {
+
+    .label {
+        color : $status--success;
+    }
+
+    .input,
+    .textarea {
+        background-color : rgba($status--success, .05);
+        border-color     : $status--success;
+    }
+
+    .validation__msg {
+        background : $status--success;
+    }
+
+}
+
+// display modifiers
+// positioned over bottom right
+// of triggered input field
+.validation--positioned {
+
+    .validation__msgs {
+        position     : absolute;
+        top          : 100%;
+        right        : 0;
+        width        : auto;
+        margin-top   : rem-calc(-12);
+        margin-right : rem-calc(6);
+    }
+
+    .validation__msg {
+        box-shadow: 2px 2px 0px rgba($black, .15);
+
+        // arrow
+        &::before {
+            content             : '';
+            position            : absolute;
+            right               : rem-calc(15);
+            bottom              : 100%;
+            width               : 0;
+            height              : 0;
+            border              : solid transparent;
+            border-color        : rgba($status--warning, 0);
+            border-bottom-color : $status--warning;
+            border-width        : 10px;
+        }
+
+        &.validation__msg--error::before {
+            border-bottom-color : $status--error;
+        }
+
+        &.validation__msg--success::before {
+            border-bottom-color : $status--success;
+        }
+
     }
 
 }
