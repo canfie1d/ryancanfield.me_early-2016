@@ -6,75 +6,12 @@
 // *******************************************
 // *******************************************
 
-// form vars
-$form-font                           : $sans-reg;
-$form-font-color                     : $gray--9;
-$form-placeholder-font-color         : rgba($gray--7, .5);
-
 // wraps individual inputs
 // sets up positioning context for field validation
 // see forms/_vadiations.scss
 
-// <div class="form__input">
-// 	<input type="text" placeholder="Name" />
+// <div class="input-wrap">
+//  <input class="input" type="text" placeholder="Name" />
 // </div>
 
-.form__input {
-	margin               : 0 0 rem-calc(24);
-	position             : relative;
 
-	input,
-	textarea {
-		font-family      : $form-font;
-		color            : $form-font-color;
-        margin           : 0;
-        padding          : rem-calc(0 10);
-	}
-
-	textarea {
-		min-height       : rem-calc(150);
-        max-width        : 100%;
-        padding          : rem-calc(10);
-	}
-
-}
-
-@include placeholder {
-    font-family          : $form-font;
-    color                : $form-placeholder-font-color;
-    opacity              : 1;
-}
-
-input:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
-    opacity              : .5;
-}
-
-// hide ms validation x
-
-::-ms-clear {
-    display              : none;
-}
-
-::-ms-reveal {
-    display              : none;
-}
-
-// large inputs
-
-input.input--large {
-    padding              : rem-calc(0 10) !important;
-    font-size            : rem-calc(18) !important;
-}
-
-textarea.input--large {
-    font-size            : rem-calc(18) !important;
-}
-
-
-
-// inputs with rounded corners
-
-.inputRounded {
-	border-radius        : 2px !important;
-}
