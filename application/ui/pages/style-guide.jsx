@@ -6,7 +6,7 @@ var React     = require('react');
 var FluxMixin = require('fluxxor').FluxMixin(React);
 var SGHeader  = require('../components/style-guide/sg-header');
 
-var TypographySection = require('../components/style-guide/sections/typography');
+var TypographySection = require('../components/style-guide/sections/sg-typography');
 var ButtonSection     = require('../components/style-guide/sections/sg-buttons');
 var IconSection       = require('../components/style-guide/sections/sg-icons');
 
