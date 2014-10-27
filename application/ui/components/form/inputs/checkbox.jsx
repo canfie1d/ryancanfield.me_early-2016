@@ -1,8 +1,8 @@
 /** @jsx React.DOM */
 'use strict';
 
-var React           = require('react');
-var Label           = require('../label');
+var React = require('react');
+var Label = require('../label');
 
 module.exports = React.createClass({
 
