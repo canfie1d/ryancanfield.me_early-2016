@@ -56,7 +56,7 @@
   },
   "dependencies": {
     "fluxxor"         : "1.3.2",
-    "react"           : "0.11.1",
+    "react"           : "0.11.2",
     "react-router"    : "0.7.0",
     "store"           : "1.3.16",
     "synapse-common"  : "0.1.1",
