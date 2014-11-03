@@ -4,12 +4,13 @@
 var React           = require('react');
 var FluxChildMixin  = require('fluxxor').FluxChildMixin(React);
 var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
+var navigation      = require('react-router').Navigation;
 
 module.exports = React.createClass({
 
     displayName : 'LoggedInHeaderSection',
 
-    mixins : [FluxChildMixin, StoreWatchMixin('UserStore')],
+    mixins : [navigation, FluxChildMixin, StoreWatchMixin('UserStore')],
 
     getStateFromFlux : function()
     {
@@ -28,6 +29,8 @@ module.exports = React.createClass({
         event.preventDefault();
 
         this.getFlux().actions.auth.logout();
+
+        this.transitionTo('home');
     },
 
     render : function() {

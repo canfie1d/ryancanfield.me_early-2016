@@ -57,7 +57,7 @@
   "dependencies": {
     "fluxxor"         : "1.3.2",
     "react"           : "0.11.2",
-    "react-router"    : "0.7.0",
+    "react-router"    : "0.10.2",
     "store"           : "1.3.16",
     "synapse-common"  : "0.1.1",
     "synfrastructure" : "git://github.com/synapsestudios/synfrastructure.git#master",
