@@ -9,6 +9,10 @@ var minifyCss    = require('gulp-minify-css');
 var connect      = require('gulp-connect');
 var autoPrefixer = require('gulp-autoprefixer');
 
+var includePaths = [
+    './node_modules/synfrastructure/scss'
+];
+
 gulp.task('sass', function() {
     var isProduction;
 
@@ -26,9 +30,7 @@ gulp.task('sass', function() {
             sourceComments : isProduction ? 'none' : 'none',
             sourceMap      : 'sass',
             outputStyle    : 'compressed',
-            includePaths   : [
-                // Add additional files to be included here
-            ]
+            includePaths   : [includePaths]
         }))
         .pipe(autoPrefixer({
             cascade : true,
