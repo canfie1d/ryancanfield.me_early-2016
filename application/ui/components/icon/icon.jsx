@@ -89,7 +89,7 @@ module.exports = React.createClass({
             modifierClasses
         ].join(' ');
 
-        return this.transferPropsTo(
+        return (
             <span className={classes}>
                 <Component />
             </span>
