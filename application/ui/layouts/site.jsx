@@ -2,6 +2,7 @@
 'use strict';
 
 var React           = require('react');
+var RouteHandler    = require('react-router').RouteHandler;
 var LoggedIn        = require('./header/user-logged-in.jsx');
 var LoggedOut       = require('./header/user-logged-out.jsx');
 var FluxMixin       = require('fluxxor').FluxMixin(React);
@@ -29,7 +30,7 @@ module.exports = React.createClass({
                 <div className='l--user'>
                     <Component user={this.state.user} />
                 </div>
-                {this.props.activeRouteHandler()}
+                <RouteHandler />
             </div>
         );
     }

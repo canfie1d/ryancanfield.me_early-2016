@@ -2,7 +2,7 @@
 'use strict';
 
 var React           = require('react');
-var FluxChildMixin  = require('fluxxor').FluxChildMixin(React);
+var FluxMixin       = require('fluxxor').FluxMixin(React);
 var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
 var navigation      = require('react-router').Navigation;
 
@@ -10,7 +10,7 @@ module.exports = React.createClass({
 
     displayName : 'LoggedInHeaderSection',
 
-    mixins : [navigation, FluxChildMixin, StoreWatchMixin('UserStore')],
+    mixins : [navigation, FluxMixin, StoreWatchMixin('UserStore')],
 
     getStateFromFlux : function()
     {
