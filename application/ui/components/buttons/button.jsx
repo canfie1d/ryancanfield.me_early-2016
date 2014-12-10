@@ -75,8 +75,6 @@ module.exports = React.createClass({
             'button-disabled'     : this.props.disabled === true
         });
 
-        return this.transferPropsTo(
-            <span className={classes}>{this.props.children}</span>
-        );
+        return <span className={classes}>{this.props.children}</span>;
     }
 });

@@ -70,7 +70,7 @@ module.exports = React.createClass({
 
     render : function()
     {
-        return this.transferPropsTo(
+        return (
             <InputValidation
                 validation = {this.props.validation}
                 display    = {this.props.validationDisplay} >

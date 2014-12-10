@@ -21,7 +21,7 @@ module.exports = React.createClass({
 
     render : function()
     {
-        return this.transferPropsTo(
+        return (
             <label
                 className = 'label'
                 htmlFor   = {this.props.htmlFor} >

@@ -2,10 +2,13 @@
 'use strict';
 
 var React  = require('react');
-var routes = require('./routes');
+var router = require('./router');
+var flux   = require('./flux');
 
 window.React = React;
 
 React.initializeTouchEvents(true);
 
-React.renderComponent(routes, window.document.body);
+router.run(function (Handler, state) {
+    React.render(React.createElement(Handler, {flux : flux}), window.document.body);
+});

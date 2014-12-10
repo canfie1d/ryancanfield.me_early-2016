@@ -74,7 +74,7 @@ module.exports = React.createClass({
             'input--' + this.props.type
         ].join(' ');
 
-        return this.transferPropsTo(
+        return (
             <InputValidation
                 validation = {this.props.validation}
                 display    = {this.props.validationDisplay} >

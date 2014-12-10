@@ -2,9 +2,10 @@
 /* global document */
 'use strict';
 
-var React     = require('react');
-var FluxMixin = require('fluxxor').FluxMixin(React);
-var SGHeader  = require('../components/style-guide/sg-header');
+var React            = require('react');
+var RouterStateMixin = require('react-router').State;
+var FluxMixin        = require('fluxxor').FluxMixin(React);
+var SGHeader         = require('../components/style-guide/sg-header');
 
 var TypographySection   = require('../components/style-guide/sections/sg-typography');
 var ButtonSection       = require('../components/style-guide/sections/sg-buttons');
@@ -15,7 +16,7 @@ module.exports = React.createClass({
 
     displayName : 'StyleGuide',
 
-    mixins : [FluxMixin],
+    mixins : [FluxMixin, RouterStateMixin],
 
     componentWillMount: function()
     {
@@ -42,7 +43,7 @@ module.exports = React.createClass({
 
     renderSections : function()
     {
-        var section = this.props.params.section;
+        var section = this.getParams().section;
 
         return this.getComponentConstructors().map(function(Page) {
             if (section === 'all' || section === Page.displayName) {
@@ -55,7 +56,7 @@ module.exports = React.createClass({
     {
         return (
             <div className='sg'>
-                <SGHeader sections={this.getComponentConstructors()} activeSection={this.props.params.section}/>
+                <SGHeader sections={this.getComponentConstructors()} activeSection={this.getParams().section}/>
                 <div className='sg-content'>
                     <div className='sg-content__header'>
                         <h1 className='sg-content__title'>{'Style Guide'}</h1>

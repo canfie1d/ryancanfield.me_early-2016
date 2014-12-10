@@ -29,8 +29,15 @@ module.exports = React.createClass({
 
     render : function()
     {
-        return this.transferPropsTo(
-            <input onChange={this.onChange} value={this.props.value} />
-        );
+        return <input
+            onChange    = {this.onChange}
+            value       = {this.props.value}
+            type        = {this.props.type}
+            checked     = {this.props.checked}
+            disabled    = {this.props.disabled}
+            placeholder = {this.props.placeholder}
+            readonly    = {this.props.readonly}
+            required    = {this.props.required}
+        />;
     }
 });

@@ -50,7 +50,7 @@ module.exports = React.createClass({
 
     render : function()
     {
-        var component,
+        var Component,
             modifierClasses,
             classes,
             thisIcon      = this.props.icon,
@@ -58,10 +58,10 @@ module.exports = React.createClass({
 
         switch (thisIcon) {
             case 'caret':
-                component = Caret;
+                Component = Caret;
                 break;
             case 'navicon':
-                component = Navicon;
+                Component = Navicon;
                 break;
         }
 
@@ -89,9 +89,9 @@ module.exports = React.createClass({
             modifierClasses
         ].join(' ');
 
-        return this.transferPropsTo(
+        return (
             <span className={classes}>
-                <component />
+                <Component />
             </span>
         );
     }

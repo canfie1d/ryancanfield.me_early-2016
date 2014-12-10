@@ -1,14 +1,14 @@
 /** @jsx React.DOM */
 'use strict';
 
-var React          = require('react');
-var FluxChildMixin = require('fluxxor').FluxChildMixin(React);
-var classSet       = require('react/lib/cx');
+var React     = require('react');
+var FluxMixin = require('fluxxor').FluxMixin(React);
+var classSet  = require('react/lib/cx');
 
 module.exports = React.createClass({
     displayName : 'StyleGuideNavItem',
 
-    mixins : [FluxChildMixin],
+    mixins : [FluxMixin],
 
     propTypes : {
         active      : React.PropTypes.bool,
