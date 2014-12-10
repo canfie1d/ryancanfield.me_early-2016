@@ -12,15 +12,15 @@ module.exports = React.createClass({
             style2;
 
         style1 = {
-            'text-align'  : 'center',
-            'margin-top'  : '200px',
-            'font-size'   : '80px',
-            'font-weight' : 'bold'
+            'textAlign'  : 'center',
+            'marginTop'  : '200px',
+            'fontSize'   : '80px',
+            'fontWeight' : 'bold'
         };
 
         style2 = {
-            'text-align' : 'center',
-            'font-size'  : '20px'
+            'textAlign' : 'center',
+            'fontSize'  : '20px'
         };
 
         return (
