@@ -23,11 +23,11 @@ var UserClient = HttpGateway.extend({
         this.token = tokenData;
     },
 
-    _getRequestOptions : function(method, path)
+    getRequestOptions : function(method, path)
     {
         var options, token;
 
-        options = HttpGateway.prototype._getRequestOptions.call(this, method, path);
+        options = HttpGateway.prototype.getRequestOptions.call(this, method, path);
 
         token = this.token || store.get('token');
 
