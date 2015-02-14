@@ -1,9 +1,9 @@
 /** @jsx React.DOM */
-/* globals describe, it, beforeEach */
-/* jshint expr: true */
+/* globals describe, it, beforeEach, sinon */
+/* jshint expr: true, globalstrict: true */
 'use strict';
 
-var expect    = chai.expect;
+var expect    = require('chai').expect;
 var React     = require('react/addons');
 var TestUtils = React.addons.TestUtils;
 

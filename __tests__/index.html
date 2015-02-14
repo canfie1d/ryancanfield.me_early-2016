@@ -2,26 +2,24 @@
 <head>
     <meta charset="utf-8">
     <title>React DOM Tests</title>
-    <link rel="stylesheet" type="text/css" href="mocha.css" />
-    <link rel="icon" id="favicon" type="image/png" href="favicon.png?<!-- @echo TIMESTAMP -->" />
-    <script src="mocha.js"></script>
-    <script>mocha.setup('bdd')</script>
+    <link rel="icon" id="favicon" type="image/png" href="favicon.png?{% print(new Date().getTime()); %}" />
 </head>
 <body>
     <div id="mocha"></div>
 
-    <script src="tests.js"></script>
     <script src="favicon.js"></script>
+    <script src="mocha.js"></script>
+    <script src="sinon.js"></script>
     <script>
-        (function () {
-            mocha.run(function(failed) {
-                if (failed > 0) {
-                    favicon(failed);
-                } else {
-                    favicon();
-                }
-            });
+        (function() {
+            mocha.setup('bdd');
         })();
-    </script.
+    </script>
+    <script src="tests.js"></script>
+    <script>
+        (function() {
+            mocha.run(favicon);
+        })();
+    </script>
 </body>
 </html>

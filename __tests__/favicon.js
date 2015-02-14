@@ -23,7 +23,7 @@ function favicon(content) {
     image  = document.createElement('img');
     link   = document.getElementById('favicon');
 
-    if (canvas.getContext && content) {
+    if (canvas.getContext) {
         canvas.height = 16;
         canvas.width  = 16;
 
@@ -39,24 +39,26 @@ function favicon(content) {
         image.onload = function() {
             context.drawImage(this, 0, 0);
 
-            // Draw circle
-            context.beginPath();
-            context.lineWidth   = 1;
-            context.strokeStyle = '#330000';
-            context.rect(1, 1, settings.width, 10);
-            context.stroke();
+            // Draw rectangle
+            if (content) {
+                context.beginPath();
+                context.lineWidth   = 1;
+                context.strokeStyle = '#330000';
+                context.rect(1, 1, settings.width, 10);
+                context.stroke();
 
-            context.fillStyle = '#FF0000';
-            context.fill();
+                context.fillStyle = '#FF0000';
+                context.fill();
 
-            // Draw text
-            context.font      = settings.font;
-            context.fillStyle = 'white';
-            context.fillText(content, settings.offset, 10);
+                // Draw text
+                context.font      = settings.font;
+                context.fillStyle = 'white';
+                context.fillText(content, settings.offset, 10); 
+            }
 
             link.href = canvas.toDataURL('image/png');
         };
 
         image.src = 'favicon.png';
     }
-};
+}

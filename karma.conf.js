@@ -8,13 +8,13 @@ module.exports = function(config) {
     files : [
         // need to figure out how to get webpack to take a glob w/o duplicating
         // stuff everywhere
-        '__tests__/tests.js'
+        '__tests__/index.js'
     ],
 
     exclude : [],
 
     preprocessors : {
-        '__tests__/tests.js': ['webpack', 'sourcemap']
+        '__tests__/index.js': ['webpack', 'sourcemap']
     },
 
     webpack: {
@@ -22,8 +22,17 @@ module.exports = function(config) {
         module : {
             loaders : [
                 {
+                    test   : /\.(ico|jpg|png)$/,
+                    loader : 'file-loader',
+                    query  : {name : '[path][name].[ext]?[hash]'}
+                },
+                {
                     test   : /\.jsx$/,
                     loader : 'jsx?insertPragma=React.DOM'
+                },
+                {
+                    test   : /\.css$/,
+                    loader : 'style!css'
                 }
             ]
         },
