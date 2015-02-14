@@ -62,9 +62,9 @@ module.exports = {
                 query  : {name : '[path][name].[ext]?[hash]'}
             },
             {
-                test    : /\.(js|jsx)$/,
+                test    : /\.jsx$/,
                 loaders : config.reactLoaders,
-                exclude : /node_modules/
+                exclude : __dirname + '/node_modules'
             },
             {
                 test   : /\.json$/,
