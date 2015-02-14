@@ -5,6 +5,8 @@ var React  = require('react');
 var router = require('./router');
 var flux   = require('./flux');
 
+require('./ui/scss/app');
+
 window.React = React;
 
 React.initializeTouchEvents(true);

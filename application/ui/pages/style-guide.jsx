@@ -12,6 +12,8 @@ var ButtonSection       = require('../components/style-guide/sections/sg-buttons
 var IconSection         = require('../components/style-guide/sections/sg-icons');
 var FormElementsSection = require('../components/style-guide/sections/sg-form-elements');
 
+require('../scss/style-guide');
+
 module.exports = React.createClass({
 
     displayName : 'StyleGuide',
