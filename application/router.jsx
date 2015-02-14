@@ -1,5 +1,4 @@
-/** @jsx React.DOM */
-/* jshint unused: false */
+/* jshint globalstrict: true, unused: false */
 /* globals __ENVIRONMENT__ */
 'use strict';
 

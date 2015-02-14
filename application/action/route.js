@@ -1,3 +1,4 @@
+/* jshint globalstrict: true */
 'use strict';
 
 var router = require('../router');

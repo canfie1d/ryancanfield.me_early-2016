@@ -1,3 +1,4 @@
+/* jshint globalstrict: true */
 /* global __BACKEND__ */
 'use strict';
 

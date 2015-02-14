@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+/* jshint globalstrict: true */
 /* global document */
 'use strict';
 
