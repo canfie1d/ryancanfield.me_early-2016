@@ -12,7 +12,7 @@ before_script:
   - npm install -g phantomjs
 script:
   - ./node_modules/.bin/jshint application
-  #- ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS
+  - ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS
 notifications:
   email: false
 #after_failure:

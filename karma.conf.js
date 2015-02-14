@@ -6,6 +6,7 @@ module.exports = function(config) {
     frameworks : ['mocha', 'sinon-chai'],
 
     files : [
+        './node_modules/es5-shim/es5-shim.js',
         // need to figure out how to get webpack to take a glob w/o duplicating
         // stuff everywhere
         '__tests__/index.js'
