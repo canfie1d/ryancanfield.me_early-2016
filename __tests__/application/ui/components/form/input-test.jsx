@@ -3,9 +3,8 @@
 /* jshint expr: true */
 'use strict';
 
-var expect    = require('chai').expect;
+var expect    = chai.expect;
 var React     = require('react/addons');
-var sinon     = require('sinon');
 var TestUtils = React.addons.TestUtils;
 
 describe('Application\\UI\\Components\\Form\\Input', function() {
