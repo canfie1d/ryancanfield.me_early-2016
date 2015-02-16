@@ -10,7 +10,7 @@ var server = new WebpackDevServer(webpack(config), {
     noInfo      : true
 });
 
-server.use(function pushStateHook(req, res, next) {
+server.use(function (req, res, next) {
     var ext = path.extname(req.url);
 
     if ((ext === '' || ext === '.html') && req.url !== '/') {

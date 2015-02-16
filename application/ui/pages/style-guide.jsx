@@ -20,19 +20,6 @@ module.exports = React.createClass({
 
     mixins : [FluxMixin, RouterStateMixin],
 
-    componentWillMount: function()
-    {
-        var doc               = document,
-            styleGuideCSSLink = doc.createElement('link');
-
-        styleGuideCSSLink.href  = '/css/style-guide.css';
-        styleGuideCSSLink.type  = 'text/css';
-        styleGuideCSSLink.rel   = 'stylesheet';
-        styleGuideCSSLink.media = 'screen';
-
-        doc.getElementsByTagName('head')[0].appendChild(styleGuideCSSLink);
-    },
-
     getComponentConstructors : function()
     {
         return [

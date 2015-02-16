@@ -7,7 +7,6 @@ var environment = (process.env.APP_ENV || 'development');
 var config      = {
     entry   : ['./application/bootstrap.js'],
     plugins : [
-        new ExtractTextPlugin('app.css', {allChunks : true}),
         new HtmlWebpack({template : './application/index.html'}),
         new Webpack.DefinePlugin({
             __BACKEND__     : process.env.BACKEND,
@@ -39,8 +38,9 @@ module.exports = {
     name   : 'browser bundle',
     entry  : config.entry,
     output : {
-        filename : 'app.js',
-        path     : __dirname + '/build'
+        filename   : 'app.js',
+        path       : __dirname + '/build',
+        publicPath : '/'
     },
     module : {
         preLoaders : [
@@ -72,10 +72,7 @@ module.exports = {
             },
             {
                 test   : /\.scss$/,
-                loader : ExtractTextPlugin.extract(
-                    'style-loader',
-                    'css-loader!sass-loader' + config.sassOptions
-                )
+                loader : 'style-loader!css-loader!sass-loader' + config.sassOptions
             }
         ]
     },
