@@ -1,7 +1,6 @@
-var Webpack           = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-var HtmlWebpack       = require('html-webpack-plugin');
-var WebpackError      = require('webpack-error-notification');
+var Webpack      = require('webpack');
+var HtmlWebpack  = require('html-webpack-plugin');
+var WebpackError = require('webpack-error-notification');
 
 var environment = 'development';
 var config      = {
@@ -11,7 +10,6 @@ var config      = {
         './tests.js'
     ],
     plugins : [
-        new ExtractTextPlugin('app.css'),
         new HtmlWebpack({template : './index.html'}),
         new Webpack.DefinePlugin({
             __BACKEND__     : process.env.BACKEND,
@@ -20,19 +18,16 @@ var config      = {
         new Webpack.HotModuleReplacementPlugin(),
         new WebpackError(process.platform)
     ],
-    reactLoaders : ['react-hot', 'jsx?insertPragma=React.DOM'],
-    sassOptions  : (
-        '?outputStyle=' + (environment === 'production' ? 'compressed' : 'nested') +
-        '&includePaths[]=' + __dirname + '/node_modules'
-    )
+    reactLoaders : ['react-hot', 'jsx?insertPragma=React.DOM']
 };
 
 module.exports = {
     name   : 'test bundle',
     entry  : config.entry,
     output : {
-        filename : 'tests.js',
-        path     : __dirname + '/build'
+        filename   : 'tests.js',
+        path       : __dirname + '/build',
+        publicPath : '/'
     },
     module : {
         preLoaders : [
@@ -73,10 +68,7 @@ module.exports = {
             },
             {
                 test   : /\.scss$/,
-                loader : ExtractTextPlugin.extract(
-                    'style-loader',
-                    'css-loader!sass-loader' + config.sassOptions
-                )
+                loader : 'null-loader'
             }
         ]
     },

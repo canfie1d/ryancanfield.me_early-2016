@@ -1,12 +1,25 @@
 var WebpackDevServer = require('webpack-dev-server');
 var webpack          = require('webpack');
+var path             = require('path');
 var config           = require('./webpack.config');
 
-new WebpackDevServer(webpack(config), {
+var server = new WebpackDevServer(webpack(config), {
     contentBase : __dirname + '/build',
     hot         : true,
     noInfo      : true
-}).listen(9001, 'localhost', function (err, result) {
+});
+
+server.use(function (req, res, next) {
+    var ext = path.extname(req.url);
+
+    if ((ext === '' || ext === '.html') && req.url !== '/') {
+        req.pipe(request('http://localhost:9001')).pipe(res);
+    } else {
+        next();
+    }
+});
+
+server.listen(9001, 'localhost', function (err, result) {
     if (err) {
         console.log(err);
     }
