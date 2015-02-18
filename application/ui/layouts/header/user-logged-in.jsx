@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+/* jshint globalstrict: true */
 'use strict';
 
 var React           = require('react');
@@ -10,7 +10,7 @@ module.exports = React.createClass({
 
     displayName : 'LoggedInHeaderSection',
 
-    mixins : [navigation, FluxMixin, StoreWatchMixin('UserStore')],
+    mixins : [navigation, FluxMixin, new StoreWatchMixin('UserStore')],
 
     getStateFromFlux : function()
     {

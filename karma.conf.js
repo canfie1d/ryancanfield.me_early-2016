@@ -1,63 +1,77 @@
 module.exports = function(config) {
     config.set({
 
-        // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath : '',
+    basePath : '',
 
-        // frameworks to use
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks : [ 'mocha', 'browserify' ],
+    frameworks : ['mocha', 'sinon-chai'],
 
-        // list of files / patterns to load in the browser
-        files : [
-            './node_modules/es5-shim/es5-shim.js',
-            // This file needs to be available first or browserification will fail
-            './__tests__/globals.js',
-            './__tests__/**/*.js*'
-        ],
+    files : [
+        './node_modules/es5-shim/es5-shim.js',
+        // need to figure out how to get webpack to take a glob w/o duplicating
+        // stuff everywhere
+        '__tests__/index.js'
+    ],
 
-        // list of files to exclude
-        exclude : [ 'index.html' ],
+    exclude : [],
 
-        // preprocess matching files before serving them to the browser
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors : {
-            './__tests__/**/*.js*' : [ 'browserify' ]
+    preprocessors : {
+        '__tests__/index.js': ['webpack', 'sourcemap']
+    },
+
+    webpack: {
+        cache  : true,
+        module : {
+            loaders : [
+                {
+                    test   : /\.(ico|jpg|png)$/,
+                    loader : 'file-loader',
+                    query  : {name : '[path][name].[ext]?[hash]'}
+                },
+                {
+                    test   : /\.jsx$/,
+                    loader : 'jsx?insertPragma=React.DOM'
+                },
+                {
+                    test   : /\.css$/,
+                    loader : 'style!css'
+                }
+            ]
         },
+        resolve : {
+            extensions : ['', '.js', '.json', '.jsx', '.webpack.js', '.web.js']
+        }
+    },
 
-        browserify : {
-            debug      : true,
-            extensions : [ '.js', '.jsx' ],
-            plugin     : [ 'proxyquireify/plugin' ],
-            transform  : [ 'reactify' ],
-            watch      : true
-        },
+    webpackServer : {
+        stats : {
+            colors : true
+        }
+    },
 
-        // test results reporter to use
-        // possible values: 'dots', 'progress'
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters : [ 'progress' ],
+    reporters : ['progress'],
 
-        // web server port
-        port : 9876,
+    port : 9876,
 
-        // enable / disable colors in the output (reporters and logs)
-        colors : true,
+    colors : true,
 
-        // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel : config.LOG_DEBUG,
+    logLevel : config.LOG_INFO,
 
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch : true,
+    autoWatch : true,
 
-        // start these browsers
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        //browsers: ['Chrome', 'Firefox', 'PhantomJS'],
-        browsers : [ 'Chrome', 'Firefox' ],
+    browsers : ['Chrome', 'Firefox'],
 
-        // Continuous Integration mode
-        // if true, Karma captures browsers, runs the tests and exits
-        singleRun : false
+    captureTimeout : 60000,
+
+    singleRun : false,
+
+    plugins: [
+            require('karma-mocha'),
+            require('karma-chrome-launcher'),
+            require('karma-firefox-launcher'),
+            require('karma-phantomjs-launcher'),
+            require('karma-sinon-chai'),
+            require('karma-sourcemap-loader'),
+            require('karma-webpack')
+        ]
     });
 };

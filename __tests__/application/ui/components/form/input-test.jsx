@@ -1,11 +1,10 @@
 /** @jsx React.DOM */
-/* globals describe, it, beforeEach */
-/* jshint expr: true */
+/* globals describe, it, beforeEach, sinon */
+/* jshint expr: true, globalstrict: true */
 'use strict';
 
 var expect    = require('chai').expect;
 var React     = require('react/addons');
-var sinon     = require('sinon');
 var TestUtils = React.addons.TestUtils;
 
 describe('Application\\UI\\Components\\Form\\Input', function() {

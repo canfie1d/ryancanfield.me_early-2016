@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+/* jshint globalstrict: true */
 'use strict';
 
 var React           = require('react');
@@ -12,7 +12,7 @@ module.exports = React.createClass({
 
     displayName : 'SiteLayout',
 
-    mixins : [ FluxMixin, StoreWatchMixin('TokenStore') ],
+    mixins : [ FluxMixin, new StoreWatchMixin('TokenStore') ],
 
     getStateFromFlux : function()
     {

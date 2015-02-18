@@ -1,9 +1,5 @@
 # Front End Template with React
 
-### Initializing the Development Environment
-1. `npm install` to add dependencies
-1. `gulp watch` to build the app and launch a server on `localhost:9000`
-
 ### Customizing for your project
 1. Clone or copy this repository into a new directory
 1. Run the initialization script `chmod +x initialize.sh; ./initialize.sh`. It will ask for:
@@ -19,11 +15,15 @@
 1. Update `application/index.html` to replace `@todo` with proper values
 1. Replace or remove the MIT license (and related reference in the `package.json`) based on your project's requirements
 
+### Initializing the Development Environment
+1. `npm install` to add dependencies
+1. `npm install -g webpack`
+1. `npm start` to build the app and launch a server at `localhost:9000`
+
+### Production Builds
+1. `npm run dist` to build a production bundle
 
 ### Running Tests
-1. Run Jest tests with `npm test`
-1. Run React with Karma in Chrome and Firefox with `npm run karma`
-1. Run React tests with gulp at `localhost:9001` with `gulp test`
-    - Run a specific test or glob of tests with `gulp test --path './__react-tests__/path/to/test/*/**.js'`
-1. Run React from the command line with `./node_modules/karma/bin/karma start --single-run --browsers PhantomJS`
-1. Run functional tests with `gulp build --env ci && gulp disyntegration`
+1. Run React tests with gulp at `localhost:9001` with `npm test`
+1. Run React tests with Karma in Chrome and Firefox with `npm run karma`
+1. Run React tests from the command line with `./node_modules/karma/bin/karma start --single-run --browsers PhantomJS`

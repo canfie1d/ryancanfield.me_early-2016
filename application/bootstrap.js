@@ -1,9 +1,12 @@
+/* jshint globalstrict: true */
 /* global window */
 'use strict';
 
 var React  = require('react');
 var router = require('./router');
 var flux   = require('./flux');
+
+require('./ui/scss/app');
 
 window.React = React;
 

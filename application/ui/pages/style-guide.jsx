@@ -1,4 +1,4 @@
-/** @jsx React.DOM */
+/* jshint globalstrict: true */
 /* global document */
 'use strict';
 
@@ -12,24 +12,13 @@ var ButtonSection       = require('../components/style-guide/sections/sg-buttons
 var IconSection         = require('../components/style-guide/sections/sg-icons');
 var FormElementsSection = require('../components/style-guide/sections/sg-form-elements');
 
+require('../scss/style-guide');
+
 module.exports = React.createClass({
 
     displayName : 'StyleGuide',
 
     mixins : [FluxMixin, RouterStateMixin],
-
-    componentWillMount: function()
-    {
-        var doc               = document,
-            styleGuideCSSLink = doc.createElement('link');
-
-        styleGuideCSSLink.href  = '/css/style-guide.css';
-        styleGuideCSSLink.type  = 'text/css';
-        styleGuideCSSLink.rel   = 'stylesheet';
-        styleGuideCSSLink.media = 'screen';
-
-        doc.getElementsByTagName('head')[0].appendChild(styleGuideCSSLink);
-    },
 
     getComponentConstructors : function()
     {

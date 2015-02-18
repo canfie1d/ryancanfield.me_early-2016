@@ -13,8 +13,6 @@ before_script:
 script:
   - ./node_modules/.bin/jshint application
   - ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS
-  - ./node_modules/.bin/gulp build --env ci
-  - ./node_modules/.bin/gulp disyntegrate:ci --trace
 notifications:
   email: false
 #after_failure:
