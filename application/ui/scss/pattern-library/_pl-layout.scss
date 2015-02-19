@@ -7,8 +7,8 @@
 // *******************************************
 
 // vars
-$pl-header-width         : rem-calc(240);
-$pl-content-header-height : rem-calc(64);
+$pl-sidebar-width          : rem-calc(240) + (rem-calc(30) * 2 );
+$pl-content-sidebar-height : rem-calc(64);
 
 // container element of style guide section
 .sg {
@@ -17,10 +17,10 @@ $pl-content-header-height : rem-calc(64);
     min-height : 100%;
 }
 
-// style guide header with main navigation
+// style guide sidebar with main navigation
 // fixed left on large screens
 // off canvas for mobile
-.pl-header {
+.pl-sidebar {
     position     : fixed;
     top          : 0;
     left         : 0;
@@ -34,7 +34,7 @@ $pl-content-header-height : rem-calc(64);
 }
 
 // main content of style guide
-// to right of header on large screens
+// to right of sidebar on large screens
 // centered for mobile
 .pl-content {
     z-index     : 1;
@@ -51,25 +51,25 @@ $pl-content-header-height : rem-calc(64);
     height      : 100%;
     min-height  : 100%;
     margin      : 0 auto;
-    padding-top : $pl-content-header-height + rem-calc(30);
+    padding-top : $pl-content-sidebar-height + rem-calc(30);
 }
 
-// style guide page header fixed to top
-// offset by header on desktop
+// style guide page sidebar fixed to top
+// offset by sidebar on desktop
 .pl-content__header {
     position    : fixed;
     top         : 0;
     right       : 0;
     z-index     : 10;
-    left        : $pl-header-width;
-    height      : $pl-content-header-height;
+    left        : $pl-sidebar-width;
+    height      : $pl-content-sidebar-height;
     padding     : rem-calc(0 30);
-    line-height : $pl-content-header-height;
+    line-height : $pl-content-sidebar-height;
     background  : $cyan--500;
     box-shadow  : 0px 4px 0px rgba($black, .1);
 }
 
-// page title text inside of page header
+// page title text inside of page sidebar
 .pl-content__title {
     font-weight : bold;
     font-size   : rem-calc(28);

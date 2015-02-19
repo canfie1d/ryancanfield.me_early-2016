@@ -5,7 +5,7 @@
 var React            = require('react');
 var RouterStateMixin = require('react-router').State;
 var FluxMixin        = require('fluxxor').FluxMixin(React);
-var SGHeader         = require('../components/pattern-library/pl-header');
+var PLSidebar        = require('../components/pattern-library/pl-sidebar');
 
 var TypographySection   = require('../components/pattern-library/sections/pl-typography');
 var ButtonSection       = require('../components/pattern-library/sections/pl-buttons');
@@ -37,6 +37,9 @@ module.exports = React.createClass({
         return this.getComponentConstructors().map(function(Page) {
             if (section === 'all' || section === Page.displayName) {
                 return <Page key={Page.displayName} />;
+            } else {
+                return <Page key={Page.displayName} />;
+
             }
         });
     },
@@ -44,8 +47,8 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <div className='sg'>
-                <SGHeader sections={this.getComponentConstructors()} activeSection={this.getParams().section}/>
+            <div className='pl'>
+                <PLSidebar sections={this.getComponentConstructors()} activeSection={this.getParams().section}/>
                 <div className='pl-content'>
                     <div className='pl-content__header'>
                         <h1 className='pl-content__title'>{'Pattern Library'}</h1>

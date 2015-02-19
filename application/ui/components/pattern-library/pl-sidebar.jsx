@@ -7,7 +7,7 @@ var PLNavItem = require('./pl-nav-item');
 
 module.exports = React.createClass({
 
-    displayName : 'PatternLibraryHeader',
+    displayName : 'PatternLibrarySidebar',
 
     mixins : [FluxMixin],
 
@@ -35,8 +35,8 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <div className='pl-header'>
-                <h1 className='pl-header__title'>
+            <div className='pl-sidebar'>
+                <h1 className='pl-sidebar__title'>
                     <span className='pl-branding'>
                         <svg className='pl-branding__svg' version='1.1' xmlns='http://www.w3.org/2000/svg'x='0px' y='0px' viewBox='0 0 542.8 210.1' enable-background='new 0 0 542.8 210.1'>
                             <g>
