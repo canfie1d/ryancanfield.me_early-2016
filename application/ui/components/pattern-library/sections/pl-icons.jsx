@@ -11,28 +11,28 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <div className='sg-page'>
-                <h1 className='sg-h1'>{'Icons'}</h1>
-                <div className='sg-icons'>
-                    <span className='sg-icon'>
+            <div className='pl-page'>
+                <h1 className='pl-h1'>{'Icons'}</h1>
+                <div className='pl-icons'>
+                    <span className='pl-icon'>
                         <Icon icon='navicon' />
-                        <span className='sg-icon__name'>
+                        <span className='pl-icon__name'>
                             <strong className='strong'>Icon: </strong>
                             {'navicon'}
                         </span>
                     </span>
-                    <span className='sg-icon'>
+                    <span className='pl-icon'>
                         <Icon icon='caret' />
-                        <span className='sg-icon__name'>
+                        <span className='pl-icon__name'>
                             <strong className='strong'>Icon: </strong>
                             {'caret'}
                         </span>
                     </span>
                 </div>
-                <hr className='sg-hr' />
+                <hr className='pl-hr' />
                 <div className='row'>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{'Icon sizes'}</h2>
+                        <h2 className='pl-h2'>{'Icon sizes'}</h2>
                         <Icon icon='navicon' size='x-small' /> Extra Small
                         <br />
                         <br />
@@ -50,7 +50,7 @@ module.exports = React.createClass({
                         <br />
                     </div>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{'Icon rotation'}</h2>
+                        <h2 className='pl-h2'>{'Icon rotation'}</h2>
                         <Icon icon='caret' size='small' rotate={0} /> 0deg Rotation
                         <br />
                         <br />
@@ -68,7 +68,7 @@ module.exports = React.createClass({
                         <br />
                     </div>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{'Icon colors'}</h2>
+                        <h2 className='pl-h2'>{'Icon colors'}</h2>
                         <Icon icon='navicon' size='small' color='black' /> Black fill
                         <br />
                         <br />
@@ -87,7 +87,7 @@ module.exports = React.createClass({
                     </div>
                 </div>
 
-                <hr className='sg-hr' />
+                <hr className='pl-hr' />
             </div>
         );
     }

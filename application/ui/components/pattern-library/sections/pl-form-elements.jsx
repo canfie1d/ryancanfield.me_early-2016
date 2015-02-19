@@ -132,9 +132,9 @@ module.exports = React.createClass({
         ];
 
         return (
-            <div className='sg-page'>
-                <h1 className='sg-h1'>{'Form Elements'}</h1>
-                <h2 className='sg-h2'>{'Input types'}</h2>
+            <div className='pl-page'>
+                <h1 className='pl-h1'>{'Form Elements'}</h1>
+                <h2 className='pl-h2'>{'Input types'}</h2>
                 <div className='row'>
                     <div className='medium-6 columns'>
                         <TextInput
@@ -251,7 +251,7 @@ module.exports = React.createClass({
                     </div>
                 </div>
 
-                <h2 className='sg-h2'>{'Validation'}</h2>
+                <h2 className='pl-h2'>{'Validation'}</h2>
                 <div className='row'>
                     <div className='medium-6 columns'>
                         <TextInput

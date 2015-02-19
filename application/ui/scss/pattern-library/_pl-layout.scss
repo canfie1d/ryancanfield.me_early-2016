@@ -7,8 +7,8 @@
 // *******************************************
 
 // vars
-$sg-header-width         : rem-calc(240);
-$sg-content-header-height : rem-calc(64);
+$pl-header-width         : rem-calc(240);
+$pl-content-header-height : rem-calc(64);
 
 // container element of style guide section
 .sg {
@@ -20,7 +20,7 @@ $sg-content-header-height : rem-calc(64);
 // style guide header with main navigation
 // fixed left on large screens
 // off canvas for mobile
-.sg-header {
+.pl-header {
     position     : fixed;
     top          : 0;
     left         : 0;
@@ -36,7 +36,7 @@ $sg-content-header-height : rem-calc(64);
 // main content of style guide
 // to right of header on large screens
 // centered for mobile
-.sg-content {
+.pl-content {
     z-index     : 1;
     width       : auto;
     min-height  : 100%;
@@ -46,31 +46,31 @@ $sg-content-header-height : rem-calc(64);
 }
 
 // centered content of page with max-width
-.sg-page {
+.pl-page {
     max-width   : rem-calc(850);
     height      : 100%;
     min-height  : 100%;
     margin      : 0 auto;
-    padding-top : $sg-content-header-height + rem-calc(30);
+    padding-top : $pl-content-header-height + rem-calc(30);
 }
 
 // style guide page header fixed to top
 // offset by header on desktop
-.sg-content__header {
+.pl-content__header {
     position    : fixed;
     top         : 0;
     right       : 0;
     z-index     : 10;
-    left        : $sg-header-width;
-    height      : $sg-content-header-height;
+    left        : $pl-header-width;
+    height      : $pl-content-header-height;
     padding     : rem-calc(0 30);
-    line-height : $sg-content-header-height;
+    line-height : $pl-content-header-height;
     background  : $cyan--500;
     box-shadow  : 0px 4px 0px rgba($black, .1);
 }
 
 // page title text inside of page header
-.sg-content__title {
+.pl-content__title {
     font-weight : bold;
     font-size   : rem-calc(28);
     color       : $white;

@@ -6,11 +6,11 @@
 // *******************************************
 // *******************************************
 
-.sg-icons {
+.pl-icons {
     @include clearfix;
 }
 
-.sg-icon {
+.pl-icon {
     position   : relative;
     width      : rem-calc(100);
     height     : rem-calc(100);
@@ -29,7 +29,7 @@
 
 }
 
-.sg-icon__name {
+.pl-icon__name {
     position   : absolute;
     right      : 0;
     bottom     : 0;

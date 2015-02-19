@@ -12,8 +12,8 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <div className='sg-page'>
-                <h1 className='sg-h1'>{'Buttons'}</h1>
+            <div className='pl-page'>
+                <h1 className='pl-h1'>{'Buttons'}</h1>
                 <div>
                     <Button>
                         <a>
@@ -29,10 +29,10 @@ module.exports = React.createClass({
                         </button>
                     </Button>
                 </div>
-                <hr className='sg-hr' />
+                <hr className='pl-hr' />
                 <div className='row'>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{'Button Sizes'}</h2>
+                        <h2 className='pl-h2'>{'Button Sizes'}</h2>
                             <Button size='tiny'>
                                 <a>
                                     {'Tiny Button'}
@@ -58,7 +58,7 @@ module.exports = React.createClass({
                             </Button>
                     </div>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{'Split Buttons (Right)'}</h2>
+                        <h2 className='pl-h2'>{'Split Buttons (Right)'}</h2>
                         <Button size='tiny' split='right'>
                             <a>
                                 {'Split Button'}
@@ -89,7 +89,7 @@ module.exports = React.createClass({
                         <br />
                     </div>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{'Split Buttons (Left)'}</h2>
+                        <h2 className='pl-h2'>{'Split Buttons (Left)'}</h2>
                         <Button size='tiny' split='left'>
                             <a>
                                 {'Split Button'}
@@ -121,8 +121,8 @@ module.exports = React.createClass({
                     </div>
                 </div>
 
-                <hr className='sg-hr' />
-                <h2 className='sg-h2'>{'Button Themes'}</h2>
+                <hr className='pl-hr' />
+                <h2 className='pl-h2'>{'Button Themes'}</h2>
                 <Button color='primary'>
                     <a>
                         {'Primary Color Button'}
@@ -143,7 +143,7 @@ module.exports = React.createClass({
                         {'Inherit Button'}
                     </a>
                 </Button>
-                <h2 className='sg-h2'>{'Status Buttons'}</h2>
+                <h2 className='pl-h2'>{'Status Buttons'}</h2>
                 <Button status='warning'>
                     <a>
                         {'Warning Button'}
@@ -154,8 +154,8 @@ module.exports = React.createClass({
                         {'Warning Alternate Button'}
                     </a>
                 </Button>
-                <hr className='sg-hr' />
-                <h2 className='sg-h2'>{'Button Display Types'}</h2>
+                <hr className='pl-hr' />
+                <h2 className='pl-h2'>{'Button Display Types'}</h2>
                 <Button block={true}>
                     <a>
                         {'Block Level Button'}

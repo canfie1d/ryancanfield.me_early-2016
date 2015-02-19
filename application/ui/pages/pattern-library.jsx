@@ -5,18 +5,18 @@
 var React            = require('react');
 var RouterStateMixin = require('react-router').State;
 var FluxMixin        = require('fluxxor').FluxMixin(React);
-var SGHeader         = require('../components/style-guide/sg-header');
+var SGHeader         = require('../components/pattern-library/pl-header');
 
-var TypographySection   = require('../components/style-guide/sections/sg-typography');
-var ButtonSection       = require('../components/style-guide/sections/sg-buttons');
-var IconSection         = require('../components/style-guide/sections/sg-icons');
-var FormElementsSection = require('../components/style-guide/sections/sg-form-elements');
+var TypographySection   = require('../components/pattern-library/sections/pl-typography');
+var ButtonSection       = require('../components/pattern-library/sections/pl-buttons');
+var IconSection         = require('../components/pattern-library/sections/pl-icons');
+var FormElementsSection = require('../components/pattern-library/sections/pl-form-elements');
 
-require('../scss/style-guide');
+require('../scss/pattern-library');
 
 module.exports = React.createClass({
 
-    displayName : 'StyleGuide',
+    displayName : 'Pattern Library',
 
     mixins : [FluxMixin, RouterStateMixin],
 
@@ -46,9 +46,9 @@ module.exports = React.createClass({
         return (
             <div className='sg'>
                 <SGHeader sections={this.getComponentConstructors()} activeSection={this.getParams().section}/>
-                <div className='sg-content'>
-                    <div className='sg-content__header'>
-                        <h1 className='sg-content__title'>{'Style Guide'}</h1>
+                <div className='pl-content'>
+                    <div className='pl-content__header'>
+                        <h1 className='pl-content__title'>{'Pattern Library'}</h1>
                     </div>
                     {this.renderSections()}
                 </div>
