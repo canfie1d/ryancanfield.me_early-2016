@@ -7,7 +7,7 @@
 // *******************************************
 
 // vars
-$pl-sidebar-width          : rem-calc(240) + (rem-calc(30) * 2 );
+$pl-sidebar-width          : rem-calc(240);
 $pl-content-sidebar-height : rem-calc(64);
 
 // container element of style guide section
@@ -40,7 +40,7 @@ $pl-content-sidebar-height : rem-calc(64);
     z-index     : 1;
     width       : auto;
     min-height  : 100%;
-    margin-left : rem-calc(300px);
+    margin-left : $pl-sidebar-width;
     background  : tint($black, 96%);
     border      : 1px solid transparent;
 }

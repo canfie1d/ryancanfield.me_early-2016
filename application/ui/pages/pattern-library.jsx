@@ -1,5 +1,4 @@
 /* jshint globalstrict: true */
-/* global document */
 'use strict';
 
 var React            = require('react');
@@ -12,7 +11,8 @@ var ButtonSection       = require('../components/pattern-library/sections/pl-but
 var IconSection         = require('../components/pattern-library/sections/pl-icons');
 var FormElementsSection = require('../components/pattern-library/sections/pl-form-elements');
 
-require('../scss/pattern-library');
+
+
 
 module.exports = React.createClass({
 
@@ -37,9 +37,6 @@ module.exports = React.createClass({
         return this.getComponentConstructors().map(function(Page) {
             if (section === 'all' || section === Page.displayName) {
                 return <Page key={Page.displayName} />;
-            } else {
-                return <Page key={Page.displayName} />;
-
             }
         });
     },

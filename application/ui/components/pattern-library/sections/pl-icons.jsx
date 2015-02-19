@@ -43,6 +43,13 @@ module.exports = React.createClass({
                         </span>
                     </span>
                     <span className='pl-icon'>
+                        <Icon icon='search' />
+                        <span className='pl-icon__name'>
+                            <strong className='strong'>Icon: </strong>
+                            {'search'}
+                        </span>
+                    </span>
+                    <span className='pl-icon'>
                         <Icon icon='trash' />
                         <span className='pl-icon__name'>
                             <strong className='strong'>Icon: </strong>
