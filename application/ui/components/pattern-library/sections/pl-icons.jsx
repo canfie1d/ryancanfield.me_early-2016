@@ -11,14 +11,21 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <div className='pl-page'>
+            <div className='pl-page row'>
                 <h1 className='pl-h1'>{'Icons'}</h1>
                 <div className='pl-icons'>
                     <span className='pl-icon'>
-                        <Icon icon='navicon' />
+                        <Icon icon='back' />
                         <span className='pl-icon__name'>
                             <strong className='strong'>Icon: </strong>
-                            {'navicon'}
+                            {'back'}
+                        </span>
+                    </span>
+                    <span className='pl-icon'>
+                        <Icon icon='cancel' />
+                        <span className='pl-icon__name'>
+                            <strong className='strong'>Icon: </strong>
+                            {'cancel'}
                         </span>
                     </span>
                     <span className='pl-icon'>
@@ -28,24 +35,38 @@ module.exports = React.createClass({
                             {'caret'}
                         </span>
                     </span>
+                    <span className='pl-icon'>
+                        <Icon icon='save' />
+                        <span className='pl-icon__name'>
+                            <strong className='strong'>Icon: </strong>
+                            {'save'}
+                        </span>
+                    </span>
+                    <span className='pl-icon'>
+                        <Icon icon='trash' />
+                        <span className='pl-icon__name'>
+                            <strong className='strong'>Icon: </strong>
+                            {'trash'}
+                        </span>
+                    </span>
                 </div>
                 <hr className='pl-hr' />
                 <div className='row'>
                     <div className='medium-4 columns'>
                         <h2 className='pl-h2'>{'Icon sizes'}</h2>
-                        <Icon icon='navicon' size='x-small' /> Extra Small
+                        <Icon icon='caret' size='x-small' /> Extra Small
                         <br />
                         <br />
-                        <Icon icon='navicon' size='small' /> Small
+                        <Icon icon='caret' size='small' /> Small
                         <br />
                         <br />
-                        <Icon icon='navicon' size='medium' /> Medium
+                        <Icon icon='caret' size='medium' /> Medium
                         <br />
                         <br />
-                        <Icon icon='navicon' size='large' /> Large
+                        <Icon icon='caret' size='large' /> Large
                         <br />
                         <br />
-                        <Icon icon='navicon' size='x-large' /> Extra Large
+                        <Icon icon='caret' size='x-large' /> Extra Large
                         <br />
                         <br />
                     </div>
@@ -69,19 +90,19 @@ module.exports = React.createClass({
                     </div>
                     <div className='medium-4 columns'>
                         <h2 className='pl-h2'>{'Icon colors'}</h2>
-                        <Icon icon='navicon' size='small' color='black' /> Black fill
+                        <Icon icon='caret' size='small' color='black' /> Black fill
                         <br />
                         <br />
-                        <Icon icon='navicon' size='small' color='white' /> White fill
+                        <Icon icon='caret' size='small' color='white' /> White fill
                         <br />
                         <br />
-                        <Icon icon='navicon' size='small' color='primary' /> Primary fill
+                        <Icon icon='caret' size='small' color='primary' /> Primary fill
                         <br />
                         <br />
-                        <Icon icon='navicon' size='small' color='secondary' /> Secondary fill
+                        <Icon icon='caret' size='small' color='secondary' /> Secondary fill
                         <br />
                         <br />
-                        <Icon icon='navicon' size='small' color='tertiary' /> Tertiary fill
+                        <Icon icon='caret' size='small' color='tertiary' /> Tertiary fill
                         <br />
                         <br />
                     </div>
