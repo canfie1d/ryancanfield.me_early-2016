@@ -7,12 +7,14 @@ var LoggedIn        = require('./header/user-logged-in.jsx');
 var LoggedOut       = require('./header/user-logged-out.jsx');
 var FluxMixin       = require('fluxxor').FluxMixin(React);
 var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
+var ReactIntl       = require('react-intl');
+var IntlMixin       = ReactIntl.IntlMixin;
 
 module.exports = React.createClass({
 
     displayName : 'SiteLayout',
 
-    mixins : [ FluxMixin, new StoreWatchMixin('TokenStore') ],
+    mixins : [ FluxMixin, new StoreWatchMixin('TokenStore'), IntlMixin ],
 
     getStateFromFlux : function()
     {
