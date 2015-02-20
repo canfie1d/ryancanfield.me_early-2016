@@ -2,10 +2,16 @@
 'use strict';
 
 var React = require('react');
+var ReactIntl = require('react-intl');
+var IntlMixin = ReactIntl.IntlMixin;
 
 module.exports = React.createClass({
 
     displayName : '404',
+
+    mixins: [
+        IntlMixin
+    ],
 
     render : function() {
         var style1,
@@ -26,7 +32,7 @@ module.exports = React.createClass({
         return (
             <div>
                 <h1 style={style1}>{'404'}</h1>
-                <h2 style={style2}>{'Sorry, that page was not found.'}</h2>
+                <h2 style={style2}>{this.getIntlMessage('404.site-not-found')}</h2>
             </div>
         );
 
