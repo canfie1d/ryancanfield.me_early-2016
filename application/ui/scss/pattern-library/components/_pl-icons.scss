@@ -12,9 +12,8 @@
 
 .pl-icon {
     position   : relative;
-    width      : rem-calc(100);
     height     : rem-calc(100);
-    margin     : rem-calc(1);
+    margin     : 0;
     display    : inline-block;
     background : $gray--300;
     border     : 1px solid $gray--400;

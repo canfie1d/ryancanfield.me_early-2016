@@ -13,7 +13,7 @@ module.exports = React.createClass({
     {
         return (
             <div className='pl-page'>
-                <h1 className='pl-h1'>{'Buttons'}</h1>
+                <h1 className='pl-h1'>Buttons</h1>
                 <div>
                     <Button>
                         <a>
@@ -62,28 +62,28 @@ module.exports = React.createClass({
                         <Button size='tiny' split='right'>
                             <a>
                                 {'Split Button'}
-                                <Icon className='button--split__icon' icon='caret' />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
                         <Button size='small' split='right'>
                             <a>
                                 {'Split Button'}
-                                <Icon className='button--split__icon' icon='caret' />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
                         <Button size='medium' split='right'>
                             <a>
                                 {'Split Button'}
-                                <Icon className='button--split__icon' icon='caret' />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
                         <Button size='large' split='right'>
                             <a>
                                 {'Split Button'}
-                                <Icon className='button--split__icon' icon='caret' />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
@@ -93,28 +93,28 @@ module.exports = React.createClass({
                         <Button size='tiny' split='left'>
                             <a>
                                 {'Split Button'}
-                                <Icon className='button--split__icon' icon='caret' rotate={180} />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small'  rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='small' split='left'>
                             <a>
                                 {'Split Button'}
-                                <Icon className='button--split__icon' icon='caret' rotate={180} />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small'  rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='medium' split='left'>
                             <a>
                                 {'Split Button'}
-                                <Icon className='button--split__icon' icon='caret' rotate={180} />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small'  rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='large' split='left'>
                             <a>
                                 {'Split Button'}
-                                <Icon className='button--split__icon' icon='caret' rotate={180} />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small'  rotate={180} />
                             </a>
                         </Button>
                         <br />

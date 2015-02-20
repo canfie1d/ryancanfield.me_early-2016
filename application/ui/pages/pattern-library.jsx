@@ -10,9 +10,10 @@ var TypographySection   = require('../components/pattern-library/sections/pl-typ
 var ButtonSection       = require('../components/pattern-library/sections/pl-buttons');
 var IconSection         = require('../components/pattern-library/sections/pl-icons');
 var FormElementsSection = require('../components/pattern-library/sections/pl-form-elements');
+var CalloutsPrompts     = require('../components/pattern-library/sections/pl-callouts-prompts');
+var GridLayout          = require('../components/pattern-library/sections/pl-grid.jsx');
 
-
-
+require('../scss/pattern-library');
 
 module.exports = React.createClass({
 
@@ -26,7 +27,9 @@ module.exports = React.createClass({
             TypographySection,
             ButtonSection,
             IconSection,
-            FormElementsSection
+            FormElementsSection,
+            CalloutsPrompts,
+            GridLayout
         ];
     },
 

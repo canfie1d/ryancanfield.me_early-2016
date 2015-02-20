@@ -7,8 +7,8 @@
 // *******************************************
 
 // vars
-$pl-sidebar-width          : rem-calc(240);
-$pl-content-sidebar-height : rem-calc(64);
+$pl-sidebar-width : rem-calc(240);
+$pl-header-height : rem-calc(64);
 
 // container element of style guide section
 .sg {
@@ -39,7 +39,7 @@ $pl-content-sidebar-height : rem-calc(64);
 .pl-content {
     z-index     : 1;
     width       : auto;
-    min-height  : 100%;
+    min-height  : 100vh;
     margin-left : $pl-sidebar-width;
     background  : tint($black, 96%);
     border      : 1px solid transparent;
@@ -50,8 +50,28 @@ $pl-content-sidebar-height : rem-calc(64);
     max-width   : rem-calc(850);
     height      : 100%;
     min-height  : 100%;
-    margin      : 0 auto;
-    padding-top : $pl-content-sidebar-height + rem-calc(30);
+    margin      : $pl-header-height auto 0 auto;
+    padding     : rem-calc(40);
+    .row {
+        &+ .pl-h2 {
+            margin-top: rem-calc(20);
+        }
+        &.display {
+            background: #eee;
+            font-size: 11px;
+            margin-bottom: 10px;
+            line-height: 2rem;
+            border: solid 1px #c6c6c6;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            .columns:nth-child(2),
+            .columns.small-centered,
+            .columns.large-centered {
+                background: #e1e1e1;
+            }
+        }
+
+    }
 }
 
 // style guide page sidebar fixed to top
@@ -62,9 +82,9 @@ $pl-content-sidebar-height : rem-calc(64);
     right       : 0;
     z-index     : 10;
     left        : $pl-sidebar-width;
-    height      : $pl-content-sidebar-height;
+    height      : $pl-header-height;
     padding     : rem-calc(0 30);
-    line-height : $pl-content-sidebar-height;
+    line-height : $pl-header-height;
     background  : $cyan--500;
     box-shadow  : 0px 4px 0px rgba($black, .1);
 }

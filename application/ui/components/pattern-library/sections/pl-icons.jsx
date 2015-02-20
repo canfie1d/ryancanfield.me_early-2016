@@ -11,45 +11,45 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <div className='pl-page row'>
+            <div className='pl-page'>
                 <h1 className='pl-h1'>{'Icons'}</h1>
-                <div className='pl-icons'>
-                    <span className='pl-icon'>
+                <div className='pl-icons row'>
+                    <span className='pl-icon small-4 medium-3'>
                         <Icon icon='back' />
                         <span className='pl-icon__name'>
                             <strong className='strong'>Icon: </strong>
                             {'back'}
                         </span>
                     </span>
-                    <span className='pl-icon'>
+                    <span className='pl-icon small-4 medium-3'>
                         <Icon icon='cancel' />
                         <span className='pl-icon__name'>
                             <strong className='strong'>Icon: </strong>
                             {'cancel'}
                         </span>
                     </span>
-                    <span className='pl-icon'>
+                    <span className='pl-icon small-4 medium-3'>
                         <Icon icon='caret' />
                         <span className='pl-icon__name'>
                             <strong className='strong'>Icon: </strong>
                             {'caret'}
                         </span>
                     </span>
-                    <span className='pl-icon'>
+                    <span className='pl-icon small-4 medium-3'>
                         <Icon icon='save' />
                         <span className='pl-icon__name'>
                             <strong className='strong'>Icon: </strong>
                             {'save'}
                         </span>
                     </span>
-                    <span className='pl-icon'>
+                    <span className='pl-icon small-4 medium-3'>
                         <Icon icon='search' />
                         <span className='pl-icon__name'>
                             <strong className='strong'>Icon: </strong>
                             {'search'}
                         </span>
                     </span>
-                    <span className='pl-icon'>
+                    <span className='pl-icon small-4 medium-3'>
                         <Icon icon='trash' />
                         <span className='pl-icon__name'>
                             <strong className='strong'>Icon: </strong>
