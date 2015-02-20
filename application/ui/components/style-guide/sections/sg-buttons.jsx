@@ -8,6 +8,7 @@ var Icon   = require('../../icon/icon');
 module.exports = React.createClass({
 
     displayName : 'Buttons',
+    displayI18n : 'sg.section.buttons',
 
     render : function()
     {

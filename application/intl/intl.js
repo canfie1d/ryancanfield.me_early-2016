@@ -5,14 +5,20 @@ module.exports = {
     locales: ['en-US'],
     messages: {
         "home": {
-            "title": {
-                "en-US": "Frontend Template"
-            },
+            "title": "Frontend Template",
             "content": "...sorry the name isn't better."
         },
         "404": {
-            "site-not-found": {
-                "en": "Sorry, that page was not found."
+            "site-not-found": "Sorry, that page was not found."
+        },
+        "sg": {
+            "title": "Style Guide",
+            "section": {
+                "Kitchen Sink": "Kitchen Sink",
+                "Typography": "Typography",
+                "Buttons": "Buttons",
+                "Icons": "Icons",
+                "Form Elements": "Form Elements"
             }
         }
     }
