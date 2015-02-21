@@ -17,7 +17,7 @@ module.exports = React.createClass({
     {
         return (
             <div className='sg-page'>
-                <h1 className='sg-h1'>{'Buttons'}</h1>
+                <h1 className='sg-h1'>{this.getIntlMessage('sg.section.Buttons')}</h1>
                 <div>
                     <Button>
                         <a>
@@ -129,45 +129,45 @@ module.exports = React.createClass({
                 <h2 className='sg-h2'>{this.getIntlMessage('sg.buttons.themes')}</h2>
                 <Button color='primary'>
                     <a>
-                        {'Primary Color Button'}
+                        {this.getIntlMessage('sg.buttons.primary-color')}
                     </a>
                 </Button>
                 <Button color='secondary'>
                     <a>
-                        {'Secondary Color Button'}
+                        {this.getIntlMessage('sg.buttons.secondary-color')}
                     </a>
                 </Button>
                 <Button color='tertiary'>
                     <a>
-                        {'Tertiary Color Button'}
+                        {this.getIntlMessage('sg.buttons.tertiary-color')}
                     </a>
                 </Button>
                 <Button color='inherit'>
                     <a>
-                        {'Inherit Button'}
+                        {this.getIntlMessage('sg.buttons.inherit')}
                     </a>
                 </Button>
-                <h2 className='sg-h2'>{'Status Buttons'}</h2>
+                <h2 className='sg-h2'>{this.getIntlMessage('sg.buttons.status')}</h2>
                 <Button status='warning'>
                     <a>
-                        {'Warning Button'}
+                        {this.getIntlMessage('sg.buttons.warning')}
                     </a>
                 </Button>
                 <Button status='warning-alt'>
                     <a>
-                        {'Warning Alternate Button'}
+                        {this.getIntlMessage('sg.buttons.warning-alt')}
                     </a>
                 </Button>
                 <hr className='sg-hr' />
-                <h2 className='sg-h2'>{'Button Display Types'}</h2>
+                <h2 className='sg-h2'>{this.getIntlMessage('sg.buttons.display-types')}</h2>
                 <Button block={true}>
                     <a>
-                        {'Block Level Button'}
+                        {this.getIntlMessage('sg.buttons.block-level')}
                     </a>
                 </Button>
                 <Button disabled={true}>
                     <a>
-                        {'Disabled Button'}
+                        {this.getIntlMessage('sg.buttons.disabled')}
                     </a>
                 </Button>
             </div>
