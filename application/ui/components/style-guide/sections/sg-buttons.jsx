@@ -4,11 +4,14 @@
 var React  = require('react');
 var Button = require('../../buttons/button');
 var Icon   = require('../../icon/icon');
+var ReactIntl = require('react-intl');
+var IntlMixin = ReactIntl.IntlMixin;
 
 module.exports = React.createClass({
 
     displayName : 'Buttons',
-    displayI18n : 'sg.section.buttons',
+
+    mixins: [ IntlMixin ],
 
     render : function()
     {
@@ -18,7 +21,7 @@ module.exports = React.createClass({
                 <div>
                     <Button>
                         <a>
-                            {'Default Button <a> Element'}
+                            {this.getIntlMessage('sg.buttons.a')}
                             <span> Span</span>
                         </a>
                     </Button>
@@ -26,95 +29,95 @@ module.exports = React.createClass({
                 <div>
                     <Button>
                         <button>
-                            {'Default Button <button> Element'}
+                            {this.getIntlMessage('sg.buttons.button')}
                         </button>
                     </Button>
                 </div>
                 <hr className='sg-hr' />
                 <div className='row'>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{'Button Sizes'}</h2>
+                        <h2 className='sg-h2'>{this.getIntlMessage('sg.buttons.sizes')}</h2>
                             <Button size='tiny'>
                                 <a>
-                                    {'Tiny Button'}
+                                    {this.getIntlMessage('sg.buttons.tiny')}
                                 </a>
                             </Button>
                             <br />
                             <Button size='small'>
                                 <a>
-                                    {'Small Button'}
+                                    {this.getIntlMessage('sg.buttons.small')}
                                 </a>
                             </Button>
                             <br />
                             <Button size='medium'>
                                 <a>
-                                    {'Medium Button'}
+                                    {this.getIntlMessage('sg.buttons.medium')}
                                 </a>
                             </Button>
                             <br />
                             <Button size='large'>
                                 <a>
-                                    {'Large Button'}
+                                    {this.getIntlMessage('sg.buttons.large')}
                                 </a>
                             </Button>
                     </div>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{'Split Buttons (Right)'}</h2>
+                        <h2 className='sg-h2'>{this.getIntlMessage('sg.buttons.split-right')}</h2>
                         <Button size='tiny' split='right'>
                             <a>
-                                {'Split Button'}
+                                {this.getIntlMessage('sg.buttons.split')}
                                 <Icon className='button--split__icon' icon='caret' />
                             </a>
                         </Button>
                         <br />
                         <Button size='small' split='right'>
                             <a>
-                                {'Split Button'}
+                                {this.getIntlMessage('sg.buttons.split')}
                                 <Icon className='button--split__icon' icon='caret' />
                             </a>
                         </Button>
                         <br />
                         <Button size='medium' split='right'>
                             <a>
-                                {'Split Button'}
+                                {this.getIntlMessage('sg.buttons.split')}
                                 <Icon className='button--split__icon' icon='caret' />
                             </a>
                         </Button>
                         <br />
                         <Button size='large' split='right'>
                             <a>
-                                {'Split Button'}
+                                {this.getIntlMessage('sg.buttons.split')}
                                 <Icon className='button--split__icon' icon='caret' />
                             </a>
                         </Button>
                         <br />
                     </div>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{'Split Buttons (Left)'}</h2>
+                        <h2 className='sg-h2'>{this.getIntlMessage('sg.buttons.split-left')}</h2>
                         <Button size='tiny' split='left'>
                             <a>
-                                {'Split Button'}
+                                {this.getIntlMessage('sg.buttons.split')}
                                 <Icon className='button--split__icon' icon='caret' rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='small' split='left'>
                             <a>
-                                {'Split Button'}
+                                {this.getIntlMessage('sg.buttons.split')}
                                 <Icon className='button--split__icon' icon='caret' rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='medium' split='left'>
                             <a>
-                                {'Split Button'}
+                                {this.getIntlMessage('sg.buttons.split')}
                                 <Icon className='button--split__icon' icon='caret' rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='large' split='left'>
                             <a>
-                                {'Split Button'}
+                                {this.getIntlMessage('sg.buttons.split')}
                                 <Icon className='button--split__icon' icon='caret' rotate={180} />
                             </a>
                         </Button>
@@ -123,7 +126,7 @@ module.exports = React.createClass({
                 </div>
 
                 <hr className='sg-hr' />
-                <h2 className='sg-h2'>{'Button Themes'}</h2>
+                <h2 className='sg-h2'>{this.getIntlMessage('sg.buttons.themes')}</h2>
                 <Button color='primary'>
                     <a>
                         {'Primary Color Button'}
