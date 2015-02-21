@@ -19,6 +19,19 @@ module.exports = {
                 "Buttons": "Buttons",
                 "Icons": "Icons",
                 "Form Elements": "Form Elements"
+            },
+            "buttons": {
+                "a": "Default Button <a> Element",
+                "button": "Default Button <button> Element",
+                "sizes": "Button Sizes",
+                "tiny": "Tiny Button",
+                "small": "Small Button",
+                "medium": "Medium Button",
+                "large": "Large Button",
+                "split": "Split Button",
+                "split-right": "Split Buttons (Right)",
+                "split-left": "Split Buttons (Left)",
+                "themes": "Button Themes"
             }
         }
     }
