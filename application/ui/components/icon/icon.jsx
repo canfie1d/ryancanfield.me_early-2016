@@ -10,6 +10,8 @@ var Caret         = require('./icons/caret');
 var Save          = require('./icons/save');
 var Search        = require('./icons/search');
 var Trash         = require('./icons/trash');
+var Heart         = require('./icons/heart');
+var Group         = require('./icons/group');
 
 module.exports = React.createClass({
     displayName : 'Icon',
@@ -21,7 +23,9 @@ module.exports = React.createClass({
             'caret',
             'save',
             'search',
-            'trash'
+            'trash',
+            'heart',
+            'group'
         ]),
         size : React.PropTypes.oneOf([
             'default',
@@ -82,6 +86,12 @@ module.exports = React.createClass({
                 break;
             case 'trash':
                 Component = Trash;
+                break;
+            case 'heart':
+                Component = Heart;
+                break;
+            case 'group':
+                Component = Group;
                 break;
         }
 
