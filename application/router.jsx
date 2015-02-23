@@ -2,9 +2,10 @@
 /* globals __ENVIRONMENT__ */
 'use strict';
 
-var React  = require('react'); // Used in compiled js, so required even though appears unused
-var Router = require('react-router');
-var Route  = Router.Route;
+var React    = require('react'); // Used in compiled js, so required even though appears unused
+var Router   = require('react-router');
+var Route    = Router.Route;
+var Redirect = Router.Redirect;
 
 var SiteLayout         = require('./ui/layouts/site');
 var HomePage           = require('./ui/pages/home');
@@ -17,8 +18,8 @@ var getEnvironmentDependentRoutes = function()
 
     if (__ENVIRONMENT__ !== 'production') {
         routes = routes.concat([
-            <Route path='/pattern-library' name='pattern-library' handler={PatternLibraryPage} key='pattern-library'/>,
-            <Route path='/pattern-library/:section' name='pattern-library-section' handler={PatternLibraryPage} key='pattern-library-section'/>
+            <Route path='/pattern-library/:section' name='pattern-library-section' handler={PatternLibraryPage} key='pattern-library-section'/>,
+            <Redirect from="/pattern-library" to="/pattern-library/all" />
         ]);
     }
 

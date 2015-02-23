@@ -2,7 +2,6 @@
 'use strict';
 
 var React    = require('react');
-var classSet = require('react/lib/cx');
 
 module.exports = React.createClass({
     displayName : 'Tooltip',
