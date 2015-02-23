@@ -3,12 +3,20 @@
 'use strict';
 
 module.exports = {
+
+    /**
+     * Translate function that returns a message from the intl file.
+     * The message returned is dependent on the language of the browser.
+     * Defaults to en-us if the message doesn't exist for the current language.
+     *
+     * @param  string path   The path of the message in the intl file
+     * @return string        Translated message
+     */
     t : function(path)
     {
-        if (this.getChildContext().locales.indexOf(navigator.language) !== -1) {
+        try {
             return this.getIntlMessage(navigator.language + '.' + path);
-        } else {
-            //Return en-us as default
+        } catch(e) {
             return this.getIntlMessage('en-us.' + path);
         }
     }
