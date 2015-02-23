@@ -12,6 +12,15 @@ module.exports = {
             "404": {
                 "site-not-found": "Sorry, that page was not found."
             },
+            "fmt": {
+                "Date": "Date",
+                "Number": "Number",
+                "Time": "Time",
+                "Relative Time": "Relative Time",
+                "Currency": "Currency",
+                "Formatted Message": "Formatted Message",
+                "messages": "{name}, you have {numMessages, plural,\n  =0 {no messages}\n  =1 {one message}\n  other {# messages}\n}.\n"
+            },
             "sg": {
                 "title": "Style Guide",
                 "section": {
