@@ -8,6 +8,7 @@ module.exports = {
      * Translate function that returns a message from the intl file.
      * The message returned is dependent on the language of the browser.
      * Defaults to en-us if the message doesn't exist for the current language.
+     * If neither is found, the path is returned in curly braces
      *
      * @param  string path   The path of the message in the intl file
      * @return string        Translated message
