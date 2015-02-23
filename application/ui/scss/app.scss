@@ -23,7 +23,7 @@
 
     // buttons
     @import "components/buttons/buttons";
-    @import "components/buttons/switches";
+
 
     // callouts
     @import "components/callouts-prompts/alerts";
@@ -37,6 +37,12 @@
     @import "components/forms/form-inputs";
     @import "components/forms/form-labels";
     @import "components/forms/form-validation";
+    @import "components/forms/switches";
+
+    // navigation
+    @import "components/navigation/pagination";
+    @import "components/tabs/tab-navs";
+    @import "components/tabs/tabs";
 
 // pages
     @import "pages/page-layout";

@@ -56,6 +56,20 @@ module.exports = React.createClass({
                             {'trash'}
                         </span>
                     </span>
+                    <span className='pl-icon small-4 medium-3'>
+                        <Icon icon='heart' />
+                        <span className='pl-icon__name'>
+                            <strong className='strong'>Icon: </strong>
+                            {'heart'}
+                        </span>
+                    </span>
+                    <span className='pl-icon small-4 medium-3'>
+                        <Icon icon='group' />
+                        <span className='pl-icon__name'>
+                            <strong className='strong'>Icon: </strong>
+                            {'group'}
+                        </span>
+                    </span>
                 </div>
                 <hr className='pl-hr' />
                 <div className='row'>

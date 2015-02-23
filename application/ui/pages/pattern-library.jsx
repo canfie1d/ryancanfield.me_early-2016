@@ -11,7 +11,8 @@ var ButtonSection       = require('../components/pattern-library/sections/pl-but
 var IconSection         = require('../components/pattern-library/sections/pl-icons');
 var FormElementsSection = require('../components/pattern-library/sections/pl-form-elements');
 var CalloutsPrompts     = require('../components/pattern-library/sections/pl-callouts-prompts');
-var GridLayout          = require('../components/pattern-library/sections/pl-grid.jsx');
+var GridLayout          = require('../components/pattern-library/sections/pl-grid');
+var Navigation          = require('../components/pattern-library/sections/pl-navigation');
 
 require('../scss/pattern-library');
 
@@ -29,7 +30,8 @@ module.exports = React.createClass({
             IconSection,
             FormElementsSection,
             CalloutsPrompts,
-            GridLayout
+            GridLayout,
+            Navigation
         ];
     },
 

@@ -36,7 +36,7 @@ module.exports = React.createClass({
         return (
             <div className='input-wrap input-wrap--checkbox'>
                 <Label
-                    className = 'input-wrap__lable'
+                    className = 'input-wrap__label'
                     htmlFor   = {this.props.id} >
                     <input
                         className = 'checkbox'
