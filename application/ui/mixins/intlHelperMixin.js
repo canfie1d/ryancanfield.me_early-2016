@@ -17,7 +17,11 @@ module.exports = {
         try {
             return this.getIntlMessage(navigator.language + '.' + path);
         } catch(e) {
-            return this.getIntlMessage('en-us.' + path);
+            try {
+                return this.getIntlMessage('en-us.' + path);
+            } catch (e) {
+                return '{' + path + '}';
+            }
         }
     }
 };
