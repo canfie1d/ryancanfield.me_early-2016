@@ -1,9 +1,9 @@
 /* jshint globalstrict: true */
 'use strict';
 
-var React  = require('react');
-var Tooltip  = require('../../callouts-prompts/tooltip');
-var Alert  = require('../../callouts-prompts/alerts');
+var React   = require('react');
+var Tooltip = require('../../callouts-prompts/tooltip');
+var Alert   = require('../../callouts-prompts/alerts');
 
 module.exports = React.createClass({
 

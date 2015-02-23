@@ -20,7 +20,10 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <a data-tooltip={this.props.message} tabIndex='0' data-position={this.props.position}>
+            <a
+                data-tooltip  = {this.props.message}
+                tabIndex      = '0'
+                data-position = {this.props.position}>
                 {this.props.children}
             </a>
         );

@@ -6,10 +6,10 @@ var React  = require('react'); // Used in compiled js, so required even though a
 var Router = require('react-router');
 var Route  = Router.Route;
 
-var SiteLayout       = require('./ui/layouts/site');
-var HomePage         = require('./ui/pages/home');
-var PatternLibraryPage   = require('./ui/pages/pattern-library');
-var NotFoundPage     = require('./ui/pages/404');
+var SiteLayout         = require('./ui/layouts/site');
+var HomePage           = require('./ui/pages/home');
+var PatternLibraryPage = require('./ui/pages/pattern-library');
+var NotFoundPage       = require('./ui/pages/404');
 
 var getEnvironmentDependentRoutes = function()
 {

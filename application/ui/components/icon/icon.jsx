@@ -4,14 +4,14 @@
 var React = require('react');
 var cx    = require('react/lib/cx');
 
-var Back          = require('./icons/back');
-var Cancel        = require('./icons/cancel');
-var Caret         = require('./icons/caret');
-var Save          = require('./icons/save');
-var Search        = require('./icons/search');
-var Trash         = require('./icons/trash');
-var Heart         = require('./icons/heart');
-var Group         = require('./icons/group');
+var Back   = require('./icons/back');
+var Cancel = require('./icons/cancel');
+var Caret  = require('./icons/caret');
+var Save   = require('./icons/save');
+var Search = require('./icons/search');
+var Trash  = require('./icons/trash');
+var Heart  = require('./icons/heart');
+var Group  = require('./icons/group');
 
 module.exports = React.createClass({
     displayName : 'Icon',

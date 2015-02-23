@@ -52,10 +52,13 @@ $pl-header-height : rem-calc(64);
     min-height  : 100%;
     margin      : $pl-header-height auto 0 auto;
     padding     : rem-calc(40);
+
     .row {
+
         &+ .pl-h2 {
             margin-top: rem-calc(20);
         }
+
         &.display {
             background: #eee;
             font-size: 11px;
@@ -69,9 +72,11 @@ $pl-header-height : rem-calc(64);
             .columns.large-centered {
                 background: #e1e1e1;
             }
+
         }
 
     }
+
 }
 
 // style guide page sidebar fixed to top

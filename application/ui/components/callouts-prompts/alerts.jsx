@@ -28,7 +28,7 @@ module.exports = React.createClass({
         });
 
         return(
-            <div data-alert className={classes}>
+            <div className={classes}>
               {this.props.message}
               <a href="#" className="close">&times;</a>
             </div>

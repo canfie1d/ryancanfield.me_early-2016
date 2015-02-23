@@ -39,13 +39,15 @@
     color          : $gray-theme--500;
     transition     : color 250ms ease,
                      border-top-color 250ms ease;
+
     &:hover {
-        color : $gray-theme--700;
+        color            : $gray-theme--700;
         background-color : $gray--100;
     }
 
     &.tab-nav__item-link--current {
-        color : $gray-theme--700;
+        color            : $gray-theme--700;
         background-color : $gray--100;
     }
+
 }
