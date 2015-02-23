@@ -19,5 +19,8 @@ if (!global.Intl) {
 }
 
 router.run(function (Handler, state) {
-    React.render(<Handler flux={flux} locales={i18n.locales} messages={i18n.messages} />, window.document.body);
+    React.render(
+        React.createElement(Handler, {flux : flux, locales : i18n.localse, messages : i18n.messages}),
+        window.document.body
+    );
 });
