@@ -4,14 +4,16 @@
 var React     = require('react');
 var FluxMixin = require('fluxxor').FluxMixin(React);
 var SGNavItem = require('./sg-nav-item');
-var ReactIntl = require('react-intl');
-var IntlMixin = ReactIntl.IntlMixin;
+
+var ReactIntl       = require('react-intl');
+var IntlMixin       = ReactIntl.IntlMixin;
+var IntlHelperMixin = require('../../mixins/intlHelperMixin');
 
 module.exports = React.createClass({
 
     displayName : 'StyleGuideHeader',
 
-    mixins : [FluxMixin, IntlMixin],
+    mixins : [FluxMixin, IntlMixin, IntlHelperMixin ],
 
     propTypes : {
         // Component constructors for sections
@@ -108,7 +110,7 @@ module.exports = React.createClass({
                 </h1>
                 <nav className='sg-nav'>
                     <menu className='sg-nav__menu'>
-                    <SGNavItem active={this.props.activeSection === 'all'} displayName='all'>{this.getIntlMessage('sg.section.Kitchen Sink')}</SGNavItem>
+                    <SGNavItem active={this.props.activeSection === 'all'} displayName='all'>{this.t('sg.section.Kitchen Sink')}</SGNavItem>
                         {this.renderNavItems()}
                     </menu>
                 </nav>

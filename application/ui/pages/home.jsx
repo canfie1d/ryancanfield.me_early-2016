@@ -1,16 +1,18 @@
 /* jshint globalstrict: true */
 'use strict';
 
-var React = require('react');
-var ReactIntl = require('react-intl');
-var IntlMixin = ReactIntl.IntlMixin;
+var React           = require('react');
+var ReactIntl       = require('react-intl');
+var IntlMixin       = ReactIntl.IntlMixin;
+var IntlHelperMixin = require('../mixins/intlHelperMixin');
 
 module.exports = React.createClass({
 
     displayName : 'HomeModule',
 
     mixins: [
-        IntlMixin
+        IntlMixin,
+        IntlHelperMixin
     ],
 
     render : function() {
@@ -31,8 +33,8 @@ module.exports = React.createClass({
 
         return (
             <div>
-                <h1 style={style1}>{this.getIntlMessage('home.title')}</h1>
-                <h2 style={style2}>{this.getIntlMessage('home.content')}</h2>
+                <h1 style={style1}>{this.t('home.title')}</h1>
+                <h2 style={style2}>{this.t('home.content')}</h2>
             </div>
         );
 

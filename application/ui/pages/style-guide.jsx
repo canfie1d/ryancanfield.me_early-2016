@@ -10,8 +10,10 @@ var TypographySection   = require('../components/style-guide/sections/sg-typogra
 var ButtonSection       = require('../components/style-guide/sections/sg-buttons');
 var IconSection         = require('../components/style-guide/sections/sg-icons');
 var FormElementsSection = require('../components/style-guide/sections/sg-form-elements');
-var ReactIntl = require('react-intl');
-var IntlMixin = ReactIntl.IntlMixin;
+
+var ReactIntl       = require('react-intl');
+var IntlMixin       = ReactIntl.IntlMixin;
+var IntlHelperMixin = require('../mixins/intlHelperMixin');
 
 require('../scss/style-guide');
 
@@ -19,7 +21,7 @@ module.exports = React.createClass({
 
     displayName : 'StyleGuide',
 
-    mixins : [FluxMixin, RouterStateMixin, IntlMixin],
+    mixins : [FluxMixin, RouterStateMixin, IntlMixin, IntlHelperMixin],
 
     getComponentConstructors : function()
     {
@@ -49,7 +51,7 @@ module.exports = React.createClass({
                 <SGHeader sections={this.getComponentConstructors()} activeSection={this.getParams().section}/>
                 <div className='sg-content'>
                     <div className='sg-content__header'>
-                        <h1 className='sg-content__title'>{this.getIntlMessage('sg.title')}</h1>
+                        <h1 className='sg-content__title'>{this.t('sg.title')}</h1>
                     </div>
                     {this.renderSections()}
                 </div>

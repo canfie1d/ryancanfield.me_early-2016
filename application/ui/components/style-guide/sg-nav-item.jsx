@@ -4,13 +4,15 @@
 var React     = require('react');
 var FluxMixin = require('fluxxor').FluxMixin(React);
 var classSet  = require('react/lib/cx');
-var ReactIntl = require('react-intl');
-var IntlMixin = ReactIntl.IntlMixin;
+
+var ReactIntl       = require('react-intl');
+var IntlMixin       = ReactIntl.IntlMixin;
+var IntlHelperMixin = require('../../mixins/intlHelperMixin');
 
 module.exports = React.createClass({
     displayName : 'StyleGuideNavItem',
 
-    mixins : [FluxMixin, IntlMixin],
+    mixins : [FluxMixin, IntlMixin, IntlHelperMixin],
 
     propTypes : {
         active      : React.PropTypes.bool,
@@ -51,7 +53,7 @@ module.exports = React.createClass({
         if (this.props.children) {
             display = this.props.children;
         } else if(this.props.i18nPrefix !== '') {
-            display = this.getIntlMessage(this.props.i18nPrefix + this.props.displayName);
+            display = this.t(this.props.i18nPrefix + this.props.displayName);
         } else {
             display = this.props.displayName;
         }
