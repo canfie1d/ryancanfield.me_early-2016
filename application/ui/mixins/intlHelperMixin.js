@@ -16,7 +16,7 @@ module.exports = {
     t : function(path)
     {
         var messages  = this.props.messages || this.context.messages;
-        var langPath  = navigator.language + '.' + path;
+        var langPath  = navigator.language.toLowerCase() + '.' + path;
         var pathParts = langPath.split('.');
 
         var message;
