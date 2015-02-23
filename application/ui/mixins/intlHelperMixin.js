@@ -16,7 +16,7 @@ module.exports = {
     t : function(path)
     {
         var message;
-        var languages = typeof navigator.languages === 'undefined' ? [navigator.language] : navigator.languages;
+        var languages = this.props.locales || this.context.locales;
 
         // Iterate through each language to get a translated string
         for (var i in languages) {
