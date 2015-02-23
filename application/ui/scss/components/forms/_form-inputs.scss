@@ -122,7 +122,8 @@ $form-placeholder-font-color : $gray-theme--400 !default;
 
 // input element
 .radio,
-.checkbox {
+.checkbox,
+.switch {
     margin : rem-calc(0 9 0 0);
 }
 
