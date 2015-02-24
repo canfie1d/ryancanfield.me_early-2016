@@ -1,26 +1,26 @@
 // *******************************************
 // *******************************************
 
-    // Layout for style guide section
+    // Layout for pattern library
 
 // *******************************************
 // *******************************************
 
 // vars
-$sg-header-width         : rem-calc(240);
-$sg-content-header-height : rem-calc(64);
+$pl-sidebar-width : rem-calc(240);
+$pl-header-height : rem-calc(64);
 
 // container element of style guide section
-.sg {
+.pl {
     position   : relative;
     height     : 100%;
     min-height : 100%;
 }
 
-// style guide header with main navigation
+// style guide sidebar with main navigation
 // fixed left on large screens
 // off canvas for mobile
-.sg-header {
+.pl-sidebar {
     position     : fixed;
     top          : 0;
     left         : 0;
@@ -34,43 +34,68 @@ $sg-content-header-height : rem-calc(64);
 }
 
 // main content of style guide
-// to right of header on large screens
+// to right of sidebar on large screens
 // centered for mobile
-.sg-content {
+.pl-content {
     z-index     : 1;
     width       : auto;
-    min-height  : 100%;
-    margin-left : rem-calc(300px);
+    min-height  : 100vh;
+    margin-left : $pl-sidebar-width;
     background  : tint($black, 96%);
     border      : 1px solid transparent;
 }
 
 // centered content of page with max-width
-.sg-page {
+.pl-page {
     max-width   : rem-calc(850);
     height      : 100%;
     min-height  : 100%;
-    margin      : 0 auto;
-    padding-top : $sg-content-header-height + rem-calc(30);
+    margin      : $pl-header-height auto 0 auto;
+    padding     : rem-calc(40);
+
+    .row {
+
+        &+ .pl-h2 {
+            margin-top: rem-calc(20);
+        }
+
+        &.display {
+            background: #eee;
+            font-size: 11px;
+            margin-bottom: 10px;
+            line-height: 2rem;
+            border: solid 1px #c6c6c6;
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+            .columns:nth-child(2),
+            .columns.small-centered,
+            .columns.large-centered {
+                background: #e1e1e1;
+            }
+
+        }
+
+    }
+
 }
 
-// style guide page header fixed to top
-// offset by header on desktop
-.sg-content__header {
+// style guide page sidebar fixed to top
+// offset by sidebar on desktop
+.pl-content__header {
     position    : fixed;
     top         : 0;
     right       : 0;
     z-index     : 10;
-    left        : $sg-header-width;
-    height      : $sg-content-header-height;
+    left        : $pl-sidebar-width;
+    height      : $pl-header-height;
     padding     : rem-calc(0 30);
-    line-height : $sg-content-header-height;
+    line-height : $pl-header-height;
     background  : $cyan--500;
     box-shadow  : 0px 4px 0px rgba($black, .1);
 }
 
-// page title text inside of page header
-.sg-content__title {
+// page title text inside of page sidebar
+.pl-content__title {
     font-weight : bold;
     font-size   : rem-calc(28);
     color       : $white;

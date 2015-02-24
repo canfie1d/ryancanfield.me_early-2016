@@ -3,11 +3,11 @@
 
 var React     = require('react');
 var FluxMixin = require('fluxxor').FluxMixin(React);
-var SGNavItem = require('./sg-nav-item');
+var PLNavItem = require('./pl-nav-item');
 
 module.exports = React.createClass({
 
-    displayName : 'StyleGuideHeader',
+    displayName : 'PatternLibrarySidebar',
 
     mixins : [FluxMixin],
 
@@ -23,7 +23,7 @@ module.exports = React.createClass({
 
         return this.props.sections.map(function(Page) {
             return (
-                <SGNavItem
+                <PLNavItem
                     displayName = {Page.displayName}
                     key         = {Page.displayName}
                     active      = {activeSection === Page.displayName}
@@ -35,10 +35,10 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <div className='sg-header'>
-                <h1 className='sg-header__title'>
-                    <span className='sg-branding'>
-                        <svg className='sg-branding__svg' version='1.1' xmlns='http://www.w3.org/2000/svg'x='0px' y='0px' viewBox='0 0 542.8 210.1' enable-background='new 0 0 542.8 210.1'>
+            <div className='pl-sidebar'>
+                <h1 className='pl-sidebar__title'>
+                    <span className='pl-branding'>
+                        <svg className='pl-branding__svg' version='1.1' xmlns='http://www.w3.org/2000/svg'x='0px' y='0px' viewBox='0 0 542.8 210.1' enable-background='new 0 0 542.8 210.1'>
                             <g>
                                 <path d='M54.1,27.5c-5.1-2.2-10.3-3.3-15.7-3.3c-1.5,0-2.9,0.2-4.3,0.6c-1.4,0.4-2.7,1-3.9,1.8
                                     c-1.2,0.8-2.1,1.9-2.9,3.3c-0.7,1.4-1.1,3.1-1.1,5.1c0,2.5,1,4.5,3.1,5.9c2.1,1.4,5.3,3,9.7,4.6c3.2,1.3,6,2.4,8.1,3.4
@@ -103,9 +103,9 @@ module.exports = React.createClass({
                         </svg>
                     </span>
                 </h1>
-                <nav className='sg-nav'>
-                    <menu className='sg-nav__menu'>
-                    <SGNavItem active={this.props.activeSection === 'all'} displayName='all'>Kitchen Sink</SGNavItem>
+                <nav className='pl-nav'>
+                    <menu className='pl-nav__menu'>
+                    <PLNavItem active={this.props.activeSection === 'all'} displayName='all'>Kitchen Sink</PLNavItem>
                         {this.renderNavItems()}
                     </menu>
                 </nav>

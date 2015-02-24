@@ -21,8 +21,8 @@ module.exports = React.createClass({
             value   : React.PropTypes.string,
             checked : React.PropTypes.bool
         })),
-        validationDisplay : React.PropTypes.string,
-        validation        : React.PropTypes.object
+        validation        : React.PropTypes.object,
+        validationDisplay : React.PropTypes.string
     },
 
     getDefaultProps : function()
@@ -30,6 +30,7 @@ module.exports = React.createClass({
         return {
             label             : null,
             options           : null,
+            inline            : null,
             validationDisplay : null,
             validation        : {}
         };
