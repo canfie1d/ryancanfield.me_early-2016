@@ -41,16 +41,16 @@ module.exports = React.createClass({
                     <div className='row'>
                         <div className="small-12">
 
-                            <Alert message='This is an alert inidicating an alert' alertType='alert'>
+                            <Alert message='This is an alert indicating an alert' alertType='alert'>
                             </Alert>
 
-                            <Alert message='This is an alert inidicating information' alertType='info'>
+                            <Alert message='This is an alert indicating information' alertType='info'>
                             </Alert>
 
-                            <Alert message='This is an alert inidicating a warning' alertType='warning'>
+                            <Alert message='This is an alert indicating a warning' alertType='warning'>
                             </Alert>
 
-                            <Alert message='This is an alert inidicating a success' alertType='success'>
+                            <Alert message='This is an alert indicating a success' alertType='success'>
                             </Alert>
 
                         </div>
