@@ -18,8 +18,8 @@ module.exports = React.createClass({
     render : function()
     {
         return (
-            <div className='sg-page'>
-                <h1 className='sg-h1'>{this.t('sg.section.Buttons')}</h1>
+            <div className='pl-page'>
+                <h1 className='pl-h1'>{this.t('sg.section.Buttons')}</h1>
                 <div>
                     <Button>
                         <a>
@@ -35,10 +35,10 @@ module.exports = React.createClass({
                         </button>
                     </Button>
                 </div>
-                <hr className='sg-hr' />
+                <hr className='pl-hr' />
                 <div className='row'>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{this.t('sg.buttons.sizes')}</h2>
+                        <h2 className='pl-h2'>{this.t('sg.buttons.sizes')}</h2>
                             <Button size='tiny'>
                                 <a>
                                     {this.t('sg.buttons.tiny')}
@@ -64,71 +64,71 @@ module.exports = React.createClass({
                             </Button>
                     </div>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{this.t('sg.buttons.split-right')}</h2>
+                        <h2 className='pl-h2'>{this.t('sg.buttons.split-right')}</h2>
                         <Button size='tiny' split='right'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
                         <Button size='small' split='right'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
                         <Button size='medium' split='right'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
                         <Button size='large' split='right'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
                     </div>
                     <div className='medium-4 columns'>
-                        <h2 className='sg-h2'>{this.t('sg.buttons.split-left')}</h2>
+                        <h2 className='pl-h2'>{this.t('sg.buttons.split-left')}</h2>
                         <Button size='tiny' split='left'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' rotate={180} />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='small' split='left'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' rotate={180} />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='medium' split='left'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' rotate={180} />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='large' split='left'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' rotate={180} />
+                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' rotate={180} />
                             </a>
                         </Button>
                         <br />
                     </div>
                 </div>
 
-                <hr className='sg-hr' />
-                <h2 className='sg-h2'>{this.t('sg.buttons.themes')}</h2>
+                <hr className='pl-hr' />
+                <h2 className='pl-h2'>{this.t('sg.buttons.themes')}</h2>
                 <Button color='primary'>
                     <a>
                         {this.t('sg.buttons.primary-color')}
@@ -149,7 +149,7 @@ module.exports = React.createClass({
                         {this.t('sg.buttons.inherit')}
                     </a>
                 </Button>
-                <h2 className='sg-h2'>{this.t('sg.buttons.status')}</h2>
+                <h2 className='pl-h2'>{this.t('sg.buttons.status')}</h2>
                 <Button status='warning'>
                     <a>
                         {this.t('sg.buttons.warning')}
@@ -160,8 +160,8 @@ module.exports = React.createClass({
                         {this.t('sg.buttons.warning-alt')}
                     </a>
                 </Button>
-                <hr className='sg-hr' />
-                <h2 className='sg-h2'>{this.t('sg.buttons.display-types')}</h2>
+                <hr className='pl-hr' />
+                <h2 className='pl-h2'>{this.t('sg.buttons.display-types')}</h2>
                 <Button block={true}>
                     <a>
                         {this.t('sg.buttons.block-level')}

@@ -38,7 +38,7 @@ module.exports = React.createClass({
 
     renderLabel : function()
     {
-        if (! this.props.groupLabel) {
+        if (! this.props.label) {
             return null;
         }
 
@@ -46,7 +46,7 @@ module.exports = React.createClass({
             <Label
                 className = 'checkbox-group__title-label'
                 htmlFor   = ''
-                text      = {this.props.groupLabel} />
+                text      = {this.props.label} />
         );
     },
 
@@ -84,7 +84,6 @@ module.exports = React.createClass({
 
         return (
             <InputValidation
-                validation = {this.props.validation}
                 display    = {this.props.display} >
                 <div className={groupClasses}>
                     {this.renderLabel()}

@@ -4,16 +4,28 @@
 var React = require('react');
 var cx    = require('react/lib/cx');
 
-var Navicon          = require('./icons/navicon');
-var Caret            = require('./icons/caret');
+var Back   = require('./icons/back');
+var Cancel = require('./icons/cancel');
+var Caret  = require('./icons/caret');
+var Save   = require('./icons/save');
+var Search = require('./icons/search');
+var Trash  = require('./icons/trash');
+var Heart  = require('./icons/heart');
+var Group  = require('./icons/group');
 
 module.exports = React.createClass({
     displayName : 'Icon',
 
     propTypes : {
         icon : React.PropTypes.oneOf([
+            'back',
+            'cancel',
             'caret',
-            'navicon'
+            'save',
+            'search',
+            'trash',
+            'heart',
+            'group'
         ]),
         size : React.PropTypes.oneOf([
             'default',
@@ -57,11 +69,29 @@ module.exports = React.createClass({
             thisIconClass = 'icon--' + thisIcon;
 
         switch (thisIcon) {
+            case 'back':
+                Component = Back;
+                break;
+            case 'cancel':
+                Component = Cancel;
+                break;
             case 'caret':
                 Component = Caret;
                 break;
-            case 'navicon':
-                Component = Navicon;
+            case 'save':
+                Component = Save;
+                break;
+            case 'search':
+                Component = Search;
+                break;
+            case 'trash':
+                Component = Trash;
+                break;
+            case 'heart':
+                Component = Heart;
+                break;
+            case 'group':
+                Component = Group;
                 break;
         }
 

@@ -1,7 +1,5 @@
 // vendor imports
     @import "vendor/reset";
-    @import "../../../node_modules/synfrastructure/scss/global";
-    @import "../../../node_modules/synfrastructure/scss/settings";
     @import "../../../node_modules/synfrastructure/scss/synfrastructure";
 
 // dependency imports
@@ -26,6 +24,11 @@
     // buttons
     @import "components/buttons/buttons";
 
+
+    // callouts
+    @import "components/callouts-prompts/alerts";
+    @import "components/callouts-prompts/tooltips";
+
     //icons
     @import "components/icons/icons-base";
 
@@ -34,6 +37,12 @@
     @import "components/forms/form-inputs";
     @import "components/forms/form-labels";
     @import "components/forms/form-validation";
+    @import "components/forms/switches";
+
+    // navigation
+    @import "components/navigation/pagination";
+    @import "components/tabs/tab-navs";
+    @import "components/tabs/tabs";
 
 // pages
     @import "pages/page-layout";

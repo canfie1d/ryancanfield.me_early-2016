@@ -10,7 +10,7 @@ var IntlMixin       = ReactIntl.IntlMixin;
 var IntlHelperMixin = require('../../mixins/intlHelperMixin');
 
 module.exports = React.createClass({
-    displayName : 'StyleGuideNavItem',
+    displayName : 'PatternLibraryNavItem',
 
     mixins : [FluxMixin, IntlMixin, IntlHelperMixin],
 
@@ -33,11 +33,11 @@ module.exports = React.createClass({
     {
         if (this.props.displayName) {
             this.getFlux().actions.route.navigate(
-                'style-guide-section',
+                'pattern-library-section',
                 {section : this.props.displayName}
             );
         } else {
-            this.getFlux().actions.route.navigate('style-guide');
+            this.getFlux().actions.route.navigate('pattern-library');
         }
     },
 
@@ -46,8 +46,8 @@ module.exports = React.createClass({
         var linkClasses, display;
 
         linkClasses = classSet({
-            'sg-nav__menu-link'             : true,
-            'sg-nav__menu-link--is-current' : this.props.active
+            'pl-nav__menu-link'             : true,
+            'pl-nav__menu-link--is-current' : this.props.active
         });
 
         if (this.props.children) {
@@ -58,7 +58,7 @@ module.exports = React.createClass({
             display = this.props.displayName;
         }
         return (
-            <li className='sg-nav__menu-item'>
+            <li className='pl-nav__menu-item'>
                 <a className={linkClasses} onClick={this.onClick}>
                     {display}
                 </a>

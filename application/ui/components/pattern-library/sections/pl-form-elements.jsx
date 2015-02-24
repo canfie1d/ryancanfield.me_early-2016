@@ -9,6 +9,7 @@ var RadioInput      = require('../../form/inputs/radio');
 var RadioInputGroup = require('../../form/inputs/radio-group');
 var CheckboxInput   = require('../../form/inputs/checkbox');
 var CheckboxGroup   = require('../../form/inputs/checkbox-group');
+var SwitchToggle    = require('../../form/inputs/switch');
 
 var ReactIntl       = require('react-intl');
 var IntlMixin       = ReactIntl.IntlMixin;
@@ -138,9 +139,9 @@ module.exports = React.createClass({
         ];
 
         return (
-            <div className='sg-page'>
-                <h1 className='sg-h1'>{this.t('sg.section.Form Elements')}</h1>
-                <h2 className='sg-h2'>{this.t('sg.form-elements.input-types')}</h2>
+            <div className='pl-page'>
+                <h1 className='pl-h1'>{'Form Elements'}</h1>
+                <h2 className='pl-h2'>{'Text Input types'}</h2>
                 <div className='row'>
                     <div className='medium-6 columns'>
                         <TextInput
@@ -177,12 +178,7 @@ module.exports = React.createClass({
                             label       = {this.t('sg.form-elements.number-label')}
                             id          = 'number-text-input'
                             type        = 'number'
-                            placeholder = {this.t('sg.form-elements.number-placeholder')} />
-                        <TextareaInput
-                            label       = {this.t('sg.form-elements.textarea-label')}
-                            id          = 'textarea-input'
-                            rows        = {10}
-                            placeholder = {this.t('sg.form-elements.textarea-placeholder')} />
+                            placeholder = 'Enter your lucky number' />
                     </div>
                     <div className='medium-6 columns'>
                         <TextInput
@@ -219,33 +215,48 @@ module.exports = React.createClass({
                             label   = {this.t('sg.form-elements.select-label')}
                             id      = 'select-input'
                             options = {mockSelectInputData} />
-                        <div className='row'>
-                            <div className='medium-6 columns'>
-                                <RadioInput
-                                    id      = 'radio-1-input'
-                                    name    = 'radio-input'
-                                    checked = {true}
-                                    value   = 'option 1'
-                                    label   = {this.t('sg.form-elements.radio-label')} />
-                                <RadioInputGroup
-                                    label   = {this.t('sg.form-elements.radio-group-label')}
-                                    name    = 'radio-group-1'
-                                    options = {mockRadioGroupData} />
-                            </div>
-                            <div className='medium-6 columns'>
-                                <CheckboxInput
-                                    id      = 'checkbox-single-1-input'
-                                    checked = {true}
-                                    value   = 'option 1'
-                                    label   = {this.t('sg.form-elements.checkbox-label')} />
-                                <CheckboxGroup
-                                    label   = {this.t('sg.form-elements.checkbox-group-label')}
-                                    name    = 'checkbox-group-1'
-                                    options = {mockCheckboxGroupData} />
-                            </div>
-                        </div>
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className='medium-6 columns'>
+                        <TextareaInput
+                        label       = 'Textarea:'
+                        id          = 'textarea-input'
+                        rows        = {10}
+                        placeholder = 'Tell us a bit about yourself...' />
+                    </div>
+                </div>
+
+                <h2 className='pl-h2'>{'Checkboxes & Radios'}</h2>
+                <div className='row'>
+                    <div className='medium-6 columns'>
+                        <RadioInput
+                            id      = 'radio-1-input'
+                            name    = 'radio-input'
+                            checked = {true}
+                            value   = 'option 1'
+                            label   = 'Single radio input' />
                         <RadioInputGroup
-                            label   = {this.t('sg.form-elements.radio-group-inline-label')}
+                            label   = 'Radio Group'
+                            name    = 'radio-group-1'
+                            options = {mockRadioGroupData} />
+                    </div>
+                    <div className='medium-6 columns'>
+                        <CheckboxInput
+                            id      = 'checkbox-single-1-input'
+                            checked = {true}
+                            value   = 'option 1'
+                            label   = 'Single checkbox-single input' />
+                        <CheckboxGroup
+                            label   = 'Checkbox Group'
+                            name    = 'checkbox-group-1'
+                            options = {mockCheckboxGroupData} />
+                    </div>
+                </div>
+                <div className='row'>
+                    <div className=' medium-12 columns'>
+                        <RadioInputGroup
+                            label   = 'Inline Radio Group'
                             name    = 'radio-group-3'
                             inline  = {true}
                             options = {mockRadioGroupData2} />
@@ -256,8 +267,29 @@ module.exports = React.createClass({
                             options = {mockCheckboxGroupData2} />
                     </div>
                 </div>
+                <div className='row'>
+                    <div className='medium-4 columns'>
+                        <SwitchToggle
+                            id      = 'switch-1-input'
+                            label   = 'Square Switch'
+                            name    = 'single-switch-1'
+                            value   = 'switch-1'
+                            round   = {false}
+                            checked = {true} />
+                    </div>
+                    <div className='medium-4 columns'>
+                        <SwitchToggle
+                            id      = 'switch-2-input'
+                            label   = 'Rounded Switch'
+                            name    = 'single-switch-2'
+                            value   = 'switch-2'
+                            round   = {true}
+                            checked = {true} />
+                    </div>
+                </div>
 
-                <h2 className='sg-h2'>{this.t('sg.form-elements.validation')}</h2>
+
+                <h2 className='pl-h2'>{'Validation'}</h2>
                 <div className='row'>
                     <div className='medium-6 columns'>
                         <TextInput

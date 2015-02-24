@@ -72,7 +72,7 @@ module.exports = {
             },
             {
                 test   : /\.scss$/,
-                loader : 'style-loader!css-loader!sass-loader' + config.sassOptions
+                loader : 'style!css!autoprefixer!sass' + config.sassOptions
             }
         ]
     },
