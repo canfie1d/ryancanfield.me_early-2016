@@ -82,6 +82,7 @@ module.exports = React.createClass({
                     <span className='input--select__arrow'>
                         <Icon
                             className = 'input--select__arrow-icon'
+                            size      = 'x-small'
                             icon      = 'caret'
                             rotate    = {90} />
                     </span>
