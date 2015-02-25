@@ -19,7 +19,7 @@ var getEnvironmentDependentRoutes = function()
     if (__ENVIRONMENT__ !== 'production') {
         routes = routes.concat([
             <Route path='/pattern-library/:section' name='pattern-library-section' handler={PatternLibraryPage} key='pattern-library-section'/>,
-            <Redirect from="/pattern-library" to="/pattern-library/all" />
+            <Redirect from='/pattern-library' name='pattern-library' key='pattern-library' to='/pattern-library/all' />
         ]);
     }
 
