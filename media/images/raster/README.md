@@ -1,1 +1,1 @@
-## Raster
+## Raster Graphics
