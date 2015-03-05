@@ -10,40 +10,72 @@ module.exports = React.createClass ({
     render : function()
     {
         return (
-        <div className='pl-page'>
+          <div className='pl-page example'>
           <h1 className='pl-h1'>Grid</h1>
-            <div className="row display">
-              <div className="small-2 large-4 columns"><span className="hide-for-large">2</span><span className="show-for-large">4</span></div>
-              <div className="small-4 large-4 columns">4</div>
-              <div className="small-6 large-4 columns"><span className="hide-for-large">6</span><span className="show-for-large">4</span></div>
+            <div className="row">.row</div>
+            <div className="row">
+            <div className="large-2 columns">.large-2</div>
+            <div className="large-10 columns">.large-10.columns</div>
             </div>
-            <div className="row display">
-              <div className="large-3 columns"><span className="hide-for-large">full</span><span className="show-for-large">3</span></div>
-              <div className="large-6 columns"><span className="hide-for-large">full</span><span className="show-for-large">6</span></div>
-              <div className="large-3 columns"><span className="hide-for-large">full</span><span className="show-for-large">3</span></div>
+            <div className="row">
+            <div className="large-3 columns">.large-3.columns</div>
+            <div className="large-9 columns">.large-9.columns</div>
             </div>
-            <div className="row display">
-              <div className="small-6 large-2 columns"><span className="hide-for-large">6</span><span className="show-for-large">2</span></div>
-              <div className="small-6 large-8 columns"><span className="hide-for-large">6</span><span className="show-for-large">8</span></div>
-              <div className="small-12 large-2 columns"><span className="hide-for-large">full</span><span className="show-for-large">2</span></div>
+            <div className="row">
+            <div className="large-4 columns">.large-4.columns</div>
+            <div className="large-8 columns">.large-8.columns</div>
             </div>
-            <div className="row display">
-              <div className="small-3 columns">3</div>
-              <div className="small-9 columns">9</div>
+            <div className="row">
+            <div className="large-5 columns">.large-5.columns</div>
+            <div className="large-7 columns">.large-7.columns</div>
             </div>
-            <div className="row display">
-              <div className="large-4 columns"><span className="hide-for-large">full</span><span className="show-for-large">4</span></div>
-              <div className="large-8 columns"><span className="hide-for-large">full</span><span className="show-for-large">8</span></div>
+            <div className="row">
+            <div className="large-6 columns">.large-6.columns</div>
+            <div className="large-6 columns">.large-6.columns</div>
             </div>
-            <div className="row display">
-              <div className="small-6 large-5 columns"><span className="hide-for-large">6</span><span className="show-for-large">5</span></div>
-              <div className="small-6 large-7 columns"><span className="hide-for-large">6</span><span className="show-for-large">7</span></div>
+            <div className="row">
+            <div className="large-7 columns">.large-7.columns</div>
+            <div className="large-5 columns">.large-5.columns</div>
             </div>
-            <div className="row display">
-              <div className="large-6 columns"><span className="hide-for-large">full</span><span className="show-for-large">6</span></div>
-              <div className="large-6 columns"><span className="hide-for-large">full</span><span className="show-for-large">6</span></div>
+            <div className="row">
+            <div className="large-8 columns">.large-8.columns</div>
+            <div className="large-4 columns">.large-4.columns</div>
             </div>
-          </div>
+            <div className="row">
+            <div className="large-9 columns">.large-9.columns</div>
+            <div className="large-3 columns">.large-3.columns</div>
+            </div>
+            <div className="row">
+            <div className="large-10 columns">.large-10.columns</div>
+            <div className="large-2 columns">.large-2</div>
+            </div>
+            <div className="row">
+            <div className="large-12 columns">.large-12.columns</div>
+            </div>
+            <div className="row">
+            <div className="large-6 columns">.large-6.columns</div>
+            <div className="large-6 columns">.large-6.columns</div>
+            </div>
+            <div className="row">
+            <div className="large-4 columns">.large-4.columns</div>
+            <div className="large-4 columns">.large-4.columns</div>
+            <div className="large-4 columns">.large-4.columns</div>
+            </div>
+            <div className="row">
+            <div className="large-3 columns">.large-3.columns</div>
+            <div className="large-3 columns">.large-3.columns</div>
+            <div className="large-3 columns">.large-3.columns</div>
+            <div className="large-3 columns">.large-3.columns</div>
+            </div>
+            <div className="row">
+            <div className="large-2 columns">.large-2.columns</div>
+            <div className="large-2 columns">.large-2.columns</div>
+            <div className="large-2 columns">.large-2.columns</div>
+            <div className="large-2 columns">.large-2.columns</div>
+            <div className="large-2 columns">.large-2.columns</div>
+            <div className="large-2 columns">.large-2.columns</div>
+            </div>
+        </div>
         );
     }
 });
