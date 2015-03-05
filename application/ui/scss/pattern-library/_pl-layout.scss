@@ -61,9 +61,11 @@ $pl-header-height : rem-calc(64);
         height      : 60px;
         line-height : 60px;
     }
+
     &.example .row{
         margin-bottom : 20px;
     }
+
     &.example .row .column, &.example .row .columns{
         background : #e4e4e4;
         border     : 1px solid #ccc;
