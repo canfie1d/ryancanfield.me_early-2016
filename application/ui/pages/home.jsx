@@ -1,12 +1,21 @@
 /* jshint globalstrict: true */
 'use strict';
 
-var React = require('react');
+var React           = require('react');
+var ReactIntl       = require('react-intl');
+var IntlMixin       = ReactIntl.IntlMixin;
+var IntlHelperMixin = require('../mixins/intlHelperMixin');
+
 var url   = require('../../../media/images/raster/branding.png');
 
 module.exports = React.createClass({
 
     displayName : 'HomeModule',
+
+    mixins: [
+        IntlMixin,
+        IntlHelperMixin
+    ],
 
     render : function() {
         var style1,
@@ -36,8 +45,8 @@ module.exports = React.createClass({
         return (
             <div>
                 <img style={style1} src={url} alt='Synapse Logo' />
-                <h1 style={style2}>{'Frontend Template'}</h1>
-                <h2 style={style3}>{'...sorry the name isn\'t better.'}</h2>
+                <h1 style={style2}>{this.t('home.title')}</h1>
+                <h2 style={style3}>{this.t('home.content')}</h2>
             </div>
         );
 
