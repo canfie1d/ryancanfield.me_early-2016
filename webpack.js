@@ -14,7 +14,7 @@ server.use(function (req, res, next) {
     var ext = path.extname(req.url);
 
     if ((ext === '' || ext === '.html') && req.url !== '/') {
-        req.pipe(request('http://localhost:9000')).pipe(res);
+        req.pipe(request('http://' + req.hostname + ':9000')).pipe(res);
     } else {
         next();
     }
