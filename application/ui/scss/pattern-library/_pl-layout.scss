@@ -53,31 +53,26 @@ $pl-header-height : rem-calc(64);
     margin      : $pl-header-height auto 0 auto;
     padding     : rem-calc(40);
 
-    .row {
+    &.example .row,
+    &.example .row .column,
+    &.example .row .columns {
+        font-size   : 11px;
+        background  : #f4f4f4;
+        height      : 60px;
+        line-height : 60px;
+    }
 
-        &+ .pl-h2 {
-            margin-top: rem-calc(20);
-        }
+    &.example .row{
+        margin-bottom : 20px;
+    }
 
-        &.display {
-            background: #eee;
-            font-size: 11px;
-            margin-bottom: 10px;
-            line-height: 2rem;
-            border: solid 1px #c6c6c6;
-            margin-left: 0 !important;
-            margin-right: 0 !important;
-            .columns:nth-child(2),
-            .columns.small-centered,
-            .columns.large-centered {
-                background: #e1e1e1;
-            }
-
-        }
-
+    &.example .row .column, &.example .row .columns{
+        background : #e4e4e4;
+        border     : 1px solid #ccc;
     }
 
 }
+
 
 // style guide page sidebar fixed to top
 // offset by sidebar on desktop

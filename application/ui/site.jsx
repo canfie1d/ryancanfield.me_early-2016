@@ -5,6 +5,8 @@ var React           = require('react');
 var RouteHandler    = require('react-router').RouteHandler;
 var FluxMixin       = require('fluxxor').FluxMixin(React);
 var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
+var ReactIntl       = require('react-intl');
+var IntlMixin       = ReactIntl.IntlMixin;
 
 var LoggedIn        = require('./regions/header/user-logged-in');
 var LoggedOut       = require('./regions/header/user-logged-out');
@@ -13,7 +15,7 @@ module.exports = React.createClass({
 
     displayName : 'SiteLayout',
 
-    mixins : [ FluxMixin, new StoreWatchMixin('TokenStore') ],
+    mixins : [ FluxMixin, new StoreWatchMixin('TokenStore'), IntlMixin ],
 
     getStateFromFlux : function()
     {

@@ -5,11 +5,15 @@ var React     = require('react');
 var FluxMixin = require('fluxxor').FluxMixin(React);
 var PLNavItem = require('./pl-nav-item');
 
+var ReactIntl       = require('react-intl');
+var IntlMixin       = ReactIntl.IntlMixin;
+var IntlHelperMixin = require('../../mixins/intlHelperMixin');
+
 module.exports = React.createClass({
 
     displayName : 'PatternLibrarySidebar',
 
-    mixins : [FluxMixin],
+    mixins : [FluxMixin, IntlMixin, IntlHelperMixin ],
 
     propTypes : {
         // Component constructors for sections
@@ -27,6 +31,7 @@ module.exports = React.createClass({
                     displayName = {Page.displayName}
                     key         = {Page.displayName}
                     active      = {activeSection === Page.displayName}
+                    i18nPrefix  = {'sg.section.'}
                 />
             );
         });
@@ -105,7 +110,7 @@ module.exports = React.createClass({
                 </h1>
                 <nav className='pl-nav'>
                     <menu className='pl-nav__menu'>
-                    <PLNavItem active={this.props.activeSection === 'all'} displayName='all'>Kitchen Sink</PLNavItem>
+                    <PLNavItem active={this.props.activeSection === 'all'} displayName='all'>{this.t('sg.section.Kitchen Sink')}</PLNavItem>
                         {this.renderNavItems()}
                     </menu>
                 </nav>
