@@ -8,15 +8,15 @@
 
 // @Vars
 // label variables
-$form-label-font  : $sans-bold       !default;
-$form-label-color : $gray--600 !default;
+$form-label-font  : $sans--bold !default;
+$form-label-color : $gray--600  !default;
 
 // <label className='label' for='input-id'>[Label]</label>
 .label {
     margin      : 0;
     padding     : rem-calc(0 0 9 0);
     display     : block;
-    font-family : $sans-bold;
+    font-family : $sans--bold;
     color       : $form-label-color;
     text-shadow : 1px 1px 0px rgba($white, .25);
 }

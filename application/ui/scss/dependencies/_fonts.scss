@@ -40,8 +40,8 @@ $body-font--bold  : $sans--bold  !default;
 
 
 // Use these variables to declare alternative font families if needed
-//$display-font-alt  : $sans-bold !default;
-//$body-font-alt     : $sans-regular !default;
+//$display-font-alt  : $sans--bold !default;
+//$body-font-alt     : $sans !default;
 
 
 //////////////////////////////////////
@@ -55,7 +55,8 @@ $body-font--bold  : $sans--bold  !default;
     font-weight : normal;
     font-style  : normal;
     src         : local 'Source Sans Pro Light';
-    src         : url('/fonts/SourceSansPro/sourcesanspro-light-webfont.woff') format('woff');
+    src         : url(../../media/fonts/SourceSansPro/sourcesanspro-light-webfont.woff2) format('woff2');
+    src         : url(../../media/fonts/SourceSansPro/sourcesanspro-light-webfont.woff) format('woff');
 }
 
 @font-face {
@@ -63,7 +64,8 @@ $body-font--bold  : $sans--bold  !default;
     font-weight : normal;
     font-style  : normal;
     src         : local 'Source Sans Pro Regular';
-    src         : url('/fonts/SourceSansPro/sourcesanspro-regular-webfont.woff') format('woff');
+    src         : url(../../media/fonts/SourceSansPro/sourcesanspro-regular-webfont.woff2) format('woff2');
+    src         : url(../../media/fonts/SourceSansPro/sourcesanspro-regular-webfont.woff) format('woff');
 }
 
 @font-face {
@@ -71,6 +73,7 @@ $body-font--bold  : $sans--bold  !default;
     font-weight : normal;
     font-style  : normal;
     src         : local 'Source Sans Pro Semibold';
-    src         : url('/fonts/SourceSansPro/sourcesanspro-semibold-webfont.woff') format('woff');
+    src         : url(../../media/fonts/SourceSansPro/sourcesanspro-semibold-webfont.woff2) format('woff2');
+    src         : url(../../media/fonts/SourceSansPro/sourcesanspro-semibold-webfont.woff) format('woff');
 }
 

@@ -6,7 +6,7 @@ var ReactIntl       = require('react-intl');
 var IntlMixin       = ReactIntl.IntlMixin;
 var IntlHelperMixin = require('../mixins/intlHelperMixin');
 
-var url   = require('../../../media/images/raster/branding.png');
+var url   = require('../../media/images/raster/branding.png');
 
 module.exports = React.createClass({
 
