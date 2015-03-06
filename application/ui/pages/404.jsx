@@ -1,11 +1,19 @@
 /* jshint globalstrict: true */
 'use strict';
 
-var React = require('react');
+var React           = require('react');
+var ReactIntl       = require('react-intl');
+var IntlMixin       = ReactIntl.IntlMixin;
+var IntlHelperMixin = require('../mixins/intlHelperMixin');
 
 module.exports = React.createClass({
 
     displayName : '404',
+
+    mixins: [
+        IntlMixin,
+        IntlHelperMixin
+    ],
 
     render : function() {
         var style1,
@@ -26,7 +34,7 @@ module.exports = React.createClass({
         return (
             <div>
                 <h1 style={style1}>{'404'}</h1>
-                <h2 style={style2}>{'Sorry, that page was not found.'}</h2>
+                <h2 style={style2}>{this.t('404.site-not-found')}</h2>
             </div>
         );
 
