@@ -20,7 +20,7 @@ server.use(function (req, res, next) {
     }
 });
 
-server.listen(9000, 'localhost', function (err, result) {
+server.listen(9000, function (err, result) {
     if (err) {
         console.log(err);
     }
