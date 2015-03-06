@@ -35,7 +35,7 @@
     font-family : $sans-bold;
     font-size   : rem-calc(21);
     line-height : 1em;
-    color       : $gray-theme--800;
+    color       : $gray--800;
 
     // border line
     &::after {
@@ -46,7 +46,7 @@
         left       : 0;
         z-index    : $stack-bot;
         height     : 1px;
-        background : $gray-theme--200;
+        background : $gray--200;
     }
 
 }

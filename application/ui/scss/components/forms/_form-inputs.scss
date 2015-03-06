@@ -9,9 +9,9 @@
 // @Vars
 // form vars
 $form-font                   : $sans-reg        !default;
-$form-font-color             : $gray-theme--500 !default;
-$form-focus-font-color       : $gray-theme--700 !default;
-$form-placeholder-font-color : $gray-theme--400 !default;
+$form-font-color             : $gray--500 !default;
+$form-focus-font-color       : $gray--700 !default;
+$form-placeholder-font-color : $gray--400 !default;
 
 // <div class="input-wrap">
 //  <input class="input" type="text" placeholder="Name" />
@@ -40,7 +40,7 @@ $form-placeholder-font-color : $gray-theme--400 !default;
     display       : block;
     font-family   : $form-font;
     color         : $form-font-color;
-    border        : 1px solid $gray-theme--300;
+    border        : 1px solid $gray--300;
     border-radius : 2px;
     transition    : color 200ms ease,
                     background 200ms ease,
@@ -52,8 +52,8 @@ $form-placeholder-font-color : $gray-theme--400 !default;
 
     &:focus {
         color        : $form-focus-font-color;
-        background   : $gray-theme--050;
-        border-color : $gray-theme--600;
+        background   : $gray--050;
+        border-color : $gray--600;
         outline      : none;
         box-shadow   : 0px 0px 4px rgba($black, .25);
     }
@@ -105,9 +105,9 @@ input[type=search]::-webkit-search-results-decoration {
 // 2. style container to resemble <select> el
 .input-wrap--select {
     overflow      : hidden;
-    border        : 1px solid $gray-theme--300; // 1.
+    border        : 1px solid $gray--300; // 1.
     border-radius : 2px; // 2.
-    background    : $gray-theme--050; // 2.
+    background    : $gray--050; // 2.
 }
 
 // select element
@@ -169,7 +169,7 @@ input[type=search]::-webkit-search-results-decoration {
         margin    : 0;
         padding   : 0;
         font-size : rem-calc(13);
-        color     : $gray-theme--600 !important;
+        color     : $gray--600 !important;
     }
 
 }
