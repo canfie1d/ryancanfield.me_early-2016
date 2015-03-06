@@ -3,10 +3,11 @@
 
 var React           = require('react');
 var RouteHandler    = require('react-router').RouteHandler;
-var LoggedIn        = require('./header/user-logged-in.jsx');
-var LoggedOut       = require('./header/user-logged-out.jsx');
 var FluxMixin       = require('fluxxor').FluxMixin(React);
 var StoreWatchMixin = require('fluxxor').StoreWatchMixin;
+
+var LoggedIn        = require('./regions/header/user-logged-in');
+var LoggedOut       = require('./regions/header/user-logged-out');
 
 module.exports = React.createClass({
 

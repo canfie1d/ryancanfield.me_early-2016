@@ -1,16 +1,11 @@
-// Source Sans Pro
-// (do not use)
-$source-light : 'source_sans_prolight', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-$source       : 'source_sans_proregular', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-$source-bold  : 'source_sans_prosemibold', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-
-//font vars
-$sans-light : $source-light;
-$sans-reg   : $source;
-$sans-bold  : $source-bold;
+////////////////////////////////////
+//                                //
+//      Font-Family Imports       //
+//                                //
+////////////////////////////////////
 
 @font-face {
-    font-family: $source-light;
+    font-family: 'source_sans_prolight';
     src: url('/fonts/SourceSansPro/sourcesanspro-light-webfont.eot');
     src: url('/fonts/SourceSansPro/sourcesanspro-light-webfont.eot?#iefix') format('embedded-opentype'),
          url('/fonts/SourceSansPro/sourcesanspro-light-webfont.woff') format('woff'),
@@ -21,7 +16,7 @@ $sans-bold  : $source-bold;
 }
 
 @font-face {
-    font-family: $source;
+    font-family: 'source_sans_proregular';
     src: url('/fonts/SourceSansPro/sourcesanspro-regular-webfont.eot');
     src: url('/fonts/SourceSansPro/sourcesanspro-regular-webfont.eot?#iefix') format('embedded-opentype'),
          url('/fonts/SourceSansPro/sourcesanspro-regular-webfont.woff') format('woff'),
@@ -32,7 +27,7 @@ $sans-bold  : $source-bold;
 }
 
 @font-face {
-    font-family: $source-bold;
+    font-family: 'source_sans_prosemibold';
     src: url('/fonts/SourceSansPro/sourcesanspro-semibold-webfont.eot');
     src: url('/fonts/SourceSansPro/sourcesanspro-semibold-webfont.eot?#iefix') format('embedded-opentype'),
          url('/fonts/SourceSansPro/sourcesanspro-semibold-webfont.woff') format('woff'),
@@ -41,3 +36,31 @@ $sans-bold  : $source-bold;
     font-weight : normal;
     font-style  : normal;
 }
+
+//////////////////////////////////////
+//                                  //
+//      Font-Face Definitions       //
+//                                  //
+//////////////////////////////////////
+
+// Source Sans Pro
+$source-light   : 'source_sans_prolight', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$source-regular : 'source_sans_proregular', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$source-bold    : 'source_sans_prosemibold', "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+
+// Georgia
+$georgia-regular : Georgia, Times, 'Times New Roman', serif;
+
+///////////////////////////////
+//                           //
+//      Font Variables       //
+//                           //
+///////////////////////////////
+
+$sans-light   : $source-light;
+$sans-regular : $source-regular;
+$sans-bold    : $source-bold;
+
+$serif-light   : $georgia-regular;
+$serif-regular : $georgia-regular;
+$serif-bold    : $georgia-regular;

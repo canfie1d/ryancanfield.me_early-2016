@@ -7,13 +7,13 @@
 // *******************************************
 
 // button thematic vars
-$button-font             : $sans-reg !default;
-$button-color            : $white    !default;
-$button-background-color : $primary  !default;
-$button-border-color     : $primary  !default;
-$button-border-width     : 1px       !default;
-$button-border-style     : solid     !default;
-$button-border-radius    : 2px       !default;
+$button-font             : $sans-regular !default;
+$button-color            : $white        !default;
+$button-background-color : $primary      !default;
+$button-border-color     : $primary      !default;
+$button-border-width     : 1px           !default;
+$button-border-style     : solid         !default;
+$button-border-radius    : 2px           !default;
 
 // button size vars
 $button-tiny    : rem-calc(7)    !default;

@@ -2,17 +2,19 @@
     @import "vendor/reset";
     @import "../../../node_modules/synfrastructure/scss/synfrastructure";
 
+    @import "app_settings.scss";
+
 // dependency imports
     @import "dependencies/colors";
     @import "dependencies/extends";
     @import "dependencies/fonts";
     @import "dependencies/mixins";
 
-// layout
-    @import "layout/base";
-    @import "layout/layout";
-    @import "layout/layout-utilities";
-    @import "layout/z-indexes";
+// regions
+    @import "regions/base";
+    @import "regions/layout";
+    @import "regions/layout-utilities";
+    @import "regions/z-indexes";
 
 // component imports
 
