@@ -57,7 +57,7 @@ module.exports = {
         ],
         loaders : [
             {
-                test   : /\.(eot|ico|jpg|png|svg|ttf|woff|woff2)$/,
+                test   : /\.(eot|ico|ttf|woff|woff2)$/,
                 loader : 'file-loader',
                 query  : {name : '[path][name].[ext]'}
             },
@@ -73,6 +73,10 @@ module.exports = {
             {
                 test   : /\.scss$/,
                 loader : 'style!css!autoprefixer!sass' + config.sassOptions
+            },
+            {
+                test: /\.(jpe?g|png|gif|svg)$/i,
+                loaders: ['image?bypassOnDebug&optimizationLevel=7&interlaced=false']
             }
         ]
     },
