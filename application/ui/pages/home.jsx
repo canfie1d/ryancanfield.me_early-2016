@@ -24,7 +24,7 @@ module.exports = React.createClass({
         };
 
         return (
-            <div>
+            <div className='typography'>
                 <h1 style={style1}>{'Frontend Template'}</h1>
                 <h2 style={style2}>{'...sorry the name isn\'t better.'}</h2>
             </div>
