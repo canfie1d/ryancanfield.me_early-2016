@@ -132,7 +132,7 @@ $button-disabled-opacity : .3 !default;
     &:hover,
     &:focus {
         text-shadow : $button-hover-text-shadow;
-        background  : $gray-theme--050;
+        background  : $gray--050;
 
         > * {
             text-shadow : -1px -1px 1px rgba($white, .5);
@@ -140,7 +140,7 @@ $button-disabled-opacity : .3 !default;
     }
 
     > * {
-        color       : $gray-theme--500;
+        color       : $gray--500;
         text-shadow : none;
     }
 
