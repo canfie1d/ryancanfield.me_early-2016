@@ -6,7 +6,7 @@ var ReactIntl       = require('react-intl');
 var IntlMixin       = ReactIntl.IntlMixin;
 var IntlHelperMixin = require('../mixins/intlHelperMixin');
 
-var url   = require('../../../media/images/raster/branding.png');
+var url   = require('../../media/images/raster/branding.png');
 
 module.exports = React.createClass({
 
@@ -43,7 +43,7 @@ module.exports = React.createClass({
         };
 
         return (
-            <div>
+            <div className='typography'>
                 <img style={style1} src={url} alt='Synapse Logo' />
                 <h1 style={style2}>{this.t('home.title')}</h1>
                 <h2 style={style3}>{this.t('home.content')}</h2>

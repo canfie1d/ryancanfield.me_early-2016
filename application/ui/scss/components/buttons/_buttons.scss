@@ -7,13 +7,13 @@
 // *******************************************
 
 // button thematic vars
-$button-font             : $sans-reg !default;
-$button-color            : $white    !default;
-$button-background-color : $primary  !default;
-$button-border-color     : $primary  !default;
-$button-border-width     : 1px       !default;
-$button-border-style     : solid     !default;
-$button-border-radius    : 2px       !default;
+$button-font             : $sans         !default;
+$button-color            : $white        !default;
+$button-background-color : $primary      !default;
+$button-border-color     : $primary      !default;
+$button-border-width     : 1px           !default;
+$button-border-style     : solid         !default;
+$button-border-radius    : 2px           !default;
 
 // button size vars
 $button-tiny    : rem-calc(7)    !default;
@@ -76,7 +76,7 @@ $button-disabled-opacity : .3 !default;
         background-color : shade($primary, 10%);
 
         > * {
-            text-shadow: -1px -1px 0px rgba($black, .15);
+            text-shadow : -1px -1px 0px rgba($black, .15);
         }
 
     }
@@ -310,7 +310,7 @@ $button-disabled-opacity : .3 !default;
 // <span className='button--split-right [button--split-left]'>
 //     <a>
 //         {'Split Button'}
-//         <Icon className='button--split__icon' icon='caret' />
+//         <Icon className='icon' icon='caret' />
 //     </a>
 // </span>
 

@@ -7,7 +7,7 @@ var Router   = require('react-router');
 var Route    = Router.Route;
 var Redirect = Router.Redirect;
 
-var SiteLayout         = require('./ui/layouts/site');
+var SiteLayout         = require('./ui/site');
 var HomePage           = require('./ui/pages/home');
 var PatternLibraryPage = require('./ui/pages/pattern-library');
 var NotFoundPage       = require('./ui/pages/404');

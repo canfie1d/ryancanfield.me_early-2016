@@ -8,7 +8,7 @@
 
 // @Vars
 // form vars
-$form-font                   : $sans-reg        !default;
+$form-font                   : $sans      !default;
 $form-font-color             : $gray--500 !default;
 $form-focus-font-color       : $gray--700 !default;
 $form-placeholder-font-color : $gray--400 !default;
@@ -210,8 +210,8 @@ input[type=search]::-webkit-search-results-decoration {
 
     .input-wrap--radio,
     .input-wrap--checkbox {
-        margin : rem-calc(0 9);
-        display: inline-block;
+        margin  : rem-calc(0 9);
+        display : inline-block;
     }
 
 }
