@@ -3,7 +3,7 @@ $switch-size  : ($switch-width/2) + .1em;
 
 $switch-space        : .2em;
 $switch-off-padding  : 0;
-$switch-on-padding   :  $switch-size - $switch-space;
+$switch-on-padding   : $switch-size - $switch-space;
 $switch-button-size  : $switch-size - ($switch-space*2);
 $switch-off-border   : $gray--200;
 $switch-on-color     : $primary;

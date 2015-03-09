@@ -68,28 +68,28 @@ module.exports = React.createClass({
                         <Button size='tiny' split='right'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
+                                <Icon icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
                         <Button size='small' split='right'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
+                                <Icon icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
                         <Button size='medium' split='right'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
+                                <Icon icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
                         <Button size='large' split='right'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' />
+                                <Icon icon='caret' color='white' size='x-small' />
                             </a>
                         </Button>
                         <br />
@@ -99,28 +99,28 @@ module.exports = React.createClass({
                         <Button size='tiny' split='left'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' rotate={180} />
+                                <Icon icon='caret' color='white' size='x-small' rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='small' split='left'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' rotate={180} />
+                                <Icon icon='caret' color='white' size='x-small' rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='medium' split='left'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' rotate={180} />
+                                <Icon icon='caret' color='white' size='x-small' rotate={180} />
                             </a>
                         </Button>
                         <br />
                         <Button size='large' split='left'>
                             <a>
                                 {this.t('sg.buttons.split')}
-                                <Icon className='button--split__icon' icon='caret' color='white' size='x-small' rotate={180} />
+                                <Icon icon='caret' color='white' size='x-small' rotate={180} />
                             </a>
                         </Button>
                         <br />

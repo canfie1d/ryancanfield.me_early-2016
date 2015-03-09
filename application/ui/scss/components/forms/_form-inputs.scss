@@ -8,10 +8,10 @@
 
 // @Vars
 // form vars
-$form-font                   : $sans         !default;
-$form-font-color             : $gray--500    !default;
-$form-focus-font-color       : $gray--700    !default;
-$form-placeholder-font-color : $gray--400    !default;
+$form-font                   : $sans      !default;
+$form-font-color             : $gray--500 !default;
+$form-focus-font-color       : $gray--700 !default;
+$form-placeholder-font-color : $gray--400 !default;
 
 // <div class="input-wrap">
 //  <input class="input" type="text" placeholder="Name" />
@@ -210,8 +210,8 @@ input[type=search]::-webkit-search-results-decoration {
 
     .input-wrap--radio,
     .input-wrap--checkbox {
-        margin : rem-calc(0 9);
-        display: inline-block;
+        margin  : rem-calc(0 9);
+        display : inline-block;
     }
 
 }

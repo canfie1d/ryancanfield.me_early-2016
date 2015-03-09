@@ -76,7 +76,7 @@ $button-disabled-opacity : .3 !default;
         background-color : shade($primary, 10%);
 
         > * {
-            text-shadow: -1px -1px 0px rgba($black, .15);
+            text-shadow : -1px -1px 0px rgba($black, .15);
         }
 
     }
@@ -310,7 +310,7 @@ $button-disabled-opacity : .3 !default;
 // <span className='button--split-right [button--split-left]'>
 //     <a>
 //         {'Split Button'}
-//         <Icon className='button--split__icon' icon='caret' />
+//         <Icon className='icon' icon='caret' />
 //     </a>
 // </span>
 
@@ -320,7 +320,7 @@ $button-disabled-opacity : .3 !default;
     position : relative;
 
     // icon element that will split the button
-    .button--split__icon {
+    .icon {
         position : absolute;
         top      : 0;
         bottom   : 0;
@@ -347,7 +347,7 @@ $button-disabled-opacity : .3 !default;
     // tiny
     &.button--tiny {
 
-        .button--split__icon {
+        .icon {
             width : rem-calc(35);
 
             > svg {
@@ -363,7 +363,7 @@ $button-disabled-opacity : .3 !default;
     // small
     &.button--small {
 
-        .button--split__icon {
+        .icon {
             width : rem-calc(40);
 
             > svg {
@@ -379,7 +379,7 @@ $button-disabled-opacity : .3 !default;
     // large
     &.button--large {
 
-        .button--split__icon {
+        .icon {
             width : rem-calc(60);
 
             > svg {
@@ -401,7 +401,7 @@ $button-disabled-opacity : .3 !default;
         padding-right : rem-calc(70);
     }
 
-    .button--split__icon {
+    .icon {
         right : 0;
     }
 
@@ -432,7 +432,7 @@ $button-disabled-opacity : .3 !default;
         padding-left : rem-calc(70);
     }
 
-    .button--split__icon {
+    .icon {
         left : 0;
     }
 
