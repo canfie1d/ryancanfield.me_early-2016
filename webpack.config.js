@@ -32,7 +32,7 @@ if (environment === 'development') {
 
     config.plugins.push(new Webpack.HotModuleReplacementPlugin());
 
-    if (process.platform !== 'windows') {
+    if (process.platform !== 'win32') {
         config.plugins.push(new WebpackError(process.platform));
     }
 }
