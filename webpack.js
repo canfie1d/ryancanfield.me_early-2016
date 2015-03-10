@@ -14,13 +14,13 @@ server.use(function (req, res, next) {
     var ext = path.extname(req.url);
 
     if ((ext === '' || ext === '.html') && req.url !== '/') {
-        req.pipe(request('http://localhost:9000')).pipe(res);
+        req.pipe(request('http://' + req.hostname + ':9000')).pipe(res);
     } else {
         next();
     }
 });
 
-server.listen(9000, 'localhost', function (err, result) {
+server.listen(9000, function (err, result) {
     if (err) {
         console.log(err);
     }

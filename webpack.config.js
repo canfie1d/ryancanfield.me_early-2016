@@ -75,8 +75,8 @@ module.exports = {
                 loader : 'style!css!autoprefixer!sass' + config.sassOptions
             },
             {
-                test: /\.(jpe?g|png|gif|svg)$/i,
-                loaders: ['image?bypassOnDebug&optimizationLevel=7&interlaced=false']
+                test    : /\.(gif|jpe?g|png|svg)$/i,
+                loaders : ['image?bypassOnDebug&optimizationLevel=7&interlaced=false']
             }
         ]
     },
