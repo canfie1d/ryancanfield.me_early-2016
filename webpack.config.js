@@ -30,10 +30,12 @@ if (environment === 'development') {
 
     config.reactLoaders = ['react-hot'].concat(config.reactLoaders);
 
-    config.plugins = config.plugins.concat([
-        new Webpack.HotModuleReplacementPlugin(),
-        new WebpackError(process.platform)
-    ]);
+    if (processs.platform !== 'windows') {
+        config.plugins = config.plugins.concat([
+            new Webpack.HotModuleReplacementPlugin(),
+            new WebpackError(process.platform)
+        ]);
+    }
 }
 
 module.exports = {
