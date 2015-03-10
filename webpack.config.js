@@ -2,21 +2,23 @@ var Webpack           = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var HtmlWebpack       = require('html-webpack-plugin');
 var WebpackError      = require('webpack-error-notification');
+var path              = require('path');
 
 var environment = (process.env.APP_ENV || 'development');
+var npmPath     = path.resolve(__dirname, 'node_modules');
 var config      = {
     entry   : ['./application/bootstrap.js'],
     plugins : [
         new HtmlWebpack({template : './application/index.html'}),
         new Webpack.DefinePlugin({
-            __BACKEND__     : process.env.BACKEND,
-            __ENVIRONMENT__ : '\''+environment+'\''
+            __BACKEND__     : '\'' + process.env.BACKEND + '\'',
+            __ENVIRONMENT__ : '\'' + environment + '\''
         })
     ],
     reactLoaders : ['jsx?insertPragma=React.DOM'],
     sassOptions  : (
         '?outputStyle=' + (environment === 'production' ? 'compressed' : 'nested') +
-        '&includePaths[]=' + __dirname + '/node_modules'
+        '&includePaths[]=' + npmPath
     )
 };
 
@@ -39,7 +41,7 @@ module.exports = {
     entry  : config.entry,
     output : {
         filename   : 'app.js',
-        path       : __dirname + '/build',
+        path       : path.resolve(__dirname, 'build'),
         publicPath : '/'
     },
     module : {
@@ -47,12 +49,12 @@ module.exports = {
             {
                 test    : /\.js?/,
                 loader  : 'jshint-loader',
-                exclude : __dirname + '/node_modules'
+                exclude : npmPath
             },
             {
                 test    : /\.jsx?/,
                 loader  : 'jsxhint-loader',
-                exclude : __dirname + '/node_modules'
+                exclude : npmPath
             }
         ],
         loaders : [
@@ -64,7 +66,7 @@ module.exports = {
             {
                 test    : /\.jsx$/,
                 loaders : config.reactLoaders,
-                exclude : __dirname + '/node_modules'
+                exclude : npmPath
             },
             {
                 test   : /\.json$/,
