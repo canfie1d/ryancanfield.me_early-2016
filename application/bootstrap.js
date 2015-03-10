@@ -13,7 +13,7 @@ var router = require('./router');
 var flux   = require('./flux');
 var i18n   = require('./intl/intl');
 
-require('./ui/scss/app');
+require('./media.js');
 
 window.React = React;
 
