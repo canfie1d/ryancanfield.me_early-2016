@@ -28,11 +28,22 @@ module.exports = {
             }
         }
 
-        // check to see if en-us is part of the languages array.  If not, check for an english string
-        if (!navigator.languages.indexOf('en-us') && !navigator.languages.indexOf('en-US')) {
-            message = this._getTranslatedMessage('en-us', path);
-            if (message) {
-                return message;
+        // fix for Safari with single language
+        if (typeof navigator.languages !== 'undefined') {
+            // check to see if en-us is part of the languages array.  If not, check for an english string
+            if (!navigator.languages.indexOf('en-us') && !navigator.languages.indexOf('en-US')) {
+                message = this._getTranslatedMessage('en-us', path);
+                if (message) {
+                    return message;
+                }
+            }
+        } else {
+            // if there's a language, use it, otherwise default to en-us
+            if (typeof navigator.language !== 'undefined' && navigator.language.toLowerCase() === 'en-us') {
+                message = this._getTranslatedMessage('en-us', path);
+                if (message) {
+                    return message;
+                }
             }
         }
 
