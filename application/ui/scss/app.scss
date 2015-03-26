@@ -1,8 +1,7 @@
 // vendor imports
     @import "vendor/reset";
-    @import "../../../node_modules/synfrastructure/scss/synfrastructure";
-
     @import "app_settings.scss";
+    @import "../../../node_modules/synfrastructure/scss/synfrastructure";
 
 // dependency imports
     @import "dependencies/colors";
