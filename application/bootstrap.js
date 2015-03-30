@@ -1,5 +1,5 @@
 /* jshint globalstrict: true */
-/* globals window, Intl */
+/* globals window */
 'use strict';
 
 var React  = require('react');
@@ -28,6 +28,10 @@ router.run(function (Handler, state) {
         locales = [window.navigator.language];
     } else {
         locales = ['en-US'];
+    }
+
+    if (locales.indexOf('en-US') === -1 && locales.indexOf('en-us') === -1) {
+        locales.push('en-US');
     }
 
     React.render(
