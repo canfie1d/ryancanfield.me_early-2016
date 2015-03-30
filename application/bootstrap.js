@@ -30,6 +30,10 @@ router.run(function (Handler, state) {
         locales = ['en-US'];
     }
 
+    if (locales.indexOf('en-US') === -1 && locales.indexOf('en-us') === -1) {
+        locales.push('en-US');
+    }
+
     React.render(
         React.createElement(Handler, {flux : flux, locales : locales, messages : i18n.messages}),
         window.document.body
