@@ -31,7 +31,7 @@ module.exports = {
         // fix for Safari with single language
         if (typeof navigator.languages !== 'undefined') {
             // check to see if en-us is part of the languages array.  If not, check for an english string
-            if (!navigator.languages.indexOf('en-us') && !navigator.languages.indexOf('en-US')) {
+            if (navigator.languages.indexOf('en-us') === -1 && navigator.languages.indexOf('en-US') === -1) {
                 message = this._getTranslatedMessage('en-us', path);
                 if (message) {
                     return message;
