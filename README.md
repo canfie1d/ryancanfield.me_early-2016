@@ -17,7 +17,6 @@
 
 ### Initializing the Development Environment
 1. `npm install` to add dependencies
-1. `npm install -g webpack` if on Windows
 1. `npm start` to build the app and launch a server at `localhost:9000`
     - Use `npm run windows` to build and launch the app on Windows
 
