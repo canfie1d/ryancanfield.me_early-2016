@@ -12,6 +12,11 @@ module.exports = React.createClass({
     propTypes : {
         id      : React.PropTypes.string.isRequired,
         checked : React.PropTypes.bool.isRequired,
+        size    : React.PropTypes.oneOf([
+            'large',
+            'medium',
+            'small'
+        ]),
         value   : React.PropTypes.oneOfType([
             React.PropTypes.string,
             React.PropTypes.number
@@ -44,25 +49,29 @@ module.exports = React.createClass({
     {
         var classes = classSet({
             'switch'         : true,
-            'switch-round'   : this.props.round === true
+            'switch--round'  : this.props.round === true,
+            'switch--small'  : this.props.size === 'small',
+            'switch--medium' : this.props.size === 'medium',
+            'switch--large'  : this.props.size === 'large',
+            'input-wrap'     : true
         });
 
         return (
-            <div className='input-wrap input-wrap--checkbox'>
-                <Label
-                    className = 'input-wrap__label'
-                    htmlFor   = {this.props.id} >
-                    <input
-                        className = {classes}
+            <div className = {classes}>
+                <span className='label'>{this.props.label}</span>
+                <input
                         id        = {this.props.id}
                         value     = {this.props.value}
                         name      = {this.props.id}
                         type      = 'checkbox'
                         checked   = {this.state.isChecked}
                         onChange  = {this.onChange} />
-                    <span className='checkbox-text'>{this.props.label}</span>
+                <Label
+                    className = 'input-wrap__label'
+                    htmlFor   = {this.props.id} >
                 </Label>
             </div>
+
         );
     }
 
