@@ -267,8 +267,10 @@ module.exports = React.createClass({
                             options = {mockCheckboxGroupData2} />
                     </div>
                 </div>
+
+                <h2 className='pl-h2'>{'Switches'}</h2>
                 <div className='row'>
-                    <div className='medium-4 columns'>
+                    <div className='medium-3 columns'>
                         <SwitchToggle
                             id      = 'switch-1-input'
                             label   = 'Square Switch'
@@ -277,14 +279,35 @@ module.exports = React.createClass({
                             round   = {false}
                             checked = {true} />
                     </div>
-                    <div className='medium-4 columns'>
+                    <div className='medium-3 columns'>
                         <SwitchToggle
                             id      = 'switch-2-input'
-                            label   = 'Rounded Switch'
+                            label   = 'Large Rounded Switch'
                             name    = 'single-switch-2'
                             value   = 'switch-2'
                             round   = {true}
+                            size    = 'large'
                             checked = {true} />
+                    </div>
+                    <div className='medium-3 columns'>
+                        <SwitchToggle
+                            id      = 'switch-3-input'
+                            label   = 'Medium Rounded Switch'
+                            name    = 'single-switch-3'
+                            value   = 'switch-3'
+                            round   = {true}
+                            size    = 'medium'
+                            checked = {true} />
+                    </div>
+                    <div className='medium-3 columns'>
+                        <SwitchToggle
+                            id      = 'switch-4-input'
+                            label   = 'Small Rounded Switch Unchecked'
+                            name    = 'single-switch-4'
+                            value   = 'switch-4'
+                            round   = {true}
+                            size    = 'small'
+                            checked = {false} />
                     </div>
                 </div>
 

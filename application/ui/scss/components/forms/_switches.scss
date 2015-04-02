@@ -1,111 +1,156 @@
-$switch-width : 3em;
-$switch-size  : ($switch-width/2) + .1em;
+// *******************************************
+// *******************************************
 
-$switch-space        : .2em;
-$switch-off-padding  : 0;
-$switch-on-padding   : $switch-size - $switch-space;
-$switch-button-size  : $switch-size - ($switch-space*2);
-$switch-off-border   : $gray--200;
-$switch-on-color     : $primary;
-$switch-toggle-color : $white;
+    // Switches Component Based off Foundation Switches
+
+// *******************************************
+// *******************************************
+
+$switch-bg : $gray--200 !default;
+
+$switch-height-sml    : 1.75rem !default;
+$switch-height-med    : 2rem !default;
+$switch-height-lrg    : 2.5rem !default;
+$switch-bottom-margin : 1.5rem !default;
+
+$switch-paddle-bg               : $white !default;
+$switch-paddle-transition-speed : .15s !default;
+$switch-paddle-transition-ease  : ease-out !default;
+$switch-active-color            : $primary !default;
+
+
+@mixin switch-base(
+    $transition-speed : $switch-paddle-transition-speed,
+    $transition-ease  : $switch-paddle-transition-ease) {
+
+    position      : relative;
+    margin-bottom : $switch-bottom-margin;
+    border        : none;
+    outline       : 0;
+    padding       : 0;
+    user-select   : none;
+
+    label {
+        position      : relative;
+        display       : block;
+        margin-bottom : ($switch-height-med / 2);
+        width         : $switch-height-med * 2; height: $switch-height-med;
+        background    : $switch-bg;
+        color         : transparent;
+        cursor        : pointer;
+        text-indent   : 100%;
+
+        @include single-transition(left, $transition-speed, $transition-ease);
+
+    }
+
+    input {
+        position : absolute;
+            left : 10px;
+            top  : 9px;
+        opacity  : 0;
+        padding  : 0;
+
+
+
+        & + label {
+            margin-left  : 0;
+            margin-right : 0;
+        }
+
+    }
+
+    label:after {
+        position   : absolute;
+            left   : .25rem;
+            top    : .25rem;
+        transform  : translate3d(0,0,0);
+        display    : block;
+        width      : $switch-height-med - .5rem;
+        height     : $switch-height-med - .5rem;
+        background : $switch-paddle-bg;
+        content    : "";
+        transition : left $transition-speed $transition-ease;
+
+    }
+
+        input:checked + label {
+            background : $switch-active-color;
+        }
+
+        input:checked + label:after {
+            left : $switch-height-med + .25rem;
+        }
+
+    }
+
+    @mixin switch-size($height: $switch-height-med) {
+
+        label {
+            height : $height;
+            width  : $height * 2;
+        }
+
+        label:after {
+            height : $height - .5rem;
+            width  : $height - .5rem;
+        }
+
+        input:checked + label:after {
+            left : $height + .25rem;
+        }
+
+    }
+
+    @mixin switch-style(
+    $paddle-bg    :$switch-paddle-bg,
+    $active-color :$switch-active-color,
+    $base-style   :true) {
+
+    @if $base-style {
+
+        label {
+            background : $switch-bg;
+            color      : transparent;
+
+        }
+
+        label:after {
+            background : $paddle-bg;
+        }
+
+        input:checked + label {
+            background : $active-color;
+        }
+
+    }
+
+}
+
+@mixin switch(
+    $transition-speed : $switch-paddle-transition-speed,
+    $transition-ease  : $switch-paddle-transition-ease,
+    $height           : $switch-height-med,
+    $paddle-bg        : $switch-paddle-bg,
+    $active-color     : $switch-active-color,
+    $base-style       :true) {
+        @include switch-base($transition-speed, $transition-ease);
+        @include switch-size($height);
+        @include switch-style($paddle-bg, $active-color, $base-style);
+}
 
 .switch {
-  display                     : inline-block;
-  appearance                  : none;
-  -webkit-appearance          : none;
-  margin                      : 0 rem-calc(15) 0 0;
-  padding                     : 0;
-  box-shadow                  : inset 0 0 0 $switch-space $switch-off-border;
-  width                       : $switch-width;
-  height                      : $switch-size;
-  line-height                 : $switch-size;
-  outline                     : 1px solid transparent !important;
-  cursor                      : pointer;
-  border                      : none;
-  background                  : transparent;
-  user-select                 : none;
-  -webkit-tap-highlight-color : rgba(0,0,0,0);
-  -webkit-touch-callout       : none;
-  transition                  : box-shadow .3s ease-in-out, padding .25s ease-in-out;
-  transition-delay            : .1s, 0s;
+    @include switch;
 
-  &.switch-round {
-      border-radius : $switch-size/2;
+    &.switch--large { @include switch-size($switch-height-lrg); }
 
-      &::before {
-        border-radius : $switch-button-size/2;
-      }
+    &.switch--medium { @include switch-size($switch-height-med); }
 
-  }
+    &.switch--small { @include switch-size($switch-height-sml); }
 
-  &:checked {
-    transition-delay : 0s, 0s;
-    box-shadow       : inset 0 0 0 $switch-size/1.75 $switch-on-color !important;
-    padding-left     : $switch-on-padding;
-  }
+    &.switch--round { @include radius(1000px);
+      label { @include radius(2rem); }
+      label:after { @include radius(2rem); }
+    }
 
-  &.hit {
-    animation : slide-off .35s ease both;
-  }
-
-  &.hit:checked {
-    animation : slide-on  .35s ease both .05s;
-  }
-
-  &::before,
-  &::after {
-    content : "";
-  }
-
-  &::after {
-    /* Increases hit area */
-    $size-adjust : -($switch-button-size/3);
-    position     : absolute;
-    top          : $size-adjust;
-    left         : $size-adjust;
-    bottom       : $size-adjust;
-    right        : $size-adjust;
-  }
-
-  &::before {
-    position         : relative;
-    display          : inline-block;
-    height           : $switch-button-size;
-    width            :  $switch-button-size;
-    margin           : $switch-space 0 0 $switch-space;
-    background-color : $switch-toggle-color;
-    box-shadow       : 0 $switch-space ($switch-space*2) 0 rgba(0,0,0,.20),
-                       0 0 ($switch-space/2) ($switch-space/2)rgba(0,0,0,.10);
-    transition       : all .1s ease .1s;
-  }
-
-  &:active::before {
-    transition : all .1s ease .05s;
-  }
-
-  &.touch:hover::before {
-    transition : all .0s ease .00s;
-  }
-
-  &:active::before,
-  &.touch:hover::before{
-    width : $switch-button-size + ($switch-space*4);
-  }
-
-  &:active:checked::before,
-  &.touch:hover:checked::before{
-    margin-left : -($switch-space*3);
-  }
-
-}
-
-@keyframes slide-on{
-    0% { padding-left: $switch-off-padding; }
-   60% { padding-left: $switch-on-padding + .4em; }
-  100% { padding-left: $switch-on-padding; }
-}
-@keyframes slide-off{
-    0% { padding-left: $switch-on-padding;  text-indent: 0; }
-   60% { padding-left: $switch-off-padding; text-indent: -.4em; }
-  100% { padding-left: $switch-off-padding; text-indent: 0; }
 }
