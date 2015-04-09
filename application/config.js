@@ -15,7 +15,10 @@ defaults = {
             logout : '/api/oauth/logout',
             token  : '/api/oauth/token'
         },
-        url : ''
+        prefix : '/api',
+        proxy  : {
+            hostname : ''
+        }
     }
 };
 
