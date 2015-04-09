@@ -10,12 +10,13 @@ defaults = {
     api : {
         client_id : '123',
         hostname  : 'localhost',
-        port      : 9000,
         oauth     : {
-            logout : '/api/oauth/logout',
-            token  : '/api/oauth/token'
-        },
-        url : ''
+            login : '/oauth/login',
+            token : '/oauth/token'
+        }
+        port      : 9000,
+        prefix    : '/api',
+        url       : ''
     }
 };
 

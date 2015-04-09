@@ -11,12 +11,12 @@ var UserClient = HttpGateway.extend({
 
     getCurrentUser : function()
     {
-        return this.apiRequest('GET', '/api/user');
+        return this.apiRequest('GET', '/user');
     },
 
     createUser : function(userData)
     {
-        return this.apiRequest('POST', '/api/users', userData);
+        return this.apiRequest('POST', '/users', userData);
     },
 
     setToken : function(tokenData)

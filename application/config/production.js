@@ -3,7 +3,8 @@
 
 module.exports = {
     api : {
-        hostname  : '%PRODUCTION_API_HOST%',
-        port      : 80
+        hostname : '%PRODUCTION_APP_HOST%',
+        port     : 80,
+        url      : '%PRODUCTION_API_HOST%'
     }
 };

@@ -10,15 +10,11 @@ var OAuthClient = HttpGateway.extend({
 
     config : config.api,
 
-    OAUTH_TOKEN_ENDPOINT : '/api/oauth/token',
-
-    OAUTH_LOGOUT_ENDPOINT : '/api/oauth/logout',
-
     login : function(email, password)
     {
         return this.apiRequest(
             'POST',
-            this.OAUTH_TOKEN_ENDPOINT,
+            config.api.oauth.token,
             qs.stringify({
                 username      : email,
                 password      : password,
@@ -35,7 +31,7 @@ var OAuthClient = HttpGateway.extend({
 
         return this.apiRequest(
             'POST',
-            this.OAUTH_LOGOUT_ENDPOINT,
+            config.api.oauth.logout,
             {
                 refresh_token : token.refresh_token
             }
@@ -48,7 +44,7 @@ var OAuthClient = HttpGateway.extend({
 
         return this.apiRequest(
             'POST',
-            this.OAUTH_TOKEN_ENDPOINT,
+            config.api.oauth.token,
             qs.stringify({
                 grant_type    : 'refresh_token',
                 client_id     : this.config.client_id,
