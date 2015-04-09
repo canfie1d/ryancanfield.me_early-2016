@@ -10,9 +10,9 @@ var OAuthClient = HttpGateway.extend({
 
     config : config.api,
 
-    OAUTH_TOKEN_ENDPOINT : '/oauth/token',
+    OAUTH_TOKEN_ENDPOINT : '/api/oauth/token',
 
-    OAUTH_LOGOUT_ENDPOINT : '/oauth/logout',
+    OAUTH_LOGOUT_ENDPOINT : '/api/oauth/logout',
 
     login : function(email, password)
     {
