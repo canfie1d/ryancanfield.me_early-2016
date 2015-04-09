@@ -7,6 +7,6 @@ module.exports = {
         port     : 80
     },
     proxy : {
-        url : '%PRODUCTION_API_HOST%'
+        hostname : '%PRODUCTION_API_HOST%'
     }
 };
