@@ -1,5 +1,3 @@
-/* jshint globalstrict: true */
-/* globals window */
 'use strict';
 
 var React  = require('react');

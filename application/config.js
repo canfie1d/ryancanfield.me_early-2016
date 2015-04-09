@@ -1,5 +1,3 @@
-/* jshint globalstrict: true */
-/* global __ENVIRONMENT__ */
 'use strict';
 
 // __ENVIRONMENT__ is replaced by gulp during build
