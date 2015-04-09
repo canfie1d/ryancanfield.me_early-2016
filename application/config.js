@@ -19,7 +19,7 @@ defaults = {
     }
 };
 
-// __ENVIRONMENT__ is replaced by gulp during build
+// __ENVIRONMENT__ is replaced by webpack during build
 switch(__ENVIRONMENT__) {
     case 'ci':
         config = require('./config/ci');
