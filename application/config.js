@@ -15,8 +15,10 @@ defaults = {
             token : '/oauth/token'
         }
         port      : 9000,
-        prefix    : '/api',
-        url       : ''
+        prefix    : '/api'
+    },
+    proxy : {
+        hostname : ''
     }
 };
 

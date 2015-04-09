@@ -16,7 +16,7 @@ var server = new WebpackDevServer(webpack(config), {
     noInfo      : true
 });
 
-server.use('/api/', proxy('http://' + appConfig.api.url));
+server.use(appConfig.api.prefix, proxy('http://' + appConfig.proxy.hostname));
 
 server.use(function (req, res, next) {
     var ext = path.extname(req.url);
