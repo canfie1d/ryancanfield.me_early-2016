@@ -13,9 +13,12 @@ require('../scss/pattern-library');
 
 module.exports = React.createClass({
 
-    displayName : 'Pattern Library',
+    displayName : 'PatternLibrary',
 
-    mixins : [FluxMixin, RouterStateMixin],
+    mixins : [
+        FluxMixin,
+        RouterStateMixin
+    ],
 
     getComponentConstructors : function()
     {
@@ -41,10 +44,15 @@ module.exports = React.createClass({
     {
         return (
             <div className='pl'>
-                <PLSidebar sections={this.getComponentConstructors()} activeSection={this.getParams().section}/>
+                <PLSidebar
+                    sections      = {this.getComponentConstructors()}
+                    activeSection = {this.getParams().section}
+                />
                 <div className='pl-content'>
                     <div className='pl-content__header'>
-                        <h1 className='pl-content__title'>{'Pattern Library'}</h1>
+                        <h1 className='pl-content__title'>
+                            {'Pattern Library'}
+                        </h1>
                     </div>
                     {this.renderSections()}
                 </div>
