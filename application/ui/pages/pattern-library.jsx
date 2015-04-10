@@ -6,12 +6,8 @@ var FluxMixin        = require('fluxxor').FluxMixin(React);
 var PLSidebar        = require('../components/pattern-library/pl-sidebar');
 
 var TypographySection   = require('../components/pattern-library/sections/pl-typography');
-var ButtonSection       = require('../components/pattern-library/sections/pl-buttons');
 var IconSection         = require('../components/pattern-library/sections/pl-icons');
-var FormElementsSection = require('../components/pattern-library/sections/pl-form-elements');
-var CalloutsPrompts     = require('../components/pattern-library/sections/pl-callouts-prompts');
 var GridLayout          = require('../components/pattern-library/sections/pl-grid');
-var Navigation          = require('../components/pattern-library/sections/pl-navigation');
 
 require('../scss/pattern-library');
 
@@ -25,12 +21,8 @@ module.exports = React.createClass({
     {
         return [
             TypographySection,
-            ButtonSection,
             IconSection,
-            FormElementsSection,
-            CalloutsPrompts,
-            GridLayout,
-            Navigation
+            GridLayout
         ];
     },
 
