@@ -1,5 +1,4 @@
-/* jshint globalstrict: true, unused: false */
-/* globals __ENVIRONMENT__ */
+/* jshint unused: false */
 'use strict';
 
 var React    = require('react'); // Used in compiled js, so required even though appears unused

@@ -1,5 +1,3 @@
-/* jshint globalstrict: true */
-/* global __ENVIRONMENT__ */
 'use strict';
 
 var merge = require('lodash').merge;

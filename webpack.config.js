@@ -88,4 +88,13 @@ module.exports = {
         extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
     },
     devtool : '#inline-source-map',
+    jshint  : {
+        globalstrict : true,
+        globals      : {
+            __BACKEND__     : true,
+            __ENVIRONMENT__ : true,
+            console         : true,
+            window          : true
+        }
+    }
 };
