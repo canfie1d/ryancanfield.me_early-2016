@@ -1,13 +1,10 @@
 // vendor imports
-    @import "vendor/reset";
-    @import "app_settings.scss";
+    @import "app_settings";
     @import "../../../node_modules/synfrastructure/scss/synfrastructure";
 
 // dependency imports
     @import "dependencies/colors";
-    @import "dependencies/extends";
     @import "dependencies/fonts";
-    @import "dependencies/mixins";
 
 // layouts
     @import "layouts/base";
@@ -28,25 +25,11 @@
     // buttons
     @import "components/buttons/buttons";
 
-
-    // callouts
-    @import "components/callouts-prompts/alerts";
-    @import "components/callouts-prompts/tooltips";
-
     //icons
     @import "components/icons/icons-base";
 
     // forms
     @import "components/forms/form-base";
-    @import "components/forms/form-inputs";
-    @import "components/forms/form-labels";
-    @import "components/forms/form-validation";
-    @import "components/forms/switches";
-
-    // navigation
-    @import "components/navigation/pagination";
-    @import "components/tabs/tab-navs";
-    @import "components/tabs/tabs";
 
 // pages
-    @import "pages/page-layout";
+    @import "pages/home";
