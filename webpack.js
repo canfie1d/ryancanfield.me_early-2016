@@ -16,6 +16,14 @@ var server = new WebpackDevServer(webpack(config), {
     noInfo      : true
 });
 
+if (! appConfig.api.prefix) {
+    thow new Error('API prefix not set in configuration');
+}
+
+if (! appConfig.proxy.hostname) {
+    thow new Error('API proxy hostname not set in configuration');
+}
+
 server.use(appConfig.api.prefix, proxy('http://' + appConfig.proxy.hostname));
 
 server.use(function (req, res, next) {
