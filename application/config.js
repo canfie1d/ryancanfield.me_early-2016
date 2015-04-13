@@ -8,15 +8,15 @@ defaults = {
     api : {
         client_id : '123',
         hostname  : 'localhost',
-        port      : 9000,
         oauth     : {
-            logout : '/api/oauth/logout',
-            token  : '/api/oauth/token'
+            login : '/oauth/login',
+            token : '/oauth/token'
         },
-        prefix : '/api',
-        proxy  : {
-            hostname : ''
-        }
+        port      : 9000,
+        prefix    : '/api'
+    },
+    proxy : {
+        hostname : ''
     }
 };
 
