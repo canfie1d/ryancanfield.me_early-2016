@@ -11,7 +11,7 @@ defaults = {
         oauth     : {
             login : '/oauth/login',
             token : '/oauth/token'
-        }
+        },
         port      : 9000,
         prefix    : '/api'
     },
