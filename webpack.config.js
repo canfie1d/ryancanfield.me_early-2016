@@ -48,12 +48,12 @@ module.exports = {
     module : {
         preLoaders : [
             {
-                test    : /\.js?/,
+                test    : /\.js$/,
                 loader  : 'jshint-loader',
                 exclude : npmPath
             },
             {
-                test    : /\.jsx?/,
+                test    : /\.jsx$/,
                 loader  : 'jsxhint-loader',
                 exclude : npmPath
             }
