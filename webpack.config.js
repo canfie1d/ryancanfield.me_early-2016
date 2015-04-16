@@ -7,11 +7,12 @@ var path              = require('path');
 var environment = (process.env.APP_ENV || 'development');
 var npmPath     = path.resolve(__dirname, 'node_modules');
 var config      = {
-    entry   : ['./application/bootstrap.js'],
-    plugins : [
+    devtools : [],
+    entry    : ['./application/bootstrap.js'],
+    plugins  : [
         new HtmlWebpack({template : './application/index.html'}),
         new Webpack.DefinePlugin({
-            __BACKEND__     : '\'' + process.env.BACKEND + '\'',
+            __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
             __ENVIRONMENT__ : '\'' + environment + '\''
         })
     ],
@@ -35,6 +36,10 @@ if (environment === 'development') {
     if (process.platform !== 'win32') {
         config.plugins.push(new WebpackError(process.platform));
     }
+}
+
+if (environment !== 'production') {
+    config.devtools = '#inline-source-map';
 }
 
 module.exports = {
@@ -87,7 +92,7 @@ module.exports = {
     resolve : {
         extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
     },
-    devtool : '#inline-source-map',
+    devtool : config.devtools,
     jshint  : {
         globalstrict : true,
         globals      : {
