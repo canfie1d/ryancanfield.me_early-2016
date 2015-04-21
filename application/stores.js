@@ -4,6 +4,6 @@ var TokenStore = require('./store/token');
 var UserStore  = require('./store/user');
 
 module.exports = {
-    TokenStore : new TokenStore(),
-    UserStore  : new UserStore()
+    TokenStore : TokenStore,
+    UserStore  : UserStore
 };
