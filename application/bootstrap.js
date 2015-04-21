@@ -1,21 +1,38 @@
 'use strict';
 
-var React  = require('react');
+var React          = require('react');
+var BatchedUpdates = require('react/lib/ReactUpdates').batchedUpdates;
 
 // initialize i18n
 if (! window.Intl) {
     window.Intl = require('intl');
 }
 
-var router = require('./router');
-var flux   = require('./flux');
 var i18n   = require('./intl/intl');
+var Flux   = require('./flux');
+var Router = require('./router');
 
 require('./media.js');
 
 window.React = React;
 
 React.initializeTouchEvents(true);
+
+var flux        = new Flux();
+var oldDispatch = flux.dispatcher.dispatch.bind(flux.dispatcher);
+var router      = new Router();
+var state       = window.document.getElementById('server-state');
+
+flux.dispatcher.dispatch = function (action) {
+    new BatchedUpdates(function () {
+        oldDispatch(action);
+    });
+};
+
+if (state) {
+    flux = flux.fromObject(window.__STATE__);
+    state.remove();
+}
 
 router.run(function (Handler, state) {
     var locales;
@@ -32,8 +49,14 @@ router.run(function (Handler, state) {
         locales.push('en-US');
     }
 
+    window.document.title = flux.getTitle(state, 'Frontend Template');
+
     React.render(
-        React.createElement(Handler, {flux : flux, locales : locales, messages : i18n.messages}),
+        React.createElement(Handler, {
+            flux : flux,
+            locales : locales,
+            messages : i18n.messages
+        }),
         window.document.body
     );
 });
