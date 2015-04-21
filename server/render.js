@@ -7,6 +7,7 @@ var _      = require('underscore');
 
 var Flux   = require('../application/flux');
 var Router = require('../application/router');
+var config = require('../application/config');
 
 require('../application/media');
 
@@ -27,7 +28,7 @@ module.exports = function(req, res) {
             var Factory, title;
 
             Factory = React.createFactory(Handler);
-            title   = flux.getTitle(state, '@todo update with page title');
+            title   = flux.getTitle(state, config.app.title);
 
             res.send(tmpl('index.html', {
                 css  : (__ENVIRONMENT__ === 'production'),

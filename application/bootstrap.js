@@ -1,5 +1,6 @@
 'use strict';
 
+var config         = require('./config');
 var React          = require('react');
 var BatchedUpdates = require('react/lib/ReactUpdates').batchedUpdates;
 
@@ -49,7 +50,7 @@ router.run(function (Handler, state) {
         locales.push('en-US');
     }
 
-    window.document.title = flux.getTitle(state, '@todo update with page title');
+    window.document.title = flux.getTitle(state, config.app.title);
 
     React.render(
         React.createElement(Handler, {
