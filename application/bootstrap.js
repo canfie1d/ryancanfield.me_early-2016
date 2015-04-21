@@ -54,8 +54,8 @@ router.run(function (Handler, state) {
 
     React.render(
         React.createElement(Handler, {
-            flux : flux,
-            locales : locales,
+            flux     : flux,
+            locales  : locales,
             messages : i18n.messages
         }),
         window.document.body
