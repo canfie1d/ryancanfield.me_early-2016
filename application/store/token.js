@@ -56,7 +56,23 @@ var TokenStore = Fluxxor.createStore({
     getTokenData : function()
     {
         return store.get('token');
-    }
+    },
+
+    fromObject : function(state)
+    {
+        this.loading  = state.loading;
+        this.error    = state.error;
+        this.loggedIn = state.loggedIn;
+    },
+
+    toObject : function()
+    {
+        return {
+            loading  : this.loading,
+            error    : this.error,
+            loggedIn : this.loggedIn
+        };
+     }
 });
 
 module.exports = TokenStore;
