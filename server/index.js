@@ -4,6 +4,7 @@ global.localStorage    = require('localStorage');
 global.navigator       = require('navigator');
 
 var Express   = require('express');
+var Intl      = require('intl');
 var proxy     = require('express-http-proxy');
 var useragent = require('express-useragent');
 

@@ -4,13 +4,21 @@ var Router = require('react-router');
 
 var routes = require('./routes');
 
-module.exports = function (location) {
+module.exports = function (location, res) {
     if (typeof location === 'undefined') {
         location = Router.HistoryLocation;
     }
 
+    var onAbort = res ? function (abortReason) {
+        console.log(Router);
+        if (abortReason.constructor.name === 'Redirect') {
+            return res.redirect(302, this.makePath(abortReason.to, abortReason.params, abortReason.query));
+        }
+    } : null;
+
     return Router.create({
         routes   : routes,
-        location : location
+        location : location,
+        onAbort  : onAbort
     });
 };
