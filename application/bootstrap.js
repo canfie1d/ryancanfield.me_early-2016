@@ -49,7 +49,7 @@ router.run(function (Handler, state) {
         locales.push('en-US');
     }
 
-    window.document.title = flux.getTitle(state, 'Frontend Template');
+    window.document.title = flux.getTitle(state, '@todo update with page title');
 
     React.render(
         React.createElement(Handler, {
