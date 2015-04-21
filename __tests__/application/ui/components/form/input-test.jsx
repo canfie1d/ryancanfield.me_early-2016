@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 /* globals describe, it, beforeEach, sinon */
 /* jshint expr: true, globalstrict: true */
 'use strict';
