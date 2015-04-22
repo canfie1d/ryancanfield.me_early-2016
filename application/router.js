@@ -10,7 +10,6 @@ module.exports = function (location, res) {
     }
 
     var onAbort = res ? function (abortReason) {
-        console.log(Router);
         if (abortReason.constructor.name === 'Redirect') {
             return res.redirect(302, this.makePath(abortReason.to, abortReason.params, abortReason.query));
         }
