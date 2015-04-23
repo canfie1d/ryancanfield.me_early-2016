@@ -20,8 +20,11 @@ function useLegacy(useragent) {
 }
 
 module.exports = function(req, res) {
-    var router = new Router(req.url, res);
-    var flux   = new Flux();
+    var flux, legaxy, router;
+    
+    flux   = new Flux();
+    legacy = useLegacy(req.useragent);
+    router = new Router(req.url, res);
 
     router.run(function (Handler, state) {
         flux.fetchData(state).done(function () {
@@ -31,13 +34,13 @@ module.exports = function(req, res) {
             title   = flux.getTitle(state, config.app.title);
 
             res.send(tmpl('index.html', {
-                css  : (__ENVIRONMENT__ === 'production'),
+                css  : (__ENVIRONMENT__ === 'production') || legacy,
                 html : React.renderToString(new Factory({
                     flux   : flux,
                     params : state.params,
                     query  : state.query
                 })),
-                legacy : useLegacy(req.useragent),
+                legacy : legacy,
                 state  : JSON.stringify(flux.toObject()),
                 title  : title
             }));
