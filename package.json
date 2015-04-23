@@ -9,10 +9,10 @@
     "url"  : "https://github.com/synapsestudios/frontend-template.git"
   },
   "scripts" : {
-        "start"   : "rm -rf ./build && webpack && node dev-server",
+        "start"   : "./start.sh",
         "windows" : "rmdir /S /Q build && webpack.cmd && node dev-server",
         "webpack" : "rm -rf ./build && webpack",
-        "dist"    : "rm -rf ./build && APP_ENV=production webpack -p && zip -r build-`date +%s` build",
+        "dist"    : "./dist.sh production",
         "test"    : "cd __tests__ && rm -rf ./build && webpack && node dev-server",
         "karma"   : "./node_modules/karma/bin/karma start karma.conf.js",
         "clean"   : "rm -rf ./build"
