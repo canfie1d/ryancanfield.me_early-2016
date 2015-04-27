@@ -113,8 +113,10 @@ module.exports = [
                 __BACKEND__     : true,
                 __ENVIRONMENT__ : true,
                 console         : true,
-                window          : true,
-                setTimeout      : true
+                localStorage    : true,
+                navigator       : true,
+                setTimeout      : true,
+                window          : true
             }
         }
     }

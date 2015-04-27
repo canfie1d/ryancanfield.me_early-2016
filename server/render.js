@@ -6,6 +6,7 @@ var tmpl   = require('blueimp-tmpl').tmpl;
 var _      = require('underscore');
 
 var Flux   = require('../application/flux');
+var i18n   = require('../application/intl/intl');
 var Router = require('../application/router');
 var config = require('../application/config');
 
@@ -20,11 +21,23 @@ function useLegacy(useragent) {
 }
 
 module.exports = function(req, res) {
-    var flux, legacy, router;
+    var flux, legacy, locales, router;
 
     flux   = new Flux();
     legacy = useLegacy(req.useragent);
     router = new Router(req.url, res);
+
+    if (typeof navigator.languages !== 'undefined') {
+        locales = navigator.languages;
+    } else if(typeof navigator.language !== 'undefined') {
+        locales = [navigator.language];
+    } else {
+        locales = ['en-US'];
+    }
+
+    if (locales.indexOf('en-US') === -1 && locales.indexOf('en-us') === -1) {
+        locales.push('en-US');
+    }
 
     router.run(function (Handler, state) {
         flux.fetchData(state).done(function () {
@@ -36,9 +49,11 @@ module.exports = function(req, res) {
             res.send(tmpl('index.html', {
                 css  : true,
                 html : React.renderToString(new Factory({
-                    flux   : flux,
-                    params : state.params,
-                    query  : state.query
+                    flux     : flux,
+                    locales  : locales,
+                    messages : i18n.messages,
+                    params   : state.params,
+                    query    : state.query
                 })),
                 legacy : legacy,
                 state  : JSON.stringify(flux.toObject()),
