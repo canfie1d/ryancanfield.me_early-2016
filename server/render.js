@@ -20,8 +20,8 @@ function useLegacy(useragent) {
 }
 
 module.exports = function(req, res) {
-    var flux, legaxy, router;
-    
+    var flux, legacy, router;
+
     flux   = new Flux();
     legacy = useLegacy(req.useragent);
     router = new Router(req.url, res);
