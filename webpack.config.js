@@ -60,7 +60,7 @@ module.exports = [
             ],
             loaders : [
                 {
-                    test   : /\.(eot|ico|ttf|woff|woff2)$/,
+                    test   : /\.(eot|ico|ttf|woff|woff2|gif|jpe?g|png|svg)$/,
                     loader : 'file-loader'
                 },
                 {
@@ -75,10 +75,6 @@ module.exports = [
                 {
                     test   : /\.scss$/,
                     loader : 'style!css!autoprefixer!sass' + config.sassOptions
-                },
-                {
-                    test    : /\.(gif|jpe?g|png|svg)$/i,
-                    loaders : ['image?bypassOnDebug&optimizationLevel=7&interlaced=false&progressive=true']
                 }
             ]
         },

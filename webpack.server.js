@@ -8,7 +8,7 @@ var exec              = require('child_process').exec;
 var environment = (process.env.APP_ENV || 'development');
 var npmPath     = path.resolve(__dirname, 'node_modules');
 var config      = {
-    nodeModules : {},
+    externals : {},
     plugins     : [
         new ExtractTextPlugin('app.css', {allChunks : true}),
         new Webpack.DefinePlugin({
@@ -37,7 +37,7 @@ fs.readdirSync('node_modules')
     )
     .forEach(
         function (mod) {
-            config.nodeModules[mod] = 'commonjs ' + mod;
+            config.externals[mod] = 'commonjs ' + mod;
         }
     );
 
@@ -77,7 +77,7 @@ module.exports = [
             ],
             loaders : [
                 {
-                    test   : /\.(eot|ico|ttf|woff|woff2)$/,
+                    test   : /\.(eot|ico|ttf|woff|woff2|gif|jpe?g|png|svg)$/,
                     loader : 'file-loader'
                 },
                 {
@@ -95,14 +95,10 @@ module.exports = [
                         'style-loader',
                         'css-loader!sass-loader' + config.sassOptions
                     )
-                },
-                {
-                    test    : /\.(gif|jpe?g|png|svg)$/i,
-                    loaders : [require.resolve('image-webpack-loader') + '?bypassOnDebug&optimizationLevel=7&interlaced=false&progressive=true']
                 }
             ]
         },
-        externals : config.nodeModules,
+        externals : config.externals,
         plugins   : config.plugins,
         resolve   : {
             extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
