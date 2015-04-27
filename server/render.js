@@ -34,7 +34,7 @@ module.exports = function(req, res) {
             title   = flux.getTitle(state, config.app.title);
 
             res.send(tmpl('index.html', {
-                css  : (__ENVIRONMENT__ === 'production') || legacy,
+                css  : true,
                 html : React.renderToString(new Factory({
                     flux   : flux,
                     params : state.params,

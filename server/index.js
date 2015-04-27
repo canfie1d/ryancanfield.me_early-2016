@@ -21,6 +21,10 @@ app.use(useragent.express());
 
 app.get(/^([^.]+)$/, render);
 
+if (__ENVIRONMENT__ !== 'production') {
+    app.use(Express.static(process.cwd() + '/build'));
+}
+
 app.listen(9090, 10, function () {
     console.log('Listening on localhost:9090');
 });
