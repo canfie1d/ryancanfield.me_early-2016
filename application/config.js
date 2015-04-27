@@ -17,6 +17,9 @@ defaults = {
     },
     proxy : {
         hostname : ''
+    },
+    app : {
+        title : '@todo update with page title'
     }
 };
 

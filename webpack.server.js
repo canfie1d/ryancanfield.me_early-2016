@@ -1,35 +1,51 @@
 var Webpack           = require('webpack');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var WebpackError      = require('webpack-error-notification');
 var path              = require('path');
+var fs                = require('fs');
+var exec              = require('child_process').exec;
 
 var environment = (process.env.APP_ENV || 'development');
 var npmPath     = path.resolve(__dirname, 'node_modules');
 var config      = {
-    devtools : [],
-    entry    : ['./application/bootstrap.js'],
-    plugins  : [
+    nodeModules : {},
+    plugins     : [
+        new ExtractTextPlugin('app.css', {allChunks : true}),
         new Webpack.DefinePlugin({
             __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
             __ENVIRONMENT__ : '\'' + environment + '\''
-        })
+        }),
+        function () {
+            this.plugin('done', function () {
+                exec('pm2 restart server', function (error, output) {
+                    console.log(output);
+                });
+            });
+        }
     ],
-    reactLoaders : ['jsx?insertPragma=React.DOM'],
     sassOptions  : (
         '?outputStyle=' + (environment === 'production' ? 'compressed' : 'nested') +
         '&includePaths[]=' + npmPath
     )
 };
 
+fs.readdirSync('node_modules')
+    .filter(
+        function (x) {
+            return ['.bin'].indexOf(x) === -1;
+        }
+    )
+    .forEach(
+        function (mod) {
+            config.nodeModules[mod] = 'commonjs ' + mod;
+        }
+    );
+
 if (environment !== 'production') {
-    config.devtools = '#inline-source-map';
     config.entry = [
         'webpack/hot/dev-server',
         'webpack-dev-server/client?http://localhost:9000'
     ].concat(config.entry);
-
-    config.reactLoaders = ['react-hot'].concat(config.reactLoaders);
-
-    config.plugins.push(new Webpack.HotModuleReplacementPlugin());
 
     if (process.platform !== 'win32') {
         config.plugins.push(new WebpackError(process.platform));
@@ -38,12 +54,13 @@ if (environment !== 'production') {
 
 module.exports = [
     {
-        name   : 'browser bundle',
-        entry  : config.entry,
+        name   : 'server bundle',
+        entry  : './server/render.js',
+        target : 'node',
         output : {
-            filename   : 'app.js',
-            path       : path.resolve(__dirname, 'build'),
-            publicPath : '/'
+            filename      : '../server/render-generated.js',
+            libraryTarget : 'commonjs2',
+            path          : path.resolve(__dirname, 'build')
         },
         module : {
             preLoaders : [
@@ -65,7 +82,7 @@ module.exports = [
                 },
                 {
                     test    : /\.jsx$/,
-                    loaders : config.reactLoaders,
+                    loaders : ['jsx?insertPragma=React.DOM'],
                     exclude : npmPath
                 },
                 {
@@ -74,54 +91,32 @@ module.exports = [
                 },
                 {
                     test   : /\.scss$/,
-                    loader : 'style!css!autoprefixer!sass' + config.sassOptions
+                    loader : ExtractTextPlugin.extract(
+                        'style-loader',
+                        'css-loader!sass-loader' + config.sassOptions
+                    )
                 },
                 {
                     test    : /\.(gif|jpe?g|png|svg)$/i,
-                    loaders : ['image?bypassOnDebug&optimizationLevel=7&interlaced=false&progressive=true']
+                    loaders : [require.resolve('image-webpack-loader') + '?bypassOnDebug&optimizationLevel=7&interlaced=false&progressive=true']
                 }
             ]
         },
-        plugins : config.plugins,
-        resolve : {
+        externals : config.nodeModules,
+        plugins   : config.plugins,
+        resolve   : {
             extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
         },
-        devtool : config.devtools,
         jshint  : {
             globalstrict : true,
             globals      : {
                 __BACKEND__     : true,
                 __ENVIRONMENT__ : true,
                 console         : true,
-                window          : true,
-                setTimeout      : true
-            }
-        }
-    },
-    {
-        name   : 'legacy bundle',
-        entry  : './application/legacy.js',
-        output : {
-            filename : 'legacy.js',
-            path     : path.resolve(__dirname, 'build')
-        },
-        module : {
-            preLoaders : [
-                {
-                    test    : /\.js$/,
-                    loader  : 'jshint-loader',
-                    exclude : npmPath
-                }
-            ]
-        },
-        jshint  : {
-            globalstrict : true,
-            globals      : {
-                __BACKEND__     : true,
-                __ENVIRONMENT__ : true,
-                console         : true,
-                window          : true,
-                setTimeout      : true
+                localStorage    : true,
+                navigator       : true,
+                setTimeout      : true,
+                window          : true
             }
         }
     }
