@@ -12,7 +12,10 @@ var config      = {
         new HtmlWebpack({template : './application/index.html'}),
         new Webpack.DefinePlugin({
             __BACKEND__     : '\'' + process.env.BACKEND + '\'',
-            __ENVIRONMENT__ : '\'' + environment + '\''
+            __ENVIRONMENT__ : '\'' + environment + '\'',
+            "process.env"   : {
+                NODE_ENV : '\'' + environment + '\''
+            }
         })
     ],
     reactLoaders : ['jsx?insertPragma=React.DOM'],
