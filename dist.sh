@@ -5,11 +5,11 @@ if [[ $# -eq 0 ]] ; then
     exit 0
 fi
 
-rm -rf ./build && \
-rm -rf ./dist && \
-mkdir dist && \
-NODE_ENV=$1 APP_ENV=$1 webpack -p && \
-NODE_ENV=$1 APP_ENV=$1 webpack -p --config webpack.server.js && \
+rm -rf ./build
+rm -rf ./dist
+mkdir dist
+NODE_ENV=$1 APP_ENV=$1 webpack -p
+NODE_ENV=$1 APP_ENV=$1 webpack -p --config webpack.server.js
 zip -r dist/build-frontend-$1 application build node_modules server -x \
     "node_modules/chai/*" \
     "node_modules/karma/*" \
