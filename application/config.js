@@ -1,22 +1,44 @@
-/* jshint globalstrict: true */
-/* global __ENVIRONMENT__ */
 'use strict';
 
-// __ENVIRONMENT__ is replaced by gulp during build
-switch(__ENVIRONMENT__)
-{
+var merge = require('lodash').merge;
+
+var defaults, config;
+
+defaults = {
+    api : {
+        client_id : '123',
+        hostname  : 'localhost',
+        oauth     : {
+            login : '/oauth/login',
+            token : '/oauth/token'
+        },
+        port      : 9000,
+        prefix    : '/api'
+    },
+    proxy : {
+        hostname : ''
+    },
+    app : {
+        title : '@todo update with page title'
+    }
+};
+
+// __ENVIRONMENT__ is replaced by webpack during build
+switch(__ENVIRONMENT__) {
     case 'ci':
-        module.exports = require('./config/ci');
+        config = require('./config/ci');
         break;
     case 'development':
-        module.exports = require('./config/development');
+        config = require('./config/development');
         break;
     case 'qa':
-        module.exports = require('./config/qa');
+        config = require('./config/qa');
         break;
     case 'production':
-        module.exports = require('./config/production');
+        config = require('./config/production');
         break;
     default:
         throw new Error('Invalid ENVIRONMENT value: ' + __ENVIRONMENT__);
 }
+
+module.exports = merge({}, defaults, config);

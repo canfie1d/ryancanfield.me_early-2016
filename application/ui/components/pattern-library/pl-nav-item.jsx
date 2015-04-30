@@ -1,9 +1,10 @@
-/* jshint globalstrict: true */
 'use strict';
 
 var React     = require('react');
 var FluxMixin = require('fluxxor').FluxMixin(React);
 var classSet  = require('react/lib/cx');
+
+var NavigationMixin = require('react-router').Navigation;
 
 var ReactIntl       = require('react-intl');
 var IntlMixin       = ReactIntl.IntlMixin;
@@ -12,7 +13,7 @@ var IntlHelperMixin = require('../../mixins/intlHelperMixin');
 module.exports = React.createClass({
     displayName : 'PatternLibraryNavItem',
 
-    mixins : [FluxMixin, IntlMixin, IntlHelperMixin],
+    mixins : [FluxMixin, IntlMixin, NavigationMixin, IntlHelperMixin],
 
     propTypes : {
         active      : React.PropTypes.bool,
@@ -32,12 +33,12 @@ module.exports = React.createClass({
     onClick : function()
     {
         if (this.props.displayName) {
-            this.getFlux().actions.route.navigate(
+            this.transitionTo(
                 'pattern-library-section',
                 {section : this.props.displayName}
             );
         } else {
-            this.getFlux().actions.route.navigate('pattern-library');
+            this.transitionTo('pattern-library');
         }
     },
 
