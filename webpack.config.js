@@ -10,7 +10,10 @@ var config      = {
     plugins  : [
         new Webpack.DefinePlugin({
             __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
-            __ENVIRONMENT__ : '\'' + environment + '\''
+            __ENVIRONMENT__ : '\'' + environment + '\'',
+            "process.env"   : {
+                NODE_ENV : '\'' + environment + '\''
+            }
         })
     ],
     reactLoaders : ['jsx?insertPragma=React.DOM'],
