@@ -1,11 +1,38 @@
 'use strict';
 
+var _     = require('underscore');
 var React = require('react');
 var Icon  = require('../../icon/icon');
+
+var ICONS = [
+    'back',
+    'cancel',
+    'caret',
+    'group',
+    'heart',
+    'save',
+    'search',
+    'trash'
+];
 
 module.exports = React.createClass({
 
     displayName : 'Icons',
+
+    renderIcons : function()
+    {
+        return _.map(ICONS, function(icon, index) {
+            return (
+                <span className='pl-icon small-4 medium-3' key={'icon-' + index}>
+                    <Icon icon={icon} />
+                    <span className='pl-icon__name'>
+                        <strong className='strong'>Icon: </strong>
+                        {icon}
+                    </span>
+                </span>
+            );
+        });
+    },
 
     render : function()
     {
@@ -13,62 +40,7 @@ module.exports = React.createClass({
             <div className='pl-page'>
                 <h1 className='pl-h1'>{'Icons'}</h1>
                 <div className='pl-icons row'>
-                    <span className='pl-icon small-4 medium-3'>
-                        <Icon icon='back' />
-                        <span className='pl-icon__name'>
-                            <strong className='strong'>Icon: </strong>
-                            {'back'}
-                        </span>
-                    </span>
-                    <span className='pl-icon small-4 medium-3'>
-                        <Icon icon='cancel' />
-                        <span className='pl-icon__name'>
-                            <strong className='strong'>Icon: </strong>
-                            {'cancel'}
-                        </span>
-                    </span>
-                    <span className='pl-icon small-4 medium-3'>
-                        <Icon icon='caret' />
-                        <span className='pl-icon__name'>
-                            <strong className='strong'>Icon: </strong>
-                            {'caret'}
-                        </span>
-                    </span>
-                    <span className='pl-icon small-4 medium-3'>
-                        <Icon icon='save' />
-                        <span className='pl-icon__name'>
-                            <strong className='strong'>Icon: </strong>
-                            {'save'}
-                        </span>
-                    </span>
-                    <span className='pl-icon small-4 medium-3'>
-                        <Icon icon='search' />
-                        <span className='pl-icon__name'>
-                            <strong className='strong'>Icon: </strong>
-                            {'search'}
-                        </span>
-                    </span>
-                    <span className='pl-icon small-4 medium-3'>
-                        <Icon icon='trash' />
-                        <span className='pl-icon__name'>
-                            <strong className='strong'>Icon: </strong>
-                            {'trash'}
-                        </span>
-                    </span>
-                    <span className='pl-icon small-4 medium-3'>
-                        <Icon icon='heart' />
-                        <span className='pl-icon__name'>
-                            <strong className='strong'>Icon: </strong>
-                            {'heart'}
-                        </span>
-                    </span>
-                    <span className='pl-icon small-4 medium-3'>
-                        <Icon icon='group' />
-                        <span className='pl-icon__name'>
-                            <strong className='strong'>Icon: </strong>
-                            {'group'}
-                        </span>
-                    </span>
+                    {this.renderIcons()}
                 </div>
                 <hr className='pl-hr' />
                 <div className='row'>
@@ -80,7 +52,7 @@ module.exports = React.createClass({
                         <Icon icon='caret' size='small' /> Small
                         <br />
                         <br />
-                        <Icon icon='caret' size='medium' /> Medium
+                        <Icon icon='caret' /> Default
                         <br />
                         <br />
                         <Icon icon='caret' size='large' /> Large
@@ -110,25 +82,23 @@ module.exports = React.createClass({
                     </div>
                     <div className='medium-4 columns'>
                         <h2 className='pl-h2'>{'Icon colors'}</h2>
-                        <Icon icon='caret' size='small' color='black' /> Black fill
+                        <Icon icon='caret' size='small' colorTheme='black' /> Black fill
                         <br />
                         <br />
-                        <Icon icon='caret' size='small' color='white' /> White fill
+                        <Icon icon='caret' size='small' colorTheme='white' /> White fill
                         <br />
                         <br />
-                        <Icon icon='caret' size='small' color='primary' /> Primary fill
+                        <Icon icon='caret' size='small' colorTheme='primary' /> Primary fill
                         <br />
                         <br />
-                        <Icon icon='caret' size='small' color='secondary' /> Secondary fill
+                        <Icon icon='caret' size='small' colorTheme='secondary' /> Secondary fill
                         <br />
                         <br />
-                        <Icon icon='caret' size='small' color='tertiary' /> Tertiary fill
+                        <Icon icon='caret' size='small' colorTheme='tertiary' /> Tertiary fill
                         <br />
                         <br />
                     </div>
                 </div>
-
-                <hr className='pl-hr' />
             </div>
         );
     }
