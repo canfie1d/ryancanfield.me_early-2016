@@ -32,7 +32,12 @@ flux.dispatcher.dispatch = function (action) {
 
 if (state) {
     flux = flux.fromObject(window.__STATE__);
-    state.remove();
+
+    if (state.remove) {
+        state.remove();
+    } else if (state.removeNode) {
+        state.removeNode();
+    }
 }
 
 router.run(function (Handler, state) {
