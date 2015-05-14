@@ -7,7 +7,7 @@ var defaults, config;
 defaults = {
     api : {
         client_id : '123',
-        hostname  : 'localhost',
+        hostname  : __HOSTNAME__,
         oauth     : {
             login : '/oauth/login',
             token : '/oauth/token'

@@ -11,6 +11,7 @@ var config      = {
         new Webpack.DefinePlugin({
             __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
             __ENVIRONMENT__ : '\'' + environment + '\'',
+            __HOSTNAME__    : process.env.HOST ? '\'' + process.env.HOST + '\'' : '\'localhost\'',
             "process.env"   : {
                 NODE_ENV : '\'' + environment + '\''
             }
@@ -91,6 +92,7 @@ module.exports = [
             globals      : {
                 __BACKEND__     : true,
                 __ENVIRONMENT__ : true,
+                __HOSTNAME__    : true,
                 console         : true,
                 window          : true,
                 setTimeout      : true
@@ -118,6 +120,7 @@ module.exports = [
             globals      : {
                 __BACKEND__     : true,
                 __ENVIRONMENT__ : true,
+                __HOSTNAME__    : true,
                 console         : true,
                 window          : true,
                 setTimeout      : true

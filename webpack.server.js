@@ -13,7 +13,8 @@ var config      = {
         new ExtractTextPlugin('app.css', {allChunks : true}),
         new Webpack.DefinePlugin({
             __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
-            __ENVIRONMENT__ : '\'' + environment + '\''
+            __ENVIRONMENT__ : '\'' + environment + '\'',
+            __HOSTNAME__    : process.env.HOST ? '\'' + process.env.HOST + '\'' : '\'localhost\''
         }),
         function () {
             this.plugin('done', function () {
@@ -108,6 +109,7 @@ module.exports = [
             globals      : {
                 __BACKEND__     : true,
                 __ENVIRONMENT__ : true,
+                __HOSTNAME__    : true,
                 console         : true,
                 localStorage    : true,
                 navigator       : true,
