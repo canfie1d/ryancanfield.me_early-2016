@@ -1,5 +1,6 @@
 global.__BACKEND__     = process.env.BACKEND || '';
 global.__ENVIRONMENT__ = process.env.APP_ENV || 'development';
+global.__HOSTNAME__    = process.env.HOST || 'localhost';
 global.localStorage    = require('localStorage');
 global.navigator       = require('navigator');
 

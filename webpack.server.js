@@ -1,3 +1,5 @@
+var __HOSTNAME__ = process.env.HOST ? process.env.HOST : 'localhost';
+
 var Webpack           = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var WebpackError      = require('webpack-error-notification');
@@ -13,7 +15,8 @@ var config      = {
         new ExtractTextPlugin('app.css', {allChunks : true}),
         new Webpack.DefinePlugin({
             __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
-            __ENVIRONMENT__ : '\'' + environment + '\''
+            __ENVIRONMENT__ : '\'' + environment + '\'',
+            __HOSTNAME__    : '\'' + __HOSTNAME__ + '\''
         }),
         function () {
             this.plugin('done', function () {
@@ -44,7 +47,7 @@ fs.readdirSync('node_modules')
 if (environment !== 'production') {
     config.entry = [
         'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:9000'
+        'webpack-dev-server/client?http://' + __HOSTNAME__ + ':9000'
     ].concat(config.entry);
 
     if (process.platform !== 'win32') {
@@ -108,6 +111,7 @@ module.exports = [
             globals      : {
                 __BACKEND__     : true,
                 __ENVIRONMENT__ : true,
+                __HOSTNAME__    : true,
                 console         : true,
                 localStorage    : true,
                 navigator       : true,

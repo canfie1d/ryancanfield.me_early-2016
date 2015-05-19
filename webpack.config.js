@@ -1,3 +1,5 @@
+var __HOSTNAME__ = process.env.HOST ? process.env.HOST : 'localhost';
+
 var Webpack           = require('webpack');
 var WebpackError      = require('webpack-error-notification');
 var path              = require('path');
@@ -11,6 +13,7 @@ var config      = {
         new Webpack.DefinePlugin({
             __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
             __ENVIRONMENT__ : '\'' + environment + '\'',
+            __HOSTNAME__    : '\'' + __HOSTNAME__ + '\'',
             "process.env"   : {
                 NODE_ENV : '\'' + environment + '\''
             }
@@ -27,7 +30,7 @@ if (environment !== 'production') {
     config.devtools = '#inline-source-map';
     config.entry = [
         'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:9000'
+        'webpack-dev-server/client?http://' + __HOSTNAME__ + ':9000'
     ].concat(config.entry);
 
     config.reactLoaders = ['react-hot'].concat(config.reactLoaders);
@@ -91,6 +94,7 @@ module.exports = [
             globals      : {
                 __BACKEND__     : true,
                 __ENVIRONMENT__ : true,
+                __HOSTNAME__    : true,
                 console         : true,
                 window          : true,
                 setTimeout      : true
@@ -118,6 +122,7 @@ module.exports = [
             globals      : {
                 __BACKEND__     : true,
                 __ENVIRONMENT__ : true,
+                __HOSTNAME__    : true,
                 console         : true,
                 window          : true,
                 setTimeout      : true
