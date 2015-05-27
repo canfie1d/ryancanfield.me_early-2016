@@ -1,4 +1,3 @@
-/* jshint globalstrict: true */
 /* global navigator */
 'use strict';
 
@@ -23,14 +22,6 @@ module.exports = {
             var lang = languages[i];
 
             message = this._getTranslatedMessage(lang, path);
-            if (message) {
-                return message;
-            }
-        }
-
-        // check to see if en-us is part of the languages array.  If not, check for an english string
-        if (!navigator.languages.indexOf('en-us') && !navigator.languages.indexOf('en-US')) {
-            message = this._getTranslatedMessage('en-us', path);
             if (message) {
                 return message;
             }

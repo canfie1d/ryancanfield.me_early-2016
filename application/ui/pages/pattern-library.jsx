@@ -1,4 +1,3 @@
-/* jshint globalstrict: true */
 'use strict';
 
 var React            = require('react');
@@ -7,31 +6,26 @@ var FluxMixin        = require('fluxxor').FluxMixin(React);
 var PLSidebar        = require('../components/pattern-library/pl-sidebar');
 
 var TypographySection   = require('../components/pattern-library/sections/pl-typography');
-var ButtonSection       = require('../components/pattern-library/sections/pl-buttons');
 var IconSection         = require('../components/pattern-library/sections/pl-icons');
-var FormElementsSection = require('../components/pattern-library/sections/pl-form-elements');
-var CalloutsPrompts     = require('../components/pattern-library/sections/pl-callouts-prompts');
 var GridLayout          = require('../components/pattern-library/sections/pl-grid');
-var Navigation          = require('../components/pattern-library/sections/pl-navigation');
 
 require('../scss/pattern-library');
 
 module.exports = React.createClass({
 
-    displayName : 'Pattern Library',
+    displayName : 'PatternLibrary',
 
-    mixins : [FluxMixin, RouterStateMixin],
+    mixins : [
+        FluxMixin,
+        RouterStateMixin
+    ],
 
     getComponentConstructors : function()
     {
         return [
             TypographySection,
-            ButtonSection,
             IconSection,
-            FormElementsSection,
-            CalloutsPrompts,
-            GridLayout,
-            Navigation
+            GridLayout
         ];
     },
 
@@ -50,10 +44,15 @@ module.exports = React.createClass({
     {
         return (
             <div className='pl'>
-                <PLSidebar sections={this.getComponentConstructors()} activeSection={this.getParams().section}/>
+                <PLSidebar
+                    sections      = {this.getComponentConstructors()}
+                    activeSection = {this.getParams().section}
+                />
                 <div className='pl-content'>
                     <div className='pl-content__header'>
-                        <h1 className='pl-content__title'>{'Pattern Library'}</h1>
+                        <h1 className='pl-content__title'>
+                            {'Pattern Library'}
+                        </h1>
                     </div>
                     {this.renderSections()}
                 </div>

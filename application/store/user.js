@@ -1,4 +1,3 @@
-/* jshint globalstrict: true */
 'use strict';
 
 var constants = require('../constants');
@@ -43,6 +42,24 @@ var UserStore = Fluxxor.createStore({
         this.error = true;
 
         this.emit('change');
+    },
+
+    fromObject : function(state)
+    {
+        this.data              = state.data;
+        this.pending           = state.pending;
+        this.error             = state.error;
+        this.isNewlyEditedUser = state.isNewlyEditedUser;
+    },
+
+    toObject : function()
+    {
+        return {
+            data              : this.data,
+            pending           : this.pending,
+            error             : this.error,
+            isNewlyEditedUser : this.isNewlyEditedUser
+        };
     }
 });
 
