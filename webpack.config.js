@@ -1,3 +1,6 @@
+/* globals process, __dirname */
+'use strict';
+
 var __HOSTNAME__ = process.env.HOST ? process.env.HOST : 'localhost';
 
 var Webpack           = require('webpack');
