@@ -1,4 +1,3 @@
-/* global navigator */
 'use strict';
 
 module.exports = {

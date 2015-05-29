@@ -1,3 +1,4 @@
+/* globals __ENVIRONMENT__, __HOSTNAME__ */
 'use strict';
 
 var merge = require('lodash').merge;
