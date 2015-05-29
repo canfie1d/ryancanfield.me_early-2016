@@ -1,3 +1,4 @@
+/* globals window */
 'use strict';
 
 var config         = require('./config');
@@ -25,7 +26,7 @@ var router      = new Router();
 var state       = window.document.getElementById('server-state');
 
 flux.dispatcher.dispatch = function (action) {
-    new BatchedUpdates(function () {
+    return new BatchedUpdates(function () {
         oldDispatch(action);
     });
 };

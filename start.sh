@@ -9,4 +9,4 @@ pm2 start server
 
 trap "pm2 delete all > /dev/null 2>&1" 2
 
-webpack --watch --config webpack.server.js
+./node_modules/webpack/bin/webpack.js --watch --config webpack.server.js

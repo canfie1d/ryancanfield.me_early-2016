@@ -8,8 +8,8 @@ fi
 rm -rf ./build
 rm -rf ./dist
 mkdir dist
-NODE_ENV=$1 APP_ENV=$1 webpack -p
-NODE_ENV=$1 APP_ENV=$1 webpack -p --config webpack.server.js
+NODE_ENV=$1 APP_ENV=$1 ./node_modules/webpack/bin/webpack.js -p
+NODE_ENV=$1 APP_ENV=$1 ./node_modules/webpack/bin/webpack.js -p --config webpack.server.js
 zip -r dist/build-frontend-$1 application build node_modules server -x \
     "node_modules/chai/*" \
     "node_modules/karma/*" \

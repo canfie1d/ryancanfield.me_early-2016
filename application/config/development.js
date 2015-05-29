@@ -1,3 +1,4 @@
+/* globals __BACKEND__ */
 'use strict';
 
 var backend;

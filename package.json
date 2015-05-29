@@ -11,9 +11,9 @@
   "scripts" : {
         "start"   : "./start.sh",
         "windows" : "rmdir /S /Q build && webpack.cmd && node dev-server",
-        "webpack" : "rm -rf ./build && webpack",
+        "webpack" : "rm -rf ./build && ./node_modules/webpack/bin/webpack.js",
         "dist"    : "./dist.sh production",
-        "test"    : "cd __tests__ && rm -rf ./build && webpack && node dev-server",
+        "test"    : "cd __tests__ && rm -rf ./build && ../node_modules/webpack/bin/webpack.js && node dev-server",
         "karma"   : "./node_modules/karma/bin/karma start karma.conf.js",
         "clean"   : "rm -rf ./build"
   },

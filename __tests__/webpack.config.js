@@ -1,12 +1,16 @@
+/* globals process, __dirname */
+'use strict';
+
 var Webpack      = require('webpack');
 var HtmlWebpack  = require('html-webpack-plugin');
 var WebpackError = require('webpack-error-notification');
+var path         = require('path');
 
 var environment = 'development';
 var config      = {
     entry   : [
         'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://localhost:9001',
+        'webpack-dev-server/client?http://localhost:9999',
         './tests.js'
     ],
     plugins : [
@@ -26,22 +30,10 @@ module.exports = {
     entry  : config.entry,
     output : {
         filename   : 'tests.js',
-        path       : __dirname + '/build',
+        path       : path.resolve(__dirname + '/../test'),
         publicPath : '/'
     },
     module : {
-        preLoaders : [
-            {
-                test    : /\.js?/,
-                loader  : 'jshint-loader',
-                exclude : /node_modules/
-            },
-            {
-                test    : /\.jsx?/,
-                loader  : 'jsxhint-loader',
-                exclude : /node_modules/
-            }
-        ],
         loaders : [
             {
                 test   : /\.(ico|jpg|png)$/,
@@ -75,6 +67,5 @@ module.exports = {
     plugins : config.plugins,
     resolve : {
         extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
-    },
-    devtool : '#inline-source-map',
+    }
 };

@@ -1,3 +1,6 @@
+/* globals global, process, console */
+'use strict';
+
 global.__BACKEND__     = process.env.BACKEND;
 global.__ENVIRONMENT__ = process.env.APP_ENV || 'development';
 global.__HOSTNAME__    = process.env.HOST || 'localhost';
@@ -6,7 +9,6 @@ var path             = require('path');
 var request          = require('request');
 var WebpackDevServer = require('webpack-dev-server');
 var webpack          = require('webpack');
-var url              = require('url');
 var appConfig        = require('./application/config');
 var config           = require('./webpack.config');
 
