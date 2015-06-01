@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 0.10.32
+  - 0.12.2
 env:
   - XUNIT_FILE=shippable/testresults/result.xml
 #  global:
