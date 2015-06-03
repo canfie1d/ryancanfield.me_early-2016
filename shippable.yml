@@ -11,6 +11,8 @@ before_script:
   - mkdir -p shippable/build
   - mkdir -p shippable/testresults
   - npm install -g phantomjs
+install:
+  - npm install
 script:
   - ./node_modules/.bin/jshint application
   - ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS
