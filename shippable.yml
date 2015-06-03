@@ -21,7 +21,7 @@ before_script:
   - npm install -g phantomjs
 script:
   - ./node_modules/.bin/jshint application
-  - ./node_modules/karma/bin/karma start --single-run --browsers Chrome
+  - ./node_modules/karma/bin/karma start --single-run --browsers Chrome_without_sandbox
 notifications:
   email: false
 cache: true
