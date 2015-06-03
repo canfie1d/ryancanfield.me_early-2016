@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = function(config) {
     config.set({
 
@@ -48,7 +50,7 @@ module.exports = function(config) {
         }
     },
 
-    reporters : ['progress'],
+    reporters : ['progress', 'junit'],
 
     port : 9876,
 
@@ -58,11 +60,16 @@ module.exports = function(config) {
 
     autoWatch : true,
 
-    browsers : ['Chrome', 'Firefox'],
+    browsers : ['Chrome', 'Firefox', 'PhantomJS'],
 
     captureTimeout : 60000,
 
     singleRun : false,
+
+    junitReporter: {
+        outputFile: 'shippable/testresults/unit.xml',
+        suite: ''
+    },
 
     plugins: [
             require('karma-mocha'),
