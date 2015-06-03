@@ -71,6 +71,13 @@ module.exports = function(config) {
         suite: ''
     },
 
+    customLaunchers: {
+      Chrome_without_sandbox: {
+        base: 'Chrome',
+        flags: ['--no-sandbox'] // with sandbox it fails under Docker
+      }
+    },
+
     plugins: [
             require('karma-mocha'),
             require('karma-chrome-launcher'),
