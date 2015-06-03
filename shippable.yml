@@ -8,7 +8,7 @@ env:
 #    - SLACK_ORG=@todo PROJECT=@todo
 #    - secure: @todo
 before_install:
-  - apt-get -y install xvfb chromium-browser
+  - apt-get -y --fix-missing install xvfb chromium-browser
   - test -e /tmp/.X99-lock || sudo /usr/bin/Xvfb :99 &
   - export DISPLAY=:99.0
   - export CHROME_BIN=/usr/bin/chromium-browser
