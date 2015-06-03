@@ -77,6 +77,7 @@ module.exports = function(config) {
             require('karma-firefox-launcher'),
             require('karma-phantomjs-launcher'),
             require('karma-sinon-chai'),
+            require('karma-junit-reporter'),
             require('karma-sourcemap-loader'),
             require('karma-webpack')
         ]
