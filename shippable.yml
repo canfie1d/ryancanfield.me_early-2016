@@ -18,7 +18,6 @@ install:
 before_script:
   - mkdir -p shippable/build
   - mkdir -p shippable/testresults
-  - npm install -g phantomjs
 script:
   - ./node_modules/.bin/jshint application
   - ./node_modules/karma/bin/karma start --single-run --browsers Chrome_without_sandbox
