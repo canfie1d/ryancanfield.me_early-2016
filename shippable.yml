@@ -15,5 +15,6 @@ script:
   - ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS
 notifications:
   email: false
+cache: true
 #after_failure:
 #  - python slack_notifier.py --project $PROJECT --org $SLACK_ORG --token $SLACK_TOKEN
