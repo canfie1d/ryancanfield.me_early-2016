@@ -10,7 +10,7 @@ env:
 before_install:
   - apt-get update
   - apt-get -y install xvfb chromium-browser
-  - test -e /tmp/.X99-lock || sudo /usr/bin/Xvfb :99 &
+  - test -e /tmp/.X99-lock || /usr/bin/Xvfb :99 &
   - export DISPLAY=:99.0
   - export CHROME_BIN=/usr/bin/chromium-browser
 install:
