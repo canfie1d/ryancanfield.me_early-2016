@@ -7,15 +7,20 @@ env:
 #  global:
 #    - SLACK_ORG=@todo PROJECT=@todo
 #    - secure: @todo
+before_install:
+  - apt-get install xvfb chromium-browser
+  - test -e /tmp/.X99-lock || sudo /usr/bin/Xvfb :99 &
+  - export DISPLAY=:99.0
+  - export CHROME_BIN=/usr/bin/chromium-browser
+install:
+  - npm install
 before_script:
   - mkdir -p shippable/build
   - mkdir -p shippable/testresults
   - npm install -g phantomjs
-install:
-  - npm install
 script:
   - ./node_modules/.bin/jshint application
-  - ./node_modules/karma/bin/karma start --single-run --browsers PhantomJS
+  - ./node_modules/karma/bin/karma start --single-run --browsers Chrome
 notifications:
   email: false
 cache: true
