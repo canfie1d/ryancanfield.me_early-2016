@@ -17,8 +17,7 @@ module.exports = function(config) {
     exclude : [],
 
     preprocessors : {
-        '__tests__/index.js'  : ['webpack', 'sourcemap'],
-        'application/**/*.js' : ['coverage']
+        '__tests__/index.js'  : ['webpack', 'sourcemap']
     },
 
     webpack: {
@@ -51,7 +50,7 @@ module.exports = function(config) {
         }
     },
 
-    reporters : ['progress', 'junit', 'coverage'],
+    reporters : ['progress', 'junit'],
 
     port : 9876,
 
@@ -70,17 +69,6 @@ module.exports = function(config) {
     junitReporter: {
         outputFile: 'shippable/testresults/unit.xml',
         suite: ''
-    },
-
-    coverageReporter: {
-        reporters: [{
-            type : 'html',
-            dir  : 'shippable/codecoverage/'
-        }, {
-            type : 'cobertura',
-            dir  : 'shippable/codecoverage/',
-            file : 'coverage.xml'
-        }]
     },
 
     customLaunchers: {

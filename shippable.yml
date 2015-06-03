@@ -18,11 +18,9 @@ install:
 before_script:
   - mkdir -p shippable/build
   - mkdir -p shippable/testresults
-  - mkdir -p shippable/codecoverage
 script:
   - ./node_modules/.bin/jshint application
   - ./node_modules/karma/bin/karma start --single-run --browsers Chrome_without_sandbox
-  - mv shippable/codecoverage/*/coverage.xml shippable/codecoverage
 notifications:
   email: false
 cache: true
