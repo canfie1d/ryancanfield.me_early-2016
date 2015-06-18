@@ -64,6 +64,6 @@ router.run(function (Handler, state) {
             locales  : locales,
             messages : i18n.messages
         }),
-        window.document.body
+        window.document.getElementById('app')
     );
 });
