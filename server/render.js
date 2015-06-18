@@ -1,9 +1,8 @@
 'use strict';
 
-var fs     = require('fs');
-var React  = require('react');
-var tmpl   = require('blueimp-tmpl').tmpl;
-var _      = require('underscore');
+var fs    = require('fs');
+var React = require('react');
+var tmpl  = require('blueimp-tmpl').tmpl;
 
 var Flux   = require('../application/flux');
 var i18n   = require('../application/intl/intl');
