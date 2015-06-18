@@ -3,9 +3,10 @@
 
 var __HOSTNAME__ = process.env.HOST ? process.env.HOST : 'localhost';
 
-var Webpack           = require('webpack');
-var WebpackError      = require('webpack-error-notification');
-var path              = require('path');
+var autoprefixer = require('autoprefixer-core');
+var Webpack      = require('webpack');
+var WebpackError = require('webpack-error-notification');
+var path         = require('path');
 
 var environment = (process.env.APP_ENV || 'development');
 var npmPath     = path.resolve(__dirname, 'node_modules');
@@ -83,11 +84,14 @@ module.exports = [
                 },
                 {
                     test   : /\.scss$/,
-                    loader : 'style!css!autoprefixer!sass' + config.sassOptions
+                    loader : 'style!css!postcss!sass' + config.sassOptions
                 }
             ]
         },
         plugins : config.plugins,
+        postcss : function() {
+            return [autoprefixer];
+        },
         resolve : {
             extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
         },
