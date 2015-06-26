@@ -8,11 +8,16 @@
 
 .pl-branding {
     height        : rem-calc(64);
-    margin        : rem-calc(-30 -30 30 -30);
+    margin        : rem-calc(37 -30 30 -30);
     padding       : rem-calc(8 0);
     display       : block;
     text-align    : center;
     border-bottom : 1px solid $gray--300;
+
+    @media #{$large-up} {
+        margin : rem-calc(-30 -30 30 -30);
+    }
+
 }
 
 .pl-branding__svg {
