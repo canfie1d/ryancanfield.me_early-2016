@@ -44,7 +44,7 @@ module.exports = React.createClass({
                 </div>
                 <hr className='pl-hr' />
                 <div className='row'>
-                    <div className='medium-4 columns'>
+                    <div className='medium-4'>
                         <h2 className='pl-h2'>{'Icon sizes'}</h2>
                         <Icon icon='caret' size='x-small' /> Extra Small
                         <br />
@@ -62,7 +62,7 @@ module.exports = React.createClass({
                         <br />
                         <br />
                     </div>
-                    <div className='medium-4 columns'>
+                    <div className='medium-4'>
                         <h2 className='pl-h2'>{'Icon rotation'}</h2>
                         <Icon icon='caret' size='small' rotate={0} /> 0deg Rotation
                         <br />
@@ -80,7 +80,7 @@ module.exports = React.createClass({
                         <br />
                         <br />
                     </div>
-                    <div className='medium-4 columns'>
+                    <div className='medium-4'>
                         <h2 className='pl-h2'>{'Icon colors'}</h2>
                         <Icon icon='caret' size='small' colorTheme='black' /> Black fill
                         <br />
