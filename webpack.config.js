@@ -37,7 +37,7 @@ if (environment !== 'production') {
         'webpack-dev-server/client?http://' + __HOSTNAME__ + ':9000'
     ].concat(config.entry);
 
-    config.reactLoaders = ['babel', 'react-hot'].concat(config.reactLoaders);
+    config.reactLoaders = ['react-hot'].concat(config.reactLoaders);
 
     config.plugins.push(new Webpack.HotModuleReplacementPlugin());
 
