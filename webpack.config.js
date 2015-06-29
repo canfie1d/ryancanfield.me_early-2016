@@ -23,7 +23,7 @@ var config      = {
             }
         })
     ],
-    reactLoaders : ['jsx?insertPragma=React.DOM'],
+    reactLoaders : ['babel'],
     sassOptions  : (
         '?outputStyle=' + (environment === 'production' ? 'compressed' : 'nested') +
         '&includePaths[]=' + npmPath
@@ -37,7 +37,7 @@ if (environment !== 'production') {
         'webpack-dev-server/client?http://' + __HOSTNAME__ + ':9000'
     ].concat(config.entry);
 
-    config.reactLoaders = ['react-hot'].concat(config.reactLoaders);
+    config.reactLoaders = ['babel', 'react-hot'].concat(config.reactLoaders);
 
     config.plugins.push(new Webpack.HotModuleReplacementPlugin());
 

@@ -86,7 +86,7 @@ module.exports = [
                 },
                 {
                     test    : /\.jsx$/,
-                    loaders : ['jsx?insertPragma=React.DOM'],
+                    loaders : ['babel'],
                     exclude : npmPath
                 },
                 {
