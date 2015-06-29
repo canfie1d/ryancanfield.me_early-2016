@@ -11,68 +11,44 @@ module.exports = React.createClass ({
         return (
             <div className='pl-page example'>
                 <h1 className='pl-h1'>Grid</h1>
-                <div className="row">.row</div>
-                <div className="row">
-                    <div className="large-2 columns">.large-2</div>
-                    <div className="large-10 columns">.large-10.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-3 columns">.large-3.columns</div>
-                    <div className="large-9 columns">.large-9.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-4 columns">.large-4.columns</div>
-                    <div className="large-8 columns">.large-8.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-5 columns">.large-5.columns</div>
-                    <div className="large-7 columns">.large-7.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-6 columns">.large-6.columns</div>
-                    <div className="large-6 columns">.large-6.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-7 columns">.large-7.columns</div>
-                    <div className="large-5 columns">.large-5.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-8 columns">.large-8.columns</div>
-                    <div className="large-4 columns">.large-4.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-9 columns">.large-9.columns</div>
-                    <div className="large-3 columns">.large-3.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-10 columns">.large-10.columns</div>
-                    <div className="large-2 columns">.large-2</div>
-                </div>
-                <div className="row">
-                    <div className="large-12 columns">.large-12.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-6 columns">.large-6.columns</div>
-                    <div className="large-6 columns">.large-6.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-4 columns">.large-4.columns</div>
-                    <div className="large-4 columns">.large-4.columns</div>
-                    <div className="large-4 columns">.large-4.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-3 columns">.large-3.columns</div>
-                    <div className="large-3 columns">.large-3.columns</div>
-                    <div className="large-3 columns">.large-3.columns</div>
-                    <div className="large-3 columns">.large-3.columns</div>
-                </div>
-                <div className="row">
-                    <div className="large-2 columns">.large-2.columns</div>
-                    <div className="large-2 columns">.large-2.columns</div>
-                    <div className="large-2 columns">.large-2.columns</div>
-                    <div className="large-2 columns">.large-2.columns</div>
-                    <div className="large-2 columns">.large-2.columns</div>
-                    <div className="large-2 columns">.large-2.columns</div>
+                <a className='a' target="_blank" href='http://flexboxgrid.com/'>Flexbox Grid Documentation</a>
+                <br />
+                <br />
+                <div className="row middle-small">
+                    <div className="small-2"><div className='box'>.small-2</div></div>
+                    <div className="small-10"><div className='box'>.small-10</div></div>
+                    <div className="small-3"><div className='box'>.small-3</div></div>
+                    <div className="small-9"><div className='box'>.small-9</div></div>
+                    <div className="small-4"><div className='box'>.small-4</div></div>
+                    <div className="small-8"><div className='box'>.small-8</div></div>
+                    <div className="small-5"><div className='box'>.small-5</div></div>
+                    <div className="small-7"><div className='box'>.small-7</div></div>
+                    <div className="small-6"><div className='box'>.small-6</div></div>
+                    <div className="small-6"><div className='box'>.small-6</div></div>
+                    <div className="small-7"><div className='box'>.small-7</div></div>
+                    <div className="small-5"><div className='box'>.small-5</div></div>
+                    <div className="small-8"><div className='box'>.small-8</div></div>
+                    <div className="small-4"><div className='box'>.small-4</div></div>
+                    <div className="small-9"><div className='box'>.small-9</div></div>
+                    <div className="small-3"><div className='box'>.small-3</div></div>
+                    <div className="small-10"><div className='box'>.small-10</div></div>
+                    <div className="small-2"><div className='box'>.small-2</div></div>
+                    <div className="small-12"><div className='box'>.small-12</div></div>
+                    <div className="small-6"><div className='box'>.small-6</div></div>
+                    <div className="small-6"><div className='box'>.small-6</div></div>
+                    <div className="small-4"><div className='box'>.small-4</div></div>
+                    <div className="small-4"><div className='box'>.small-4</div></div>
+                    <div className="small-4"><div className='box'>.small-4</div></div>
+                    <div className="small-3"><div className='box'>.small-3</div></div>
+                    <div className="small-3"><div className='box'>.small-3</div></div>
+                    <div className="small-3"><div className='box'>.small-3</div></div>
+                    <div className="small-3"><div className='box'>.small-3</div></div>
+                    <div className="small-2"><div className='box'>.small-2</div></div>
+                    <div className="small-2"><div className='box'>.small-2</div></div>
+                    <div className="small-2"><div className='box'>.small-2</div></div>
+                    <div className="small-2"><div className='box'>.small-2</div></div>
+                    <div className="small-2"><div className='box'>.small-2</div></div>
+                    <div className="small-2"><div className='box'>.small-2</div></div>
                 </div>
             </div>
         );

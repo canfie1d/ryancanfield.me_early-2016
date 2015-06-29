@@ -19,7 +19,7 @@
 // size dependent styles
 .l--expand-on-small {
 
-    @media #{$small-only} {
+    @include max-screen($media-xsmall) {
         width      : 100%;
         min-width  : auto;
         display    : block;

@@ -41,6 +41,11 @@ module.exports = React.createClass({
             'fontSize'  : '20px'
         };
 
+        // There seems to be an issue resolving image urls correctly between the app and client
+        if (! url.match(/^\//)) {
+            url = '/' + url;
+        }
+
         return (
             <div className='typography'>
                 <img style={style1} src={url} alt='Synapse Logo' />

@@ -1,5 +1,6 @@
 var __HOSTNAME__ = process.env.HOST ? process.env.HOST : 'localhost';
 
+var autoprefixer      = require('autoprefixer-core');
 var Webpack           = require('webpack');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var WebpackError      = require('webpack-error-notification');
@@ -96,13 +97,16 @@ module.exports = [
                     test   : /\.scss$/,
                     loader : ExtractTextPlugin.extract(
                         'style-loader',
-                        'css-loader!sass-loader' + config.sassOptions
+                        'css-loader!postcss-loader!sass-loader' + config.sassOptions
                     )
                 }
             ]
         },
         externals : config.externals,
         plugins   : config.plugins,
+        postcss : function() {
+            return [autoprefixer];
+        },
         resolve   : {
             extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
         },
@@ -113,6 +117,7 @@ module.exports = [
                 __ENVIRONMENT__ : true,
                 __HOSTNAME__    : true,
                 console         : true,
+                JSON            : true,
                 localStorage    : true,
                 navigator       : true,
                 setTimeout      : true,

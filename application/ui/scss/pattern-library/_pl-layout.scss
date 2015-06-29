@@ -97,22 +97,20 @@ $pl-header-height : rem-calc(64);
     margin     : $pl-header-height auto 0 auto;
     padding    : rem-calc(40);
 
-    &.example .row,
-    &.example .row .column,
-    &.example .row .columns {
-        font-size   : 11px;
-        background  : #f4f4f4;
-        height      : 60px;
-        line-height : 60px;
-    }
-
     &.example .row{
         margin-bottom : 20px;
+
+        > div {
+            background : tint($primary-color, 60%);
+            padding    : rem-calc(3);
+        }
     }
 
-    &.example .row .column, &.example .row .columns{
-        background : #e4e4e4;
-        border     : 1px solid #ccc;
+    &.example .row .box {
+        padding    : rem-calc(10);
+        background : $primary-color;
+        border     : 1px solid darken($primary-color, 20%);
+        color      : $white;
     }
 
 }
