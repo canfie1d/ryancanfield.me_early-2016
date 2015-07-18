@@ -62,7 +62,6 @@
       "express-http-proxy" : "0.6.0",
       "express-useragent"  : "0.1.8",
       "fluxxor"            : "1.6.0",
-      "html5shiv"          : "3.7.2",
       "intl"               : "0.1.4",
       "localStorage"       : "1.0.3",
       "lodash"             : "3.9.3",
