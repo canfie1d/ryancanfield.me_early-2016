@@ -2,7 +2,7 @@
 
 var Fluxxor = require('fluxxor');
 var Q       = require('q');
-var _       = require('underscore');
+var _       = require('lodash');
 
 var Stores  = require('./stores');
 var actions = require('./actions');
