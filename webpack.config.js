@@ -23,7 +23,7 @@ var config      = {
             }
         })
     ],
-    reactLoaders : ['jsx?insertPragma=React.DOM'],
+    reactLoaders : ['babel'],
     sassOptions  : (
         '?outputStyle=' + (environment === 'production' ? 'compressed' : 'nested') +
         '&includePaths[]=' + npmPath
