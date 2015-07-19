@@ -30,8 +30,11 @@ module.exports = function(config) {
                     query  : {name : '[path][name].[ext]?[hash]'}
                 },
                 {
-                    test   : /\.jsx$/,
-                    loader : 'jsx?insertPragma=React.DOM'
+                    test   : /\.jsx?$/,
+                    loader : 'babel',
+                    query  : {
+                        blacklist : ["useStrict"]
+                    }
                 },
                 {
                     test   : /\.css$/,

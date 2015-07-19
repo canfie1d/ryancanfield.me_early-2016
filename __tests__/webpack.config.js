@@ -46,9 +46,12 @@ module.exports = {
                 query  : {name : '[name].js'}
             },
             {
-                test    : /\.jsx$/,
+                test    : /\.jsx?$/,
                 loaders : config.reactLoaders,
-                exclude : /node_modules/
+                exclude : /node_modules/,
+                query   : {
+                    blacklist : ['useStrict']
+                }
             },
             {
                 test   : /\.json$/,
