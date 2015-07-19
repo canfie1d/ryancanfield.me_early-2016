@@ -5,15 +5,16 @@ var FluxMixin = require('fluxxor').FluxMixin(React);
 var classSet  = require('react/lib/cx');
 
 var NavigationMixin = require('react-router').Navigation;
-
-var ReactIntl       = require('react-intl');
-var IntlMixin       = ReactIntl.IntlMixin;
-var IntlHelperMixin = require('../../mixins/intlHelperMixin');
+var IntlMixin       = require('s19n');
 
 module.exports = React.createClass({
     displayName : 'PatternLibraryNavItem',
 
-    mixins : [FluxMixin, IntlMixin, NavigationMixin, IntlHelperMixin],
+    mixins : [
+        FluxMixin,
+        IntlMixin,
+        NavigationMixin
+    ],
 
     propTypes : {
         active      : React.PropTypes.bool,

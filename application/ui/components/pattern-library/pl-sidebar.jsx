@@ -4,16 +4,13 @@ var React     = require('react');
 var classSet  = require('react/lib/cx');
 var FluxMixin = require('fluxxor').FluxMixin(React);
 var PLNavItem = require('./pl-nav-item');
-
-var ReactIntl       = require('react-intl');
-var IntlMixin       = ReactIntl.IntlMixin;
-var IntlHelperMixin = require('../../mixins/intlHelperMixin');
+var IntlMixin = require('s19n');
 
 module.exports = React.createClass({
 
     displayName : 'PatternLibrarySidebar',
 
-    mixins : [FluxMixin, IntlMixin, IntlHelperMixin ],
+    mixins : [FluxMixin, IntlMixin],
 
     propTypes : {
         // Component constructors for sections

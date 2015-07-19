@@ -1,7 +1,7 @@
 'use strict';
 
-var authActions  = require('./action/auth');
+let authActions = require('./action/auth');
 
 module.exports = {
-    auth  : authActions
+    auth : authActions
 };

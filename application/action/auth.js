@@ -1,15 +1,15 @@
 'use strict';
 
-var constants   = require('../constants');
-var oauthClient = require('../client/oauth');
-var userClient  = require('../client/user');
+let constants   = require('../constants');
+let oauthClient = require('../client/oauth');
+let userClient  = require('../client/user');
 
-var loginCreatedUser = function(password, userData) {
-    var flux = this;
+let loginCreatedUser = (password, userData) => {
+    let flux = this;
 
     // User created, now log in
     oauthClient.login(userData.email, password)
-        .then(function(tokenData) {
+        .then(tokenData => {
             flux.dispatch(
                 constants.LOGIN_SUCCESSFUL,
                 {
@@ -18,19 +18,18 @@ var loginCreatedUser = function(password, userData) {
                 }
             );
         })
-        .fail(function() {
+        .fail(() => {
             flux.dispatch(constants.LOGIN_FAILED);
         });
 };
 
-var fetchLoggedInUser = function(tokenData)
-{
-    var flux = this;
+let fetchLoggedInUser = tokenData => {
+    let flux = this;
 
     // Authenticated, but still need user data
     userClient.setToken(tokenData);
     userClient.getCurrentUser()
-        .then(function(userData) {
+        .then(userData => {
             flux.dispatch(
                 constants.LOGIN_SUCCESSFUL,
                 {
@@ -39,26 +38,26 @@ var fetchLoggedInUser = function(tokenData)
                 }
             );
         })
-        .fail(function() {
+        .fail(() => {
             flux.dispatch(constants.LOGIN_FAILED);
         });
 };
 
 module.exports = {
-    login : function(username, password)
+    login(username, password)
     {
-        var flux = this;
+        let flux = this;
 
         flux.dispatch(constants.LOGGING_IN);
 
         oauthClient.login(username, password)
             .then(fetchLoggedInUser.bind(flux))
-            .fail(function() {
+            .fail(() => {
                 flux.dispatch(constants.LOGIN_FAILED);
             });
     },
 
-    logout : function()
+    logout()
     {
         // Assume the logout worked, since it doesn't make a difference to the user
         oauthClient.logout();
@@ -66,8 +65,9 @@ module.exports = {
         this.dispatch(constants.LOGOUT);
     },
 
-    registerUser : function(email, password) {
-        var flux = this;
+    registerUser(email, password)
+    {
+        let flux = this;
 
         this.dispatch(constants.REGISTERING);
 
@@ -77,7 +77,7 @@ module.exports = {
                 password : password
             })
             .then(loginCreatedUser.bind(flux, password))
-            .fail(function() {
+            .fail(() => {
                 flux.dispatch(constants.REGISTRATION_FAILED);
             });
     }

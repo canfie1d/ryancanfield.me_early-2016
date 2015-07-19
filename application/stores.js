@@ -1,7 +1,7 @@
 'use strict';
 
-var TokenStore = require('./store/token');
-var UserStore  = require('./store/user');
+let TokenStore = require('./store/token');
+let UserStore  = require('./store/user');
 
 module.exports = {
     TokenStore : TokenStore,

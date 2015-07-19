@@ -1,31 +1,21 @@
 'use strict';
 
-var React           = require('react');
-var ReactIntl       = require('react-intl');
-var IntlMixin       = ReactIntl.IntlMixin;
-var IntlHelperMixin = require('../mixins/intlHelperMixin');
+let React = require('react');
 
 module.exports = React.createClass({
 
     displayName : '404',
 
-    mixins: [
-        IntlMixin,
-        IntlHelperMixin
-    ],
-
-    render : function() {
-        var style1,
-            style2;
-
-        style1 = {
+    render()
+    {
+        let style1 = {
             'textAlign'  : 'center',
             'marginTop'  : '200px',
             'fontSize'   : '180px',
             'fontWeight' : 'bold'
         };
 
-        style2 = {
+        let style2 = {
             'textAlign' : 'center',
             'fontSize'  : '20px'
         };
@@ -36,7 +26,6 @@ module.exports = React.createClass({
                 <h2 style={style2}>{this.t('404.site-not-found')}</h2>
             </div>
         );
-
     }
 
 });
