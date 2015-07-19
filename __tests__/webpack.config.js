@@ -22,7 +22,7 @@ var config      = {
         new Webpack.HotModuleReplacementPlugin(),
         new WebpackError(process.platform)
     ],
-    reactLoaders : ['react-hot', 'jsx?insertPragma=React.DOM']
+    reactLoaders : ['react-hot', 'babel']
 };
 
 module.exports = {

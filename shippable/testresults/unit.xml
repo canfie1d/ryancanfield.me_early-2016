@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <testsuites>
-  <testsuite name="Chrome 43.0.2357 (Mac OS X 10.10.3)" package="" timestamp="2015-06-03T22:04:04" id="0" hostname="Synapses-Mac-mini.local" tests="1" errors="0" failures="0" time="0.001">
+  <testsuite name="Chrome 43.0.2357 (Mac OS X 10.10.4)" package="" timestamp="2015-07-19T01:26:17" id="0" hostname="macbookpro.lan" tests="1" errors="0" failures="0" time="0.002">
     <properties>
-      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.81 Safari/537.36"/>
+      <property name="browser.fullName" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.134 Safari/537.36"/>
     </properties>
-    <testcase name="demonstrates that tests run" time="0.001" classname="Chrome 43.0.2357 (Mac OS X 10.10.3).sample test"/>
+    <testcase name="demonstrates that tests run" time="0.002" classname="Chrome 43.0.2357 (Mac OS X 10.10.4).sample test"/>
     <system-out><![CDATA[
 ]]></system-out>
     <system-err/>
