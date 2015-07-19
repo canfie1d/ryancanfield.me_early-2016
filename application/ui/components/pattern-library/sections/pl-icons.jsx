@@ -1,10 +1,10 @@
 'use strict';
 
-var _     = require('lodash');
-var React = require('react');
-var Icon  = require('../../icon/icon');
+let _     = require('lodash');
+let React = require('react');
+let Icon  = require('../../icon/icon');
 
-var ICONS = [
+let ICONS = [
     'back',
     'cancel',
     'caret',
@@ -19,9 +19,9 @@ module.exports = React.createClass({
 
     displayName : 'Icons',
 
-    renderIcons : function()
+    renderIcons()
     {
-        return _.map(ICONS, function(icon, index) {
+        return _.map(ICONS, (icon, index) => {
             return (
                 <span className='pl-icon small-4 medium-3' key={'icon-' + index}>
                     <Icon icon={icon} />
@@ -34,7 +34,7 @@ module.exports = React.createClass({
         });
     },
 
-    render : function()
+    render()
     {
         return (
             <div className='pl-page'>

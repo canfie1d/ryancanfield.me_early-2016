@@ -1,10 +1,10 @@
 'use strict';
 
-var React     = require('react');
-var classSet  = require('react/lib/cx');
-var FluxMixin = require('fluxxor').FluxMixin(React);
-var PLNavItem = require('./pl-nav-item');
-var IntlMixin = require('s19n');
+var React      = require('react');
+var classNames = require('classnames');
+var FluxMixin  = require('fluxxor').FluxMixin(React);
+var PLNavItem  = require('./pl-nav-item');
+var IntlMixin  = require('s19n');
 
 module.exports = React.createClass({
 
@@ -37,7 +37,7 @@ module.exports = React.createClass({
 
     render : function()
     {
-        var classes = classSet ({
+        var classes = classNames ({
             'pl-sidebar'         : true,
             'pl-sidebar--hidden' : this.props.hidden
         });

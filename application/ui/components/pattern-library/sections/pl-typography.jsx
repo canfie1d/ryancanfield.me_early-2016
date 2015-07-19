@@ -1,12 +1,12 @@
 'use strict';
 
-var React  = require('react');
+let React  = require('react');
 
 module.exports = React.createClass({
 
     displayName : 'Typography',
 
-    render : function()
+    render()
     {
         return (
             <div className='pl-page'>

@@ -1,10 +1,13 @@
 'use strict';
 
-let React = require('react');
+let React     = require('react');
+let IntlMixin = require('s19n');
 
 module.exports = React.createClass({
 
     displayName : '404',
+
+    mixins : [IntlMixin],
 
     render()
     {

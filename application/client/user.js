@@ -1,31 +1,31 @@
 'use strict';
 
-var config      = require('../config');
-var HttpGateway = require('synapse-common/http/auth-gateway');
-var store       = require('store');
+let config      = require('../config');
+let HttpGateway = require('synapse-common/http/auth-gateway');
+let store       = require('store');
 
-var UserClient = HttpGateway.extend({
+let UserClient = HttpGateway.extend({
 
     config : config.api,
 
-    getCurrentUser : function()
+    getCurrentUser()
     {
         return this.apiRequest('GET', '/user');
     },
 
-    createUser : function(userData)
+    createUser(userData)
     {
         return this.apiRequest('POST', '/users', userData);
     },
 
-    setToken : function(tokenData)
+    setToken(tokenData)
     {
         this.token = tokenData;
     },
 
-    getRequestOptions : function(method, path)
+    getRequestOptions(method, path)
     {
-        var options, token;
+        let options, token;
 
         options = HttpGateway.prototype.getRequestOptions.call(this, method, path);
 
