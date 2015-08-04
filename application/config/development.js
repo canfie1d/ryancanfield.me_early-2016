@@ -1,4 +1,3 @@
-/* globals __BACKEND__ */
 'use strict';
 
 var backend = __BACKEND__ || '%DEV_API_HOST%';

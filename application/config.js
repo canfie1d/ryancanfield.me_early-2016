@@ -1,4 +1,3 @@
-/* globals __ENVIRONMENT__, __HOSTNAME__ */
 'use strict';
 
 var merge = require('lodash').merge;
@@ -17,7 +16,7 @@ defaults = {
         prefix    : '/api'
     },
     proxy : {
-        hostname : ''
+        hostname : __BACKEND__
     },
     app : {
         title : '@todo update with page title'
