@@ -6,11 +6,9 @@ rm -rf build
 
 pm2 delete all > /dev/null 2>&1
 
-pm2 start dev-server.js
-pm2 start server
+pm2 start dev-server.js -n dev -f
+pm2 start server/index.js -n app -f
 
 echo 'Press [CMD+C] to stop servers...'
-while :
-do
-    sleep 1
-done
+
+./node_modules/webpack/bin/webpack.js --watch --config webpack.server.js

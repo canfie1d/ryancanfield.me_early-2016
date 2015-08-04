@@ -1,8 +1,8 @@
 'use strict';
 
 let constants   = require('../constants');
-let oauthClient = require('../client/oauth');
-let userClient  = require('../client/user');
+let oauthClient = require('./oauth-client');
+let userClient  = require('./user-client');
 
 let loginCreatedUser = (password, userData) => {
     // User created, now log in
