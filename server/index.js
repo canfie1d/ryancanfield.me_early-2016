@@ -14,6 +14,8 @@ var render = require('./render-generated');
 
 var app = new Express();
 
+var port = process.env.PORT || 9090;
+
 if (__ENVIRONMENT__ !== 'production') {
     app.use(config.api.prefix, proxy('http://' + config.proxy.hostname));
 }
@@ -23,9 +25,9 @@ app.use(useragent.express());
 app.get(/^([^.]+)$/, render);
 
 if (__ENVIRONMENT__ !== 'production') {
-    app.use(Express.static(process.cwd() + '/build'));
+    app.use(Express.static((process.env.CWD || process.cwd()) + '/build'));
 }
 
-app.listen(9090, 10, function () {
-    console.log('Listening on localhost:9090');
+app.listen(port, 10, function () {
+    console.log('Listening on localhost:' + port);
 });

@@ -12,7 +12,7 @@ var config = require('../application/config');
 require('../application/media');
 
 tmpl.load = function (name) {
-    return fs.readFileSync(process.cwd() + '/application/' + name, 'utf8');
+    return fs.readFileSync((process.env.CWD || process.cwd()) + '/application/' + name, 'utf8');
 };
 
 function useLegacy(useragent) {
