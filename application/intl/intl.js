@@ -27,7 +27,8 @@ module.exports = {
                     "Typography": "Typography",
                     "Buttons": "Buttons",
                     "Icons": "Icons",
-                    "Form Elements": "Form Elements"
+                    "Form Elements": "Form Elements",
+                    "Grid": "Grid"
                 },
                 "buttons": {
                     "a": "Default Button <a> Element",

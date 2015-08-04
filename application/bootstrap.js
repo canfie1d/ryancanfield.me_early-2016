@@ -1,18 +1,18 @@
 /* globals window */
 'use strict';
 
-var config         = require('./config');
-var React          = require('react');
-var BatchedUpdates = require('react/lib/ReactUpdates').batchedUpdates;
+let config         = require('./config');
+let React          = require('react');
+let BatchedUpdates = require('react/lib/ReactUpdates').batchedUpdates;
 
 // initialize i18n
 if (! window.Intl) {
     window.Intl = require('intl');
 }
 
-var i18n   = require('./intl/intl');
-var Flux   = require('./flux');
-var Router = require('./router');
+let i18n   = require('./intl/intl');
+let Flux   = require('./flux');
+let Router = require('./router');
 
 require('./media.js');
 
@@ -20,16 +20,14 @@ window.React = React;
 
 React.initializeTouchEvents(true);
 
-var flux        = new Flux();
-var oldDispatch = flux.dispatcher.dispatch.bind(flux.dispatcher);
-var router      = new Router();
-var state       = window.document.getElementById('server-state');
+let flux        = new Flux();
+let oldDispatch = flux.dispatcher.dispatch.bind(flux.dispatcher);
+let router      = new Router();
+let state       = window.document.getElementById('server-state');
 
-flux.dispatcher.dispatch = function (action) {
-    return new BatchedUpdates(function () {
-        oldDispatch(action);
-    });
-};
+flux.dispatcher.dispatch = action => new BatchedUpdates(() => {
+    oldDispatch(action);
+});
 
 if (state) {
     flux = flux.fromObject(window.__STATE__);
@@ -41,8 +39,8 @@ if (state) {
     }
 }
 
-router.run(function (Handler, state) {
-    var locales;
+router.run((Handler, state) => {
+    let locales;
 
     if (typeof window.navigator.languages !== 'undefined') {
         locales = window.navigator.languages;

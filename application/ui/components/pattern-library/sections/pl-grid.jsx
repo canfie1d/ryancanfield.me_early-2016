@@ -1,12 +1,12 @@
 'use strict';
 
-var React = require('react');
+let React = require('react');
 
 module.exports = React.createClass ({
 
     displayName : 'Grid',
 
-    render : function()
+    render()
     {
         return (
             <div className='pl-page example'>

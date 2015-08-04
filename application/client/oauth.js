@@ -1,15 +1,15 @@
 'use strict';
 
-var config      = require('../config');
-var HttpGateway = require('synapse-common/http/auth-gateway');
-var qs          = require('querystring');
-var store       = require('store');
+let config      = require('../config');
+let HttpGateway = require('synapse-common/http/auth-gateway');
+let qs          = require('querystring');
+let store       = require('store');
 
-var OAuthClient = HttpGateway.extend({
+let OAuthClient = HttpGateway.extend({
 
     config : config.api,
 
-    login : function(email, password)
+    login(email, password)
     {
         return this.apiRequest(
             'POST',
@@ -24,9 +24,9 @@ var OAuthClient = HttpGateway.extend({
         );
     },
 
-    logout : function()
+    logout()
     {
-        var token = store.get('token') || {};
+        let token = store.get('token') || {};
 
         return this.apiRequest(
             'POST',
@@ -37,9 +37,9 @@ var OAuthClient = HttpGateway.extend({
         );
     },
 
-    refresh : function()
+    refresh()
     {
-        var token = store.get('token') || {};
+        let token = store.get('token') || {};
 
         return this.apiRequest(
             'POST',
@@ -52,9 +52,9 @@ var OAuthClient = HttpGateway.extend({
         );
     },
 
-    getRequestOptions : function(method, path)
+    getRequestOptions(method, path)
     {
-        var options;
+        let options;
 
         options = HttpGateway.prototype.getRequestOptions.call(this, method, path);
 
