@@ -1,27 +1,19 @@
 'use strict';
 
-var React           = require('react');
-var ReactIntl       = require('react-intl');
-var IntlMixin       = ReactIntl.IntlMixin;
-var IntlHelperMixin = require('../mixins/intlHelperMixin');
+let React     = require('react');
+let IntlMixin = require('s19n');
 
-var url   = require('../../media/images/raster/branding.png');
+let url = require('../../media/images/raster/branding.png');
 
 module.exports = React.createClass({
 
-    displayName : 'HomeModule',
+    displayName : 'HomePage',
 
-    mixins: [
-        IntlMixin,
-        IntlHelperMixin
-    ],
+    mixins : [IntlMixin],
 
-    render : function() {
-        var style1,
-            style2,
-            style3;
-
-        style1 = {
+    render()
+    {
+        let style1 = {
             'maxWidth'    : '400px',
             'marginTop'   : '180px',
             'marginLeft'  : 'auto',
@@ -29,14 +21,14 @@ module.exports = React.createClass({
             'display'     : 'block'
         };
 
-        style2 = {
+        let style2 = {
             'textAlign'  : 'center',
             'marginTop'  : '40px',
             'fontSize'   : '80px',
             'fontWeight' : 'bold'
         };
 
-        style3 = {
+        let style3 = {
             'textAlign' : 'center',
             'fontSize'  : '20px'
         };
@@ -53,7 +45,6 @@ module.exports = React.createClass({
                 <h2 style={style3}>{this.t('home.content')}</h2>
             </div>
         );
-
     }
 
 });

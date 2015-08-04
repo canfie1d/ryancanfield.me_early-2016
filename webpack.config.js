@@ -74,7 +74,7 @@ module.exports = [
                     loader : 'file-loader'
                 },
                 {
-                    test    : /\.jsx$/,
+                    test    : /\.jsx?$/,
                     loaders : config.reactLoaders,
                     exclude : npmPath
                 },
@@ -97,6 +97,7 @@ module.exports = [
         },
         devtool : config.devtools,
         jshint  : {
+            esnext       : true,
             globalstrict : true,
             globals      : {
                 __BACKEND__     : true,
@@ -104,6 +105,7 @@ module.exports = [
                 __HOSTNAME__    : true,
                 console         : true,
                 window          : true,
+                document        : true,
                 setTimeout      : true
             }
         }
@@ -125,6 +127,7 @@ module.exports = [
             ]
         },
         jshint  : {
+            esnext       : true,
             globalstrict : true,
             globals      : {
                 __BACKEND__     : true,
@@ -132,6 +135,7 @@ module.exports = [
                 __HOSTNAME__    : true,
                 console         : true,
                 window          : true,
+                document        : true,
                 setTimeout      : true
             }
         }

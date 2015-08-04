@@ -1,20 +1,20 @@
 /* jshint unused: false */
 'use strict';
 
-var React    = require('react'); // Used in compiled js, so required even though appears unused
-var Router   = require('react-router');
-var Route    = Router.Route;
-var Redirect = Router.Redirect;
+let React    = require('react'); // Used in compiled js, so required even though appears unused
+let Router   = require('react-router');
+let Route    = Router.Route;
+let Redirect = Router.Redirect;
 
-var SiteLayout         = require('./ui/site');
-var HomePage           = require('./ui/pages/home');
-var PatternLibraryPage = require('./ui/pages/pattern-library');
-var NotFoundPage       = require('./ui/pages/404');
-var FormattingPage     = require('./ui/pages/formatting');
+let SiteLayout         = require('./ui/layouts/site');
+let HomePage           = require('./ui/pages/home');
+let PatternLibraryPage = require('./ui/pages/pattern-library');
+let NotFoundPage       = require('./ui/pages/404');
+let FormattingPage     = require('./ui/pages/formatting');
 
-var getEnvironmentDependentRoutes = function()
+let getEnvironmentDependentRoutes = function()
 {
-    var routes = [];
+    let routes = [];
 
     if (__ENVIRONMENT__ !== 'production') {
         routes = routes.concat([

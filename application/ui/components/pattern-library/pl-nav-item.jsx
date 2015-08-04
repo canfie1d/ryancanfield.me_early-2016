@@ -1,19 +1,21 @@
 'use strict';
 
-var React     = require('react');
-var FluxMixin = require('fluxxor').FluxMixin(React);
-var classSet  = require('react/lib/cx');
+let React      = require('react');
+let FluxMixin  = require('fluxxor').FluxMixin(React);
+let classNames = require('classnames');
 
-var NavigationMixin = require('react-router').Navigation;
-
-var ReactIntl       = require('react-intl');
-var IntlMixin       = ReactIntl.IntlMixin;
-var IntlHelperMixin = require('../../mixins/intlHelperMixin');
+let NavigationMixin = require('react-router').Navigation;
+let IntlMixin       = require('s19n');
 
 module.exports = React.createClass({
+
     displayName : 'PatternLibraryNavItem',
 
-    mixins : [FluxMixin, IntlMixin, NavigationMixin, IntlHelperMixin],
+    mixins : [
+        FluxMixin,
+        IntlMixin,
+        NavigationMixin
+    ],
 
     propTypes : {
         active      : React.PropTypes.bool,
@@ -21,7 +23,7 @@ module.exports = React.createClass({
         i18nPrefix  : React.PropTypes.string
     },
 
-    getDefaultProps : function()
+    getDefaultProps()
     {
         return {
             active      : false,
@@ -30,7 +32,7 @@ module.exports = React.createClass({
         };
     },
 
-    onClick : function()
+    onClick()
     {
         if (this.props.displayName) {
             this.transitionTo(
@@ -42,11 +44,11 @@ module.exports = React.createClass({
         }
     },
 
-    render : function()
+    render()
     {
-        var linkClasses, display;
+        let linkClasses, display;
 
-        linkClasses = classSet({
+        linkClasses = classNames({
             'pl-nav__menu-link'             : true,
             'pl-nav__menu-link--is-current' : this.props.active
         });

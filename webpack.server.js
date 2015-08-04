@@ -85,7 +85,7 @@ module.exports = [
                     loader : 'file-loader'
                 },
                 {
-                    test    : /\.jsx$/,
+                    test    : /\.jsx?$/,
                     loaders : ['babel'],
                     exclude : npmPath
                 },
@@ -111,6 +111,7 @@ module.exports = [
             extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
         },
         jshint  : {
+            esnext       : true,
             globalstrict : true,
             globals      : {
                 __BACKEND__     : true,

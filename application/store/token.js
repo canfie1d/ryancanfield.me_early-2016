@@ -1,12 +1,12 @@
 'use strict';
 
-var constants = require('../constants');
-var Fluxxor   = require('fluxxor');
-var store     = require('store');
+let constants = require('../constants');
+let Fluxxor   = require('fluxxor');
+let store     = require('store');
 
-var TokenStore = Fluxxor.createStore({
+let TokenStore = Fluxxor.createStore({
 
-    initialize : function()
+    initialize()
     {
         this.loading  = false;
         this.error    = false;
@@ -20,14 +20,14 @@ var TokenStore = Fluxxor.createStore({
         );
     },
 
-    onLogin : function()
+    onLogin()
     {
         this.loading = true;
 
         this.emit('change');
     },
 
-    onLoginSuccessful : function(payload)
+    onLoginSuccessful(payload)
     {
         this.token    = payload.tokenData;
         this.loggedIn = true;
@@ -37,7 +37,7 @@ var TokenStore = Fluxxor.createStore({
         this.emit('change');
     },
 
-    onLoginFailed : function()
+    onLoginFailed()
     {
         this.loading = false;
         this.error   = true;
@@ -45,7 +45,7 @@ var TokenStore = Fluxxor.createStore({
         this.emit('change');
     },
 
-    onLogout : function()
+    onLogout()
     {
         store.remove('token');
         this.loggedIn = false;
@@ -53,19 +53,19 @@ var TokenStore = Fluxxor.createStore({
         this.emit('change');
     },
 
-    getTokenData : function()
+    getTokenData()
     {
         return store.get('token');
     },
 
-    fromObject : function(state)
+    fromObject(state)
     {
         this.loading  = state.loading;
         this.error    = state.error;
         this.loggedIn = state.loggedIn;
     },
 
-    toObject : function()
+    toObject()
     {
         return {
             loading  : this.loading,

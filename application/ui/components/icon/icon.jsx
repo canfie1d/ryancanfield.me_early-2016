@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('react');
+let React = require('react');
 
 module.exports = React.createClass({
 
@@ -36,7 +36,7 @@ module.exports = React.createClass({
         className : React.PropTypes.string
     },
 
-    getDefaultProps : function()
+    getDefaultProps()
     {
         return {
             size       : null,
@@ -46,9 +46,9 @@ module.exports = React.createClass({
         };
     },
 
-    render : function()
+    render()
     {
-        var Icon,
+        let Icon,
             classes,
             sizeClass,
             colorThemeClass,

@@ -1,13 +1,13 @@
 'use strict';
 
-var constants = require('../constants');
-var Fluxxor   = require('fluxxor');
-var store     = require('store');
+let constants = require('../constants');
+let Fluxxor   = require('fluxxor');
+let store     = require('store');
 
-var UserStore = Fluxxor.createStore({
-    initialize : function()
+let UserStore = Fluxxor.createStore({
+    initialize()
     {
-        this.data = store.get('user') || {};
+        this.data  = store.get('user') || {};
         this.error = false;
 
         this.bindActions(
@@ -17,9 +17,9 @@ var UserStore = Fluxxor.createStore({
         );
     },
 
-    onLogin : function(payload)
+    onLogin(payload)
     {
-        this.data = payload.userData;
+        this.data  = payload.userData;
         this.error = false;
 
         store.set('user', this.data);
@@ -27,9 +27,9 @@ var UserStore = Fluxxor.createStore({
         this.emit('change');
     },
 
-    onLogout : function()
+    onLogout()
     {
-        this.data = {};
+        this.data  = {};
         this.error = false;
 
         store.remove('user');
@@ -37,14 +37,14 @@ var UserStore = Fluxxor.createStore({
         this.emit('change');
     },
 
-    onRegistrationFailed : function()
+    onRegistrationFailed()
     {
         this.error = true;
 
         this.emit('change');
     },
 
-    fromObject : function(state)
+    fromObject(state)
     {
         this.data              = state.data;
         this.pending           = state.pending;
@@ -52,7 +52,7 @@ var UserStore = Fluxxor.createStore({
         this.isNewlyEditedUser = state.isNewlyEditedUser;
     },
 
-    toObject : function()
+    toObject()
     {
         return {
             data              : this.data,

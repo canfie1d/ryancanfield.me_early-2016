@@ -9,6 +9,9 @@
 1. `npm install -g webpack pm2`
 1. `npm start` to build the app and launch a server at `localhost:9000`
 
+### Viewing Logs
+1. `pm2 logs` to view output from the dev server
+
 ### Production Builds
 1. `npm run dist` to build a production bundle
 

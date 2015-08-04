@@ -1,14 +1,14 @@
 'use strict';
 
-var React            = require('react');
-var RouterStateMixin = require('react-router').State;
-var FluxMixin        = require('fluxxor').FluxMixin(React);
-var PLSidebar        = require('../components/pattern-library/pl-sidebar');
+let React            = require('react');
+let RouterStateMixin = require('react-router').State;
+let FluxMixin        = require('fluxxor').FluxMixin(React);
+let PLSidebar        = require('../components/pattern-library/pl-sidebar');
 
-var TypographySection = require('../components/pattern-library/sections/pl-typography');
-var IconSection       = require('../components/pattern-library/sections/pl-icons');
-var GridLayout        = require('../components/pattern-library/sections/pl-grid');
-var Icon              = require('../components/icon/icon');
+let TypographySection = require('../components/pattern-library/sections/pl-typography');
+let IconSection       = require('../components/pattern-library/sections/pl-icons');
+let GridLayout        = require('../components/pattern-library/sections/pl-grid');
+let Icon              = require('../components/icon/icon');
 
 require('../scss/pattern-library');
 
@@ -21,21 +21,21 @@ module.exports = React.createClass({
         RouterStateMixin
     ],
 
-    getInitialState : function()
+    getInitialState()
     {
         return {
             navHidden : true
         };
     },
 
-    onTriggerClick : function ()
+    onTriggerClick()
     {
         this.setState({
-            navHidden : !this.state.navHidden
+            navHidden : ! this.state.navHidden
         });
     },
 
-    getComponentConstructors : function()
+    getComponentConstructors()
     {
         return [
             TypographySection,
@@ -44,20 +44,20 @@ module.exports = React.createClass({
         ];
     },
 
-    renderSections : function()
+    renderSections()
     {
-        var section = this.getParams().section;
+        let section = this.getParams().section;
 
-        return this.getComponentConstructors().map(function(Page) {
+        return this.getComponentConstructors().map(Page => {
             if (section === 'all' || section === Page.displayName) {
                 return <Page key={Page.displayName} />;
             }
         });
     },
 
-    render : function()
+    render()
     {
-        var triggerIcon = this.state.navHidden ? 'hamburger' : 'cancel';
+        let triggerIcon = this.state.navHidden ? 'hamburger' : 'cancel';
 
         return (
             <div className='pl'>
