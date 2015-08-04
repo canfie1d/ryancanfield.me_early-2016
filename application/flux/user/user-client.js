@@ -1,6 +1,6 @@
 'use strict';
 
-let config      = require('../config');
+let config      = require('../../config');
 let HttpGateway = require('synapse-common/http/auth-gateway');
 let store       = require('store');
 

@@ -4,8 +4,8 @@ var Fluxxor = require('fluxxor');
 var Q       = require('q');
 var _       = require('lodash');
 
-var Stores  = require('./stores');
-var actions = require('./actions');
+var Stores  = require('./flux/stores');
+var actions = require('./flux/actions');
 
 var Flux = function () {
     var stores = {};
