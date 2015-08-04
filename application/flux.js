@@ -11,7 +11,11 @@ var Flux = function () {
     var stores = {};
 
     _.each(Stores, function (Store, name) {
-        stores[name] = new Store();
+        if (_.isArray(Store)) {
+            stores[name] = new Store[0](Store[1]);
+        } else {
+            stores[name] = new Store();
+        }
     });
 
     Fluxxor.Flux.call(this, stores, actions);
