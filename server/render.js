@@ -46,7 +46,6 @@ module.exports = function(req, res) {
             title   = flux.getTitle(state, config.app.title);
 
             res.send(tmpl('index.html', {
-                css  : true,
                 html : React.renderToString(new Factory({
                     flux     : flux,
                     locales  : locales,

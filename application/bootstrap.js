@@ -14,8 +14,6 @@ let i18n   = require('./intl/intl');
 let Flux   = require('./flux');
 let Router = require('./router');
 
-require('./media.js');
-
 window.React = React;
 
 React.initializeTouchEvents(true);
