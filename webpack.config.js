@@ -12,7 +12,10 @@ var environment = (process.env.APP_ENV || 'development');
 var npmPath     = path.resolve(__dirname, 'node_modules');
 var config      = {
     devtools : [],
-    entry    : ['./application/bootstrap.js'],
+    entries  : {
+        app   : ['./application/bootstrap.js'],
+        media : ['./application/media.js']
+    },
     plugins  : [
         new Webpack.DefinePlugin({
             __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
@@ -32,12 +35,16 @@ var config      = {
 
 if (environment !== 'production') {
     config.devtools = '#inline-source-map';
-    config.entry = [
+    config.entries.app.unshift(
         'webpack/hot/dev-server',
         'webpack-dev-server/client?http://' + __HOSTNAME__ + ':9000'
-    ].concat(config.entry);
+    );
+    config.entries.media.unshift(
+        'webpack/hot/dev-server',
+        'webpack-dev-server/client?http://' + __HOSTNAME__ + ':9000'
+    );
 
-    config.reactLoaders = ['react-hot'].concat(config.reactLoaders);
+    config.reactLoaders.unshift('react-hot');
 
     config.plugins.push(new Webpack.HotModuleReplacementPlugin());
 
@@ -48,8 +55,8 @@ if (environment !== 'production') {
 
 module.exports = [
     {
-        name   : 'browser bundle',
-        entry  : config.entry,
+        name   : 'app bundle',
+        entry  : config.entries.app,
         output : {
             filename   : 'app.js',
             path       : path.resolve(__dirname, 'build'),
@@ -109,6 +116,40 @@ module.exports = [
                 setTimeout      : true
             }
         }
+    },
+    {
+        name   : 'media bundle',
+        entry  : config.entries.media,
+        output : {
+            filename   : 'media.js',
+            path       : path.resolve(__dirname, 'build'),
+            publicPath : '/'
+        },
+        module : {
+            loaders : [
+                {
+                    test   : /\.(eot|ico|ttf|woff|woff2|gif|jpe?g|png|svg)$/,
+                    loader : 'file-loader'
+                },
+                {
+                    test    : /\.jsx?$/,
+                    loaders : config.reactLoaders,
+                    exclude : npmPath
+                },
+                {
+                    test   : /\.scss$/,
+                    loader : 'style!css!postcss!sass' + config.sassOptions
+                }
+            ]
+        },
+        plugins : config.plugins,
+        postcss : function() {
+            return [autoprefixer];
+        },
+        resolve : {
+            extensions : ['', '.css', '.js', '.scss', '.webpack.js', '.web.js']
+        },
+        devtool : config.devtools
     },
     {
         name   : 'legacy bundle',

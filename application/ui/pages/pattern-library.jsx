@@ -10,8 +10,6 @@ let IconSection       = require('../components/pattern-library/sections/pl-icons
 let GridLayout        = require('../components/pattern-library/sections/pl-grid');
 let Icon              = require('../components/icon/icon');
 
-require('../scss/pattern-library');
-
 module.exports = React.createClass({
 
     displayName : 'PatternLibrary',
@@ -26,6 +24,11 @@ module.exports = React.createClass({
         return {
             navHidden : true
         };
+    },
+    
+    componentDidMount()
+    {
+        require(['../scss/pattern-library']);
     },
 
     onTriggerClick()
