@@ -72,7 +72,7 @@ let TokenStore = Fluxxor.createStore({
             error    : this.error,
             loggedIn : this.loggedIn
         };
-     }
+    }
 });
 
 module.exports = TokenStore;

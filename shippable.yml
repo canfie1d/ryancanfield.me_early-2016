@@ -19,7 +19,7 @@ before_script:
   - mkdir -p shippable/build
   - mkdir -p shippable/testresults
 script:
-  - ./node_modules/.bin/jshint application
+  - ./node_modules/.bin/eslint application
   - ./node_modules/karma/bin/karma start --single-run --browsers Chrome_without_sandbox
 notifications:
   email: false
