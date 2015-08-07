@@ -7,6 +7,7 @@ var autoprefixer = require('autoprefixer-core');
 var Webpack      = require('webpack');
 var WebpackError = require('webpack-error-notification');
 var path         = require('path');
+var HtmlWebpack  = require('html-webpack-plugin');
 
 var environment = (process.env.APP_ENV || 'development');
 var npmPath     = path.resolve(__dirname, 'node_modules');
@@ -24,7 +25,8 @@ var config      = {
             "process.env"   : {
                 NODE_ENV : '\'' + environment + '\''
             }
-        })
+        }),
+        new HtmlWebpack({template : './application/index.html'})
     ],
     reactLoaders : ['babel'],
     sassOptions  : (
@@ -97,7 +99,7 @@ module.exports = [
         resolve : {
             extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
         },
-        devtool : config.devtools
+        devtool : config.devtools,
     },
     {
         name   : 'media bundle',
@@ -132,22 +134,5 @@ module.exports = [
             extensions : ['', '.css', '.js', '.scss', '.webpack.js', '.web.js']
         },
         devtool : config.devtools
-    },
-    {
-        name   : 'legacy bundle',
-        entry  : './application/legacy.js',
-        output : {
-            filename : 'legacy.js',
-            path     : path.resolve(__dirname, 'build')
-        },
-        module : {
-            preLoaders : [
-                {
-                    test    : /\.jsx?$/,
-                    loader  : 'eslint-loader',
-                    exclude : npmPath
-                }
-            ]
-        }
     }
 ];
