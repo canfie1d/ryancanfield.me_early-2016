@@ -65,13 +65,8 @@ module.exports = [
         module : {
             preLoaders : [
                 {
-                    test    : /\.js$/,
-                    loader  : 'jshint-loader',
-                    exclude : npmPath
-                },
-                {
-                    test    : /\.jsx$/,
-                    loader  : 'jsxhint-loader',
+                    test    : /\.jsx?$/,
+                    loader  : 'eslint-loader',
                     exclude : npmPath
                 }
             ],
@@ -102,20 +97,7 @@ module.exports = [
         resolve : {
             extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
         },
-        devtool : config.devtools,
-        jshint  : {
-            esnext       : true,
-            globalstrict : true,
-            globals      : {
-                __BACKEND__     : true,
-                __ENVIRONMENT__ : true,
-                __HOSTNAME__    : true,
-                console         : true,
-                window          : true,
-                document        : true,
-                setTimeout      : true
-            }
-        }
+        devtool : config.devtools
     },
     {
         name   : 'media bundle',
@@ -161,24 +143,11 @@ module.exports = [
         module : {
             preLoaders : [
                 {
-                    test    : /\.js$/,
-                    loader  : 'jshint-loader',
+                    test    : /\.jsx?$/,
+                    loader  : 'eslint-loader',
                     exclude : npmPath
                 }
             ]
-        },
-        jshint  : {
-            esnext       : true,
-            globalstrict : true,
-            globals      : {
-                __BACKEND__     : true,
-                __ENVIRONMENT__ : true,
-                __HOSTNAME__    : true,
-                console         : true,
-                window          : true,
-                document        : true,
-                setTimeout      : true
-            }
         }
     }
 ];

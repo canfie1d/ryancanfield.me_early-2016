@@ -23,10 +23,9 @@ zip -r dist/build-frontend-$1 application build node_modules server -x \
     "node_modules/file-loader/*" \
     "node_modules/html-webpack-plugin/*" \
     "node_modules/image-webpack-loader/*" \
-    "node_modules/jshint-loader/*" \
+    "node_modules/eslint-loader/*" \
     "node_modules/json-loader/*" \
     "node_modules/jsx-loader/*" \
-    "node_modules/jsxhint-loader/*" \
     "node_modules/karma-chrome-launcher/*" \
     "node_modules/karma-firefox-launcher/*" \
     "node_modules/karma-junit-reporter/*" \

@@ -69,13 +69,8 @@ module.exports = [
         module : {
             preLoaders : [
                 {
-                    test    : /\.js$/,
-                    loader  : 'jshint-loader',
-                    exclude : npmPath
-                },
-                {
-                    test    : /\.jsx$/,
-                    loader  : 'jsxhint-loader',
+                    test    : /\.jsx?$/,
+                    loader  : 'eslint-loader',
                     exclude : npmPath
                 }
             ],
@@ -109,21 +104,6 @@ module.exports = [
         },
         resolve   : {
             extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
-        },
-        jshint  : {
-            esnext       : true,
-            globalstrict : true,
-            globals      : {
-                __BACKEND__     : true,
-                __ENVIRONMENT__ : true,
-                __HOSTNAME__    : true,
-                console         : true,
-                JSON            : true,
-                localStorage    : true,
-                navigator       : true,
-                setTimeout      : true,
-                window          : true
-            }
         }
     }
 ];
