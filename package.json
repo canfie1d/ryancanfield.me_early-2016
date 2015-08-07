@@ -9,7 +9,7 @@
     "url"  : "https://github.com/synapsestudios/frontend-template.git"
   },
   "scripts" : {
-        "start"   : "./start.sh",
+        "start"   : "node dev-server.js",
         "windows" : "rmdir /S /Q build && webpack.cmd && node dev-server",
         "webpack" : "rm -rf ./build && ./node_modules/webpack/bin/webpack.js",
         "dist"    : "./dist.sh production",

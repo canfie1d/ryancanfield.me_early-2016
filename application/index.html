@@ -19,18 +19,9 @@
         <link rel="apple-touch-icon" sizes="120x120" href="/static-media/icons/apple-touch-icon-60x60@2x.png" />
         <link rel="apple-touch-icon" sizes="152x152" href="/static-media/icons/apple-touch-icon-76x76@2x.png" />
         <script src="/media.js"></script>
-        {% if (o.state) { %}
-        <script id="server-state" type="text/javascript">window.__STATE__ = {%#o.state%};</script>
-        {% }%}
     </head>
     <body>
-        {% if (o.html) { %}
-        <div id="app">{%#o.html%}</div>
-        {% } %}
-        {% if (o.legacy) { %}
-        <script src="/legacy.js"></script>
-        {% } else { %}
+        <div id="app"></div>
         <script src="/app.js"></script>
-        {% } %}
     </body>
 </html>
