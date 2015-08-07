@@ -99,7 +99,7 @@ module.exports = [
         resolve : {
             extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
         },
-        devtool : config.devtools,
+        devtool : config.devtools
     },
     {
         name   : 'media bundle',
