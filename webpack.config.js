@@ -3,7 +3,7 @@
 
 var __HOSTNAME__ = process.env.HOST ? process.env.HOST : 'localhost';
 
-var autoprefixer = require('autoprefixer-core');
+var autoprefixer = require('autoprefixer');
 var Webpack      = require('webpack');
 var WebpackError = require('webpack-error-notification');
 var path         = require('path');
