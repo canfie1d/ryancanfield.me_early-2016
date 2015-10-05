@@ -4,9 +4,6 @@ node_js:
   - 0.12.2
 env:
   - XUNIT_FILE=shippable/testresults/result.xml
-#  global:
-#    - SLACK_ORG=@todo PROJECT=@todo
-#    - secure: @todo
 before_install:
   - apt-get update
   - apt-get -y install xvfb chromium-browser
@@ -24,5 +21,3 @@ script:
 notifications:
   email: false
 cache: true
-#after_failure:
-#  - python slack_notifier.py --project $PROJECT --org $SLACK_ORG --token $SLACK_TOKEN
