@@ -1,16 +1,14 @@
 /* jshint unused: false */
 'use strict';
 
-let React    = require('react'); // Used in compiled js, so required even though appears unused
-let Router   = require('react-router');
-let Route    = Router.Route;
-let Redirect = Router.Redirect;
+import React                                   from 'react';
+import { Router, Route, Redirect, IndexRoute } from 'react-router';
 
-let SiteLayout         = require('./ui/layouts/site');
-let HomePage           = require('./ui/pages/home');
-let PatternLibraryPage = require('./ui/pages/pattern-library');
-let NotFoundPage       = require('./ui/pages/404');
-let FormattingPage     = require('./ui/pages/formatting');
+import SiteLayout         from './ui/layouts/site';
+import HomePage           from './ui/pages/home';
+import PatternLibraryPage from './ui/pages/pattern-library';
+import NotFoundPage       from './ui/pages/404';
+import FormattingPage     from './ui/pages/formatting';
 
 let getEnvironmentDependentRoutes = function()
 {
@@ -18,9 +16,9 @@ let getEnvironmentDependentRoutes = function()
 
     if (__ENVIRONMENT__ !== 'production') {
         routes = routes.concat([
-            <Route path='/formatting' name='formatting' handler={FormattingPage} key='formatting'/>,
-            <Route path='/pattern-library/:section' name='pattern-library-section' handler={PatternLibraryPage} key='pattern-library-section'/>,
-            <Redirect from='/pattern-library' name='pattern-library' key='pattern-library' to='/pattern-library/all' />
+            <Route path='/formatting' component={FormattingPage} key='formatting'/>,
+            <Route path='/pattern-library/:section' component={PatternLibraryPage} key='pattern-library-section'/>,
+            <Redirect from='/pattern-library' key='pattern-library' to='/pattern-library/all' />
         ]);
     }
 
@@ -28,9 +26,9 @@ let getEnvironmentDependentRoutes = function()
 };
 
 module.exports = (
-    <Route handler={SiteLayout}>
-        <Route path='/' name='home' handler={HomePage}/>
+    <Route path='/' component={SiteLayout}>
+        <IndexRoute component={HomePage}/>
         {getEnvironmentDependentRoutes()}
-        <Route path='*' name='404' handler={NotFoundPage}/>
+        <Route path='*' component={NotFoundPage}/>
     </Route>
 );

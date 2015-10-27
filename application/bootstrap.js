@@ -1,18 +1,21 @@
 /* globals window */
 'use strict';
 
-let config         = require('./config');
-let React          = require('react');
-let BatchedUpdates = require('react/lib/ReactUpdates').batchedUpdates;
+let config   = require('./config');
+let React    = require('react');
+let i18n     = require('./intl/intl');
+let ReactDOM = require('react-dom');
+let Flux     = require('./flux');
+let routes   = require('./routes');
+
+import { Router } from 'react-router';
+import { createHistory } from 'history/lib';
+import { BatchedUpdates } from 'react/lib/ReactUpdates';
 
 // initialize i18n
 if (! window.Intl) {
     window.Intl = require('intl');
 }
-
-let i18n   = require('./intl/intl');
-let Flux   = require('./flux');
-let Router = require('./router');
 
 window.React = React;
 
@@ -20,7 +23,6 @@ React.initializeTouchEvents(true);
 
 let flux        = new Flux();
 let oldDispatch = flux.dispatcher.dispatch.bind(flux.dispatcher);
-let router      = new Router();
 let state       = window.document.getElementById('server-state');
 
 flux.dispatcher.dispatch = action => new BatchedUpdates(() => {
@@ -37,29 +39,38 @@ if (state) {
     }
 }
 
-router.run((Handler, state) => {
-    let locales;
+let locales;
 
-    if (typeof window.navigator.languages !== 'undefined') {
-        locales = window.navigator.languages;
-    } else if(typeof window.navigator.language !== 'undefined') {
-        locales = [window.navigator.language];
-    } else {
-        locales = ['en-US'];
-    }
+if (typeof window.navigator.languages !== 'undefined') {
+    locales = window.navigator.languages;
+} else if(typeof window.navigator.language !== 'undefined') {
+    locales = [window.navigator.language];
+} else {
+    locales = ['en-US'];
+}
 
-    if (locales.indexOf('en-US') === -1 && locales.indexOf('en-us') === -1) {
-        locales.push('en-US');
-    }
+if (locales.indexOf('en-US') === -1 && locales.indexOf('en-us') === -1) {
+    locales.push('en-US');
+}
 
-    window.document.title = flux.getTitle(state, config.app.title);
+let history = createHistory();
 
-    React.render(
-        React.createElement(Handler, {
-            flux     : flux,
-            locales  : locales,
-            messages : i18n.messages
-        }),
-        window.document.getElementById('app')
+let createFluxElement = (Component, props) => {
+    return (
+        <Component
+            flux     = {flux}
+            locales  = {locales}
+            messages = {i18n.messages}
+            {...props}
+        />
     );
-});
+};
+
+React.render(
+    <Router
+        createElement = {createFluxElement}
+        history       = {history} >
+        {routes}
+    </Router>
+    , document.getElementById('app')
+);

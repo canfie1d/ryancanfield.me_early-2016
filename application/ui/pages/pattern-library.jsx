@@ -25,7 +25,7 @@ module.exports = React.createClass({
             navHidden : true
         };
     },
-    
+
     componentDidMount()
     {
         require(['../scss/pattern-library']);
@@ -49,7 +49,7 @@ module.exports = React.createClass({
 
     renderSections()
     {
-        let section = this.getParams().section;
+        let section = this.props.params.section;
 
         return this.getComponentConstructors().map(Page => {
             if (section === 'all' || section === Page.displayName) {
@@ -67,7 +67,7 @@ module.exports = React.createClass({
                 <PLSidebar
                     hidden        = {this.state.navHidden}
                     sections      = {this.getComponentConstructors()}
-                    activeSection = {this.getParams().section}
+                    activeSection = {this.props.params.section}
                 />
                 <div className='pl-content'>
                     <div className='pl-content__header'>
