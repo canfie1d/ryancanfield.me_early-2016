@@ -1,23 +1,25 @@
 /* globals window */
 'use strict';
+// Must be done before anything else because safari
+if (! global.Intl) {
+    global.Intl = window.Intl = require('intl');
+}
 
-let config   = require('./config');
-let React    = require('react');
-let ReactDOM = require('react-dom');
-let Flux     = require('./flux');
-let routes   = require('./routes');
-
+import React from 'react';
+import ReactDOM, { unstable_batchedUpdates } from 'react-dom';
+import Flux from './flux';
+import routes from './routes';
+import config from './config';
 import { Router } from 'react-router';
 import { createHistory } from 'history/lib';
-import { BatchedUpdates } from 'react/lib/ReactUpdates';
 
 window.React = React;
 
 let flux        = new Flux();
-let oldDispatch = flux.dispatcher.dispatch.bind(flux.dispatcher);
+const oldDispatch = flux.dispatcher.dispatch.bind(flux.dispatcher);
 let state       = window.document.getElementById('server-state');
 
-flux.dispatcher.dispatch = action => new BatchedUpdates(() => {
+flux.dispatcher.dispatch = action => new unstable_batchedUpdates(() => {
     oldDispatch(action);
 });
 
@@ -31,27 +33,12 @@ if (state) {
     }
 }
 
-let locales;
+const history = createHistory();
 
-if (typeof window.navigator.languages !== 'undefined') {
-    locales = window.navigator.languages;
-} else if(typeof window.navigator.language !== 'undefined') {
-    locales = [window.navigator.language];
-} else {
-    locales = ['en-US'];
-}
-
-if (locales.indexOf('en-US') === -1 && locales.indexOf('en-us') === -1) {
-    locales.push('en-US');
-}
-
-let history = createHistory();
-
-let createFluxElement = (Component, props) => {
+const createFluxElement = (Component, props) => {
     return (
         <Component
-            flux     = {flux}
-            locales  = {locales}
+            flux = {flux}
             {...props}
         />
     );
@@ -60,7 +47,7 @@ let createFluxElement = (Component, props) => {
 ReactDOM.render(
     <Router
         createElement = {createFluxElement}
-        history       = {history} >
+        history = {history} >
         {routes}
     </Router>
     , document.getElementById('app')

@@ -8,7 +8,6 @@ import SiteLayout         from './ui/layouts/site';
 import HomePage           from './ui/pages/home';
 import PatternLibraryPage from './ui/pages/pattern-library';
 import NotFoundPage       from './ui/pages/404';
-import FormattingPage     from './ui/pages/formatting';
 
 let getEnvironmentDependentRoutes = function()
 {
@@ -16,7 +15,6 @@ let getEnvironmentDependentRoutes = function()
 
     if (__ENVIRONMENT__ !== 'production') {
         routes = routes.concat([
-            <Route path='/formatting' component={FormattingPage} key='formatting'/>,
             <Route path='/pattern-library/:section' component={PatternLibraryPage} key='pattern-library-section'/>,
             <Redirect from='/pattern-library' key='pattern-library' to='/pattern-library/all' />
         ]);

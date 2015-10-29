@@ -1,13 +1,10 @@
 'use strict';
 
-let React     = require('react');
-let IntlMixin = require('s19n');
+import React from 'react';
 
-module.exports = React.createClass({
+let Page404 = React.createClass({
 
     displayName : '404',
-
-    mixins : [IntlMixin],
 
     render()
     {
@@ -26,9 +23,11 @@ module.exports = React.createClass({
         return (
             <div>
                 <h1 style={style1}>{'404'}</h1>
-                <h2 style={style2}>{this.t('404.site-not-found')}</h2>
+                <h2 style={style2}>{'Site Not Found'}</h2>
             </div>
         );
     }
 
 });
+
+export default Page404;
