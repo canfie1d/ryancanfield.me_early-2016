@@ -3,7 +3,6 @@
 
 let config   = require('./config');
 let React    = require('react');
-let i18n     = require('./intl/intl');
 let ReactDOM = require('react-dom');
 let Flux     = require('./flux');
 let routes   = require('./routes');
@@ -12,14 +11,7 @@ import { Router } from 'react-router';
 import { createHistory } from 'history/lib';
 import { BatchedUpdates } from 'react/lib/ReactUpdates';
 
-// initialize i18n
-if (! window.Intl) {
-    window.Intl = require('intl');
-}
-
 window.React = React;
-
-React.initializeTouchEvents(true);
 
 let flux        = new Flux();
 let oldDispatch = flux.dispatcher.dispatch.bind(flux.dispatcher);
@@ -60,13 +52,12 @@ let createFluxElement = (Component, props) => {
         <Component
             flux     = {flux}
             locales  = {locales}
-            messages = {i18n.messages}
             {...props}
         />
     );
 };
 
-React.render(
+ReactDOM.render(
     <Router
         createElement = {createFluxElement}
         history       = {history} >
