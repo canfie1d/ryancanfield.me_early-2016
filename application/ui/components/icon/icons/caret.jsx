@@ -1,8 +1,8 @@
 'use strict';
 
-let React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+let CaretIcon = React.createClass({
     displayName : 'CaretIcon',
 
     render()
@@ -16,3 +16,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+export default CaretIcon;

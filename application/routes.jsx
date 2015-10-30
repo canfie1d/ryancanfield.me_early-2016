@@ -1,13 +1,13 @@
 /* jshint unused: false */
 'use strict';
 
-import React                                   from 'react';
+import React from 'react';
 import { Router, Route, Redirect, IndexRoute } from 'react-router';
 
-import SiteLayout         from './ui/layouts/site';
-import HomePage           from './ui/pages/home';
+import SiteLayout from './ui/layouts/site';
+import HomePage from './ui/pages/home';
 import PatternLibraryPage from './ui/pages/pattern-library';
-import NotFoundPage       from './ui/pages/404';
+import NotFoundPage from './ui/pages/404';
 
 let getEnvironmentDependentRoutes = function()
 {

@@ -1,8 +1,8 @@
 'use strict';
 
-let React  = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+let Typography = React.createClass({
 
     displayName : 'Typography',
 
@@ -44,3 +44,5 @@ module.exports = React.createClass({
     }
 
 });
+
+export default Typography;

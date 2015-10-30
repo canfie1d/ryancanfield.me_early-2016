@@ -1,8 +1,9 @@
 'use strict';
 
-let React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+let BackIcon = React.createClass({
+
     displayName : 'BackIcon',
 
     render()
@@ -14,3 +15,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+export default BackIcon;

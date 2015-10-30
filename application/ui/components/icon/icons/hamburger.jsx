@@ -1,8 +1,8 @@
 'use strict';
 
-let React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+let HamburgerIcon = React.createClass({
     displayName : 'HamburgerIcon',
 
     render()
@@ -14,3 +14,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+export default HamburgerIcon;
