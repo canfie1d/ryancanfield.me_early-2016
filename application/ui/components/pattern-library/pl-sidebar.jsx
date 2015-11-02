@@ -1,15 +1,15 @@
 'use strict';
 
-var React      = require('react');
-var classNames = require('classnames');
-var FluxMixin  = require('fluxxor').FluxMixin(React);
-var PLNavItem  = require('./pl-nav-item');
+import React from 'react';
+import classNames from 'classnames';
+import {FluxMixin} from 'fluxxor';
+import PLNavItem from './pl-nav-item';
 
-module.exports = React.createClass({
+let PatternLibrarySidebar = React.createClass({
 
     displayName : 'PatternLibrarySidebar',
 
-    mixins : [FluxMixin],
+    mixins : [new FluxMixin(React)],
 
     propTypes : {
         // Component constructors for sections
@@ -120,3 +120,5 @@ module.exports = React.createClass({
     }
 
 });
+
+export default PatternLibrarySidebar;
