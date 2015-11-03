@@ -1,8 +1,8 @@
 'use strict';
 
-let React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+let HeartIcon = React.createClass({
     displayName : 'HeartIcon',
 
     render()
@@ -15,3 +15,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+export default HeartIcon;

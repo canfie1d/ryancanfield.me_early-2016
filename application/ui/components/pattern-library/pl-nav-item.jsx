@@ -1,46 +1,38 @@
 'use strict';
 
-let React      = require('react');
-let FluxMixin  = require('fluxxor').FluxMixin(React);
-let classNames = require('classnames');
-
-let NavigationMixin = require('react-router').Navigation;
-let IntlMixin       = require('s19n');
+import React from 'react';
+import {FluxMixin} from 'fluxxor';
+import classNames from 'classnames';
+import {History} from 'react-router';
 
 module.exports = React.createClass({
 
     displayName : 'PatternLibraryNavItem',
 
     mixins : [
-        FluxMixin,
-        IntlMixin,
-        NavigationMixin
+        new FluxMixin(React),
+        History
     ],
 
     propTypes : {
         active      : React.PropTypes.bool,
-        displayName : React.PropTypes.string,
-        i18nPrefix  : React.PropTypes.string
+        displayName : React.PropTypes.string
     },
 
     getDefaultProps()
     {
         return {
             active      : false,
-            displayName : '',
-            i18nPrefix  : ''
+            displayName : ''
         };
     },
 
     onClick()
     {
         if (this.props.displayName) {
-            this.transitionTo(
-                'pattern-library-section',
-                {section : this.props.displayName}
-            );
+            this.history.pushState(null, `/pattern-library/${this.props.displayName}`);
         } else {
-            this.transitionTo('pattern-library');
+            this.history.pushState(null, `/pattern-library`);
         }
     },
 
@@ -55,8 +47,6 @@ module.exports = React.createClass({
 
         if (this.props.children) {
             display = this.props.children;
-        } else if(this.props.i18nPrefix !== '') {
-            display = this.t(this.props.i18nPrefix + this.props.displayName);
         } else {
             display = this.props.displayName;
         }

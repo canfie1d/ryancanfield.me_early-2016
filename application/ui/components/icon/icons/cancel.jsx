@@ -1,8 +1,9 @@
 'use strict';
 
-let React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+let CancelIcon = React.createClass({
+
     displayName : 'CancelIcon',
 
     render()
@@ -14,3 +15,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+export default CancelIcon;

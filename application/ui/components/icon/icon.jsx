@@ -1,8 +1,8 @@
 'use strict';
 
-let React = require('react');
+import React from 'react';
 
-module.exports = React.createClass({
+let Icon = React.createClass({
 
     displayName : 'Icon',
 
@@ -79,3 +79,5 @@ module.exports = React.createClass({
         );
     }
 });
+
+export default Icon;

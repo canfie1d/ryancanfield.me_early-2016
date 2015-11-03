@@ -1,15 +1,12 @@
 'use strict';
 
-let React     = require('react');
-let IntlMixin = require('s19n');
+import React from 'react';
 
-let url = require('../../media/images/raster/branding.png');
+let brandingImage = require('../../media/images/raster/branding.png');
 
-module.exports = React.createClass({
+let HomePage = React.createClass({
 
     displayName : 'HomePage',
-
-    mixins : [IntlMixin],
 
     render()
     {
@@ -34,17 +31,19 @@ module.exports = React.createClass({
         };
 
         // There seems to be an issue resolving image urls correctly between the app and client
-        if (! url.match(/^\//)) {
-            url = '/' + url;
+        if (! brandingImage.match(/^\//)) {
+            brandingImage = '/' + brandingImage;
         }
 
         return (
             <div className='typography'>
-                <img style={style1} src={url} alt='Synapse Logo' />
-                <h1 style={style2}>{this.t('home.title')}</h1>
-                <h2 style={style3}>{this.t('home.content')}</h2>
+                <img style={style1} src={brandingImage} alt='Synapse Logo' />
+                <h1 style={style2}>{'Title'}</h1>
+                <h2 style={style3}>{'Content'}</h2>
             </div>
         );
     }
 
 });
+
+export default HomePage;

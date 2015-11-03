@@ -1,8 +1,8 @@
 'use strict';
 
-let _     = require('lodash');
-let React = require('react');
-let Icon  = require('../../icon/icon');
+import _ from 'lodash';
+import React from 'react';
+import Icon  from '../../icon/icon';
 
 let ICONS = [
     'back',
@@ -15,7 +15,7 @@ let ICONS = [
     'trash'
 ];
 
-module.exports = React.createClass({
+let Icons = React.createClass({
 
     displayName : 'Icons',
 
@@ -104,3 +104,5 @@ module.exports = React.createClass({
     }
 
 });
+
+export default Icons;

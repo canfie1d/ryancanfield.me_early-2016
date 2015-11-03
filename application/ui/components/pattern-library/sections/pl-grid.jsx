@@ -1,8 +1,8 @@
 'use strict';
 
-let React = require('react');
+import React from 'react';
 
-module.exports = React.createClass ({
+let Grid = React.createClass ({
 
     displayName : 'Grid',
 
@@ -54,3 +54,5 @@ module.exports = React.createClass ({
         );
     }
 });
+
+export default Grid;

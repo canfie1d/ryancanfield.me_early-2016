@@ -1,23 +1,23 @@
 'use strict';
 
-let React        = require('react');
-let RouteHandler = require('react-router').RouteHandler;
-let FluxMixin    = require('fluxxor').FluxMixin(React);
-let IntlMixin    = require('s19n');
+import React from 'react';
+import {FluxMixin} from 'fluxxor';
 
-module.exports = React.createClass({
+let site = React.createClass({
 
     displayName : 'SiteLayout',
 
-    mixins : [IntlMixin, FluxMixin],
+    mixins : [new FluxMixin(React)],
 
     render()
     {
         return (
             <div className='l--app-wrapper'>
-                <RouteHandler />
+                {this.props.children}
             </div>
         );
     }
 
 });
+
+export default site;

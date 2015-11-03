@@ -1,21 +1,21 @@
 'use strict';
 
-let React            = require('react');
-let RouterStateMixin = require('react-router').State;
-let FluxMixin        = require('fluxxor').FluxMixin(React);
-let PLSidebar        = require('../components/pattern-library/pl-sidebar');
+import React from 'react';
+import {State as RouterStateMixin} from 'react-router';
+import {FluxMixin} from 'fluxxor';
+import PLSidebar from '../components/pattern-library/pl-sidebar';
 
-let TypographySection = require('../components/pattern-library/sections/pl-typography');
-let IconSection       = require('../components/pattern-library/sections/pl-icons');
-let GridLayout        = require('../components/pattern-library/sections/pl-grid');
-let Icon              = require('../components/icon/icon');
+import TypographySection from '../components/pattern-library/sections/pl-typography';
+import IconSection from '../components/pattern-library/sections/pl-icons';
+import GridLayout from '../components/pattern-library/sections/pl-grid';
+import Icon from '../components/icon/icon';
 
-module.exports = React.createClass({
+let PatternLibrary = React.createClass({
 
     displayName : 'PatternLibrary',
 
     mixins : [
-        FluxMixin,
+        new FluxMixin(React),
         RouterStateMixin
     ],
 
@@ -25,7 +25,7 @@ module.exports = React.createClass({
             navHidden : true
         };
     },
-    
+
     componentDidMount()
     {
         require(['../scss/pattern-library']);
@@ -49,7 +49,7 @@ module.exports = React.createClass({
 
     renderSections()
     {
-        let section = this.getParams().section;
+        let section = this.props.params.section;
 
         return this.getComponentConstructors().map(Page => {
             if (section === 'all' || section === Page.displayName) {
@@ -67,7 +67,7 @@ module.exports = React.createClass({
                 <PLSidebar
                     hidden        = {this.state.navHidden}
                     sections      = {this.getComponentConstructors()}
-                    activeSection = {this.getParams().section}
+                    activeSection = {this.props.params.section}
                 />
                 <div className='pl-content'>
                     <div className='pl-content__header'>
@@ -85,3 +85,5 @@ module.exports = React.createClass({
     }
 
 });
+
+export default PatternLibrary;
