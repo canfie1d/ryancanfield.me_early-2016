@@ -22,7 +22,7 @@ var config      = {
         new Webpack.HotModuleReplacementPlugin(),
         new WebpackError(process.platform)
     ],
-    reactLoaders : ['react-hot', 'babel']
+    reactLoaders : ['react-hot','babel']
 };
 
 module.exports = {
@@ -37,21 +37,16 @@ module.exports = {
         loaders : [
             {
                 test   : /\.(ico|jpg|png)$/,
-                loader : 'file-loader',
-                query  : {name : '[path][name].[ext]'}
+                loader : 'file-loader?{"name":"[path][name].[ext]"}'
             },
             {
                 test   : /(favicon|mocha|sinon)\.js$/,
-                loader : 'file-loader',
-                query  : {name : '[name].js'}
+                loader : 'file-loader?{"name":"[name].js"}'
             },
             {
                 test    : /\.jsx?$/,
                 loaders : config.reactLoaders,
-                exclude : /node_modules/,
-                query   : {
-                    blacklist : ['useStrict']
-                }
+                exclude : /node_modules/
             },
             {
                 test   : /\.json$/,

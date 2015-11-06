@@ -31,10 +31,7 @@ module.exports = function(config) {
                 },
                 {
                     test   : /\.jsx?$/,
-                    loader : 'babel',
-                    query  : {
-                        blacklist : ['useStrict']
-                    }
+                    loader : 'babel'
                 },
                 {
                     test   : /\.css$/,

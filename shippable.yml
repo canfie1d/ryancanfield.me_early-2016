@@ -1,7 +1,7 @@
 language: node_js
 build_image: shippableimages/ubuntu1204_nodejs
 node_js:
-  - 0.12.2
+  - "5.0.0"
 env:
   - XUNIT_FILE=shippable/testresults/result.xml
 before_install:
@@ -10,6 +10,10 @@ before_install:
   - test -e /tmp/.X99-lock || /usr/bin/Xvfb :99 &
   - export DISPLAY=:99.0
   - export CHROME_BIN=/usr/bin/chromium-browser
+  - apt-get install -y --force-yes build-essential
+  - curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.27.1/install.sh | bash
+  - source ~/.nvm/nvm.sh && nvm install $SHIPPABLE_NODE_VERSION
+  - node --version
 install:
   - npm install
 before_script:
