@@ -22,7 +22,7 @@ var config      = {
         new Webpack.HotModuleReplacementPlugin(),
         new WebpackError(process.platform)
     ],
-    reactLoaders : ['react-hot?{"blacklist":"useStrict"}', 'babel?{"blacklist":"useStrict"}']
+    reactLoaders : ['react-hot?{"blacklist":"useStrict"}', 'babel']
 };
 
 module.exports = {
