@@ -28,7 +28,7 @@ var config      = {
         }),
         new HtmlWebpack({template : './application/index.html'})
     ],
-    reactLoaders : ['babel?presets[]=react&presets[]=es2015'],
+    reactLoaders : ['babel'],
     sassOptions  : (
         '?outputStyle=' + (environment === 'production' ? 'compressed' : 'nested') +
         '&includePaths[]=' + npmPath

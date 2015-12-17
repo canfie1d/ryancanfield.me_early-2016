@@ -54,7 +54,7 @@ let Icon = React.createClass({
             colorThemeClass,
             rotationClass;
 
-        Icon = require('./icons/' +  this.props.icon);
+        Icon = require('./icons/' +  this.props.icon).default;
 
         sizeClass = this.props.size ?
             'icon--' + this.props.size : null;
