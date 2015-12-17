@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {State as RouterStateMixin} from 'react-router';
-import {FluxMixin} from 'fluxxor';
 import PLSidebar from '../components/pattern-library/pl-sidebar';
 
 import TypographySection from '../components/pattern-library/sections/pl-typography';
@@ -15,7 +14,6 @@ let PatternLibrary = React.createClass({
     displayName : 'PatternLibrary',
 
     mixins : [
-        new FluxMixin(React),
         RouterStateMixin
     ],
 

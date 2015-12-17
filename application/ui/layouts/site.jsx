@@ -1,13 +1,10 @@
 'use strict';
 
 import React from 'react';
-import {FluxMixin} from 'fluxxor';
 
 let site = React.createClass({
 
     displayName : 'SiteLayout',
-
-    mixins : [new FluxMixin(React)],
 
     render()
     {
