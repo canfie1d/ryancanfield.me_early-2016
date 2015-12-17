@@ -1,13 +1,10 @@
-/* globals process, __dirname */
-'use strict';
-
 var __HOSTNAME__ = process.env.HOST ? process.env.HOST : 'localhost';
 
 var autoprefixer = require('autoprefixer');
-var Webpack      = require('webpack');
+var webpack      = require('webpack');
 var WebpackError = require('webpack-error-notification');
 var path         = require('path');
-var HtmlWebpack  = require('html-webpack-plugin');
+var htmlWebpack  = require('html-webpack-plugin');
 
 var environment = (process.env.APP_ENV || 'development');
 var npmPath     = path.resolve(__dirname, 'node_modules');
@@ -18,7 +15,7 @@ var config      = {
         media : ['./application/media.js']
     },
     plugins  : [
-        new Webpack.DefinePlugin({
+        new webpack.DefinePlugin({
             __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
             __ENVIRONMENT__ : '\'' + environment + '\'',
             __HOSTNAME__    : '\'' + __HOSTNAME__ + '\'',
@@ -26,9 +23,9 @@ var config      = {
                 NODE_ENV : '\'' + environment + '\''
             }
         }),
-        new HtmlWebpack({template : './application/index.html'})
+        new htmlWebpack({template : './application/index.html'}),
+        new webpack.NoErrorsPlugin()
     ],
-    reactLoaders : ['babel'],
     sassOptions  : (
         '?outputStyle=' + (environment === 'production' ? 'compressed' : 'nested') +
         '&includePaths[]=' + npmPath
@@ -37,18 +34,9 @@ var config      = {
 
 if (environment !== 'production') {
     config.devtools = '#inline-source-map';
-    config.entries.app.unshift(
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://' + __HOSTNAME__ + ':9000'
-    );
-    config.entries.media.unshift(
-        'webpack/hot/dev-server',
-        'webpack-dev-server/client?http://' + __HOSTNAME__ + ':9000'
-    );
-
-    config.reactLoaders.unshift('react-hot');
-
-    config.plugins.push(new Webpack.HotModuleReplacementPlugin());
+    config.entries.app.unshift('webpack-hot-middleware/client?http://' + __HOSTNAME__ + ':9000');
+    config.entries.media.unshift('webpack-hot-middleware/client?http://' + __HOSTNAME__ + ':9000')
+    config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
     if (process.platform !== 'win32') {
         config.plugins.push(new WebpackError(process.platform));
@@ -58,39 +46,39 @@ if (environment !== 'production') {
 module.exports = [
     {
         name   : 'app bundle',
-        entry  : config.entries.app,
+        entry: config.entries.app,
         output : {
-            filename   : 'app.js',
-            path       : path.resolve(__dirname, 'build'),
-            publicPath : '/'
-        },
-        module : {
-            preLoaders : [
-                {
-                    test    : /\.jsx?$/,
-                    loader  : 'eslint-loader',
-                    exclude : npmPath
-                }
-            ],
-            loaders : [
-                {
-                    test   : /\.(eot|ico|ttf|woff|woff2|gif|jpe?g|png|svg)$/,
-                    loader : 'file-loader'
-                },
-                {
-                    test    : /\.jsx?$/,
-                    loaders : config.reactLoaders,
-                    exclude : npmPath
-                },
-                {
-                    test   : /\.json$/,
-                    loader : 'json-loader'
-                },
-                {
-                    test   : /\.scss$/,
-                    loader : 'style!css!postcss!sass' + config.sassOptions
-                }
-            ]
+              filename   : 'app.js',
+              path       : path.resolve(__dirname, 'build'),
+              publicPath : '/'
+          },
+        module: {
+          preLoaders : [
+              {
+                  test    : /\.jsx?$/,
+                  loader  : 'eslint-loader',
+                  exclude : npmPath
+              }
+          ],
+          loaders : [
+              {
+                  test   : /\.(eot|ico|ttf|woff|woff2|gif|jpe?g|png|svg)$/,
+                  loader : 'file-loader'
+              },
+              {
+                  test    : /\.jsx?$/,
+                  loaders : ['babel'],
+                  exclude : npmPath
+              },
+              {
+                  test   : /\.json$/,
+                  loader : 'json-loader'
+              },
+              {
+                  test   : /\.scss$/,
+                  loader : 'style!css!postcss!sass' + config.sassOptions
+              }
+          ]
         },
         plugins : config.plugins,
         postcss : function() {
@@ -117,7 +105,7 @@ module.exports = [
                 },
                 {
                     test    : /\.jsx?$/,
-                    loaders : config.reactLoaders,
+                    loaders : ['babel'],
                     exclude : npmPath
                 },
                 {
