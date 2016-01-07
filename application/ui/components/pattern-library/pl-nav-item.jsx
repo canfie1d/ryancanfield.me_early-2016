@@ -1,7 +1,6 @@
 'use strict';
 
 import React from 'react';
-import {FluxMixin} from 'fluxxor';
 import classNames from 'classnames';
 import {History} from 'react-router';
 
@@ -10,7 +9,6 @@ module.exports = React.createClass({
     displayName : 'PatternLibraryNavItem',
 
     mixins : [
-        new FluxMixin(React),
         History
     ],
 

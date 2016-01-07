@@ -2,14 +2,11 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import {FluxMixin} from 'fluxxor';
 import PLNavItem from './pl-nav-item';
 
 let PatternLibrarySidebar = React.createClass({
 
     displayName : 'PatternLibrarySidebar',
-
-    mixins : [new FluxMixin(React)],
 
     propTypes : {
         // Component constructors for sections

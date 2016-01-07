@@ -1,54 +1,42 @@
 /* globals window */
 'use strict';
-// Must be done before anything else because safari
-if (! global.Intl) {
-    global.Intl = window.Intl = require('intl');
-}
 
 import React from 'react';
 import ReactDOM, { unstable_batchedUpdates } from 'react-dom';
-import Flux from './flux';
 import routes from './routes';
-import config from './config';
+import { Provider } from 'react-redux';
 import { Router } from 'react-router';
 import { createHistory } from 'history/lib';
+import { addResponsiveHandlers } from 'redux-responsive';
 
 window.React = React;
 
-let flux        = new Flux();
-const oldDispatch = flux.dispatcher.dispatch.bind(flux.dispatcher);
-let state       = window.document.getElementById('server-state');
+import app from './redux/reducers';
 
-flux.dispatcher.dispatch = action => new unstable_batchedUpdates(() => {
-    oldDispatch(action);
-});
+/**************************************************************************
+ * MIDDLEWARE
+ *************************************************************************/
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
-if (state) {
-    flux = flux.fromObject(window.__STATE__);
+let store = applyMiddleware(thunk)(createStore)(app);
 
-    if (state.remove) {
-        state.remove();
-    } else if (state.removeNode) {
-        state.removeNode();
-    }
-}
+addResponsiveHandlers(store);
 
 const history = createHistory();
 
-const createFluxElement = (Component, props) => {
-    return (
-        <Component
-            flux = {flux}
-            {...props}
-        />
-    );
+let createAppElement = (Component, props) => {
+    return <Component {...props} />;
 };
 
 ReactDOM.render(
-    <Router
-        createElement = {createFluxElement}
-        history = {history} >
-        {routes}
-    </Router>
+    <Provider store={store}>
+        <Router
+            createElement = {createAppElement}
+            history       = {history}
+        >
+            {routes}
+        </Router>
+    </Provider>
     , document.getElementById('app')
 );
