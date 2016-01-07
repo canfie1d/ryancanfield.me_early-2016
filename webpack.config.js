@@ -35,7 +35,7 @@ var config      = {
 if (environment !== 'production') {
     config.devtools = '#inline-source-map';
     config.entries.app.unshift('webpack-hot-middleware/client?http://' + __HOSTNAME__ + ':9000');
-    config.entries.media.unshift('webpack-hot-middleware/client?http://' + __HOSTNAME__ + ':9000')
+    config.entries.media.unshift('webpack-hot-middleware/client?http://' + __HOSTNAME__ + ':9000');
     config.plugins.push(new webpack.HotModuleReplacementPlugin());
 
     if (process.platform !== 'win32') {
@@ -48,37 +48,37 @@ module.exports = [
         name   : 'app bundle',
         entry: config.entries.app,
         output : {
-              filename   : 'app.js',
-              path       : path.resolve(__dirname, 'build'),
-              publicPath : '/'
-          },
+            filename   : 'app.js',
+            path       : path.resolve(__dirname, 'build'),
+            publicPath : '/'
+        },
         module: {
-          preLoaders : [
-              {
-                  test    : /\.jsx?$/,
-                  loader  : 'eslint-loader',
-                  exclude : npmPath
-              }
-          ],
-          loaders : [
-              {
-                  test   : /\.(eot|ico|ttf|woff|woff2|gif|jpe?g|png|svg)$/,
-                  loader : 'file-loader'
-              },
-              {
-                  test    : /\.jsx?$/,
-                  loaders : ['babel'],
-                  exclude : npmPath
-              },
-              {
-                  test   : /\.json$/,
-                  loader : 'json-loader'
-              },
-              {
-                  test   : /\.scss$/,
-                  loader : 'style!css!postcss!sass' + config.sassOptions
-              }
-          ]
+            preLoaders : [
+                {
+                    test    : /\.jsx?$/,
+                    loader  : 'eslint-loader',
+                    exclude : npmPath
+                }
+            ],
+            loaders : [
+                {
+                    test   : /\.(eot|ico|ttf|woff|woff2|gif|jpe?g|png|svg)$/,
+                    loader : 'file-loader'
+                },
+                {
+                    test    : /\.jsx?$/,
+                    loaders : ['babel'],
+                    exclude : npmPath
+                },
+                {
+                    test   : /\.json$/,
+                    loader : 'json-loader'
+                },
+                {
+                    test   : /\.scss$/,
+                    loader : 'style!css!postcss!sass' + config.sassOptions
+                }
+            ]
         },
         plugins : config.plugins,
         postcss : function() {

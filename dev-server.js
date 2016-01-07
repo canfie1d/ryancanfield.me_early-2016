@@ -19,7 +19,6 @@ app.use(require('webpack-dev-middleware')(appCompiler, {
     noInfo: true,
     publicPath: '/'
 }));
-
 app.use(require('webpack-hot-middleware')(appCompiler));
 
 if (! appConfig.api.prefix) {
@@ -31,7 +30,7 @@ if (! appConfig.proxy.hostname) {
 }
 
 app.use(appConfig.api.prefix, proxy('http://' + appConfig.proxy.hostname, {
-        limit : '50mb'
+    limit : '50mb'
 }));
 
 app.listen(9000, function (err, result) {
