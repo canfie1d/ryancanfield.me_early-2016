@@ -21,6 +21,13 @@ app.use(require('webpack-dev-middleware')(appCompiler, {
 }));
 app.use(require('webpack-hot-middleware')(appCompiler));
 
+app.use(require('webpack-dev-middleware')(mediaCompiler, {
+    contentBase : path.resolve(__dirname, 'build'),
+    noInfo: true,
+    publicPath: '/'
+}));
+app.use(require('webpack-hot-middleware')(mediaCompiler));
+
 if (! appConfig.api.prefix) {
     throw new Error('API prefix not set in configuration');
 }
