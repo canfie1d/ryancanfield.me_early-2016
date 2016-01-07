@@ -6,14 +6,17 @@
 
 ### Initializing the Development Environment
 1. `npm install` to add dependencies
-1. `npm install -g webpack pm2`
+1. `npm install -g webpack`
 1. `npm start` to build the app and launch a server at `localhost:9000`
 
-### Viewing Logs
-1. `pm2 logs` to view output from the dev server
-
-### Production Builds
+### Builds
 1. `npm run dist` to build a production bundle
+
+### Connect to a backend
+1. `env BACKEND=HOSTNAME npm start`
+
+### Testing on a network
+1. `env HOST=LOCAL_IP npm start`
 
 ### Running Tests
 1. Run React tests with gulp at `localhost:9001` with `npm test`

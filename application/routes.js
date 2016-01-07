@@ -1,4 +1,3 @@
-/* jshint unused: false */
 'use strict';
 
 import React from 'react';
