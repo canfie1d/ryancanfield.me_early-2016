@@ -38,7 +38,7 @@ let HomePage = React.createClass({
         return (
             <div className='typography'>
                 <img style={style1} src={brandingImage} alt='Synapse Logo' />
-                <h1 style={style2}>{'Title'}</h1>
+                <h1 style={style2}>{'Title2'}</h1>
                 <h2 style={style3}>{'Content'}</h2>
             </div>
         );
