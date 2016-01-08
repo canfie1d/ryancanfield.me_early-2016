@@ -2,31 +2,29 @@ global.__BACKEND__     = process.env.BACKEND;
 global.__ENVIRONMENT__ = process.env.APP_ENV || 'development';
 global.__HOSTNAME__    = process.env.HOST || 'localhost';
 
-var path      = require('path');
-var request   = require('request');
-var webpack   = require('webpack');
-var appConfig = require('./application/config');
-var config    = require('./webpack.config');
-var proxy     = require('express-http-proxy');
-var express   = require('express');
+var path          = require('path');
+var request       = require('request');
+var webpack       = require('webpack');
+var appConfig     = require('./application/config');
+var webpackConfig = require('./webpack.config');
+var proxy         = require('express-http-proxy');
+var express       = require('express');
 
-var app           = express();
-var appCompiler   = webpack(config[0]);
-var mediaCompiler = webpack(config[1]);
+var app        = express();
+var compiler   = webpack(webpackConfig);
+var publicPath = webpackConfig.output.publicPath;
 
-app.use(require('webpack-dev-middleware')(appCompiler, {
+app.use(require('webpack-dev-middleware')(compiler, {
+    publicPath : publicPath,
     contentBase : path.resolve(__dirname, 'build'),
+    hot: true,
+    quiet: true,
     noInfo: true,
-    publicPath: '/'
+    lazy: false,
+    stats: true
 }));
-app.use(require('webpack-hot-middleware')(appCompiler));
 
-app.use(require('webpack-dev-middleware')(mediaCompiler, {
-    contentBase : path.resolve(__dirname, 'build'),
-    noInfo: true,
-    publicPath: '/'
-}));
-app.use(require('webpack-hot-middleware')(mediaCompiler));
+app.use(require('webpack-hot-middleware')(compiler));
 
 if (! appConfig.api.prefix) {
     throw new Error('API prefix not set in configuration');
