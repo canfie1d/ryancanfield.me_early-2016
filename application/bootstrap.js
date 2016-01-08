@@ -11,6 +11,7 @@ import { addResponsiveHandlers } from 'redux-responsive';
 
 window.React = React;
 
+import './ui/scss/app';
 import app from './redux/reducers';
 
 /**************************************************************************
