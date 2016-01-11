@@ -1,5 +1,10 @@
 # Front End Template with React
 
+### Redux DevTools
+Inspect state, time travel through various actions. Enabled by default for development environments.
+- Press `ctrl + h` to toggle DevTools visibility
+- press `ctrl + q` to toggle positioning of DevTools
+
 ### Customizing for your project
 1. Update this repository to the latest code
 1. Run `./clone.sh [destination] [project-name]` to copy these files to a new directory
