@@ -1,84 +1,82 @@
-'use strict';
-
 module.exports = function(config) {
     config.set({
 
-    basePath : '',
+        basePath : '',
 
-    frameworks : ['mocha', 'sinon-chai'],
+        frameworks : ['mocha', 'sinon-chai'],
 
-    files : [
-        './node_modules/es5-shim/es5-shim.js',
-        // need to figure out how to get webpack to take a glob w/o duplicating
-        // stuff everywhere
-        '__tests__/index.js'
-    ],
+        files : [
+            './node_modules/es5-shim/es5-shim.js',
+            // need to figure out how to get webpack to take a glob w/o duplicating
+            // stuff everywhere
+            '__tests__/index.js'
+        ],
 
-    exclude : [],
+        exclude : [],
 
-    preprocessors : {
-        '__tests__/index.js'  : ['webpack', 'sourcemap']
-    },
-
-    webpack: {
-        cache  : true,
-        module : {
-            loaders : [
-                {
-                    test   : /\.(ico|jpg|png)$/,
-                    loader : 'file-loader',
-                    query  : {name : '[path][name].[ext]?[hash]'}
-                },
-                {
-                    test   : /\.jsx?$/,
-                    loader : 'babel'
-                },
-                {
-                    test   : /\.css$/,
-                    loader : 'style!css'
-                }
-            ]
+        preprocessors : {
+            '__tests__/index.js'  : ['webpack', 'sourcemap']
         },
-        resolve : {
-            extensions : ['', '.js', '.json', '.jsx', '.webpack.js', '.web.js']
-        }
-    },
 
-    webpackServer : {
-        stats : {
-            colors : true
-        }
-    },
+        webpack: {
+            cache  : true,
+            module : {
+                loaders : [
+                    {
+                        test   : /\.(ico|jpg|png)$/,
+                        loader : 'file-loader',
+                        query  : {name : '[path][name].[ext]?[hash]'}
+                    },
+                    {
+                        test   : /\.jsx?$/,
+                        loader : 'babel'
+                    },
+                    {
+                        test   : /\.css$/,
+                        loader : 'style!css'
+                    }
+                ]
+            },
+            resolve : {
+                extensions : ['', '.js', '.json', '.jsx', '.webpack.js', '.web.js']
+            }
+        },
 
-    reporters : ['progress', 'junit'],
+        webpackServer : {
+            stats : {
+                colors : true
+            }
+        },
 
-    port : 9876,
+        reporters : ['progress', 'junit'],
 
-    colors : true,
+        port : 9876,
 
-    logLevel : config.LOG_INFO,
+        colors : true,
 
-    autoWatch : true,
+        logLevel : config.LOG_INFO,
 
-    browsers : ['Chrome', 'Firefox', 'PhantomJS'],
+        autoWatch : true,
 
-    captureTimeout : 60000,
+        browsers : ['Chrome', 'Firefox', 'PhantomJS'],
 
-    singleRun : false,
+        captureTimeout : 60000,
 
-    junitReporter: {
-        outputFile: 'shippable/testresults/unit.xml',
-        suite: ''
-    },
+        singleRun : false,
 
-    customLaunchers: {
-      Chrome_without_sandbox: {
-        base: 'Chrome',
-        flags: ['--no-sandbox'] // with sandbox it fails under Docker
-      }
-    },
+        junitReporter: {
+            outputFile: 'shippable/testresults/unit.xml',
+            suite: ''
+        },
 
-    plugins: [
+        customLaunchers: {
+            Chrome_without_sandbox: {
+                base: 'Chrome',
+                flags: ['--no-sandbox'] // with sandbox it fails under Docker
+            }
+        },
+
+        plugins: [
             require('karma-mocha'),
             require('karma-chrome-launcher'),
             require('karma-firefox-launcher'),

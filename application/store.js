@@ -1,6 +1,6 @@
 import './ui/scss/app';
 import app from './redux/reducers';
-import { addResponsiveHandlers } from 'redux-responsive';
+import { responsiveStoreEnhancer } from 'redux-responsive';
 import { compose, createStore, applyMiddleware } from 'redux';
 import { persistState } from 'redux-devtools';
 import DevTools from './dev-tools-component';
@@ -26,6 +26,6 @@ if (process.env.NODE_ENV === 'development') {
 
 let store = storeEnhancer(createStore)(app);
 
-addResponsiveHandlers(store);
+responsiveStoreEnhancer(store);
 
 module.exports = store;

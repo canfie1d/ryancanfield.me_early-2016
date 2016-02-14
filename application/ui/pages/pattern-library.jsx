@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import {State as RouterStateMixin} from 'react-router';
 import PLSidebar from '../components/pattern-library/pl-sidebar';

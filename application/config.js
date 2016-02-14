@@ -1,30 +1,33 @@
-'use strict';
+/* globals __BACKEND__, __ENVIRONMENT__ */
+'use strict'; // eslint-disable-line
 
-var merge = require('lodash').merge;
+const merge = require('lodash').merge;
 
-var defaults, config;
+let defaults;
+let config;
 
 defaults = {
-    api : {
-        client_id : '123',
-        hostname  : __HOSTNAME__,
-        oauth     : {
-            login : '/oauth/login',
-            token : '/oauth/token'
+    api: {
+
+    // jscs:disable
+        client_id: '123',
+    // jscs:enable
+        oauth: {
+            login: '/oauth/access-token',
+            logout: '/oauth/logout',
         },
-        port      : 9000,
-        prefix    : '/api'
+        prefix: '/api',
     },
-    proxy : {
-        hostname : __BACKEND__
+    app: {
+        title: 'Credibly',
     },
-    app : {
-        title : '@todo update with page title'
-    }
+    proxy: {
+        hostname: __BACKEND__,
+    },
 };
 
 // __ENVIRONMENT__ is replaced by webpack during build
-switch(__ENVIRONMENT__) {
+switch (__ENVIRONMENT__) {
     case 'ci':
         config = require('./config/ci');
         break;
@@ -38,7 +41,7 @@ switch(__ENVIRONMENT__) {
         config = require('./config/production');
         break;
     default:
-        throw new Error('Invalid ENVIRONMENT value: ' + __ENVIRONMENT__);
+        throw new Error(`Invalid ENVIRONMENT value: ${__ENVIRONMENT__}`);
 }
 
 module.exports = merge({}, defaults, config);

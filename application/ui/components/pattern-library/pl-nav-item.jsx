@@ -2,15 +2,14 @@
 
 import React from 'react';
 import classNames from 'classnames';
-import {History} from 'react-router';
 
 module.exports = React.createClass({
 
     displayName : 'PatternLibraryNavItem',
 
-    mixins : [
-        History
-    ],
+    contextTypes: {
+        router: React.PropTypes.object.isRequired
+    },
 
     propTypes : {
         active      : React.PropTypes.bool,
@@ -28,9 +27,9 @@ module.exports = React.createClass({
     onClick()
     {
         if (this.props.displayName) {
-            this.history.pushState(null, `/pattern-library/${this.props.displayName}`);
+            this.context.router.push(`/pattern-library/${this.props.displayName}`);
         } else {
-            this.history.pushState(null, `/pattern-library`);
+            this.context.router.push(`/pattern-library`);
         }
     },
 
