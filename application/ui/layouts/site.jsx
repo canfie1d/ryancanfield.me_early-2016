@@ -1,17 +1,20 @@
 import React from 'react';
 
-let site = React.createClass({
+const site = React.createClass({
 
-    displayName : 'SiteLayout',
+  displayName: 'SiteLayout',
 
-    render()
-    {
-        return (
-            <div className='l--app-wrapper'>
-                {this.props.children}
-            </div>
-        );
-    }
+  propTypes: {
+    children: React.PropTypes.any,
+  },
+
+  render() {
+    return (
+      <div className="l--app-wrapper">
+        {this.props.children}
+      </div>
+    );
+  },
 
 });
 

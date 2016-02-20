@@ -1,4 +1,3 @@
-
 ////////////////////////////
 //                        //
 //   function variables   //
@@ -14,14 +13,14 @@ $directions: top right bottom left;
 
 // Margin Function
 // Outputs .l--m-x {margin:1px through margin:10px}
-$all-margins : 10;
+$all-margins: 10;
 
 @for $i from 1 through $all-margins {
-    $value : ((10 / $all-margins) * $i) * 1;
+  $value: ((10 / $all-margins) * $i) * 1;
 
-    .l--m-#{$i} {
-        margin : rem-calc($value) !important;
-    }
+  .l--m-#{$i} {
+    margin: rem-calc($value) !important;
+  }
 
 }
 
@@ -31,16 +30,16 @@ $all-margins : 10;
 // Outputs .l--m-bottom-x {margin-bottom:1px through margin-bottom:20px}
 // Outputs .l--m-left-x {margin-left:1px through margin-left:20px}
 @each $direction in $directions {
-    $margin : 20;
+  $margin: 20;
 
-    @for $i from 1 through $margin {
-        $value : ((20 / $margin) * $i) * 1;
+  @for $i from 1 through $margin {
+    $value: ((20 / $margin) * $i) * 1;
 
-        .l--m-#{$direction}-#{$i} {
-            margin-#{$direction} : rem-calc($value) !important;
-        }
-
+    .l--m-#{$direction}-#{$i} {
+      margin-#{$direction} : rem-calc($value) !important;
     }
+
+  }
 
 }
 
@@ -52,14 +51,14 @@ $all-margins : 10;
 
 // Padding Function
 // Outputs .l--p-x {padding:2px & even #s through padding:10px}
-$padding : 5;
+$padding: 5;
 
 @for $i from 1 through $padding {
-    $value : ((10 / $padding) * $i);
+  $value: ((10 / $padding) * $i);
 
-    .l--p-#{$i * 2} {
-        padding : rem-calc($value) !important;
-    }
+  .l--p-#{$i * 2} {
+    padding: rem-calc($value) !important;
+  }
 
 }
 
@@ -70,15 +69,15 @@ $padding : 5;
 // Outputs .l--p-left-x {padding-left:2px & even #s through padding-left:20px}
 @each $direction in $directions {
 
-    $padding : 10;
+  $padding: 10;
 
-    @for $i from 1 through $padding {
-        $value : ((10 / $padding) * $i * 2);
+  @for $i from 1 through $padding {
+    $value: ((10 / $padding) * $i * 2);
 
-        .l--p-#{$direction}-#{$i * 2} {
-            padding-#{$direction} : rem-calc($value) !important;
-        }
-
+    .l--p-#{$direction}-#{$i * 2} {
+      padding-#{$direction} : rem-calc($value) !important;
     }
+
+  }
 
 }

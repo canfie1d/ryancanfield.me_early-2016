@@ -8,7 +8,7 @@
         "generators"     : true
     },
     "rules" : {
-        "indent"                        : [2, 4, {"SwitchCase": 1}],
+        "indent"                        : [2, 2, {"SwitchCase": 1}],
         "quotes"                        : 0,
         "semi"                          : [2,"always"],
         "strict"                        : 0,

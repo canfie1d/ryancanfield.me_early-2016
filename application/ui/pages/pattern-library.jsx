@@ -1,84 +1,76 @@
 import React from 'react';
-import {State as RouterStateMixin} from 'react-router';
-import PLSidebar from '../components/pattern-library/pl-sidebar';
+import { State as RouterStateMixin } from 'react-router';
+import PLSidebar from '../components/pattern-library/PLSidebar';
 
-import TypographySection from '../components/pattern-library/sections/pl-typography';
-import IconSection from '../components/pattern-library/sections/pl-icons';
-import GridLayout from '../components/pattern-library/sections/pl-grid';
-import Icon from '../components/icon/icon';
+import TypographySection from '../components/pattern-library/sections/PLTypography';
+import IconSection from '../components/pattern-library/sections/PLIcons';
+import GridLayout from '../components/pattern-library/sections/PLGrid';
+import Icon from '../components/icon/Icon';
 
-let PatternLibrary = React.createClass({
+const PatternLibrary = React.createClass({
 
-    displayName : 'PatternLibrary',
+  displayName: 'PatternLibrary',
 
-    mixins : [
-        RouterStateMixin
-    ],
+  propTypes: {
+    params: React.PropTypes.any,
+  },
 
-    getInitialState()
-    {
-        return {
-            navHidden : true
-        };
-    },
+  mixins: [RouterStateMixin],
 
-    componentDidMount()
-    {
-        require(['../scss/pattern-library']);
-    },
+  getInitialState() {
+    return { navHidden: true };
+  },
 
-    onTriggerClick()
-    {
-        this.setState({
-            navHidden : ! this.state.navHidden
-        });
-    },
+  componentDidMount() {
+    require(['../scss/pattern-library']);
+  },
 
-    getComponentConstructors()
-    {
-        return [
-            TypographySection,
-            IconSection,
-            GridLayout
-        ];
-    },
+  onTriggerClick() {
+    this.setState({ navHidden: ! this.state.navHidden });
+  },
 
-    renderSections()
-    {
-        let section = this.props.params.section;
+  getComponentConstructors() {
+    return [
+      TypographySection,
+      IconSection,
+      GridLayout,
+    ];
+  },
 
-        return this.getComponentConstructors().map(Page => {
-            if (section === 'all' || section === Page.displayName) {
-                return <Page key={Page.displayName} />;
-            }
-        });
-    },
+  renderSections() {
+    const section = this.props.params.section;
 
-    render()
-    {
-        let triggerIcon = this.state.navHidden ? 'hamburger' : 'cancel';
+    return this.getComponentConstructors().map(Page => {
+      if (section === 'all' || section === Page.displayName) {
+        return <Page key={Page.displayName} />;
+      }
+    });
+  },
 
-        return (
-            <div className='pl'>
-                <PLSidebar
-                    hidden        = {this.state.navHidden}
-                    sections      = {this.getComponentConstructors()}
-                    activeSection = {this.props.params.section}
-                />
-                <div className='pl-content'>
-                    <div className='pl-content__header'>
-                        <div className='pl-sidebar__trigger' onClick={this.onTriggerClick}>
-                            <Icon icon={triggerIcon} colorTheme='white' />
-                        </div>
-                        <h1 className='pl-content__title'>
-                            {'Pattern Library'}
-                        </h1>
-                    </div>
-                    {this.renderSections()}
-                </div>
+  render() {
+    const triggerIcon = this.state.navHidden ? 'Hamburger' : 'Cancel';
+
+    return (
+      <div className="pl">
+        <PLSidebar
+          hidden = {this.state.navHidden}
+          sections = {this.getComponentConstructors()}
+          activeSection = {this.props.params.section}
+        />
+        <div className="pl-content">
+          <div className="pl-content__header">
+            <div className="pl-sidebar__trigger" onClick={this.onTriggerClick}>
+              <Icon icon={triggerIcon} colorTheme="white" />
             </div>
-        );
-    }
+            <h1 className="pl-content__title">
+              Pattern Library
+            </h1>
+          </div>
+          {this.renderSections()}
+        </div>
+      </div>
+    );
+  },
 
 });
 

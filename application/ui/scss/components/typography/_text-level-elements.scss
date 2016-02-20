@@ -1,7 +1,7 @@
 // *******************************************
 // *******************************************
 
-    // Typographical inline element styles
+// Typographical inline element styles
 
 // *******************************************
 // *******************************************
@@ -14,70 +14,70 @@
 
 // links
 .a {
-    color      : $primary;
-    background : transparent;
-    cursor     : pointer;
-    transition : color 200ms ease;
+  color: $primary;
+  background: transparent;
+  cursor: pointer;
+  transition: color 200ms ease;
 
-    // Addresses outline displayed oddly in Chrome
-    &:focus {
-        outline : thin dotted;
-    }
+  // Addresses outline displayed oddly in Chrome
+  &:focus {
+    outline: thin dotted;
+  }
 
-    // Improves readability when focused and also mouse hovered in all browsers
-    &:hover,
-    &:active {
-        text-decoration : underline;
-        color           : shade($primary, 10%);
-        outline         : 0;
-    }
+  // Improves readability when focused and also mouse hovered in all browsers
+  &:hover,
+  &:active {
+    text-decoration: underline;
+    color: shade($primary, 10%);
+    outline: 0;
+  }
 
 }
 
 // inline modifiers
 .b,
 .strong {
-    font-weight : bold;
+  font-weight: bold;
 }
 
 .i,
 .em {
-    font-style : italic;
+  font-style: italic;
 }
 
 .small {
-    font-size : 80%;
+  font-size: 80%;
 }
 
 .sub,
 .sup {
-    font-size      : 75%;
-    line-height    : 0;
-    position       : relative;
-    vertical-align : baseline;
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
 }
 
 .sup {
-    top : -0.5em;
+  top: -0.5em;
 }
 
 .sub {
-    bottom : -0.25em;
+  bottom: -0.25em;
 }
 
 // definitions
 .dfn {
-    font-style : italic;
+  font-style: italic;
 }
 
 // abbreviations
 .abbr[title] {
-    border-bottom : 1px dotted;
+  border-bottom: 1px dotted;
 }
 
 // consistent quote types
 .q {
-    quotes : "\201C" "\201D" "\2018" "\2019";
+  quotes: "\201C" "\201D" "\2018" "\2019";
 }
 
 ////////////////////////////
@@ -89,8 +89,8 @@
 .code,
 .kbd,
 .samp {
-    font-size   : rem-calc(16);
-    font-family : monospace, serif;
+  font-size: rem-calc(16);
+  font-family: monospace, serif;
 }
 
 // .time {
@@ -105,56 +105,56 @@
 // elements inside typography element
 .typography {
 
-    a {
-        @extend .a;
-    }
+  a {
+    @extend .a;
+  }
 
-    b {
-        @extend .b;
-    }
+  b {
+    @extend .b;
+  }
 
-    strong {
-        @extend .strong;
-    }
+  strong {
+    @extend .strong;
+  }
 
-    i {
-        @extend .i;
-    }
+  i {
+    @extend .i;
+  }
 
-    em {
-        @extend .em;
-    }
+  em {
+    @extend .em;
+  }
 
-    small {
-        @extend .small;
-    }
+  small {
+    @extend .small;
+  }
 
-    sub {
-        @extend .sub;
-    }
+  sub {
+    @extend .sub;
+  }
 
-    sup {
-        @extend .sup;
-    }
+  sup {
+    @extend .sup;
+  }
 
-    dfn {
-        @extend .dfn;
-    }
+  dfn {
+    @extend .dfn;
+  }
 
-    q {
-        @extend .q;
-    }
+  q {
+    @extend .q;
+  }
 
-    code {
-        @extend .code;
-    }
+  code {
+    @extend .code;
+  }
 
-    kbd {
-        @extend .kbd;
-    }
+  kbd {
+    @extend .kbd;
+  }
 
-    samp {
-        @extend .samp;
-    }
+  samp {
+    @extend .samp;
+  }
 
 }

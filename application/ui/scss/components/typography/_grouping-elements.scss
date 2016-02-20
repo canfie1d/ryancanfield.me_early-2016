@@ -1,7 +1,7 @@
 // *******************************************
 // *******************************************
 
-    // Typographical grouping element styles
+// Typographical grouping element styles
 
 // *******************************************
 // *******************************************
@@ -9,40 +9,40 @@
 //
 
 .p {
-    margin      : rem-calc(0 0 16 0);
-    line-height : 1.5;
-    font-family : $body-font;
-    color       : $body-color;
+  margin: rem-calc(0 0 16 0);
+  line-height: 1.5;
+  font-family: $body-font;
+  color: $body-color;
 }
 
 .pre {
-     white-space : pre;
-     white-space : pre-wrap;
-     word-wrap   : break-word;
-     font-size   : rem-calc(16);
-     line-height : 1.5;
-     font-family : monospace, serif;
+  white-space: pre;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-size: rem-calc(16);
+  line-height: 1.5;
+  font-family: monospace, serif;
 }
 
 .blockquote {
-    margin      : rem-calc(21 0);
-    padding     : rem-calc(6 21);
-    line-height : 1.5;
-    border-left : 2px solid $gray--200;
+  margin: rem-calc(21 0);
+  padding: rem-calc(6 21);
+  line-height: 1.5;
+  border-left: 2px solid $gray--200;
 }
 
 .typography {
 
-    p {
-        @extend .p;
-    }
+  p {
+    @extend .p;
+  }
 
-    pre {
-        @extend .pre;
-    }
+  pre {
+    @extend .pre;
+  }
 
-    blockquote {
-        @extend .blockquote;
-    }
+  blockquote {
+    @extend .blockquote;
+  }
 
 }

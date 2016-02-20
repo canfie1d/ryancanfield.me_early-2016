@@ -1,16 +1,13 @@
 // vendor imports
-    @import "app-settings";
-    @import "synfrastructure/scss/synfrastructure";
-
+@import "app-settings";
+@import "synfrastructure/scss/synfrastructure";
 // dependency imports
-    @import "dependencies/synfrastructure-loader";
-    @import "pattern-library/pl-colors";
-
+@import "dependencies/synfrastructure-loader";
+@import "pattern-library/pl-colors";
 // layout imports
-    @import "pattern-library/pl-layout";
-
+@import "pattern-library/pl-layout";
 // component imports
-    @import "pattern-library/components/pl-branding";
-    @import "pattern-library/components/pl-main-nav";
-    @import "pattern-library/components/pl-typography";
-    @import "pattern-library/components/pl-icons";
+@import "pattern-library/components/pl-branding";
+@import "pattern-library/components/pl-main-nav";
+@import "pattern-library/components/pl-typography";
+@import "pattern-library/components/pl-icons";

@@ -1,7 +1,7 @@
 // *******************************************
 // *******************************************
 
-    // Style guide main navigation
+// Style guide main navigation
 
 // *******************************************
 // *******************************************
@@ -18,31 +18,31 @@
 
 // nav menu element
 .pl-nav__menu {
-    list-style-type : none;
+  list-style-type: none;
 }
 
 // nav menu top level item element
 .pl-nav__menu-item {
-    margin : rem-calc(8 0);
+  margin: rem-calc(8 0);
 }
 
 // nav menu link item
 .pl-nav__menu-link {
-    padding     : rem-calc(5 10);
-    display     : block;
-    font-size   : rem-calc(14);
-    font-weight : bold;
-    color       : $gray--800;
-    border-left : 3px solid transparent;
+  padding: rem-calc(5 10);
+  display: block;
+  font-size: rem-calc(14);
+  font-weight: bold;
+  color: $gray--800;
+  border-left: 3px solid transparent;
 
-    &:hover {
-        color  : $gray--900;
-        cursor : pointer;
-    }
+  &:hover {
+    color: $gray--900;
+    cursor: pointer;
+  }
 
 }
 
 // current state of navigation
 .pl-nav__menu-link--is-current {
-    border-left-color : $cyan--100;
+  border-left-color: $cyan--100;
 }
