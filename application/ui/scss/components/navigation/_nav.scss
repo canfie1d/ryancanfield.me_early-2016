@@ -1,0 +1,43 @@
+.nav {
+    .nav__list {
+
+    }
+
+    .nav__item {
+
+        &:first-of-type .nav__link {
+            color : $welcomeBackground;
+        }
+
+        &:nth-of-type(2) .nav__link {
+            color  : $workBackground;
+        }
+
+        &:nth-of-type(3) .nav__link {
+            color : $aboutBackground;
+        }
+
+        &:last-of-type .nav__link {
+            color : $elsewhereBackbround;
+        }
+    }
+
+    .nav__link {
+        display         : block;
+        margin          : rem-calc(20) 0;
+        z-index         : 1;
+        font-family     : $display-font--bold;
+        font-size       : rem-calc(72);
+        text-align      : center;
+        text-decoration : none;
+        white-space     : nowrap;
+        transition      : font-size 300ms $ease-in-out-back;
+
+        &:hover {
+            font-size : rem-calc(144);
+            z-index   : 0;
+        }
+
+    }
+
+}

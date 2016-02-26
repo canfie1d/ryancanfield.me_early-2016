@@ -19,5 +19,8 @@
 @import "components/buttons/buttons";
 //icons
 @import "components/icons/icons-base";
+//navigation
+@import "components/navigation/nav";
 // pages
-@import "pages/home";
+@import "pages/pages",
+        "pages/page-transitions";
