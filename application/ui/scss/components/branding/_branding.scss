@@ -1,0 +1,123 @@
+// vars //
+
+// container dimensions
+$small-height  : .4145em;
+$medium-height : .833em;
+$large-height  : rem-calc(40);
+$small-width   : rem-calc(20);
+$medium-width  : rem-calc(40);
+$large-width   : rem-calc(120);
+
+// transitions
+$transition-duration : 200ms;
+$transition-timing   : ease;
+
+// letter box sizes
+$small-letter-width  : rem-calc(5);
+$medium-letter-width : rem-calc(10);
+$large-letter-width  : rem-calc(30);
+
+// fonts
+$font-family      : $display-font--bold;
+$small-font-size  : 0;
+$medium-font-size : 6px;
+$large-font-size  : 2em;
+
+.branding {
+    position    : absolute;
+    top         : rem-calc(20);
+    left        : rem-calc(20);
+    display     : flex;
+    flex-wrap   : wrap;
+    max-width   : $medium-width;
+    transition  : max-width $transition-duration $transition-timing;
+
+    @include min-screen($media-xsmall) {
+        max-width : $large-width;
+    }
+
+}
+
+.branding__row {
+    flex-grow   : 1;
+    flex-shrink : 0;
+    flex-basis  : $medium-width;
+    display     : flex;
+    flex-wrap   : wrap;
+    align-items : center;
+    transition  : flex-basis $transition-duration $transition-timing;
+
+    &:nth-of-type(1) {
+        .branding__column:nth-of-type(1),
+        .branding__column:nth-of-type(2) {
+            background : $white;
+
+            color      : inherit;
+        }
+
+        .branding__column:nth-of-type(3),
+        .branding__column:nth-of-type(4) {
+            color : $white;
+        }
+
+    }
+
+    &:nth-of-type(2) {
+        .branding__column:nth-of-type(1),
+        .branding__column:nth-of-type(4) {
+            color : $white;
+        }
+
+        .branding__column:nth-of-type(2),
+        .branding__column:nth-of-type(3) {
+            background : $white;
+        }
+    }
+
+    &:nth-of-type(3) {
+        .branding__column {
+            color : $white;
+        }
+
+    }
+
+    @include min-screen($media-xsmall) {
+        flex : 1 0 $large-width;
+    }
+
+}
+
+.branding__column {
+    display         : flex;
+    justify-content : center;
+    align-items     : center;
+    flex            : 0 0 $medium-letter-width;
+    height          : $medium-height;
+    transition      : height $transition-duration $transition-timing,
+                      flex-basis $transition-duration $transition-timing;
+
+    @include min-screen($media-xsmall) {
+        flex   : 0 0 $large-letter-width;
+        height : $large-height;
+    }
+
+}
+
+.branding__letter {
+    flex           : 0 0 auto;
+    width          : $medium-letter-width;
+    height         : $medium-height;
+    font-family    : $font-family;
+    text-transform : uppercase;
+    text-align     : center;
+    font-size      : $medium-font-size;
+    transition     : height $transition-duration $transition-timing,
+                      width $transition-duration $transition-timing,
+                      flex-basis $transition-duration $transition-timing;
+
+    @include min-screen($media-xsmall) {
+        font-size : $large-font-size;
+        width     : auto;
+        height    : auto;
+    }
+}

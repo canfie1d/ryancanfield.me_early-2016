@@ -7,18 +7,54 @@
 
         &:first-of-type .nav__link {
             color : $welcomeBackground;
+
+            &:hover::before {
+              background : $welcomeBackground;
+            }
+
+            &:hover,
+            &:focus {
+              color : $white;
+            }
         }
 
         &:nth-of-type(2) .nav__link {
             color  : $workBackground;
+
+            &:hover::before {
+              background : $workBackground;
+            }
+
+            &:hover,
+            &:focus {
+              color : $white;
+            }
         }
 
         &:nth-of-type(3) .nav__link {
             color : $aboutBackground;
+
+            &:hover::before {
+              background : $aboutBackground;
+            }
+
+            &:hover,
+            &:focus {
+              color : $white;
+            }
         }
 
         &:last-of-type .nav__link {
             color : $elsewhereBackbround;
+
+            &:hover::before {
+              background : $elsewhereBackbround;
+            }
+
+            &:hover,
+            &:focus {
+              color : $white;
+            }
         }
     }
 
@@ -31,11 +67,38 @@
         text-align      : center;
         text-decoration : none;
         white-space     : nowrap;
-        transition      : font-size 300ms $ease-in-out-back;
+        transition      : font-size 300ms $ease-in-out-back,
+                          background 300ms ease-in-out,
+                          color 300ms ease-in-out;
 
-        &:hover {
+        &::before {
+            display          : block; // for IE11 pointer-events
+            content          : '';
+            position         : fixed;
+            top              : 0;
+            right            : 0;
+            bottom           : 0;
+            left             : 0;
+            width            : 100vw;
+            height           : 100vh;
+            transform-origin : center;
+            transition       : background 500ms ease-in-out;
+            z-index          : -1;
+            pointer-events   : none;
+
+            &:hover {
+              transform : scale(0);
+            }
+        }
+
+        &:hover,
+        &:focus {
             font-size : rem-calc(144);
             z-index   : 0;
+        }
+
+        &:focus {
+            outline : none;
         }
 
     }

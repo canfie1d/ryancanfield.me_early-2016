@@ -21,15 +21,16 @@ $white: $white;
 $black: $black;
 
 // Thematic colors
-$primary: #25c0d7;
-$secondary: #e88a51;
-$tertiary: #e8bf51;
+$primary: #bcd5d1;
+$secondary: #ba9077;
+$tertiary: #5a5c51;
+$quaternary: #1d2120;
 
 //page backgrounds
-$welcomeBackground : $primary;
-$workBackground    : $secondary;
-$aboutBackground : $tertiary;
-$elsewhereBackbround : $gray--800;
+$welcomeBackground   : $primary;
+$workBackground      : $secondary;
+$aboutBackground     : $tertiary;
+$elsewhereBackbround : $quaternary;
 
 // Status colors
 $status--success: #25d785;

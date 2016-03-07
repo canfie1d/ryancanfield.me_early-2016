@@ -7,7 +7,7 @@
 
 // Set this to true to include default component classes
 // Ex: .button, etc.
-$include-component-classes: false;
+$include-component-classes: true;
 
 // This is the default html and body font-size for the base rem value.
 $rem-base: 16px;
@@ -37,4 +37,3 @@ $margin-spacing-threshhold: 1; // Ex: l--m-0, l--m-3, l--m-6
 // Padding utility helpers
 $max-padding-spacing: 30; // Ex: max l--p-30
 $padding-spacing-threshhold: 1; // Ex: l--p-0, l--p-3, l--p-6
-

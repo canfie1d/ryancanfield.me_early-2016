@@ -1,5 +1,5 @@
-$transiton-timing    : $ease-in-out-quad;
-$transition-duration : 300ms;
+$transiton-timing    : $ease-out-quad;
+$transition-duration : 500ms;
 
 ///////////////////
 // WELCOME PAGE
@@ -8,22 +8,22 @@ $transition-duration : 300ms;
 
   // controls welcome enter from menu page
   &.welcome-enter {
-      transform  : translateY(-100%);
+      transform  : translate3d(0, -100%, 0);
       transition : transform $transition-duration $transiton-timing;
   }
 
   &.welcome-enter.welcome-enter-active {
-      transform : translateY(0);
+      transform : translate3d(0, 0, 0);
   }
 
   // controls welcome leave from welcome page
   &.menu-leave {
-    transform  : translateY(0);
+    transform  : translate3d(0, rem-calc(-20), 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
   &.menu-leave.menu-leave-active {
-    transform : translateY(-100%);
+    transform : translate3d(0, -100%, 0);
   }
 
 }
@@ -32,12 +32,12 @@ $transition-duration : 300ms;
   // controls menu leave from menu page
   // when going to welcome page
   &.welcome-leave {
-    transform  : translateY(0);
+    transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
   &.welcome-leave.welcome-leave-active {
-    transform : translateY(100%);
+    transform : translate3d(0, 100%, 0);
   }
 
 }
@@ -50,22 +50,22 @@ $transition-duration : 300ms;
 
   // controls work enter from menu page
   &.work-enter {
-      transform  : translateX(100%);
+      transform  : translate3d(100%, 0, 0);
       transition : transform $transition-duration $transiton-timing;
   }
 
   &.work-enter.work-enter-active {
-      transform : translateX(0);
+      transform : translate3d(0, 0, 0);
   }
 
   // controls work leave from work page
   &.menu-leave {
-    transform  : translateX(0);
+    transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
   &.menu-leave.menu-leave-active {
-    transform : translateX(100%);
+    transform : translate3d(100%, 0, 0);
   }
 
 }
@@ -74,12 +74,12 @@ $transition-duration : 300ms;
   // controls menu leave from menu page
   // when going to work page
   &.work-leave {
-    transform  : translateX(0);
+    transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
   &.work-leave.work-leave-active {
-    transform : translateX(-100%);
+    transform : translate3d(-100%, 0, 0);
   }
 
 }
@@ -91,22 +91,22 @@ $transition-duration : 300ms;
 
   // controls about enter from menu page
   &.about-enter {
-      transform  : translateX(-100%);
+      transform  : translate3d(-100%, 0, 0);
       transition : transform $transition-duration $transiton-timing;
   }
 
   &.about-enter.about-enter-active {
-      transform : translateX(0);
+      transform : translate3d(0, 0, 0);
   }
 
   // controls about leave from about page
   &.menu-leave {
-    transform  : translateX(0);
+    transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
   &.menu-leave.menu-leave-active {
-    transform : translateX(-100%);
+    transform : translate3d(-100%, 0, 0);
   }
 
 }
@@ -114,13 +114,13 @@ $transition-duration : 300ms;
 .menu-page {
   // controls menu leave from menu page
   // when going to about page
-  .about-leave {
-      transform  : translateX(0);
+  &.about-leave {
+      transform  : translate3d(0, 0, 0);
       transition : transform $transition-duration $transiton-timing;
   }
 
-  .about-leave.about-leave-active {
-      transform : translateX(100%);
+  &.about-leave.about-leave-active {
+      transform : translate3d(100%, 0, 0);
   }
 
 }
@@ -132,22 +132,22 @@ $transition-duration : 300ms;
 
   // controls elsewhere enter from menu page
   &.elsewhere-enter {
-      transform  : translateY(100%);
+      transform  : translate3d(0, 100%, 0);
       transition : transform $transition-duration $transiton-timing;
   }
 
   &.elsewhere-enter.elsewhere-enter-active {
-      transform : translateY(0);
+      transform : translate3d(0, 0, 0);
   }
 
   // controls elsewhere leave from elsewhere page
   &.menu-leave {
-    transform  : translateY(0);
+    transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
   &.menu-leave.menu-leave-active {
-    transform : translateY(100%);
+    transform : translate3d(0, 100%, 0);
   }
 
 }
@@ -157,11 +157,11 @@ $transition-duration : 300ms;
   // controls menu leave from menu page
   // when going to elsewhere page
   &.elsewhere-leave {
-    transform  : translateY(0);
+    transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
   &.elsewhere-leave.elsewhere-leave-active {
-    transform : translateY(-100%);
+    transform : translate3d(0, -100%, 0);
   }
 }

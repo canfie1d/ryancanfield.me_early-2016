@@ -12,22 +12,16 @@
 .work-page,
 .elsewhere-page {
     @include flexContainer(true);
-    box-sizing          : content-box;
-    position            : fixed;
-    top                 : 0;
-    right               : 0;
-    bottom              : 0;
-    left                : 0;
+    box-sizing : content-box;
+    position   : fixed;
+    top        : 0;
+    right      : 0;
+    bottom     : 0;
+    left       : 0;
 }
 
 .menu-page {
-    background          : $white;
-    border-width        : rem-calc(50);
-    border-style        : solid;
-    border-top-color    : $welcomeBackground;
-    border-right-color  : $workBackground;
-    border-bottom-color : $elsewhereBackbround;
-    border-left-color   : $aboutBackground;
+    background : $white;
 }
 
 .welcome-page {
@@ -44,4 +38,10 @@
 
 .elsewhere-page {
     background : $elsewhereBackbround;
+}
+
+.back-button {
+  position : fixed;
+  top      : rem-calc(20);
+  left     : rem-calc(20);
 }
