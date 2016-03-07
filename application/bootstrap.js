@@ -6,6 +6,6 @@ import RootComponent from './root-component';
 window.React = React;
 
 ReactDOM.render(
-  RootComponent,
-  document.getElementById('app')
+    RootComponent,
+    document.getElementById('app')
 );

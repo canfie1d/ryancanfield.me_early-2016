@@ -11,17 +11,17 @@ import thunk from 'redux-thunk';
 let storeEnhancer = applyMiddleware(thunk);
 
 const getDebugSessionKey = () => {
-  const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
-  return (matches && matches.length > 0) ? matches[1] : null;
+    const matches = window.location.href.match(/[?&]debug_session=([^&]+)\b/);
+    return (matches && matches.length > 0) ? matches[1] : null;
 };
 
 // Enable redux dev-tools in development
 if (process.env.NODE_ENV === 'development') {
-  storeEnhancer = compose(
-    storeEnhancer,
-    DevTools.instrument(),
-    persistState(getDebugSessionKey())
-  );
+    storeEnhancer = compose(
+        storeEnhancer,
+        DevTools.instrument(),
+        persistState(getDebugSessionKey())
+    );
 }
 
 const store = storeEnhancer(createStore)(app);

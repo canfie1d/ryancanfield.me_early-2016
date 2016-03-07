@@ -8,23 +8,23 @@ import DevTools from './dev-tools-component';
 const createAppElement = (Component, props) => (<Component {...props} />);
 
 const renderDevToolsIfInDev = () => { //eslint-disable-line
-  if (process.env.NODE_ENV === 'development') {
-    return <DevTools />;
-  }
+    if (process.env.NODE_ENV === 'development') {
+        return <DevTools />;
+    }
 
-  return null;
+    return null;
 };
 
 export default (
-  <Provider store={store}>
-    <div>
-      {renderDevToolsIfInDev()}
-      <Router
-        createElement={createAppElement}
-        history={browserHistory}
-      >
-        {routes}
-      </Router>
-    </div>
-  </Provider>
+    <Provider store={store}>
+        <div>
+            {renderDevToolsIfInDev()}
+            <Router
+                createElement={createAppElement}
+                history={browserHistory}
+            >
+                {routes}
+            </Router>
+        </div>
+    </Provider>
 );

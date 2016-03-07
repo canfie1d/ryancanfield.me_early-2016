@@ -12,28 +12,28 @@ import PatternLibraryPage from './ui/pages/pattern-library';
 import NotFoundPage from './ui/pages/404';
 
 function getEnvironmentDependentRoutes() {
-  let routes = [];
+    let routes = [];
 
-  if (__ENVIRONMENT__ !== 'production') {
-    routes = routes.concat([
-      <Route path="/pattern-library/:section"
-        component={PatternLibraryPage} key="pattern-library-section"
-      />,
-      <Redirect from="/pattern-library" key="pattern-library" to="/pattern-library/all"/>,
-    ]);
-  }
+    if (__ENVIRONMENT__ !== 'production') {
+        routes = routes.concat([
+            <Route path="/pattern-library/:section"
+                component={PatternLibraryPage} key="pattern-library-section"
+            />,
+            <Redirect from="/pattern-library" key="pattern-library" to="/pattern-library/all"/>,
+        ]);
+    }
 
-  return routes;
+    return routes;
 }
 
 export default (
-  <Route path="/" component={SiteLayout}>
-    <IndexRoute component={MenuPage}/>
-    <Route path="/welcome" component={WelcomePage}/>
-    <Route path="/work" component={WorkPage}/>
-    <Route path="/about" component={AboutPage}/>
-    <Route path="/elsewhere" component={ElsewherePage}/>
-    {getEnvironmentDependentRoutes()}
-    <Route path="*" component={NotFoundPage}/>
-  </Route>
+    <Route path="/" component={SiteLayout}>
+        <IndexRoute component={MenuPage}/>
+        <Route path="/welcome" component={WelcomePage}/>
+        <Route path="/work" component={WorkPage}/>
+        <Route path="/about" component={AboutPage}/>
+        <Route path="/elsewhere" component={ElsewherePage}/>
+        {getEnvironmentDependentRoutes()}
+        <Route path="*" component={NotFoundPage}/>
+    </Route>
 );
