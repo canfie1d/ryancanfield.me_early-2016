@@ -1,17 +1,25 @@
-import React from 'react';
+import React              from 'react';
+import { Button }         from 'synfrastructure';
+import { browserHistory } from 'react-router';
 
 const WelcomePage = React.createClass({
 
-  displayName: 'WelcomePage',
+    displayName: 'WelcomePage',
 
-  render() {
+    onMenuClick() {
+        browserHistory.push('/');
+    },
 
-    return (
-      <div key='welcome-page' className='welcome-page__content'>
-        Welcome
-      </div>
-    );
-  },
+    render() {
+
+        return (
+            <div key='welcome-page' className='welcome-page__content'>
+                <Button className='back-button' element='a' color='tertiary' onClick={this.onMenuClick}>
+                    Back
+                </Button>
+            </div>
+        );
+    },
 
 });
 
