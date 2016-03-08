@@ -1,20 +1,21 @@
 import React       from 'react';
-import { connect } from 'redux';
+import { connect } from 'react-redux';
 
 let getPropsFromApplicationState = (state) => {
     return {
-        navMenu : state.navMenus.navMenu
+        currentNavItem : state.navMenu.currentNavItem
     };
 };
 
-export default connect(getPropsFromApplicationState)(React.createClass({
+let Branding = connect(getPropsFromApplicationState)(React.createClass({
 
     displayName: 'Branding',
 
-    render() {
-        const letterTextColor = 'branding__letter--' + this.props.navMenu;
 
-        const classes = [
+    render() {
+        let letterTextColor = 'branding__letter--' + this.props.currentNavItem;
+
+        let classes = [
             'branding__letter',
             letterTextColor,
         ].join(' ').trim();
@@ -68,3 +69,5 @@ export default connect(getPropsFromApplicationState)(React.createClass({
     },
 
 }));
+
+export default Branding;

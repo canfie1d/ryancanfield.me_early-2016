@@ -1,16 +1,17 @@
 import store from 'store';
 
-export const TOGGLE_NAV_MENU = 'TOGGLE_NAV_MENU';
+export const HOVER_NAV_ITEM    = 'HOVER_NAV_ITEM';
+export const TOGGLE_MOBILE_NAV = 'TOGGLE_MOBILE_NAV';
 
-export function toggleNavMenu(menu) {
+export function toggleNavItem(item) {
     return {
-        type: TOGGLE_NAV_MENU,
-        menu: menu
+        type           : HOVER_NAV_ITEM,
+        currentNavItem : item
     };
-}
+};
 
 export function toggleMobileNav() {
     return {
-        type: TOGGLE_MOBILE_NAV
+        type : TOGGLE_MOBILE_NAV
     };
-}
+};

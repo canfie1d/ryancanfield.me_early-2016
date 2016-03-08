@@ -1,7 +1,7 @@
-.nav {
-    .nav__list {
+$nav-transition-duration : 300ms;
+$nav-transition-timing   : ease-in-out;
 
-    }
+.nav {
 
     .nav__item {
 
@@ -45,10 +45,10 @@
         }
 
         &:last-of-type .nav__link {
-            color : $elsewhereBackbround;
+            color : $elsewhereBackground;
 
             &:hover::before {
-              background : $elsewhereBackbround;
+              background : $elsewhereBackground;
             }
 
             &:hover,
@@ -67,9 +67,9 @@
         text-align      : center;
         text-decoration : none;
         white-space     : nowrap;
-        transition      : font-size 300ms $ease-in-out-back,
-                          background 300ms ease-in-out,
-                          color 300ms ease-in-out;
+        transition      : font-size $nav-transition-duration $ease-in-out-back,
+                          background $nav-transition-duration $nav-transition-timing,
+                          color $nav-transition-duration $nav-transition-timing;
 
         &::before {
             display          : block; // for IE11 pointer-events

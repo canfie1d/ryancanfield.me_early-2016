@@ -1,9 +1,10 @@
-import React       from 'react';
-import _           from 'lodash';
-import { Link }    from 'react-router';
-import { navMenu } from '../../../redux/menu/menu-actions';
+import React             from 'react';
+import _                 from 'lodash';
+import { Link }          from 'react-router';
+import { toggleNavItem } from '../../../redux/menu/menu-actions';
+import { connect }       from 'react-redux';
 
-const Navigation = React.createClass({
+const Navigation = connect()(React.createClass({
 
     displayName: 'Navigation',
 
@@ -11,8 +12,12 @@ const Navigation = React.createClass({
         navItems : React.PropTypes.array.isRequired
     },
 
-    hoverNavItem(title) {
-        this.props.dispatch(navMenu(title));
+    mouseEnterNavItem(title) {
+        this.props.dispatch(toggleNavItem(title));
+    },
+
+    mouseLeaveNavItem() {
+        this.props.dispatch(toggleNavItem(''));
     },
 
     renderItems() {
@@ -20,9 +25,10 @@ const Navigation = React.createClass({
             return (
                 <li key={index} className="nav__item">
                     <Link
-                        to          ={item.url}
-                        className   ="nav__link"
-                        onMouseOver ={_.partial(this.hoverNavItem, item.title)}
+                        to           = {'/' + item.url}
+                        className    = 'nav__link'
+                        onMouseEnter = {_.partial(this.mouseEnterNavItem, item.url)}
+                        onMouseLeave = {this.mouseLeaveNavItem}
                     >
                         {item.title}
                     </Link>
@@ -42,6 +48,6 @@ const Navigation = React.createClass({
         );
     },
 
-});
+}));
 
 export default Navigation;

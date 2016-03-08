@@ -5,19 +5,19 @@ import Branding   from '../components/branding/branding';
 const NAV_ITEMS = [
     {
         title : 'Welcome',
-        url   : '/welcome'
+        url   : 'welcome'
     },
     {
         title : 'Selected Work',
-        url   : '/work'
+        url   : 'work'
     },
     {
         title : 'About Me',
-        url   : '/about'
+        url   : 'about'
     },
     {
         title : 'Elsewhere',
-        url   : '/elsewhere'
+        url   : 'elsewhere'
     }
 ];
 
@@ -30,7 +30,7 @@ const MenuPage = React.createClass({
         return (
             <div key='menu-page' className='menu-page__content'>
                 <Branding />
-                <Navigation navItems={NAV_ITEMS}/>
+                <Navigation navItems={NAV_ITEMS} />
             </div>
         );
     },

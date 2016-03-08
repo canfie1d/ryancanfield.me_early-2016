@@ -9,8 +9,8 @@ $medium-width  : rem-calc(40);
 $large-width   : rem-calc(120);
 
 // transitions
-$transition-duration : 200ms;
-$transition-timing   : ease;
+$transition-duration : 300ms;
+$transition-timing   : ease-in-out;
 
 // letter box sizes
 $small-letter-width  : rem-calc(5);
@@ -51,8 +51,7 @@ $large-font-size  : 2em;
         .branding__column:nth-of-type(1),
         .branding__column:nth-of-type(2) {
             background : $white;
-
-            color      : inherit;
+            box-shadow : 1px 1px 2px 0 rgba($black, .1);
         }
 
         .branding__column:nth-of-type(3),
@@ -71,6 +70,7 @@ $large-font-size  : 2em;
         .branding__column:nth-of-type(2),
         .branding__column:nth-of-type(3) {
             background : $white;
+            box-shadow : 1px 1px 2px 0 rgba($black, .1);
         }
     }
 
@@ -94,7 +94,9 @@ $large-font-size  : 2em;
     flex            : 0 0 $medium-letter-width;
     height          : $medium-height;
     transition      : height $transition-duration $transition-timing,
-                      flex-basis $transition-duration $transition-timing;
+                      flex-basis $transition-duration $transition-timing,
+                      background $transition-duration $transition-timing,
+                      color $transition-duration $transition-timing;
 
     @include min-screen($media-xsmall) {
         flex   : 0 0 $large-letter-width;
@@ -108,16 +110,34 @@ $large-font-size  : 2em;
     width          : $medium-letter-width;
     height         : $medium-height;
     font-family    : $font-family;
+    color          : $white;
     text-transform : uppercase;
     text-align     : center;
     font-size      : $medium-font-size;
     transition     : height $transition-duration $transition-timing,
-                      width $transition-duration $transition-timing,
-                      flex-basis $transition-duration $transition-timing;
+                     width $transition-duration $transition-timing,
+                     flex-basis $transition-duration $transition-timing,
+                     color $transition-duration $transition-timing;
 
     @include min-screen($media-xsmall) {
         font-size : $large-font-size;
         width     : auto;
         height    : auto;
+    }
+
+    &.branding__letter--welcome {
+        color : $welcomeBackground;
+    }
+
+    &.branding__letter--work {
+        color : $workBackground;
+    }
+
+    &.branding__letter--about {
+        color : $aboutBackground;
+    }
+
+    &.branding__letter--elsewhere {
+        color : $elsewhereBackground;
     }
 }
