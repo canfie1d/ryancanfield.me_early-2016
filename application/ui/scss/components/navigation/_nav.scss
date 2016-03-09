@@ -1,40 +1,40 @@
-$nav-transition-duration : 300ms;
-$nav-transition-timing   : ease-in-out;
-
 .nav {
 
     .nav__item {
 
         &:first-of-type .nav__link {
-            color : $welcomeBackground;
+            color  : $workBackground;
 
-            &:hover::before {
-              background : $welcomeBackground;
+            &:hover::before,
+            &:focus::before {
+                background : $workBackground;
             }
 
             &:hover,
             &:focus {
-              color : $white;
+                color : $white;
             }
         }
 
         &:nth-of-type(2) .nav__link {
-            color  : $workBackground;
+            color : $snippetsBackground;
 
-            &:hover::before {
-              background : $workBackground;
+            &:hover::before,
+            &:focus::before {
+                background : $snippetsBackground;
             }
 
             &:hover,
             &:focus {
-              color : $white;
+                color : $white;
             }
         }
 
         &:nth-of-type(3) .nav__link {
             color : $aboutBackground;
 
-            &:hover::before {
+            &:hover::before,
+            &:focus::before {
               background : $aboutBackground;
             }
 
@@ -47,7 +47,8 @@ $nav-transition-timing   : ease-in-out;
         &:last-of-type .nav__link {
             color : $elsewhereBackground;
 
-            &:hover::before {
+            &:hover::before,
+            &:focus::before {
               background : $elsewhereBackground;
             }
 
@@ -67,9 +68,8 @@ $nav-transition-timing   : ease-in-out;
         text-align      : center;
         text-decoration : none;
         white-space     : nowrap;
-        transition      : font-size $nav-transition-duration $ease-in-out-back,
-                          background $nav-transition-duration $nav-transition-timing,
-                          color $nav-transition-duration $nav-transition-timing;
+        transition      : font-size 300ms $ease-in-out-back,
+                          color 300ms ease-in-out;
 
         &::before {
             display          : block; // for IE11 pointer-events
@@ -82,7 +82,7 @@ $nav-transition-timing   : ease-in-out;
             width            : 100vw;
             height           : 100vh;
             transform-origin : center;
-            transition       : background 500ms ease-in-out;
+            transition       : background 300ms ease-in-out;
             z-index          : -1;
             pointer-events   : none;
 

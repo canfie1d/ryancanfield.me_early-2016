@@ -7,7 +7,7 @@
 // *******************************************
 
 .menu-page,
-.welcome-page,
+.snippets-page,
 .about-page,
 .work-page,
 .elsewhere-page {
@@ -24,8 +24,8 @@
     background : $white;
 }
 
-.welcome-page {
-    background : $welcomeBackground;
+.snippets-page {
+    background : $snippetsBackground;
 }
 
 .about-page {

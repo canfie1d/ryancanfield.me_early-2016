@@ -11,7 +11,6 @@ let Branding = connect(getPropsFromApplicationState)(React.createClass({
 
     displayName: 'Branding',
 
-
     render() {
         let letterTextColor = 'branding__letter--' + this.props.currentNavItem;
 

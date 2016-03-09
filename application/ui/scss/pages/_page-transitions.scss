@@ -1,49 +1,50 @@
-$transiton-timing    : $ease-out-quad;
-$transition-duration : 500ms;
+$transiton-timing     : $ease-out-quad;
+$transiton-timing2    : ease-in-out;
+$transition-duration : 300ms;
 
 ///////////////////
-// WELCOME PAGE
+// SNIPPETS PAGE //
 ///////////////////
-.welcome-page {
+.snippets-page {
 
-  // controls welcome enter from menu page
-  &.welcome-enter {
-      transform  : translate3d(0, -100%, 0);
+  // controls snippets enter from menu page
+  &.snippets-enter {
+      transform  : translate3d(-100%, 0, 0);
       transition : transform $transition-duration $transiton-timing;
   }
 
-  &.welcome-enter.welcome-enter-active {
+  &.snippets-enter.snippets-enter-active {
       transform : translate3d(0, 0, 0);
   }
 
-  // controls welcome leave from welcome page
+  // controls snippets leave from snippets page
   &.menu-leave {
-    transform  : translate3d(0, rem-calc(-20), 0);
-    transition : transform $transition-duration $transiton-timing;
+    transform  : translate3d(0, 0, 0);
+    transition : transform $transition-duration $transiton-timing2;
   }
 
   &.menu-leave.menu-leave-active {
-    transform : translate3d(0, -100%, 0);
+    transform : translate3d(-100%, 0, 0);
   }
 
 }
 
 .menu-page {
   // controls menu leave from menu page
-  // when going to welcome page
-  &.welcome-leave {
+  // when going to snippets page
+  &.snippets-leave {
     transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
-  &.welcome-leave.welcome-leave-active {
-    transform : translate3d(0, 100%, 0);
+  &.snippets-leave.snippets-leave-active {
+    transform : translate3d(100%, 0, 0);
   }
 
 }
 
 ///////////////////
-//  WORK PAGE
+//   WORK PAGE   //
 ///////////////////
 
 .work-page {
@@ -61,7 +62,7 @@ $transition-duration : 500ms;
   // controls work leave from work page
   &.menu-leave {
     transform  : translate3d(0, 0, 0);
-    transition : transform $transition-duration $transiton-timing;
+    transition : transform $transition-duration $transiton-timing2;
   }
 
   &.menu-leave.menu-leave-active {
@@ -85,13 +86,13 @@ $transition-duration : 500ms;
 }
 
 ///////////////////
-// ABOUT PAGE
+//  ABOUT PAGE   //
 ///////////////////
 .about-page {
 
   // controls about enter from menu page
   &.about-enter {
-      transform  : translate3d(-100%, 0, 0);
+      transform  : translate3d(0, -100%, 0);
       transition : transform $transition-duration $transiton-timing;
   }
 
@@ -102,11 +103,11 @@ $transition-duration : 500ms;
   // controls about leave from about page
   &.menu-leave {
     transform  : translate3d(0, 0, 0);
-    transition : transform $transition-duration $transiton-timing;
+    transition : transform $transition-duration $transiton-timing2;
   }
 
   &.menu-leave.menu-leave-active {
-    transform : translate3d(-100%, 0, 0);
+    transform : translate3d(0, -100%, 0);
   }
 
 }
@@ -120,14 +121,14 @@ $transition-duration : 500ms;
   }
 
   &.about-leave.about-leave-active {
-      transform : translate3d(100%, 0, 0);
+      transform : translate3d(0, 100%, 0);
   }
 
 }
 
-///////////////////
-// ELSEWHERE PAGE
-///////////////////
+////////////////////
+// ELSEWHERE PAGE //
+////////////////////
 .elsewhere-page {
 
   // controls elsewhere enter from menu page
@@ -143,7 +144,7 @@ $transition-duration : 500ms;
   // controls elsewhere leave from elsewhere page
   &.menu-leave {
     transform  : translate3d(0, 0, 0);
-    transition : transform $transition-duration $transiton-timing;
+    transition : transform $transition-duration $transiton-timing2;
   }
 
   &.menu-leave.menu-leave-active {

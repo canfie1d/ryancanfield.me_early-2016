@@ -2,9 +2,9 @@ import React              from 'react';
 import { Button }         from 'synfrastructure';
 import { browserHistory } from 'react-router';
 
-const WelcomePage = React.createClass({
+const SnippetsPage = React.createClass({
 
-    displayName: 'WelcomePage',
+    displayName: 'SnippetsPage',
 
     onMenuClick() {
         browserHistory.push('/');
@@ -13,7 +13,7 @@ const WelcomePage = React.createClass({
     render() {
 
         return (
-            <div key='welcome-page' className='welcome-page__content'>
+            <div key='snippets-page' className='snippets-page__content'>
                 <Button className='back-button' element='a' color='tertiary' onClick={this.onMenuClick}>
                     Back
                 </Button>
@@ -23,4 +23,4 @@ const WelcomePage = React.createClass({
 
 });
 
-export default WelcomePage;
+export default SnippetsPage;

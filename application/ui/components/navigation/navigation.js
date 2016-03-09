@@ -12,11 +12,23 @@ const Navigation = connect()(React.createClass({
         navItems : React.PropTypes.array.isRequired
     },
 
+    componentWillUnmount() {
+        this.props.dispatch(toggleNavItem(''));
+    },
+
     mouseEnterNavItem(title) {
         this.props.dispatch(toggleNavItem(title));
     },
 
     mouseLeaveNavItem() {
+        this.props.dispatch(toggleNavItem(''));
+    },
+
+    onFocusNavItem(title) {
+        this.props.dispatch(toggleNavItem(title));
+    },
+
+    onBlurNavItem() {
         this.props.dispatch(toggleNavItem(''));
     },
 
@@ -29,6 +41,8 @@ const Navigation = connect()(React.createClass({
                         className    = 'nav__link'
                         onMouseEnter = {_.partial(this.mouseEnterNavItem, item.url)}
                         onMouseLeave = {this.mouseLeaveNavItem}
+                        onFocus      = {_.partial(this.onFocusNavItem, item.url)}
+                        onBlur       = {this.onBlurNavItem}
                     >
                         {item.title}
                     </Link>

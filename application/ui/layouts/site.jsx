@@ -14,8 +14,8 @@ const site = React.createClass({
             case '/':
                 pageTransition = 'menu';
                 break;
-            case '/welcome':
-                pageTransition = 'welcome';
+            case '/snippets':
+                pageTransition = 'snippets';
                 break;
             case '/work':
                 pageTransition = 'work';

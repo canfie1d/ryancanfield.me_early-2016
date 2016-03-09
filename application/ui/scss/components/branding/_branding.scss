@@ -125,12 +125,12 @@ $large-font-size  : 2em;
         height    : auto;
     }
 
-    &.branding__letter--welcome {
-        color : $welcomeBackground;
-    }
-
     &.branding__letter--work {
         color : $workBackground;
+    }
+
+    &.branding__letter--snippets {
+        color : $snippetsBackground;
     }
 
     &.branding__letter--about {

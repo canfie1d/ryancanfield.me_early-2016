@@ -4,12 +4,12 @@ import Branding   from '../components/branding/branding';
 
 const NAV_ITEMS = [
     {
-        title : 'Welcome',
-        url   : 'welcome'
-    },
-    {
         title : 'Selected Work',
         url   : 'work'
+    },
+    {
+        title : 'Code Snippets',
+        url   : 'snippets'
     },
     {
         title : 'About Me',
