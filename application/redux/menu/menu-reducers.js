@@ -1,25 +1,16 @@
 import _                   from 'lodash';
 import { combineReducers } from 'redux';
-import { HOVER_NAV_ITEM, TOGGLE_MOBILE_NAV }  from './menu-actions';
+import { HOVER_MENU_ITEM } from './menu-actions';
 
-let currentNavItem = (state = '', action) => {
-    if (action.type === HOVER_NAV_ITEM) {
-        return action.currentNavItem;
+let currentMenuItem = (state = '', action) => {
+    if (action.type === HOVER_MENU_ITEM) {
+        return action.currentMenuItem;
     }
     return state;
 };
 
-let navMenu = (state = false, action) =>
-{
-    if (action.type === TOGGLE_MOBILE_NAV) {
-        return !state;
-    }
-    return state;
-};
-
-const navMenus = combineReducers({
-    currentNavItem,
-    navMenu
+const menus = combineReducers({
+    currentMenuItem
 });
 
-export default navMenus;
+export default menus;

@@ -10,7 +10,8 @@
 .snippets-page,
 .about-page,
 .work-page,
-.elsewhere-page {
+.elsewhere-page,
+.secret-page {
     @include flexContainer(true);
     box-sizing : content-box;
     position   : fixed;
@@ -20,28 +21,153 @@
     left       : 0;
 }
 
+.snippets-page,
+.about-page,
+.work-page,
+.elsewhere-page,
+.secret-page {
+    box-shadow : inset 0 0 300px 0 rgba($black, .1);
+}
+
 .menu-page {
-    background : $white;
+    background : $off-white;
 }
 
 .snippets-page {
-    background : $snippetsBackground;
+    background : $snippetsColor;
 }
 
 .about-page {
-    background : $aboutBackground;
+    background : $aboutColor;
 }
 
 .work-page {
-    background : $workBackground;
+    background : $workColor;
 }
 
 .elsewhere-page {
-    background : $elsewhereBackground;
+    background : $elsewhereColor;
 }
 
-.back-button {
-  position : fixed;
-  top      : rem-calc(20);
-  left     : rem-calc(20);
+.secret-page {
+    background : $gray--800;
+}
+
+.page-content {
+    max-width : rem-calc(1024);
+    margin    : auto;
+}
+
+.page__title {
+    font-family : $display-font--enhance;
+    font-size   : rem-calc(144);
+    color       : $white;
+}
+
+.page__p {
+    max-width   : rem-calc(700);
+    margin      : auto;
+    font-family : $body-font;
+    font-size   : rem-calc(20);
+    line-height : 1.5;
+    color       : $white;
+
+    &:not(:last-of-type) {
+        margin-bottom : rem-calc(20);
+    }
+}
+
+.page__inline-a {
+    position        : relative;
+    font-family     : $body-font;
+    font-size       : rem-calc(20);
+    color           : $white;
+    line-height     : 1.5;
+    text-decoration : none;
+    transition      : color 100ms ease-out;
+
+    &::before {
+        content    : '';
+        position   : absolute;
+        top        : calc(100% - 1px);
+        right      : 0;
+        bottom     : 0;
+        left       : 0;
+        background : $white;
+        transition : top 100ms ease-out;
+        z-index    : -1;
+    }
+
+    &:focus {
+        outline : 0;
+    }
+
+    &:hover,
+    &:focus {
+        &::before {
+            top : 0;
+        }
+
+        .snippets-page & {
+            color : $snippetsColor;
+        }
+
+        .about-page & {
+            color : $aboutColor;
+        }
+
+        .work-page & {
+            color : $workColor;
+        }
+
+        .elsewhere-page & {
+            color : $elsewhereColor;
+        }
+
+    }
+
+    &:focus {
+        color : $white;
+    }
+
+    &:active {
+        color : $white;
+    }
+
+    &:visited {
+        color : $white;
+    }
+
+}
+
+.page__content-container {
+    height   : 100vh;
+    width    : 100%;
+    overflow : auto;
+    display  : flex;
+    justify-content : center;
+
+    .page__content {
+        flex : 0 1 auto;
+    }
+
+    .snippets-page & {
+    }
+
+    .about-page & {
+        align-items : flex-start;
+        padding     : rem-calc(100 20);
+
+    }
+
+    .work-page & {
+        align-items : flex-start;
+        padding     : rem-calc(100 20);
+    }
+
+    .elsewhere-page & {
+        justify-content : center;
+        align-items     : center;
+    }
+
 }

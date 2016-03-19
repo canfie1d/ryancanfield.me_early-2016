@@ -1,26 +1,32 @@
 import React              from 'react';
 import { Button }         from 'synfrastructure';
 import { browserHistory } from 'react-router';
+import { connect }        from 'react-redux';
+import BackButton         from '../components/buttons/back-button';
 
-const SnippetsPage = React.createClass({
+let getPropsFromApplicationState = (state) => {
+    return {
+        currentMenuItem : state.menu.currentMenuItem
+    };
+};
+
+const SnippetsPage = connect(getPropsFromApplicationState)(React.createClass({
 
     displayName: 'SnippetsPage',
 
-    onMenuClick() {
+    onBackClick() {
         browserHistory.push('/');
     },
 
     render() {
 
         return (
-            <div key='snippets-page' className='snippets-page__content'>
-                <Button className='back-button' element='a' color='tertiary' onClick={this.onMenuClick}>
-                    Back
-                </Button>
+            <div key='snippets-page' className='page__content-container'>
+                <BackButton onClick={this.onBackClick} />
             </div>
         );
     },
 
-});
+}));
 
 export default SnippetsPage;

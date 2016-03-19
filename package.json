@@ -1,12 +1,12 @@
 {
   "author": "Synapse Studios",
   "name": "frontend-template",
-  "version": "0.0.0",
-  "description": "A quickstart frontend template that expects to be paired with a backend based off of synapsestudios/api-template",
+  "version": "0.0.1",
+  "description": "Portfolio of UI Engineer, Ryan Canfield.",
   "license": "proprietary",
   "repository": {
     "type": "git",
-    "url": "https://github.com/synapsestudios/frontend-template.git"
+    "url": "http://ryancanfield.me"
   },
   "scripts": {
     "start": "node dev-server.js",

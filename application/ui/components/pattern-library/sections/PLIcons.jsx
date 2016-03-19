@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import React from 'react';
-import Icon from '../../icon/Icon';
+import Icon from '../../../components/icon/icon';
 
 const ICONS = [
     'Back',

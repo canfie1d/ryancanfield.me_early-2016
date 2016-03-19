@@ -1,23 +1,31 @@
-import React      from 'react';
-import Navigation from '../components/navigation/navigation';
-import Branding   from '../components/branding/branding';
+import React    from 'react';
+import MenuList from '../components/menu-list/menu-list';
+import Branding from '../components/branding/branding';
 
 const NAV_ITEMS = [
     {
-        title : 'Selected Work',
-        url   : 'work'
+        title    : 'Selected Work',
+        url      : 'work',
+        icon     : 'Back',
+        external : false
     },
     {
-        title : 'Code Snippets',
-        url   : 'snippets'
+        title    : 'Code Snippets',
+        url      : 'snippets',
+        icon     : 'Cancel',
+        external : false
     },
     {
-        title : 'About Me',
-        url   : 'about'
+        title    : 'About Me',
+        url      : 'about',
+        icon     : 'Caret',
+        external : false
     },
     {
-        title : 'Elsewhere',
-        url   : 'elsewhere'
+        title    : 'Elsewhere',
+        url      : 'elsewhere',
+        icon     : 'Group',
+        external : false
     }
 ];
 
@@ -26,11 +34,10 @@ const MenuPage = React.createClass({
     displayName: 'MenuPage',
 
     render() {
-
         return (
             <div key='menu-page' className='menu-page__content'>
                 <Branding />
-                <Navigation navItems={NAV_ITEMS} />
+                <MenuList menuItems={NAV_ITEMS} />
             </div>
         );
     },

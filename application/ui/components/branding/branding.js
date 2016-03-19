@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 let getPropsFromApplicationState = (state) => {
     return {
-        currentNavItem : state.navMenu.currentNavItem
+        currentMenuItem : state.menu.currentMenuItem
     };
 };
 
@@ -11,8 +11,12 @@ let Branding = connect(getPropsFromApplicationState)(React.createClass({
 
     displayName: 'Branding',
 
+    onClick() {
+        console.log('IT\'S A SECRET TO EVERYBODY.' + '\n' + 'ryancanfield.me/secret');
+    },
+
     render() {
-        let letterTextColor = 'branding__letter--' + this.props.currentNavItem;
+        let letterTextColor = 'branding__letter--' + this.props.currentMenuItem;
 
         let classes = [
             'branding__letter',
@@ -20,7 +24,7 @@ let Branding = connect(getPropsFromApplicationState)(React.createClass({
         ].join(' ').trim();
 
         return (
-            <div className='branding'>
+            <div className='branding' onClick={this.onClick}>
                 <div className='branding__row'>
                     <div className='branding__column'>
                         <span className={classes}>r</span>

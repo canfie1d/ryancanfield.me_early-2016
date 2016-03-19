@@ -7,6 +7,27 @@ $directions: top right bottom left;
 
 ////////////////////////
 //                    //
+//      Flexbox       //
+//                    //
+////////////////////////
+@mixin flexContainer($centerContent) {
+    display   : flex;
+    flex-wrap : wrap;
+
+    @if $centerContent == true {
+        justify-content : center;
+        align-items     : center;
+        align-content   : center;
+    }
+}
+
+@mixin flexItem($flexGrow:'1', $flexShrink:'0', $flexBasis:'auto', $flexSelf:'auto') {
+  flex       : $flexGrow $flexShrink $flexBasis;
+  align-self : $flexSelf;
+}
+
+////////////////////////
+//                    //
 //      Margins       //
 //                    //
 ////////////////////////

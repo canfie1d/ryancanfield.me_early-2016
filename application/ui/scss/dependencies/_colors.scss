@@ -16,21 +16,20 @@ $gray--700: tint($black, 30%);
 $gray--800: tint($black, 20%);
 $gray--900: tint($black, 10%);
 
-// Semantic color vars
-$white: $white;
-$black: $black;
 
 // Thematic colors
-$primary: #bcd5d1;
-$secondary: #ba9077;
+$primary: #7e98a5; // #bcd5d1;
+$secondary: #827b73;
 $tertiary: #5a5c51;
-$quaternary: #1d2120;
+$quaternary: #5e6d69;
+$quaternary--dark: #2f3634;
+$off-white: #f5f9fA;
 
 //page backgrounds
-$snippetsBackground  : $primary;
-$workBackground      : $secondary;
-$aboutBackground     : $tertiary;
-$elsewhereBackground : $quaternary;
+$snippetsColor  : $primary;
+$workColor      : $secondary;
+$aboutColor     : $tertiary;
+$elsewhereColor : $quaternary;
 
 // Status colors
 $status--success: #25d785;

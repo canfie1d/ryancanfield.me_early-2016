@@ -1,6 +1,6 @@
 import { combineReducers }              from 'redux';
 import { createResponsiveStateReducer } from 'redux-responsive';
-import navMenu                          from './menu/menu-reducers';
+import menu                             from './menu/menu-reducers';
 
 const app = combineReducers({
     browser: createResponsiveStateReducer({
@@ -10,7 +10,7 @@ const app = combineReducers({
         large: 1280,
         extraLarge: 1400,
     }),
-    navMenu : navMenu
+    menu : menu
 });
 
 export default app;

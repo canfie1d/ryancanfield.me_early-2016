@@ -63,7 +63,7 @@ module.exports = {
     ],
     loaders : [
       {
-        test   : /\.(eot|ico|ttf|woff|woff2|gif|jpe?g|png|svg)$/,
+        test   : /\.(eot|ico|ttf|woff|woff2|gif|jpe?g|png|svg|mp3)$/,
         loader : 'file-loader',
         exclude : npmPath
       },

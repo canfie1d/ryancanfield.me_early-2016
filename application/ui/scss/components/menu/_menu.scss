@@ -1,0 +1,210 @@
+.menu {
+    position : relative;
+
+    .menu__item {
+        .menu__link:hover::before,
+        .menu__link:focus::before {
+            box-shadow : inset 0 0 300px 0 rgba($black, .10);
+        }
+
+        &:first-of-type .menu__link {
+            color : $workColor;
+
+            &:hover::before,
+            &:focus::before {
+                background : $workColor;
+            }
+
+            &:hover,
+            &:focus {
+                color : $white;
+            }
+        }
+
+        &:nth-of-type(2) .menu__link {
+            color : $snippetsColor;
+
+            &:hover::before,
+            &:focus::before {
+                background : $snippetsColor;
+            }
+
+            &:hover,
+            &:focus {
+                color : $white;
+            }
+        }
+
+        &:nth-of-type(3) .menu__link {
+            color : $aboutColor;
+
+            &:hover::before,
+            &:focus::before {
+              background : $aboutColor;
+            }
+
+            &:hover,
+            &:focus {
+              color : $white;
+            }
+        }
+
+        &:last-of-type .menu__link {
+            color : $elsewhereColor;
+
+            .elsewhere-page & {
+                color : $quaternary--dark;
+            }
+
+            &:hover::before,
+            &:focus::before {
+              background : $elsewhereColor;
+            }
+
+            &:hover,
+            &:focus {
+              color : $white;
+            }
+        }
+    }
+
+    .menu__icon-list {
+        opacity    : 1;
+        transition : opacity 300ms ease;
+
+        &.menu__icon-list--hidden {
+            opacity : 0;
+        }
+
+        .menu__icon {
+            position : absolute;
+            height   : rem-calc(35);
+            margin   : rem-calc(10) 0;
+
+            svg {
+                fill : $workColor;
+            }
+
+            &:nth-of-type(2) {
+                top        : 25%;
+                margin-top : rem-calc(15);
+
+                svg {
+                    fill : $snippetsColor;
+                }
+
+            }
+
+            &:nth-of-type(3) {
+                top        : 50%;
+                margin-top : rem-calc(20);
+
+                svg {
+                    fill : $aboutColor;
+                }
+
+            }
+
+            &:nth-of-type(4) {
+                top        : 75%;
+                margin-top : rem-calc(25);
+
+                svg {
+                    fill : $elsewhereColor;
+
+                    .elsewhere-page & {
+                        fill : $quaternary--dark;
+                    }
+
+                }
+
+            }
+
+        }
+
+        .menu-page & {
+            .menu__icon {
+                left : rem-calc(-52);
+            }
+
+            .menu__icon:nth-of-type(2) {
+                left : rem-calc(-47);
+            }
+
+            .menu__icon:nth-of-type(3) {
+                left : rem-calc(30);
+            }
+
+            .menu__icon:nth-of-type(4) {
+                left : rem-calc(24);
+            }
+
+        }
+
+        .elsewhere-page & {
+            .menu__icon {
+                left : rem-calc(-4);
+            }
+
+            .menu__icon:nth-of-type(2) {
+                left : rem-calc(-26);
+            }
+
+            .menu__icon:nth-of-type(3) {
+                left : rem-calc(-36);
+            }
+
+            .menu__icon:nth-of-type(4) {
+                left : rem-calc(-54);
+            }
+
+        }
+
+    }
+
+    .menu__link {
+        display         : block;
+        margin          : rem-calc(20) 0;
+        z-index         : 1;
+        font-family     : $display-font--enhance;
+        font-size       : rem-calc(72);
+        text-align      : center;
+        text-decoration : none;
+        white-space     : nowrap;
+        user-select     : none;
+        transition      : font-size 300ms $ease-out-back,
+                          color 300ms ease-in-out;
+
+        &::before {
+            display          : block; // for IE11 pointer-events
+            content          : '';
+            position         : fixed;
+            top              : 0;
+            right            : 0;
+            bottom           : 0;
+            left             : 0;
+            width            : 100vw;
+            height           : 100vh;
+            transform-origin : center;
+            transition       : background 300ms ease-in-out;
+            z-index          : -1;
+            pointer-events   : none;
+
+            &:hover {
+              transform : scale(0);
+            }
+        }
+
+        &:hover,
+        &:focus {
+            font-size : rem-calc(144);
+            z-index   : 0;
+        }
+
+        &:focus {
+            outline : none;
+        }
+
+    }
+
+}

@@ -35,7 +35,11 @@ module.exports = function (config) {
           {
             test: /\.css$/,
             loader: 'style!css'
-          }
+        },
+        {
+            test: /\.(mp3)$/,
+            loader: 'audio-loader'
+        }
         ]
       },
       resolve: {

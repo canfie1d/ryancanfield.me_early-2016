@@ -5,7 +5,7 @@ import PLSidebar from '../components/pattern-library/PLSidebar';
 import TypographySection from '../components/pattern-library/sections/PLTypography';
 import IconSection from '../components/pattern-library/sections/PLIcons';
 import GridLayout from '../components/pattern-library/sections/PLGrid';
-import Icon from '../components/icon/Icon';
+import Icon from '../components/icon/icon';
 
 const PatternLibrary = React.createClass({
 

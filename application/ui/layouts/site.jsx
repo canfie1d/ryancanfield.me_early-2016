@@ -8,27 +8,30 @@ const site = React.createClass({
     render() {
 
         let currentPage = window.location.pathname,
-            pageTransition = '';
+            page = '';
 
         switch (currentPage) {
             case '/':
-                pageTransition = 'menu';
+                page = 'menu';
                 break;
             case '/snippets':
-                pageTransition = 'snippets';
+                page = 'snippets';
                 break;
             case '/work':
-                pageTransition = 'work';
+                page = 'work';
                 break;
             case '/about':
-                pageTransition = 'about';
+                page = 'about';
                 break;
             case '/elsewhere':
-                pageTransition = 'elsewhere';
+                page = 'elsewhere';
+                break;
+            case '/secret':
+                page = 'secret';
                 break;
         };
 
-        const pageClass = pageTransition + '-page';
+        const pageClass = page + '-page';
 
         const classes = [
             'l--site-wrapper',
@@ -38,11 +41,11 @@ const site = React.createClass({
         return (
             <ReactCSSTransitionGroup
                 component='div'
-                transitionName={pageTransition}
+                transitionName={page}
                 transitionEnterTimeout={500}
                 transitionLeaveTimeout={500}
             >
-                <div key={pageTransition} className={classes}>
+                <div key={page} className={classes}>
                     {this.props.children}
                 </div>
             </ReactCSSTransitionGroup>

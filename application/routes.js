@@ -10,6 +10,7 @@ import AboutPage from './ui/pages/about';
 import ElsewherePage from './ui/pages/elsewhere';
 import PatternLibraryPage from './ui/pages/pattern-library';
 import NotFoundPage from './ui/pages/404';
+import SecretPage from './ui/pages/secret';
 
 function getEnvironmentDependentRoutes() {
     let routes = [];
@@ -33,6 +34,7 @@ export default (
         <Route path="/work" component={WorkPage}/>
         <Route path="/about" component={AboutPage}/>
         <Route path="/elsewhere" component={ElsewherePage}/>
+        <Route path="/secret" component={SecretPage}/>
         {getEnvironmentDependentRoutes()}
         <Route path="*" component={NotFoundPage}/>
     </Route>
