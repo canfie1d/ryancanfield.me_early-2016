@@ -23,6 +23,11 @@ const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
         return (
             <div key='work-page' className='page__content-container'>
                 <BackButton onClick={this.onBackClick} />
+                <div className='monitor'>
+                    <div className='inner-bezel'>
+                        
+                    </div>
+                </div>
             </div>
         );
     },
