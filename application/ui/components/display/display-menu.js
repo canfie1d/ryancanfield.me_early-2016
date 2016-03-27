@@ -20,7 +20,7 @@ const Display = React.createClass({
     renderMenuItems() {
         return _.map(this.props.projects, (project, index) => {
             return (
-                <li key={index} tabIndex='1' className='display__menu__item' onClick={_.partial(this.props.onMenuItemClick, project.title)}>
+                <li key={index} tabIndex='1' className='display__menu__item' onClick={_.partial(this.props.onMenuItemClick, index)}>
                     {project.title}
                 </li>
             );

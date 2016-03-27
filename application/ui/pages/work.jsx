@@ -13,13 +13,13 @@ const PROJECTS = [
                 url:'https://s3-us-west-2.amazonaws.com/ryancanfield.me-images/USMexPat/menu.png'
             },
             {
-                url:'https://s3-us-west-2.amazonaws.com/ryancanfield.me-images/USMexPat/menu.png'
+                url:'https://s3-us-west-2.amazonaws.com/ryancanfield.me-images/USMexPat/sectors.png'
             },
             {
-                url:'https://s3-us-west-2.amazonaws.com/ryancanfield.me-images/USMexPat/menu.png'
+                url:'https://s3-us-west-2.amazonaws.com/ryancanfield.me-images/USMexPat/gdp.png'
             },
             {
-                url:'https://s3-us-west-2.amazonaws.com/ryancanfield.me-images/USMexPat/menu.png'
+                url:'https://s3-us-west-2.amazonaws.com/ryancanfield.me-images/USMexPat/sidebar.png'
             }
         ]
     },

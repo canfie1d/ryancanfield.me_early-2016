@@ -15,7 +15,7 @@ const Display = React.createClass({
     getInitialState() {
         return {
             menuActive    : true,
-            activeProject : 'usmexpat',
+            activeProject : this.props.projects[0],
             activeImage   : 1
         };
     },
@@ -26,15 +26,8 @@ const Display = React.createClass({
         });
     },
 
-    onNextClick() {
-        if (this.state.activeImage < this.props.projects.length) {
-            this.setState({
-                activeImage : this.state.activeImage + 1
-            });
-        }
-    },
-
     onPreviousClick() {
+        console.log('here');
         if (this.state.activeImage > 1) {
             this.setState({
                 activeImage : this.state.activeImage - 1
@@ -42,18 +35,21 @@ const Display = React.createClass({
         }
     },
 
+    onNextClick() {
+        console.log(this.state.activeProject);
+        if (this.state.activeImage < this.state.activeProject.images.length) {
+            this.setState({
+                activeImage : this.state.activeImage + 1
+            });
+        }
+    },
+
     renderImages(project) {
         return _.map(project.images, (image, index) => {
-            let activeImageClass = () => {
-                    if(this.state.activeImage === index + 1) {
-                        return 'project__image--active';
-                    }
-                },
-                classes = [
-                    'project__image',
-                    activeImageClass(),
-                    'project__image--' + (index + 1)
-                ];
+            let classes = [
+                'project__image',
+                'project__image--' + this.state.activeImage + '-active'
+            ];
 
             return <img key={index} className={classNames(classes)} src={image.url} />;
         });
@@ -63,7 +59,7 @@ const Display = React.createClass({
         return _.map(this.props.projects, (project, index) => {
             let classes = [
                 'project__list',
-                'project__list--' + this.state.activeProject + '-active'
+                'project__list--' + this.state.activeProject.title + '-active'
             ];
             return (
                 <ul key={index} className={classNames(classes)}>
@@ -73,9 +69,11 @@ const Display = React.createClass({
         });
     },
 
-    onMenuItemClick(project) {
+    onMenuItemClick(index) {
+        let currentProject = this.props.projects[index];
+
         this.setState({
-            activeMenu : project
+            activeProject : currentProject
         });
 
         this.toggleMenu();
@@ -84,11 +82,37 @@ const Display = React.createClass({
     renderMenuItems() {
         return _.map(this.props.projects, (project, index) => {
             return (
-                <li key={index} className='display__menu__item' onClick={_.partial(this.onMenuItemClick, project.title)}>
+                <li key={index} className='display__menu__item' onClick={_.partial(this.onMenuItemClick, index)}>
                     {project.title}
                 </li>
             );
         });
+    },
+
+    renderProjectButtons() {
+        let buttonDisabledClass = () => {
+                if(this.state.activeImage === this.state.activeProject.images.length) {
+                    return 'display__project-button--previous--disabled';
+                } else if (this.state.activeImage === 1) {
+                    return 'display__project-button--next--disabled';
+                }
+
+                return null;
+            },
+            buttonsActiveClass = this.state.menuActive ? null : 'display__project-button--active',
+            classes = [
+                'display__project-button',
+                buttonsActiveClass
+            ];
+
+        return [
+            <div key='prev-button' className={classNames(classes, 'display__project-button--previous', buttonDisabledClass())} onClick={this.onPreviousClick}>
+                <Icon icon='Caret' colorTheme='white' className='display__project-button__icon' />
+            </div>,
+            <div key='next-button' className={classNames(classes, 'display__project-button--next', buttonDisabledClass())} onClick={this.onNextClick}>
+                <Icon icon='Caret' colorTheme='white' className='display__project-button__icon' />
+            </div>
+        ];
     },
 
     render() {
@@ -104,16 +128,11 @@ const Display = React.createClass({
                     />
                     <div className='display'>
                         {this.renderProjects()}
-                        <div className='display__previous-button' onClick={this.onNextClick}>
-                            <Icon icon='Caret' rotate={90} colorTheme='white' className='display__previous-button__icon' />
-                        </div>
-                        <div className='display__next-button'>
-                            <Icon icon='Caret' rotate={90} colorTheme='white' className='display__next-button__icon'/>
-                        </div>
                     </div>
                 </div>
                 <div className='display__button' />
                 <div className='display__base' />
+                {this.renderProjectButtons()}
             </div>
         );
     },

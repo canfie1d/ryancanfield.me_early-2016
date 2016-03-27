@@ -84,3 +84,77 @@
         transform     : rotateX(30deg) translateX(-50%);
     }
 }
+
+@keyframes highlight-on-appear {
+    0%{background : rgba($white, .2)}
+    50%{background : rgba($white, .2)}
+    100%{background : transparent}
+}
+
+.display__project-button {
+    position   : absolute;
+    top        : rem-calc(20);
+    bottom     : rem-calc(50);
+    width      : rem-calc(50);
+    opacity    : 0;
+    cursor     : pointer;
+    transition : opacity 300ms $ease-in-out-quint,
+                 right 300ms $ease-in-out-quint,
+                 left 300ms $ease-in-out-quint;
+
+    &.display__project-button--previous {
+        left : 0;
+    }
+
+    &.display__project-button--next {
+        right : 0;
+    }
+
+    &.display__project-button--active {
+        animation : highlight-on-appear 1000ms $ease-in-out-quint;
+        opacity   : 1;
+
+        &.display__project-button--previous {
+            left : rem-calc(-55);
+        }
+
+        &.display__project-button--next {
+            right : rem-calc(-55);
+        }
+
+    }
+
+    &:hover,
+    &:focus {
+        outline    : 1px solid $white;
+        background : rgba($white, .2);
+    }
+
+    &.display__project-button--next.display__project-button--previous--disabled,
+    &.display__project-button--previous.display__project-button--next--disabled {
+        &:hover,
+        &:focus {
+            outline    : none;
+            background : transparent;
+            cursor     : default;
+        }
+
+        .icon svg {
+            fill : $gray--400;
+        }
+
+    }
+
+}
+
+.display__project-button__icon {
+    position  : absolute;
+    top       : 50%;
+    left      : 50%;
+    transform : translate(-50%, -50%);
+
+    .display__project-button--previous & {
+        transform : translate(-50%, -50%) rotate(180deg);
+    }
+
+}
