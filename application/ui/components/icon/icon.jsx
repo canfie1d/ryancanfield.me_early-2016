@@ -2,7 +2,7 @@ import React from 'react';
 
 const Icon = React.createClass({
 
-    displayName: 'Icon',
+    displayName : 'Icon',
 
     propTypes: {
         icon: React.PropTypes.string.isRequired,

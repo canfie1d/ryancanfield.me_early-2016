@@ -1,0 +1,86 @@
+.display__body {
+    @include flexContainer(true);
+    align-items        : stretch;
+    @include flexItem(1, 0, rem-calc(960));
+    width              : 100%;
+    min-height         : rem-calc(540);
+    position           : relative;
+    background         : transparent;
+    border             : 5px solid $white;
+    border-radius      : rem-calc(25);
+    perspective        : 150px;
+    perspective-origin : 50% 100%;
+}
+
+.display__inner-bezel {
+    position      : relative;
+    @include flexContainer(true);
+    align-items   : stretch;
+    @include flexItem(0, 0, calc(100% - #{rem-calc(40)}));
+    min-height    : rem-calc(510);
+    margin        : rem-calc(20 20 50);
+    background    : transparent;
+    border        : 2px solid $white;
+    border-radius : rem-calc(5);
+    overflow-y    : auto;
+    background    : $gray--800;
+
+    @include min-screen($media-xsmall) {
+        @include flexItem(0, 0, calc(100% - #{rem-calc(80)}), 'stretch');
+        margin : rem-calc(20 60 20 20);
+    }
+
+    @include min-screen($media-small) {
+        @include flexItem(0, 0, calc(100% - #{rem-calc(40)}), 'stretch');
+        margin : rem-calc(20 20 50);
+    }
+
+}
+
+.display {
+    position  : absolute;
+    top       : 0;
+    right     : 0;
+    bottom    : 0;
+    left      : 0;
+    @include flexContainer(false);
+    flex-wrap : nowrap;
+    overflow  : hidden;
+}
+
+.display__button {
+    position      : absolute;
+    top           : calc(100% - #{rem-calc(40)});
+    left          : 50%;
+    width         : rem-calc(30);
+    height        : rem-calc(30);
+    border        : 2px solid $white;
+    border-radius : 50%;
+    transform     : translateX(-50%);
+
+    @include min-screen($media-xsmall) {
+        top           : 50%;
+        transform     : translate(0, -50%);
+        left          : calc(100% - #{rem-calc(45)});
+    }
+
+    @include min-screen($media-small) {
+        display : none;
+    }
+}
+
+.display__base {
+    display : none;
+
+    @include min-screen($media-small) {
+        position      : absolute;
+        top           : calc(100% - #{rem-calc(5)});
+        left          : 50%;
+        display       : block;
+        width         : 25vw;
+        height        : 10vh;
+        border        : 5px solid $white;
+        border-radius : rem-calc(0 0 10 10);
+        transform     : rotateX(30deg) translateX(-50%);
+    }
+}

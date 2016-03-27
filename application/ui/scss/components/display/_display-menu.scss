@@ -1,0 +1,42 @@
+.display__menu__wrapper {
+    @include flexContainer(true);
+    align-items : stretch;
+    position    : relative;
+    width       : 100%;
+}
+
+.display__menu {
+    @include flexContainer(true);
+    @include flexItem(1, 1, auto);
+    transform  : translateY(-100%);
+    transition : transform 300ms $ease-in-out-quint;
+    background : $gray--500;
+    z-index    : 1;
+
+    &.display__menu--active {
+        transform : translateY(0);
+    }
+}
+
+.display__menu__item {
+    @include styledAnchor($display-font,#{rem-calc(34)},$gray--800,$white);
+    @include flexItem(1, 1, auto);
+    padding : rem-calc(20);
+    cursor  : pointer;
+}
+
+.display__menu__button {
+    position    : absolute;
+    top         : rem-calc(5);
+    left        : rem-calc(5);
+    padding     : rem-calc(5);
+    font-family : $body-font;
+    color       : $white;
+    z-index     : 2;
+
+    &:hover,
+    &:focus {
+        outline : 1px solid $white;
+    }
+
+}

@@ -23,6 +23,10 @@
 @import "components/icons/icons-base";
 //navigation
 @import "components/menu/menu";
+//display
+@import "components/display/display";
+@import "components/display/display-menu";
+@import "components/display/projects";
 // pages
 @import "pages/pages",
         "pages/page-transitions";

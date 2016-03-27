@@ -27,10 +27,56 @@
   // Improves readability when focused and also mouse hovered in all browsers
   &:hover,
   &:active {
-    text-decoration: underline;
-    color: shade($primary, 10%);
-    outline: 0;
+    text-decoration : underline;
+    color           : shade($primary, 10%);
+    outline         : 0;
   }
+
+}
+
+@mixin styledAnchor(
+    $font-family       : $body-font,
+    $font-size         : #{rem-calc(20)},
+    $font-color        : $white,
+    $font-color--hover : $black,
+    $background-color  : $font-color
+) {
+    position    : relative;
+    font-family : $font-family;
+    font-size   : $font-size;
+    color       : $font-color;
+    transition  : color 100ms ease-out;
+
+    &::before {
+        content    : '';
+        position   : absolute;
+        top        : calc(100% - 1px);
+        right      : 0;
+        bottom     : 0;
+        left       : 0;
+        background : $background-color;
+        transition : top 100ms ease-out;
+        z-index    : -1;
+    }
+
+    &:focus {
+        outline : 0;
+    }
+
+    &:hover,
+    &:focus {
+        color : $font-color--hover;
+
+        &::before {
+            top : 0;
+        }
+
+    }
+
+    &:active,
+    &:visited {
+        color : $font-color;
+    }
 
 }
 
