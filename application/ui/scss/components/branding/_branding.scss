@@ -1,11 +1,9 @@
 // vars //
 
 // container dimensions
-$small-height  : .4145em;
-$medium-height : .833em;
+$medium-height : rem-calc(26.6666);
 $large-height  : rem-calc(40);
-$small-width   : rem-calc(20);
-$medium-width  : rem-calc(40);
+$medium-width  : rem-calc(80);
 $large-width   : rem-calc(120);
 
 // transitions
@@ -13,14 +11,12 @@ $transition-duration : 300ms;
 $transition-timing   : ease-in-out;
 
 // letter box sizes
-$small-letter-width  : rem-calc(5);
-$medium-letter-width : rem-calc(10);
+$medium-letter-width : rem-calc(20);
 $large-letter-width  : rem-calc(30);
 
 // fonts
 $font-family      : $display-font--enhance;
-$small-font-size  : 0;
-$medium-font-size : 6px;
+$medium-font-size : 1em;
 $large-font-size  : 2em;
 
 .branding {
@@ -30,6 +26,7 @@ $large-font-size  : 2em;
     display     : flex;
     flex-wrap   : wrap;
     max-width   : $medium-width;
+    z-index     : 10;
     cursor      : pointer;
     outline     : 1px solid transparent;
     transition  : max-width $transition-duration $transition-timing,
@@ -152,7 +149,7 @@ $large-font-size  : 2em;
 .branding__letter {
     flex           : 0 0 auto;
     width          : $medium-letter-width;
-    height         : $medium-height;
+    height         : rem-calc(12.5);
     font-family    : $font-family;
     text-transform : uppercase;
     text-align     : center;
@@ -173,8 +170,8 @@ $large-font-size  : 2em;
         color : $workColor;
     }
 
-    &.branding__letter--snippets {
-        color : $snippetsColor;
+    &.branding__letter--process {
+        color : $processColor;
     }
 
     &.branding__letter--about {

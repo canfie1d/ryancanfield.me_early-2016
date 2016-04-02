@@ -5,32 +5,36 @@
     overflow   : hidden;
     transition : transform 300ms $ease-in-out-quint;
 
-    &.project__list--usmexpat-active {
+    &.project__list--1-active {
         transform : translateY(0);
     }
 
-    &.project__list--notusmexpat-active {
+    &.project__list--2-active {
         transform : translateY(-100%);
     }
 
-    &.project__list--notusmexpat2-active {
+    &.project__list--3-active {
         transform : translateY(-200%);
     }
 
-    &.project__list--3 {
+    &.project__list--4-active {
         transform : translateY(-300%);
     }
 
-    &.project__list--4 {
+    &.project__list--5-active {
         transform : translateY(-400%);
     }
 
-    &.project__list--5 {
+    &.project__list--6-active {
         transform : translateY(-500%);
     }
 
-    &.project__list--6 {
+    &.project__list--7-active {
         transform : translateY(-600%);
+    }
+
+    &.project__list--8-active {
+        transform : translateY(-700%);
     }
 
 }

@@ -8,6 +8,7 @@
 .display__menu {
     @include flexContainer(true);
     @include flexItem(1, 1, auto);
+    align-self : stretch;
     transform  : translateY(-100%);
     transition : transform 300ms $ease-in-out-quint;
     background : $gray--500;

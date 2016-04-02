@@ -17,7 +17,14 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
     displayName: 'MenuList',
 
     propTypes: {
-        menuItems : React.PropTypes.array.isRequired
+        menuItems : React.PropTypes.array.isRequired,
+        fixW      : React.PropTypes.bool
+    },
+
+    getDefaultProps() {
+        return {
+            fixW : false
+        };
     },
 
     componentWillUnmount() {
@@ -61,8 +68,9 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
                             href         = {item.url}
                             target       = '_blank'
                             className    = 'menu__link'
-                            onMouseOver = {_.partial(this.activeMenuItem, item.url)}
-                            onMouseOut = {this.inactiveMenuItem}
+                            onMouseOver  = {_.partial(this.activeMenuItem, item.url)}
+                            onMouseOut   = {this.inactiveMenuItem}
+                            onTouchEnd   = {this.inactiveMenuItem}
                             onFocus      = {_.partial(this.activeMenuItem, item.url)}
                             onBlur       = {this.inactiveMenuItem}
                         >
@@ -78,6 +86,7 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
                         className    = 'menu__link'
                         onMouseOver = {_.partial(this.activeMenuItem, item.url)}
                         onMouseOut = {this.inactiveMenuItem}
+                        onTouchEnd   = {this.inactiveMenuItem}
                         onFocus      = {_.partial(this.activeMenuItem, item.url)}
                         onBlur       = {this.inactiveMenuItem}
                         >
@@ -95,17 +104,22 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
     },
 
     render() {
-        let classes = classNames({
+        let iconClasses = classNames({
             'menu__icon-list'         : true,
             'menu__icon-list--hidden' : this.props.currentMenuItem !== ''
         });
 
+        let itemClasses = classNames({
+            'menu__list'       : true,
+            'menu__list--fixW' : this.props.fixW
+        });
+
         return (
             <nav className='menu' aria-role='navigation'>
-                <ul className={classes}>
+                <ul className={iconClasses}>
                     {this.renderIcons()}
                 </ul>
-                <ul className="menu__list">
+                <ul className={itemClasses}>
                     {this.renderItems()}
                 </ul>
             </nav>

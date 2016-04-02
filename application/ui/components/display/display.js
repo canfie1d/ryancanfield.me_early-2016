@@ -21,13 +21,20 @@ const Display = React.createClass({
     },
 
     toggleMenu() {
-        this.setState({
-            menuActive : ! this.state.menuActive
-        });
+        if (!this.state.menuActive) {
+            this.setState({
+                menuActive    : true,
+                activeProject : this.props.projects[0]
+            });
+        } else {
+            this.setState({
+                menuActive : false
+            });
+        }
+
     },
 
     onPreviousClick() {
-        console.log('here');
         if (this.state.activeImage > 1) {
             this.setState({
                 activeImage : this.state.activeImage - 1
@@ -36,7 +43,6 @@ const Display = React.createClass({
     },
 
     onNextClick() {
-        console.log(this.state.activeProject);
         if (this.state.activeImage < this.state.activeProject.images.length) {
             this.setState({
                 activeImage : this.state.activeImage + 1
@@ -59,7 +65,7 @@ const Display = React.createClass({
         return _.map(this.props.projects, (project, index) => {
             let classes = [
                 'project__list',
-                'project__list--' + this.state.activeProject.title + '-active'
+                'project__list--' + this.state.activeProject.id + '-active'
             ];
             return (
                 <ul key={index} className={classNames(classes)}>
@@ -73,7 +79,8 @@ const Display = React.createClass({
         let currentProject = this.props.projects[index];
 
         this.setState({
-            activeProject : currentProject
+            activeProject : currentProject,
+            activeImage   : 1
         });
 
         this.toggleMenu();
@@ -82,7 +89,7 @@ const Display = React.createClass({
     renderMenuItems() {
         return _.map(this.props.projects, (project, index) => {
             return (
-                <li key={index} className='display__menu__item' onClick={_.partial(this.onMenuItemClick, index)}>
+                <li key={index} className='display__menu__item' onClick={this.onMenuItemClick}>
                     {project.title}
                 </li>
             );

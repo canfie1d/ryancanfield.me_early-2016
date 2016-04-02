@@ -1,17 +1,17 @@
 import React    from 'react';
-import MenuList from '../components/menu-list/menu-list';
+import MenuList from '../components/list/menu-list';
 import Branding from '../components/branding/branding';
 
 const NAV_ITEMS = [
     {
-        title    : 'Selected Work',
+        title    : 'Work',
         url      : 'work',
         icon     : 'Back',
         external : false
     },
     {
-        title    : 'Code Snippets',
-        url      : 'snippets',
+        title    : 'Process',
+        url      : 'process',
         icon     : 'Cancel',
         external : false
     },
@@ -37,7 +37,7 @@ const MenuPage = React.createClass({
         return (
             <div key='menu-page' className='menu-page__content'>
                 <Branding />
-                <MenuList menuItems={NAV_ITEMS} />
+                <MenuList menuItems={NAV_ITEMS} fixW />
             </div>
         );
     },

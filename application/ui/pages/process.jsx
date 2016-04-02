@@ -10,9 +10,9 @@ let getPropsFromApplicationState = (state) => {
     };
 };
 
-const SnippetsPage = connect(getPropsFromApplicationState)(React.createClass({
+const ProcessPage = connect(getPropsFromApplicationState)(React.createClass({
 
-    displayName: 'SnippetsPage',
+    displayName: 'ProcessPage',
 
     onBackClick() {
         browserHistory.push('/');
@@ -21,7 +21,7 @@ const SnippetsPage = connect(getPropsFromApplicationState)(React.createClass({
     render() {
 
         return (
-            <div key='snippets-page' className='page__content-container'>
+            <div key='process-page' className='page__content-container'>
                 <BackButton onClick={this.onBackClick} />
             </div>
         );
@@ -29,4 +29,4 @@ const SnippetsPage = connect(getPropsFromApplicationState)(React.createClass({
 
 }));
 
-export default SnippetsPage;
+export default ProcessPage;

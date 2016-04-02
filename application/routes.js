@@ -4,7 +4,7 @@ import { Route, Redirect, IndexRoute } from 'react-router';
 
 import SiteLayout from './ui/layouts/site';
 import MenuPage from './ui/pages/menu';
-import SnipetsPage from './ui/pages/snippets';
+import ProcessPage from './ui/pages/process';
 import WorkPage from './ui/pages/work';
 import AboutPage from './ui/pages/about';
 import ElsewherePage from './ui/pages/elsewhere';
@@ -30,8 +30,8 @@ function getEnvironmentDependentRoutes() {
 export default (
     <Route path="/" component={SiteLayout}>
         <IndexRoute component={MenuPage}/>
-        <Route path="/snippets" component={SnipetsPage}/>
         <Route path="/work" component={WorkPage}/>
+        <Route path="/process" component={ProcessPage}/>
         <Route path="/about" component={AboutPage}/>
         <Route path="/elsewhere" component={ElsewherePage}/>
         <Route path="/secret" component={SecretPage}/>

@@ -5,19 +5,19 @@ $transition-duration : 300ms;
 ///////////////////
 // SNIPPETS PAGE //
 ///////////////////
-.snippets-page {
+.process-page {
 
-  // controls snippets enter from menu page
-  &.snippets-enter {
+  // controls process enter from menu page
+  &.process-enter {
       transform  : translate3d(-100%, 0, 0);
       transition : transform $transition-duration $transiton-timing;
   }
 
-  &.snippets-enter.snippets-enter-active {
+  &.process-enter.process-enter-active {
       transform : translate3d(0, 0, 0);
   }
 
-  // controls snippets leave from snippets page
+  // controls process leave from process page
   &.menu-leave {
     transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing2;
@@ -31,13 +31,13 @@ $transition-duration : 300ms;
 
 .menu-page {
   // controls menu leave from menu page
-  // when going to snippets page
-  &.snippets-leave {
+  // when going to process page
+  &.process-leave {
     transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
-  &.snippets-leave.snippets-leave-active {
+  &.process-leave.process-leave-active {
     transform : translate3d(100%, 0, 0);
   }
 
