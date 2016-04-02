@@ -1,5 +1,7 @@
 .menu {
-    position : relative;
+    position   : relative;
+    display    : inline-block;
+    text-align : left;
 }
 
 .menu__list {
@@ -14,11 +16,15 @@
     }
 
     &.list {
-        margin-left : rem-calc(20);
+        @include min-screen($media-small) {
+            margin-left : rem-calc(30);
+        }
+
     }
 }
 
 .menu__item {
+
     .menu__link:hover::before,
     .menu__link:focus::before {
         box-shadow : inset 0 0 300px 0 rgba($black, .10);
@@ -109,66 +115,64 @@
         opacity : 0;
     }
 
-    .menu__icon {
-        position : absolute;
-        height   : rem-calc(35);
-        margin   : rem-calc(10) 0;
+}
+
+.menu__icon {
+    position : absolute;
+    top      : rem-calc(20);
+    left     : rem-calc(-100);
+    height   : rem-calc(60);
+
+    svg {
+        fill : $workColor;
+    }
+
+    &:nth-of-type(2) {
+        top        : 25%;
+        margin-top : rem-calc(10);
 
         svg {
-            fill : $workColor;
-        }
-
-        &:nth-of-type(2) {
-            top        : 25%;
-            margin-top : rem-calc(15);
-
-            svg {
-                fill : $processColor;
-            }
-
-        }
-
-        &:nth-of-type(3) {
-            top        : 50%;
-            margin-top : rem-calc(20);
-
-            svg {
-                fill : $aboutColor;
-            }
-
-        }
-
-        &:nth-of-type(4) {
-            top        : 75%;
-            margin-top : rem-calc(25);
-
-            svg {
-                fill : $elsewhereColor;
-
-                .elsewhere-page & {
-                    fill : $quaternary--dark;
-                }
-
-            }
-
+            fill : $processColor;
         }
 
     }
 
-    .menu__icon {
-        display : block;
-        left    : rem-calc(-50);
+    &:nth-of-type(3) {
+        top        : 50%;
+        margin-top : rem-calc(10);
+
+        svg {
+            fill : $aboutColor;
+        }
+
+    }
+
+    &:nth-of-type(4) {
+        top        : 75%;
+        margin-top : rem-calc(5);
+
+        svg {
+            fill : $elsewhereColor;
+
+            .elsewhere-page & {
+                fill : $quaternary--dark;
+            }
+
+        }
+
     }
 
 }
 
 .menu__link {
     display         : block;
-    margin          : rem-calc(20) 0;
+    max-width       : rem-calc(650);
+    margin          : rem-calc(20) auto;
     z-index         : 1;
     font-family     : $display-font--enhance;
     font-size       : rem-calc(54);
     text-decoration : none;
+    text-align      : left;
     white-space     : nowrap;
     user-select     : none;
     transition      : font-size 300ms $ease-out-back,

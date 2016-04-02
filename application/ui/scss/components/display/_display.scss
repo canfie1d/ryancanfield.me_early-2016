@@ -1,9 +1,9 @@
 .display__body {
     @include flexContainer(true);
-    align-items        : stretch;
+    align-items        : flex-start;
     @include flexItem(1, 0, rem-calc(960));
     width              : 100%;
-    min-height         : rem-calc(540);
+    padding-bottom     : calc(56% + #{rem-calc(40)});
     position           : relative;
     background         : transparent;
     border             : 5px solid $white;
@@ -13,26 +13,26 @@
 }
 
 .display__inner-bezel {
-    position      : relative;
+    position        : absolute;
+    top             : 50%;
+    left            : calc(50% - #{rem-calc(20)});
+    transform       : translate(-50%, -50%);
     @include flexContainer(true);
-    align-items   : stretch;
-    @include flexItem(0, 0, calc(100% - #{rem-calc(40)}));
-    min-height    : rem-calc(510);
-    margin        : rem-calc(20 20 50);
-    background    : transparent;
-    border        : 2px solid $white;
-    border-radius : rem-calc(5);
-    overflow-y    : auto;
-    background    : $gray--800;
+    align-items     : stretch;
+    @include flexItem(0, 0, calc(100% - #{rem-calc(80)}));
+    width           : calc(100% - #{rem-calc(80)});
+    padding-bottom  : 56%;
+    background      : transparent;
+    border          : 2px solid $white;
+    border-radius   : rem-calc(5);
+    overflow-y      : auto;
+    background      : $gray--800;
 
-    @include min-screen($media-xsmall) {
-        @include flexItem(0, 0, calc(100% - #{rem-calc(80)}), 'stretch');
-        margin : rem-calc(20 60 20 20);
-    }
 
-    @include min-screen($media-small) {
+    @include min-screen($media-medium) {
+        left  : 50%;
         @include flexItem(0, 0, calc(100% - #{rem-calc(40)}), 'stretch');
-        margin : rem-calc(20 20 50);
+        width : calc(100% - #{rem-calc(40)});
     }
 
 }
@@ -43,7 +43,7 @@
     right          : 0;
     bottom         : 0;
     left           : 0;
-    @include flexContainer(false);
+    @include flexContainer();
     flex-direction : column;
     flex-wrap      : nowrap;
     overflow       : hidden;
@@ -51,29 +51,24 @@
 
 .display__button {
     position      : absolute;
-    top           : calc(100% - #{rem-calc(40)});
-    left          : 50%;
+    top           : 50%;
+    left          : calc(100% - #{rem-calc(45)});
     width         : rem-calc(30);
     height        : rem-calc(30);
     border        : 2px solid $white;
     border-radius : 50%;
-    transform     : translateX(-50%);
+    transform     : translateY(-50%);
 
-    @include min-screen($media-xsmall) {
-        top           : 50%;
-        transform     : translate(0, -50%);
-        left          : calc(100% - #{rem-calc(45)});
-    }
-
-    @include min-screen($media-small) {
+    @include min-screen($media-medium) {
         display : none;
     }
+
 }
 
 .display__base {
     display : none;
 
-    @include min-screen($media-small) {
+    @include min-screen($media-medium) {
         position      : absolute;
         top           : calc(100% - #{rem-calc(5)});
         left          : 50%;

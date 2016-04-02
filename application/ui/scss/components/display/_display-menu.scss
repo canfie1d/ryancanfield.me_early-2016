@@ -1,7 +1,11 @@
 .display__menu__wrapper {
     @include flexContainer(true);
     align-items : stretch;
-    position    : relative;
+    position    : absolute;
+    top         : 0;
+    right       : 0;
+    bottom      : 0;
+    left        : 0;
     width       : 100%;
 }
 
@@ -20,10 +24,15 @@
 }
 
 .display__menu__item {
-    @include styledAnchor($display-font,#{rem-calc(34)},$gray--800,$white);
+    @include styledAnchor($display-font,#{rem-calc(24)},$gray--800,$white);
     @include flexItem(1, 1, auto);
     padding : rem-calc(20);
     cursor  : pointer;
+
+    @include min-screen($media-medium) {
+        font-size : rem-calc(34)
+    }
+
 }
 
 .display__menu__button {

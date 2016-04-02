@@ -1,5 +1,5 @@
 .project__list {
-    @include flexContainer(false);
+    @include flexContainer();
     flex-wrap  : nowrap;
     @include flexItem(0, 0, 100%);
     overflow   : hidden;

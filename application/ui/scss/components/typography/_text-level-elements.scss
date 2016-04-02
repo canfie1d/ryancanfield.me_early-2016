@@ -5,35 +5,6 @@
 
 // *******************************************
 // *******************************************
-
-////////////////////////////
-//                       //
-//     Text-level 1      //
-//                       //
-///////////////////////////
-
-// links
-.a {
-  color: $primary;
-  background: transparent;
-  cursor: pointer;
-  transition: color 200ms ease;
-
-  // Addresses outline displayed oddly in Chrome
-  &:focus {
-    outline: thin dotted;
-  }
-
-  // Improves readability when focused and also mouse hovered in all browsers
-  &:hover,
-  &:active {
-    text-decoration : underline;
-    color           : shade($primary, 10%);
-    outline         : 0;
-  }
-
-}
-
 @mixin styledAnchor(
     $font-family       : $body-font,
     $font-size         : #{rem-calc(20)},
@@ -77,6 +48,61 @@
     &:visited {
         color : $font-color;
     }
+
+}
+
+.page__inline-a {
+    @include styledAnchor($body-font,#{rem-calc(20)},$white,$white);
+    line-height     : 1.5;
+    text-decoration : none;
+
+    &:hover,
+    &:focus {
+        .process-page & {
+            color : $processColor;
+        }
+
+        .about-page & {
+            color : $aboutColor;
+        }
+
+        .work-page & {
+            color : $workColor;
+        }
+
+        .elsewhere-page & {
+            color : $elsewhereColor;
+        }
+
+    }
+
+}
+
+////////////////////////////
+//                       //
+//     Text-level 1      //
+//                       //
+///////////////////////////
+
+// links
+.a {
+  color: $primary;
+  background: transparent;
+  cursor: pointer;
+  transition: color 200ms ease;
+
+  // Addresses outline displayed oddly in Chrome
+  &:focus {
+    outline: thin dotted;
+  }
+
+  // Improves readability when focused and also mouse hovered in all browsers
+  &:hover,
+  &:active {
+    text-decoration : underline;
+    color           : shade($primary, 10%);
+    outline         : 0;
+  }
 
 }
 

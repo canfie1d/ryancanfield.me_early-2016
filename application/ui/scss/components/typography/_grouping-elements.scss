@@ -6,7 +6,20 @@
 // *******************************************
 // *******************************************
 //
-//
+.page__p {
+    max-width   : rem-calc(650);
+    margin      : auto;
+    font-family : $body-font;
+    font-size   : rem-calc(20);
+    line-height : 1.5;
+    color       : $white;
+    text-align  : left;
+
+    &:not(:last-of-type) {
+        margin-bottom : rem-calc(60);
+    }
+
+}
 
 .p {
   margin: rem-calc(0 0 16 0);
