@@ -6,25 +6,25 @@ const NAV_ITEMS = [
     {
         title    : 'Work',
         url      : 'work',
-        icon     : 'Back',
+        icon     : 'Work',
         external : false
     },
     {
         title    : 'Process',
         url      : 'process',
-        icon     : 'Cancel',
+        icon     : 'Process',
         external : false
     },
     {
         title    : 'About Me',
         url      : 'about',
-        icon     : 'Caret',
+        icon     : 'About',
         external : false
     },
     {
         title    : 'Elsewhere',
         url      : 'elsewhere',
-        icon     : 'Group',
+        icon     : 'Elsewhere',
         external : false
     }
 ];

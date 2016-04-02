@@ -48,7 +48,7 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
                         key       = {index}
                         className = 'menu__icon'
                         icon      = {icon.icon}
-                        size      = 'large'
+                        size      = 'x-large'
                     />
                 );
             }
@@ -103,12 +103,22 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
         });
     },
 
-    render() {
-        let iconClasses = classNames({
-            'menu__icon-list'         : true,
-            'menu__icon-list--hidden' : this.props.currentMenuItem !== ''
-        });
+    renderIconList() {
+        if(_.findIndex(this.props.menuItems, 'icon') === 0) {
+            let iconClasses = classNames({
+                'menu__icon-list'         : true,
+                'menu__icon-list--hidden' : this.props.currentMenuItem !== ''
+            });
 
+            return (
+                <ul className={iconClasses}>
+                    {this.renderIcons()}
+                </ul>
+            );
+        }
+    },
+
+    render() {
         let itemClasses = classNames({
             'menu__list'       : true,
             'menu__list--fixW' : this.props.fixW
@@ -116,9 +126,7 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
 
         return (
             <nav className='menu' aria-role='navigation'>
-                <ul className={iconClasses}>
-                    {this.renderIcons()}
-                </ul>
+                {this.renderIconList()}
                 <ul className={itemClasses}>
                     {this.renderItems()}
                 </ul>

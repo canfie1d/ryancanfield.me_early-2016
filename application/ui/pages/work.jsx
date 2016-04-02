@@ -5,6 +5,8 @@ import { connect }        from 'react-redux';
 import BackButton         from '../components/buttons/back-button';
 import Display            from '../components/display/display';
 import List               from '../components/list/list';
+import Icon               from '../components/icon/icon';
+import Header             from '../components/regions/header';
 
 const CLIENTS = [
     {
@@ -128,16 +130,30 @@ const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
     renderContent() {
         if (this.props.browser.greaterThan.small) {
             return [
-                <h1 key='title1' className='page__title page__title--fixW'>Work</h1>,
+                <Header
+                    key   = 'header1'
+                    title = 'Work'
+                    icon  = 'Work'
+                    fixW
+                />,
                 <Display key='component1' projects={PROJECTS} />,
-                <h1 key='title2' className='page__title l--m-top-200'>Clients</h1>,
+                <Header
+                    key   = 'header2'
+                    title = 'Clients'
+                    icon  = 'Work'
+                    marginTop
+                />,
                 <List key='component2' listItems={CLIENTS} />
             ];
         }
 
         return [
-            <h1 className='page__title'>Clients</h1>,
-            <List listItems={CLIENTS} />
+            <Header
+                key   = 'header'
+                title = 'Clients'
+                icon  = 'Work'
+            />,
+            <List key = 'list' listItems={CLIENTS} />
         ];
     },
 

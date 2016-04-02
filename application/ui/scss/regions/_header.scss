@@ -1,0 +1,57 @@
+.page__header {
+    @include flexContainer();
+
+    &.page__header--margin-top {
+        @include min-screen($media-small) {
+            margin-top : rem-calc(100);
+        }
+
+        @include min-screen($media-medium) {
+            margin-top : rem-calc(172);
+        }
+
+    }
+
+    @include min-screen($media-medium) {
+        margin : auto;
+    }
+
+}
+
+.page__header__icon {
+    @include flexItem(0, 0, auto);
+    margin : rem-calc(6 0 26);
+
+    @include min-screen($media-small) {
+        margin : rem-calc(6 0 26);
+    }
+
+    @include min-screen($media-medium) {
+        margin : rem-calc(32 0 52);
+    }
+}
+
+.page__header__title {
+    @include flexItem(1, 0, auto);
+    font-family : $display-font--enhance;
+    font-size   : rem-calc(62);
+    color       : $white;
+    text-align  : left;
+    transition  : font-size 200ms ease;
+    margin-left : rem-calc(10);
+
+    &.page__header__title--fixW::first-letter {
+        letter-spacing : -.2em;
+    }
+
+    @include min-screen($media-small) {
+        margin-left : rem-calc(20);
+        font-size   : rem-calc(92);
+    }
+
+    @include min-screen($media-medium) {
+        font-size : rem-calc(144);
+        max-width : rem-calc(650);
+    }
+
+}

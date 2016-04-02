@@ -53,72 +53,6 @@
     background : $gray--800;
 }
 
-.page-content {
-    max-width : rem-calc(1024);
-    margin    : auto;
-}
-
-.page__title {
-    font-family : $display-font--enhance;
-    font-size   : rem-calc(62);
-    color       : $white;
-    transition  : font-size 200ms ease;
-
-    &.page__title--fixW::first-letter {
-        letter-spacing : -.2em;
-    }
-
-    @include min-screen($media-small) {
-        font-size : rem-calc(92);
-    }
-
-    @include min-screen($media-medium) {
-        font-size : rem-calc(144);
-    }
-
-}
-
-.page__p {
-    max-width   : rem-calc(650);
-    margin      : auto;
-    font-family : $body-font;
-    font-size   : rem-calc(20);
-    line-height : 1.5;
-    color       : $white;
-
-    &:not(:last-of-type) {
-        margin-bottom : rem-calc(60);
-    }
-
-}
-
-.page__inline-a {
-    @include styledAnchor($body-font,#{rem-calc(20)},$white,$white);
-    line-height     : 1.5;
-    text-decoration : none;
-
-    &:hover,
-    &:focus {
-        .process-page & {
-            color : $processColor;
-        }
-
-        .about-page & {
-            color : $aboutColor;
-        }
-
-        .work-page & {
-            color : $workColor;
-        }
-
-        .elsewhere-page & {
-            color : $elsewhereColor;
-        }
-
-    }
-
-}
-
 .page__content-container {
     height   : 100vh;
     width    : 100%;
@@ -127,7 +61,7 @@
     padding  : rem-calc(120 20);
 
     @include min-screen($media-small) {
-        padding : rem-calc(50 20 50 160);
+        padding : rem-calc(60 20 50 160);
     }
 
     .page__content {
@@ -136,14 +70,27 @@
 
     .process-page &,
     .about-page &,
-    .work-page & {
+    .work-page &,
+    .elsewhere-page & {
         align-items : flex-start;
+    }
+
+    .work-page & {
+
+        @include min-screen($media-small) {
+            padding : rem-calc(50 70 50 180);
+        }
+
     }
 
     .elsewhere-page & {
         justify-content : center;
-        align-items     : center;
         padding-left    : rem-calc(20);
     }
 
+}
+
+.page-content {
+    max-width : rem-calc(1024);
+    margin    : auto;
 }

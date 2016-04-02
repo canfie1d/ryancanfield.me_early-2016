@@ -3,6 +3,8 @@ import { browserHistory } from 'react-router';
 import { connect }        from 'react-redux';
 import MenuList           from '../components/list/menu-list';
 import BackButton         from '../components/buttons/back-button';
+import Icon               from '../components/icon/icon';
+import Header             from '../components/regions/header';
 
 let getPropsFromApplicationState = (state) => {
     return {
@@ -45,7 +47,13 @@ const ElsewherePage = connect(getPropsFromApplicationState)(React.createClass({
         return (
             <div key='elsewhere-page' className='page__content-container'>
                 <BackButton onClick={this.onBackClick} />
-                <MenuList menuItems={ELSEWHERE_ITEMS} />
+                <div className='l--max-width'>
+                    <Header
+                        title = 'Elsewhere'
+                        icon  = 'Elsewhere'
+                    />
+                    <MenuList menuItems={ELSEWHERE_ITEMS} />
+                </div>
             </div>
         );
     },
