@@ -1,5 +1,6 @@
 .page__header {
     @include flexContainer();
+    margin-bottom : rem-calc(40);
 
     &.page__header--margin-top {
         @include min-screen($media-small) {

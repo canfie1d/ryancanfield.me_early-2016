@@ -61,7 +61,7 @@
     padding  : rem-calc(120 20);
 
     @include min-screen($media-small) {
-        padding : rem-calc(60 20 50 160);
+        padding : rem-calc(25 20 50 160);
     }
 
     .page__content {
@@ -75,17 +75,8 @@
         align-items : flex-start;
     }
 
-    .work-page & {
-
-        @include min-screen($media-small) {
-            padding : rem-calc(50 70 50 180);
-        }
-
-    }
-
     .elsewhere-page & {
         justify-content : center;
-        padding-left    : rem-calc(20);
     }
 
 }
