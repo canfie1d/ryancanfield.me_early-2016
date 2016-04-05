@@ -7,6 +7,7 @@ import Display            from '../components/display/display';
 import List               from '../components/list/list';
 import Icon               from '../components/icon/icon';
 import Header             from '../components/regions/header';
+import Footer             from '../components/regions/footer';
 
 const CLIENTS = [
     {
@@ -131,19 +132,20 @@ const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
         if (this.props.browser.greaterThan.small) {
             return [
                 <Header
-                    key   = 'header1'
+                    key   = 'header'
                     title = 'Work'
                     icon  = 'Work'
                     fixW
                 />,
-                <Display key='component1' projects={PROJECTS} />,
-                <Header
-                    key   = 'header2'
-                    title = 'Clients'
-                    icon  = 'Work'
-                    marginTop
-                />,
-                <List key='component2' listItems={CLIENTS} />
+                <main key='component' className='page__content'>
+                    <Display projects={PROJECTS} />
+                    <Header
+                        title = 'Clients'
+                        icon  = 'Work'
+                        marginTop
+                    />
+                    <List listItems={CLIENTS} />
+                </main>
             ];
         }
 
@@ -153,7 +155,9 @@ const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
                 title = 'Clients'
                 icon  = 'Work'
             />,
-            <List key = 'list' listItems={CLIENTS} />
+            <main className='page__content'>
+                <List key='list' listItems={CLIENTS} />
+            </main>
         ];
     },
 
@@ -164,6 +168,9 @@ const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
                 <BackButton onClick={this.onBackClick} />
                 <div className='l--max-width'>
                     {this.renderContent()}
+                    <Footer>
+                        <BackButton onClick={this.onBackClick} staySmall />
+                    </Footer>
                 </div>
             </div>
         );

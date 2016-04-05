@@ -19,6 +19,7 @@
     right      : 0;
     bottom     : 0;
     left       : 0;
+    overflow   : auto;
 }
 
 .process-page,
@@ -54,34 +55,33 @@
 }
 
 .page__content-container {
-    height   : 100vh;
-    width    : 100%;
-    overflow : auto;
-    display  : flex;
-    padding  : rem-calc(120 20);
+    position    : relative;
+    width       : 100%;
+    height      : 100vh;
+    max-width   : 1024px;
+    display     : flex;
+    align-items : flex-start;
+    padding     : rem-calc(120 20);
 
     @include min-screen($media-small) {
         padding : rem-calc(25 20 50 160);
     }
 
-    .page__content {
-        flex : 0 1 auto;
-    }
-
-    .process-page &,
-    .about-page &,
-    .work-page &,
-    .elsewhere-page & {
-        align-items : flex-start;
-    }
-
-    .elsewhere-page & {
+    .menu-page & {
+        align-items     : center;
         justify-content : center;
     }
 
 }
 
-.page-content {
+.page__content {
+    flex      : 0 1 auto;
     max-width : rem-calc(1024);
     margin    : auto;
+
+    &.page__content--p-width {
+        max-width : rem-calc(650);
+        margin    : 0;
+    }
+
 }

@@ -5,6 +5,7 @@ import { connect }        from 'react-redux';
 import BackButton         from '../components/buttons/back-button';
 import Icon               from '../components/icon/icon';
 import Header             from '../components/regions/header';
+import Footer             from '../components/regions/footer';
 
 let getPropsFromApplicationState = (state) => {
     return {
@@ -23,15 +24,21 @@ const ProcessPage = connect(getPropsFromApplicationState)(React.createClass({
     render() {
 
         return (
-            <div key='process-page' className='page__content-container'>
+            <main key='process-page' className='page__content-container'>
                 <BackButton onClick={this.onBackClick} />
                 <div className='l--max-width'>
                     <Header
                         title = 'Process'
                         icon  = 'Process'
-                    />
+                        />
+                    <main className='page__content'>
+
+                    </main>
+                    <Footer>
+                        <BackButton onClick={this.onBackClick} staySmall />
+                    </Footer>
                 </div>
-            </div>
+            </main>
         );
     },
 

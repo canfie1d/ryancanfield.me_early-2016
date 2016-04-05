@@ -6,4 +6,152 @@
 // *******************************************
 // *******************************************
 
-// @Vars
+// @vars
+
+// @MIXIN
+// Normalize button to our base styles
+// resets form and anchor styles
+@mixin button-normalize {
+    background-color   : transparent;
+    border-radius      : 0;
+    border             : 0;
+    line-height        : normal;
+    text-decoration    : none;
+    cursor             : pointer;
+    -webkit-appearance : none;
+    -moz-appearance    : none;
+}
+
+// @MIXIN
+// Add specified button styles
+@mixin button-layout(
+    $display   : $button-display,
+    $min-width : $button-min-width,
+    $margin    : $button-margin
+) {
+    display   : $display;
+    min-width : $min-width;
+    margin    : $margin;
+}
+
+// @MIXIN
+// Size button and font
+@mixin button-size(
+    $padding   : $button-padding,
+    $font-size : $button-font-size
+) {
+    padding   : $padding;
+    font-size : $font-size;
+}
+
+// @MIXIN
+// Add specified button styles
+@mixin button-typography(
+    $font-family : $button-font-family,
+    $font-size   : $button-font-size,
+    $font-color  : $button-font-color,
+    $text-shadow : $button-text-shadow
+) {
+    font-family : $font-family;
+    font-size   : $font-size;
+    color       : $font-color;
+    text-shadow : $text-shadow;
+}
+
+// @MIXIN
+// Add specified button styles
+@mixin button-style(
+    $box-shadow       : $button-bx-shadow,
+    $border-style     : $button-bdr-style,
+    $border-color     : $button-bdr-color,
+    $border-radius    : $button-bdr-rad,
+    $background-color : $button-bg,
+    $background-image : $button-bg-img,
+    $transition       : $button-transition
+) {
+    box-shadow        : $box-shadow;
+    border            : $border-style;
+    border-color      : $border-color;
+    border-radius     : $border-radius;
+    background-color  : $background-color;
+    background-image  : $background-image;
+    transition        : $transition;
+}
+
+// @MIXIN
+// Create a default button component
+@mixin button(
+    $display          : $button-display,
+    $min-width        : $button-min-width,
+    $margin           : $button-margin,
+    $padding          : $button-padding,
+    $box-shadow       : $button-bx-shadow,
+    $border-style     : $button-bdr-style,
+    $border-color     : $button-bdr-color,
+    $border-radius    : $button-bdr-rad,
+    $background-color : $button-bg,
+    $background-image : $button-bg-img,
+    $font-family      : $button-font-family,
+    $font-size        : $button-font-size,
+    $font-color       : $button-font-color,
+    $text-shadow      : $button-text-shadow,
+    $transition       : $button-transition
+) {
+
+    @include button-normalize;
+    @include button-layout(
+        $display,
+        $min-width,
+        $margin
+    );
+    @include button-size(
+        $padding,
+        $font-size
+    );
+    @include button-typography(
+        $font-family,
+        $font-size,
+        $font-color,
+        $text-shadow
+    );
+    @include button-style(
+        $box-shadow,
+        $border-style,
+        $border-color,
+        $border-radius,
+        $background-color,
+        $background-image
+    );
+
+}
+
+// export these default classes
+.button {
+    @include styledAnchor($font-family : $display-font, $font-color--hover : $gray--600);
+    display         : inline-block;
+    min-width       : 0;
+    margin          : 0;
+    padding         : rem-calc(15);
+    box-shadow      : none;
+    border          : 2px solid $white;
+    border-bottom-width : 1px; // because of styled anchor underline
+    background      : transparent;
+    color           : $white;
+    text-shadow     : 1px 1px 2px solid rgba($black, .2);
+    text-decoration : none;
+    transition      : background-color 300ms ease;
+    cursor          : pointer;
+
+    &.disabled,
+    &[disabled] {
+        border-color : $gray--400;
+        color        : $gray--400;
+        cursor       : deflault;
+    }
+
+}
+
+.download-button {
+    display       : inline-block;
+    margin-bottom : rem-calc(20);
+}

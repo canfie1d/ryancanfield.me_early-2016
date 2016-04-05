@@ -5,6 +5,7 @@ import { connect }        from 'react-redux';
 import BackButton         from '../components/buttons/back-button';
 import Icon               from '../components/icon/icon.jsx';
 import Header             from '../components/regions/header';
+import Footer             from '../components/regions/footer';
 
 let getPropsFromApplicationState = (state) => {
     return {
@@ -25,11 +26,11 @@ const AboutPage = connect(getPropsFromApplicationState)(React.createClass({
             <div key='about-page' className='page__content-container'>
                 <BackButton onClick={this.onBackClick} />
                 <div className='l--max-width'>
-                    <div className='page__content'>
-                        <Header
-                            title = 'About Me'
-                            icon  = 'About'
-                        />
+                    <Header
+                        title = 'About Me'
+                        icon  = 'About'
+                    />
+                <main className='page__content page__content--p-width'>
                         <p className='page__p'>
                             My name is Ryan Canfield and I specialize in UI/UX design & front-end development. Upon completing my bachelors of fine arts in graphic design in 2012 I began work in-house as a designer for the Arizona State Fair. In October of 2013, I began working as a UI Engineer at <a target='_blank' href='http://www.synapsestudios.com' className='page__inline-a'>Synapse Studios</a>.
                         </p>
@@ -42,7 +43,13 @@ const AboutPage = connect(getPropsFromApplicationState)(React.createClass({
                         <p className='page__p'>
                             I am very accustomed to using agile development methodology including daily stand-up, sprint based cadences, iterative and incremental development. I am comfortable with complex git workflows as well as kanban style issue tracking services.
                         </p>
-                    </div>
+                    </main>
+                    <Footer pWidth>
+                        <Button className='download-button' element='a' href='#' colorTheme='white'>
+                            Download Résumé PDF
+                        </Button>
+                        <BackButton onClick={this.onBackClick} staySmall />
+                    </Footer>
                 </div>
             </div>
         );

@@ -29,21 +29,31 @@ $large-font-size  : 2em;
     z-index     : 10;
     cursor      : pointer;
     outline     : 1px solid transparent;
+    user-select : none;
     transition  : max-width $transition-duration $transition-timing,
                   text-shadow $transition-duration $transition-timing,
                   outline 300ms $transition-timing;
+
+    &.branding--small {
+        position : relative;
+        top      : 0;
+        left     : 0;
+        margin   : rem-calc(20) auto;
+    }
 
     &.branding--back {
         max-width : calc(#{$medium-width} - #{$medium-letter-width});
     }
 
-    @include min-screen($media-xsmall) {
-        max-width : $large-width;
+    &:not(.branding--small) {
+        @include min-screen($media-xsmall) {
+            max-width : $large-width;
 
-        &.branding--back {
-            max-width : calc(#{$large-width} - #{$large-letter-width});
+            &.branding--back {
+                max-width : calc(#{$large-width} - #{$large-letter-width});
+            }
+
         }
-
     }
 
     &:hover {
@@ -122,8 +132,10 @@ $large-font-size  : 2em;
 
     }
 
-    @include min-screen($media-xsmall) {
-        flex : 1 0 $large-width;
+    &:not(.branding--small) {
+        @include min-screen($media-xsmall) {
+            flex : 1 0 $large-width;
+        }
     }
 
 }
@@ -139,11 +151,12 @@ $large-font-size  : 2em;
                       background $transition-duration $transition-timing,
                       color $transition-duration $transition-timing;
 
-    @include min-screen($media-xsmall) {
-        flex   : 0 0 $large-letter-width;
-        height : $large-height;
+    &:not(.branding--small) {
+        @include min-screen($media-xsmall) {
+            flex   : 0 0 $large-letter-width;
+            height : $large-height;
+        }
     }
-
 }
 
 .branding__letter {
@@ -160,10 +173,12 @@ $large-font-size  : 2em;
                      color $transition-duration $transition-timing,
                      text-shadow $transition-duration $transition-timing;
 
-    @include min-screen($media-xsmall) {
-        font-size : $large-font-size;
-        width     : $large-letter-width;
-        height    : rem-calc(24);
+    &:not(.branding--small) {
+        @include min-screen($media-xsmall) {
+            font-size : $large-font-size;
+            width     : $large-letter-width;
+            height    : rem-calc(24);
+        }
     }
 
     &.branding__letter--work {

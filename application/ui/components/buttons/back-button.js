@@ -1,16 +1,24 @@
-import React from 'react';
+import React      from 'react';
+import classNames from 'classnames';
 
 let BackButton = React.createClass({
 
     displayName: 'BackButton',
 
     propTypes: {
-        onClick : React.PropTypes.func
+        onClick   : React.PropTypes.func,
+        staySmall : React.PropTypes.bool
     },
 
     render() {
+        let classes = [
+            'branding',
+            'branding--back',
+            this.props.staySmall ? 'branding--small' : null
+        ];
+
         return (
-            <div className='branding branding--back' onClick={this.props.onClick} tabIndex='1'>
+            <div className={classNames(classes)} onClick={this.props.onClick} tabIndex='1'>
                 <div className='branding__row'>
                     <div className='branding__column'>
                         <span className='branding__letter'>b</span>

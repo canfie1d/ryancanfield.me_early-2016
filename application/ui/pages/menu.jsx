@@ -35,9 +35,11 @@ const MenuPage = React.createClass({
 
     render() {
         return (
-            <div key='menu-page' className='menu-page__content'>
-                <Branding />
-                <MenuList menuItems={NAV_ITEMS} fixW />
+            <div key='menu-page' className='page__content-container'>
+                <main className='page__content'>
+                    <Branding />
+                    <MenuList menuItems={NAV_ITEMS} fixW />
+                </main>
             </div>
         );
     },

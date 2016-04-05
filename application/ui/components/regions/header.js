@@ -30,10 +30,12 @@ const Header = connect(getPropsFromApplicationState)(React.createClass({
         let iconSize = this.props.browser.greaterThan.small ? 'x-large' : 'large';
 
         return (
-            <div className={classNames(classes)}>
-                <Icon className='page__header__icon' icon={this.props.icon} size={iconSize} colorTheme='white' />
-                <h1 className='page__header__title'>{this.props.title}</h1>
-            </div>
+            <header>
+                <div className={classNames(classes)}>
+                    <Icon className='page__header__icon' icon={this.props.icon} size={iconSize} colorTheme='white' />
+                    <h1 className='page__header__title'>{this.props.title}</h1>
+                </div>
+            </header>
         );
     },
 

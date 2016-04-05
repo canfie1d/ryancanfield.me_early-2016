@@ -5,6 +5,7 @@ import MenuList           from '../components/list/menu-list';
 import BackButton         from '../components/buttons/back-button';
 import Icon               from '../components/icon/icon';
 import Header             from '../components/regions/header';
+import Footer             from '../components/regions/footer';
 
 let getPropsFromApplicationState = (state) => {
     return {
@@ -52,7 +53,9 @@ const ElsewherePage = connect(getPropsFromApplicationState)(React.createClass({
                         title = 'Elsewhere'
                         icon  = 'Elsewhere'
                     />
-                    <MenuList menuItems={ELSEWHERE_ITEMS} />
+                    <main className='page__content'>
+                        <MenuList menuItems={ELSEWHERE_ITEMS} />
+                    </main>
                 </div>
             </div>
         );

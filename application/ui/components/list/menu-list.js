@@ -64,15 +64,16 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
                 if (item.external) {
                     return (
                         <a
-                            key          = {index}
-                            href         = {item.url}
-                            target       = '_blank'
-                            className    = 'menu__link'
-                            onMouseOver  = {_.partial(this.activeMenuItem, item.url)}
-                            onMouseOut   = {this.inactiveMenuItem}
-                            onTouchEnd   = {this.inactiveMenuItem}
-                            onFocus      = {_.partial(this.activeMenuItem, item.url)}
-                            onBlur       = {this.inactiveMenuItem}
+                            key         = {index}
+                            href        = {item.url}
+                            target      = {item.url !== 'mailto:ryancanfield@me.com' ? '_blank' : '_self'}
+                            className   = 'menu__link'
+                            onMouseOver = {_.partial(this.activeMenuItem, item.title)}
+                            onMouseOut  = {this.inactiveMenuItem}
+                            onClick     = {this.inactiveMenuItem}
+                            onTouchEnd  = {this.inactiveMenuItem}
+                            onFocus     = {_.partial(this.activeMenuItem, item.title)}
+                            onBlur      = {this.inactiveMenuItem}
                         >
                             {item.title}
                         </a>
@@ -84,11 +85,12 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
                         key          = {index}
                         to           = {'/' + item.url}
                         className    = 'menu__link'
-                        onMouseOver = {_.partial(this.activeMenuItem, item.url)}
-                        onMouseOut = {this.inactiveMenuItem}
-                        onTouchEnd   = {this.inactiveMenuItem}
                         onFocus      = {_.partial(this.activeMenuItem, item.url)}
                         onBlur       = {this.inactiveMenuItem}
+                        onMouseOver  = {_.partial(this.activeMenuItem, item.url)}
+                        onMouseOut   = {this.inactiveMenuItem}
+                        onMouseDown  = {this.inactiveMenuItem}
+                        onTouchStart = {this.inactiveMenuItem}
                         >
                         {item.title}
                     </Link>

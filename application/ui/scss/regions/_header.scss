@@ -14,7 +14,7 @@
     }
 
     @include min-screen($media-medium) {
-        margin : auto;
+        margin : 0 auto rem-calc(40);
     }
 
 }
@@ -27,9 +27,6 @@
         margin : rem-calc(6 0 26);
     }
 
-    @include min-screen($media-medium) {
-        margin : rem-calc(32 0 52);
-    }
 }
 
 .page__header__title {
@@ -41,17 +38,18 @@
     transition  : font-size 200ms ease;
     margin-left : rem-calc(10);
 
-    &.page__header__title--fixW::first-letter {
-        letter-spacing : -.2em;
+    .page__header--fixW & {
+        &::first-letter {
+            letter-spacing : -.2em;
+        }
     }
 
     @include min-screen($media-small) {
         margin-left : rem-calc(20);
-        font-size   : rem-calc(92);
+        font-size   : rem-calc(90);
     }
 
     @include min-screen($media-medium) {
-        font-size : rem-calc(144);
         max-width : rem-calc(650);
     }
 

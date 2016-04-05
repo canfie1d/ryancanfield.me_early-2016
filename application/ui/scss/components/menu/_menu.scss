@@ -15,12 +15,6 @@
 
     }
 
-    &.list {
-        @include min-screen($media-small) {
-            margin-left : rem-calc(30);
-        }
-
-    }
 }
 
 .menu__item {
@@ -89,6 +83,7 @@
         &:focus::before {
             background : $elsewhereColor;
         }
+
 
         &:hover,
         &:focus {
@@ -167,7 +162,7 @@
 .menu__link {
     display         : block;
     max-width       : rem-calc(650);
-    margin          : rem-calc(20) auto;
+    margin          : rem-calc(20) 0;
     z-index         : 1;
     font-family     : $display-font--enhance;
     font-size       : rem-calc(54);
@@ -221,6 +216,7 @@
         @include min-screen($media-xsmall) {
             font-size: rem-calc(32);
         }
+
     }
 
 }

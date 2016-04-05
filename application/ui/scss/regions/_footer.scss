@@ -1,0 +1,10 @@
+.footer {
+    @include flexContainer(true);
+    align-content : center;
+    padding       : rem-calc(200 0);
+
+    &.footer--p-width {
+        max-width : rem-calc(650);
+    }
+
+}
