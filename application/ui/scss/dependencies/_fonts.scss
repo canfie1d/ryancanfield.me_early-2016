@@ -5,14 +5,14 @@
 ////////////////////////////////////////
 
 // Source Sans Pro
-$source--light: 'source_sans_prolight', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 $source--regular: 'source_sans_proregular', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-$source--bold: 'source_sans_prosemibold', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+
+// Brandon
+$brandon--medium: 'brandon_medium', 'source_sans_prosemibold', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
+$brandon--black: 'brandon_black', 'source_sans_prosemibold', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 
 // Jaapokki
-$jaapokki--regular: 'japokki_regular', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 $jaapokki--enhance: 'japokki_enhance', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
-$jaapokki--subtract: 'japokki_subtract', 'Helvetica Neue', 'Helvetica', Helvetica, Arial, sans-serif;
 
 ///////////////////////////////
 //                           //
@@ -20,28 +20,17 @@ $jaapokki--subtract: 'japokki_subtract', 'Helvetica Neue', 'Helvetica', Helvetic
 //                           //
 ///////////////////////////////
 
-$display-font: $jaapokki--regular !default;
+$display-font: $brandon--medium !default;
+$display-font--bold: $brandon--black !default;
 $display-font--enhance: $jaapokki--enhance !default;
-$display-font--subtract: $jaapokki--subtract !default;
 
 $body-font: $source--regular !default;
-$body-font--light: $source--light !default;
-$body-font--bold: $source--bold !default;
 
 //////////////////////////////////////
 //                                  //
 //      Font-Face Definitions       //
 //                                  //
 //////////////////////////////////////
-
-@font-face {
-  font-family: 'source_sans_prolight';
-  font-weight: normal;
-  font-style: normal;
-  src: local 'Source Sans Pro Light';
-  src: url(../../media/fonts/SourceSansPro/sourcesanspro-light-webfont.woff2) format('woff2');
-  src: url(../../media/fonts/SourceSansPro/sourcesanspro-light-webfont.woff) format('woff');
-}
 
 @font-face {
   font-family: 'source_sans_proregular';
@@ -53,20 +42,21 @@ $body-font--bold: $source--bold !default;
 }
 
 @font-face {
-  font-family: 'source_sans_prosemibold';
-  font-weight: normal;
-  font-style: normal;
-  src: local 'Source Sans Pro Semibold';
-  src: url(../../media/fonts/SourceSansPro/sourcesanspro-semibold-webfont.woff2) format('woff2');
-  src: url(../../media/fonts/SourceSansPro/sourcesanspro-semibold-webfont.woff) format('woff');
+    font-family: 'brandon_medium';
+    font-weight: normal;
+    font-style: normal;
+    src: local 'BrandonGrotesque-Medium Book';
+    src: url(../../media/fonts/Brandon/brandon_grotesque_medium-webfont.woff2) format('woff2');
+    src: url(../../media/fonts/Brandon/brandon_grotesque_medium-webfont.woff) format('woff');
 }
 
 @font-face {
-    font-family: 'japokki_regular';
+    font-family: 'brandon_black';
     font-weight: normal;
     font-style: normal;
-    src: local 'Jaapokki';
-    src: url(../../media/fonts/Jaapokki/jaapokki-regular.woff) format('woff');
+    src: local 'BrandonGrotesque-Black Book';
+    src: url(../../media/fonts/Brandon/brandon_grotesque_black-webfont.woff2) format('woff2');
+    src: url(../../media/fonts/Brandon/brandon_grotesque_black-webfont.woff) format('woff');
 }
 
 @font-face {
@@ -75,13 +65,4 @@ $body-font--bold: $source--bold !default;
   font-style: normal;
   src: local 'Jaapokki enhance';
   src: url(../../media/fonts/Jaapokki/jaapokkienhance-regular.woff) format('woff');
-}
-
-
-@font-face {
-  font-family: 'japokki_subtract';
-  font-weight: normal;
-  font-style: normal;
-  src: local 'Jaapokki subtract';
-  src: url(../../media/fonts/Jaapokki/jaapokkisubtract-regular.woff) format('woff');
 }

@@ -17,14 +17,7 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
     displayName: 'MenuList',
 
     propTypes: {
-        menuItems : React.PropTypes.array.isRequired,
-        fixW      : React.PropTypes.bool
-    },
-
-    getDefaultProps() {
-        return {
-            fixW : false
-        };
+        menuItems : React.PropTypes.array.isRequired
     },
 
     componentWillUnmount() {
@@ -121,15 +114,10 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
     },
 
     render() {
-        let itemClasses = classNames({
-            'menu__list'       : true,
-            'menu__list--fixW' : this.props.fixW
-        });
-
         return (
             <nav className='menu' aria-role='navigation'>
                 {this.renderIconList()}
-                <ul className={itemClasses}>
+                <ul className='menu__list'>
                     {this.renderItems()}
                 </ul>
             </nav>

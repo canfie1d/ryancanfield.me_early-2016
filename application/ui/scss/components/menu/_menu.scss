@@ -4,19 +4,6 @@
     text-align : left;
 }
 
-.menu__list {
-
-    &.menu__list--fixW .menu__item:first-of-type .menu__link {
-        margin-left : -.1em;
-
-        &::first-letter {
-            letter-spacing : -.2em;
-        }
-
-    }
-
-}
-
 .menu__item {
 
     .menu__link:hover::before,
@@ -164,7 +151,7 @@
     max-width       : rem-calc(650);
     margin          : rem-calc(20) 0;
     z-index         : 1;
-    font-family     : $display-font--enhance;
+    font-family     : $display-font--bold;
     font-size       : rem-calc(54);
     text-decoration : none;
     text-align      : left;
@@ -210,8 +197,8 @@
     }
 
     .list & {
-        color : $white !important;
-        font-size: rem-calc(22);
+        color     : $white !important;
+        font-size : rem-calc(22);
 
         @include min-screen($media-xsmall) {
             font-size: rem-calc(32);

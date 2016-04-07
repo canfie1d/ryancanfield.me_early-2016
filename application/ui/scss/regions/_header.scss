@@ -31,18 +31,12 @@
 
 .page__header__title {
     @include flexItem(1, 0, auto);
-    font-family : $display-font--enhance;
+    font-family : $display-font--bold;
     font-size   : rem-calc(62);
     color       : $white;
     text-align  : left;
     transition  : font-size 200ms ease;
     margin-left : rem-calc(10);
-
-    .page__header--fixW & {
-        &::first-letter {
-            letter-spacing : -.2em;
-        }
-    }
 
     @include min-screen($media-small) {
         margin-left : rem-calc(20);

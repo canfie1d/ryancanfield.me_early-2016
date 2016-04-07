@@ -38,7 +38,7 @@ const MenuPage = React.createClass({
             <div key='menu-page' className='page__content-container'>
                 <main className='page__content'>
                     <Branding />
-                    <MenuList menuItems={NAV_ITEMS} fixW />
+                    <MenuList menuItems={NAV_ITEMS} />
                 </main>
             </div>
         );

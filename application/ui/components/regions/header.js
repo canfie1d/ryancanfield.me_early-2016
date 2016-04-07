@@ -16,14 +16,12 @@ const Header = connect(getPropsFromApplicationState)(React.createClass({
     propTypes : {
         title     : React.PropTypes.string,
         icon      : React.PropTypes.string,
-        marginTop : React.PropTypes.bool,
-        fixW      : React.PropTypes.bool,
+        marginTop : React.PropTypes.bool
     },
 
     render() {
         let classes = [
             'page__header',
-            this.props.fixW ? 'page__header--fixW' : null,
             this.props.marginTop ? 'page__header--margin-top' : null
         ];
 

@@ -135,7 +135,6 @@ const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
                     key   = 'header'
                     title = 'Work'
                     icon  = 'Work'
-                    fixW
                 />,
                 <main key='component' className='page__content'>
                     <Display projects={PROJECTS} />
