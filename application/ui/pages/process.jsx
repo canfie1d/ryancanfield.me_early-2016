@@ -25,19 +25,16 @@ const ProcessPage = connect(getPropsFromApplicationState)(React.createClass({
 
         return (
             <main key='process-page' className='page__content-container'>
-                <BackButton onClick={this.onBackClick} />
-                <div className='l--max-width'>
-                    <Header
-                        title = 'Process'
-                        icon  = 'Process'
-                        />
-                    <main className='page__content'>
+                <Header
+                    title = 'Process'
+                    icon  = 'Process'
+                />
+                <main className='page__content'>
 
-                    </main>
-                    <Footer>
-                        <BackButton onClick={this.onBackClick} staySmall />
-                    </Footer>
-                </div>
+                </main>
+                <Footer>
+                    <BackButton onClick={this.onBackClick} staySmall />
+                </Footer>
             </main>
         );
     },

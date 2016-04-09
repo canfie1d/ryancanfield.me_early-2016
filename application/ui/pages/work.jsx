@@ -36,6 +36,9 @@ const CLIENTS = [
     },
     {
         title : 'Beacon ID'
+    },
+    {
+        title : 'Puppies.com'
     }
 ];
 
@@ -124,53 +127,38 @@ const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
 
     displayName: 'WorkPage',
 
-    onBackClick() {
-        browserHistory.push('/');
+    renderDisplay() {
+        if (this.props.browser.greaterThan.mediumSmall) {
+            return (
+                <Display projects={PROJECTS} />
+            );
+        }
     },
 
-    renderContent() {
-        if (this.props.browser.greaterThan.small) {
-            return [
-                <Header
-                    key   = 'header'
-                    title = 'Work'
-                    icon  = 'Work'
-                />,
-                <main key='component' className='page__content'>
-                    <Display projects={PROJECTS} />
-                    <Header
-                        title = 'Clients'
-                        icon  = 'Work'
-                        marginTop
-                    />
-                    <List listItems={CLIENTS} />
-                </main>
-            ];
+    renderSubtitle() {
+        if(this.props.browser.greaterThan.small) {
+            return (
+                <h2 className='page__subtitle'>Clients</h2>
+            );
         }
-
-        return [
-            <Header
-                key   = 'header'
-                title = 'Clients'
-                icon  = 'Work'
-            />,
-            <main className='page__content'>
-                <List key='list' listItems={CLIENTS} />
-            </main>
-        ];
     },
 
     render() {
 
         return (
             <div key='work-page' className='page__content-container'>
-                <BackButton onClick={this.onBackClick} />
-                <div className='l--max-width'>
-                    {this.renderContent()}
-                    <Footer>
-                        <BackButton onClick={this.onBackClick} staySmall />
-                    </Footer>
-                </div>
+                <Header
+                    title = {this.props.browser.greaterThan.mediumSmall ? 'Work' : 'Clients'}
+                    icon  = 'Work'
+                />
+                <main className='page__content'>
+                    {this.renderDisplay()}
+                    {this.renderSubtitle()}
+                    <List key='list' listItems={CLIENTS} />
+                </main>
+                <Footer>
+                    <BackButton onClick={this.onBackClick} staySmall />
+                </Footer>
             </div>
         );
     },

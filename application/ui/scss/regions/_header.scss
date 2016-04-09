@@ -1,50 +1,52 @@
+$small-header-height : rem-calc(73);
+$header-height       : rem-calc(100);
+$header-padding      : rem-calc(10);
+
+.header {
+    position : absolute;
+    top      : 0;
+    left     : 0;
+    right    : 0;
+    height   : $small-header-height;
+    padding  : $header-padding;
+
+    @include min-screen($media-small) {
+        height : $header-height;
+    }
+}
+
 .page__header {
     @include flexContainer();
-    margin-bottom : rem-calc(40);
+    align-items : center;
+    height      : calc(#{$small-header-height} - (#{$header-padding} * 2));
+    max-width   : rem-calc(1024);
+    margin-left : rem-calc(60);
 
-    &.page__header--margin-top {
-        @include min-screen($media-small) {
-            margin-top : rem-calc(100);
-        }
-
-        @include min-screen($media-medium) {
-            margin-top : rem-calc(172);
-        }
-
+    @include min-screen($media-small) {
+        height      : calc(#{$header-height} - (#{$header-padding} * 2));
+        margin-left : rem-calc(100);
     }
 
-    @include min-screen($media-medium) {
-        margin : 0 auto rem-calc(40);
+    @media screen and (min-width: 1248px) {
+        margin : auto;
     }
-
 }
 
 .page__header__icon {
     @include flexItem(0, 0, auto);
-    margin : rem-calc(6 0 26);
-
-    @include min-screen($media-small) {
-        margin : rem-calc(6 0 26);
-    }
-
+    margin-left : rem-calc(20);
 }
 
 .page__header__title {
     @include flexItem(1, 0, auto);
     font-family : $display-font--bold;
-    font-size   : rem-calc(62);
+    font-size   : rem-calc(52);
     color       : $white;
     text-align  : left;
     transition  : font-size 200ms ease;
     margin-left : rem-calc(10);
 
     @include min-screen($media-small) {
-        margin-left : rem-calc(20);
-        font-size   : rem-calc(90);
+        font-size : rem-calc(90);
     }
-
-    @include min-screen($media-medium) {
-        max-width : rem-calc(650);
-    }
-
 }

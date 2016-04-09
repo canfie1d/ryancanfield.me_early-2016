@@ -1,7 +1,9 @@
-import React       from 'react';
-import classNames  from 'classnames';
-import Icon        from '../../components/icon/icon';
-import { connect } from 'react-redux';
+import React              from 'react';
+import classNames         from 'classnames';
+import Icon               from '../../components/icon/icon';
+import { connect }        from 'react-redux';
+import BackButton         from '../../components/buttons/back-button';
+import { browserHistory } from 'react-router';
 
 let getPropsFromApplicationState = (state) => {
     return {
@@ -19,18 +21,26 @@ const Header = connect(getPropsFromApplicationState)(React.createClass({
         marginTop : React.PropTypes.bool
     },
 
+    onBackClick() {
+        browserHistory.push('/');
+    },
+
+    renderIcon() {
+        if (this.props.browser.greaterThan.small) {
+            let iconSize = this.props.browser.greaterThan.small ? 'x-large' : 'large';
+
+            return (
+                <Icon className='page__header__icon' icon={this.props.icon} size={iconSize} colorTheme='white' />
+            );
+        }
+    },
+
     render() {
-        let classes = [
-            'page__header',
-            this.props.marginTop ? 'page__header--margin-top' : null
-        ];
-
-        let iconSize = this.props.browser.greaterThan.small ? 'x-large' : 'large';
-
         return (
-            <header>
-                <div className={classNames(classes)}>
-                    <Icon className='page__header__icon' icon={this.props.icon} size={iconSize} colorTheme='white' />
+            <header className='header'>
+                <BackButton onClick={this.onBackClick} />
+                <div className='page__header'>
+                    {this.renderIcon()}
                     <h1 className='page__header__title'>{this.props.title}</h1>
                 </div>
             </header>

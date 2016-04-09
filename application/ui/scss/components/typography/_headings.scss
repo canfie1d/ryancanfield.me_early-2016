@@ -91,3 +91,18 @@ $h6-margin: 1.7em 0 !default;
   }
 
 }
+
+.page__subtitle {
+    font-family : $display-font--bold;
+    color       : $white;
+    font-size   : rem-calc(52);
+
+    @include min-screen($media-small) {
+        margin-top : rem-calc(100);
+    }
+
+    @include min-screen($media-medium) {
+        margin-top : rem-calc(172);
+    }
+
+}

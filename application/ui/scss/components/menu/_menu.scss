@@ -190,15 +190,16 @@
 
         &:hover,
         &:focus {
-            font-size : rem-calc(144);
+            font-size : rem-calc(80);
             z-index   : 0;
         }
 
     }
 
     .list & {
-        color     : $white !important;
-        font-size : rem-calc(22);
+        font-family : $display-font;
+        color       : $white !important;
+        font-size   : rem-calc(22);
 
         @include min-screen($media-xsmall) {
             font-size: rem-calc(32);

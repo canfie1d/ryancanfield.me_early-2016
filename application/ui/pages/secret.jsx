@@ -11,11 +11,9 @@ const SecretPage = React.createClass({
 
         return (
             <div key='process-page' className='page__content-container'>
-                <div className='l--max-width'>
-                    <main className='page__content'>
-                        <audio src={secretSound} autoPlay="autoplay" />
-                    </main>
-                </div>
+                <main className='page__content'>
+                    <audio src={secretSound} autoPlay="autoplay" />
+                </main>
             </div>
         );
     },

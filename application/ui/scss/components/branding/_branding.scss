@@ -23,7 +23,7 @@ $large-font-size  : 2em;
     position    : absolute;
     top         : rem-calc(20);
     left        : rem-calc(20);
-    display     : flex;
+    display     : inline-flex;
     flex-wrap   : wrap;
     max-width   : $medium-width;
     z-index     : 10;
@@ -42,11 +42,13 @@ $large-font-size  : 2em;
     }
 
     &.branding--back {
+        top       : rem-calc(10);
+        left      : rem-calc(10);
         max-width : calc(#{$medium-width} - #{$medium-letter-width});
     }
 
     &:not(.branding--small) {
-        @include min-screen($media-xsmall) {
+        @include min-screen($media-small) {
             max-width : $large-width;
 
             &.branding--back {
@@ -133,7 +135,7 @@ $large-font-size  : 2em;
     }
 
     &:not(.branding--small) {
-        @include min-screen($media-xsmall) {
+        @include min-screen($media-small) {
             flex : 1 0 $large-width;
         }
     }
@@ -152,7 +154,7 @@ $large-font-size  : 2em;
                       color $transition-duration $transition-timing;
 
     &:not(.branding--small) {
-        @include min-screen($media-xsmall) {
+        @include min-screen($media-small) {
             flex   : 0 0 $large-letter-width;
             height : $large-height;
         }
@@ -174,7 +176,7 @@ $large-font-size  : 2em;
                      text-shadow $transition-duration $transition-timing;
 
     &:not(.branding--small) {
-        @include min-screen($media-xsmall) {
+        @include min-screen($media-small) {
             font-size : $large-font-size;
             width     : $large-letter-width;
             height    : rem-calc(24);

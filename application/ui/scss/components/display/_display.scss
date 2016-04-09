@@ -1,8 +1,11 @@
+$display-control-button-width : rem-calc(50);
+
 .display__body {
     @include flexContainer(true);
     align-items        : flex-start;
     @include flexItem(1, 0, rem-calc(960));
-    width              : 100%;
+    width              : calc(100% - (#{$display-control-button-width} * 2));
+    margin             : 0 $display-control-button-width;
     padding-bottom     : calc(56% + #{rem-calc(40)});
     position           : relative;
     background         : transparent;
@@ -90,8 +93,8 @@
 .display__project-button {
     position   : absolute;
     top        : rem-calc(20);
-    bottom     : rem-calc(50);
-    width      : rem-calc(50);
+    bottom     : $display-control-button-width;
+    width      : $display-control-button-width;
     opacity    : 0;
     cursor     : pointer;
     transition : opacity 300ms $ease-in-out-quint,

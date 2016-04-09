@@ -47,16 +47,16 @@ const ElsewherePage = connect(getPropsFromApplicationState)(React.createClass({
     render() {
         return (
             <div key='elsewhere-page' className='page__content-container'>
-                <BackButton onClick={this.onBackClick} />
-                <div className='l--max-width'>
-                    <Header
-                        title = 'Elsewhere'
-                        icon  = 'Elsewhere'
-                    />
-                    <main className='page__content'>
-                        <MenuList menuItems={ELSEWHERE_ITEMS} />
-                    </main>
-                </div>
+                <Header
+                    title = 'Elsewhere'
+                    icon  = 'Elsewhere'
+                />
+                <main className='page__content'>
+                    <MenuList menuItems={ELSEWHERE_ITEMS} />
+                </main>
+                <Footer>
+                    <BackButton onClick={this.onBackClick} staySmall />
+                </Footer>
             </div>
         );
     },

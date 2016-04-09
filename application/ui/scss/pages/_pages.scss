@@ -12,7 +12,6 @@
 .work-page,
 .elsewhere-page,
 .secret-page {
-    @include flexContainer(true);
     box-sizing : content-box;
     position   : fixed;
     top        : 0;
@@ -55,33 +54,33 @@
 }
 
 .page__content-container {
-    position    : relative;
-    width       : 100%;
-    height      : 100vh;
-    max-width   : 1024px;
-    display     : flex;
-    align-items : flex-start;
-    padding     : rem-calc(120 20);
-
-    @include min-screen($media-small) {
-        padding : rem-calc(25 20 50 160);
-    }
-
-    .menu-page & {
-        align-items     : center;
-        justify-content : center;
-    }
-
+    position       : relative;
+    width          : 100%;
+    min-height     : 100vh;
+    display        : flex;
+    align-items    : flex-start;
+    flex-direction : column;
 }
 
 .page__content {
-    flex      : 0 1 auto;
+    position  : relative;
+    top       : rem-calc(110);
+    padding   : rem-calc(10);
+    flex      : 1 1 100%;
+    width     : 100%;
     max-width : rem-calc(1024);
     margin    : auto;
 
+    &.page__content--menu {
+        flex  : 1 1 auto;
+        width : auto;
+    }
+
     &.page__content--p-width {
-        max-width : rem-calc(650);
-        margin    : 0;
+        > * {
+            max-width : rem-calc(650);
+            margin    : 0 auto rem-calc(50);
+        }
     }
 
 }

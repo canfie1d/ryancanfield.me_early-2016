@@ -1,10 +1,17 @@
+footer {
+    @include flexItem(1, 0, 100%);
+    position : relative;
+    top      : rem-calc(110);
+    width    : 100%;
+}
+
 .footer {
     @include flexContainer(true);
-    align-content : center;
-    padding       : rem-calc(200 0);
+    align-content   : center;
+    justify-content : space-around;
+    height          : rem-calc(400);
+}
 
-    &.footer--p-width {
-        max-width : rem-calc(650);
-    }
-
+.footer__column {
+    @include flexItem(0, 1, auto);
 }
