@@ -127,6 +127,10 @@ const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
 
     displayName: 'WorkPage',
 
+    onBackClick() {
+        browserHistory.push('/');
+    },
+
     renderDisplay() {
         if (this.props.browser.greaterThan.mediumSmall) {
             return (

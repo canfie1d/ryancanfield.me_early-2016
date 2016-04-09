@@ -44,7 +44,7 @@ $display-control-button-width : rem-calc(50);
         right    : rem-calc(20);
         bottom   : rem-calc(40);
     }
-    
+
 }
 
 .display {
@@ -172,13 +172,14 @@ $display-control-button-width : rem-calc(50);
     padding                    : rem-calc(5);
     border                     : 2px solid $workColor;
     background                 : $white;
-    font-family                : $body-font;
+    font-family                : $display-font--bold;
     color                      : $workColor;
     z-index                    : 2;
+    cursor                     : pointer;
     transition-duration        : 300ms;
     transition-property        : top;
     transition-timing-function : $ease-in-out-back;
-    transition-delay           : 1000ms;
+    transition-delay           : 750ms;
 
     &.display__menu__button--active {
         top : rem-calc(35);
@@ -187,6 +188,11 @@ $display-control-button-width : rem-calc(50);
     &:hover,
     &:focus {
         outline : 1px solid $white;
+    }
+
+    &.display__menu__button--active:hover {
+        outline : 1px solid $gray--300;
+        outline-offset: 2px;
     }
 
 }
