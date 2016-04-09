@@ -1,12 +1,22 @@
 $display-control-button-width : rem-calc(50);
 
+@mixin aspect-ratio($width, $height) {
+    position : relative;
+
+    &:before {
+        display     : block;
+        content     : '';
+        width       : 100%;
+        padding-top : ($height / $width) * 100%;
+   }
+
+}
+
 .display__body {
-    @include flexContainer(true);
-    align-items        : flex-start;
+    @include aspect-ratio(16, 9);
     @include flexItem(1, 0, rem-calc(960));
     width              : calc(100% - (#{$display-control-button-width} * 2));
     margin             : 0 $display-control-button-width;
-    padding-bottom     : calc(56% + #{rem-calc(40)});
     position           : relative;
     background         : transparent;
     border             : 5px solid $white;
@@ -16,39 +26,36 @@ $display-control-button-width : rem-calc(50);
 }
 
 .display__inner-bezel {
-    position        : absolute;
-    top             : 50%;
-    left            : calc(50% - #{rem-calc(20)});
-    transform       : translate(-50%, -50%);
-    @include flexContainer(true);
-    align-items     : stretch;
-    @include flexItem(0, 0, calc(100% - #{rem-calc(80)}));
-    width           : calc(100% - #{rem-calc(80)});
-    padding-bottom  : 56%;
-    background      : transparent;
-    border          : 2px solid $white;
-    border-radius   : rem-calc(5);
-    overflow-y      : auto;
-    background      : $gray--800;
+    position : absolute;
+    top      : rem-calc(20);
+    left     : rem-calc(20);
+    right    : rem-calc(60);
+    bottom   : rem-calc(20);
 
+    background    : transparent;
+    border        : 2px solid $white;
+    border-radius : rem-calc(5);
+    overflow-y    : auto;
+    background    : $gray--800;
 
     @include min-screen($media-medium) {
-        left  : 50%;
-        @include flexItem(0, 0, calc(100% - #{rem-calc(40)}), 'stretch');
-        width : calc(100% - #{rem-calc(40)});
+        top      : rem-calc(20);
+        left     : rem-calc(20);
+        right    : rem-calc(20);
+        bottom   : rem-calc(40);
     }
-
+    
 }
 
 .display {
+    @include flexContainer();
+    flex-direction : column;
+    flex-wrap      : nowrap;
     position       : absolute;
     top            : 0;
     right          : 0;
     bottom         : 0;
     left           : 0;
-    @include flexContainer();
-    flex-direction : column;
-    flex-wrap      : nowrap;
     overflow       : hidden;
 }
 
@@ -154,6 +161,32 @@ $display-control-button-width : rem-calc(50);
 
     .display__project-button--previous & {
         transform : translate(-50%, -50%) rotate(180deg);
+    }
+
+}
+
+.display__menu__button {
+    position                   : absolute;
+    top                        : rem-calc(-10);
+    left                       : rem-calc(35);
+    padding                    : rem-calc(5);
+    border                     : 2px solid $workColor;
+    background                 : $white;
+    font-family                : $body-font;
+    color                      : $workColor;
+    z-index                    : 2;
+    transition-duration        : 300ms;
+    transition-property        : top;
+    transition-timing-function : $ease-in-out-back;
+    transition-delay           : 1000ms;
+
+    &.display__menu__button--active {
+        top : rem-calc(35);
+    }
+
+    &:hover,
+    &:focus {
+        outline : 1px solid $white;
     }
 
 }

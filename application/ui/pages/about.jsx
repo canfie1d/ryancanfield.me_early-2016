@@ -27,6 +27,7 @@ const AboutPage = connect(getPropsFromApplicationState)(React.createClass({
                 <Header
                     title = 'About Me'
                     icon  = 'About'
+                    smallWidth
                 />
                 <main className='page__content page__content--p-width'>
                     <p className='page__p'>

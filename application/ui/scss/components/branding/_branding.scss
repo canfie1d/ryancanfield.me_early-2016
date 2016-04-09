@@ -34,17 +34,23 @@ $large-font-size  : 2em;
                   text-shadow $transition-duration $transition-timing,
                   outline 300ms $transition-timing;
 
-    &.branding--small {
-        position : relative;
-        top      : 0;
-        left     : 0;
-        margin   : rem-calc(20) auto;
-    }
-
     &.branding--back {
         top       : rem-calc(10);
         left      : rem-calc(10);
         max-width : calc(#{$medium-width} - #{$medium-letter-width});
+    }
+
+    &.branding--small {
+        position : relative;
+        top      : 0;
+        left     : 0;
+        display  : block;
+        margin   : auto;
+
+        @include min-screen($media-xsmall) {
+            display  : inline;
+            margin   : auto;
+        }
     }
 
     &:not(.branding--small) {

@@ -12,7 +12,6 @@ const Display = React.createClass({
             React.PropTypes.string,
             null
         ]),
-        toggleMenu      : React.PropTypes.func,
         onMenuItemClick : React.PropTypes.func,
         menuActive      : React.PropTypes.bool
     },
@@ -39,9 +38,6 @@ const Display = React.createClass({
                     <ul className='display__menu__list'>
                         {this.renderMenuItems()}
                     </ul>
-                </div>
-                <div className='display__menu__button' onClick={this.props.toggleMenu}>
-                    MENU
                 </div>
             </div>
         );

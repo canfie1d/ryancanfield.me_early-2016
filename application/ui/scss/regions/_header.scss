@@ -27,9 +27,19 @@ $header-padding      : rem-calc(10);
         margin-left : rem-calc(100);
     }
 
-    @media screen and (min-width: 1248px) {
+    @media screen and (min-width: 1244px) {
         margin : auto;
     }
+
+    &.page__header--small-width {
+        max-width : rem-calc(690);
+
+        @media screen and (min-width: 910px) {
+            margin : auto;
+        }
+
+    }
+
 }
 
 .page__header__icon {

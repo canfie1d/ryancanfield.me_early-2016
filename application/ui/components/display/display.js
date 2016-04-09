@@ -123,14 +123,21 @@ const Display = React.createClass({
     },
 
     render() {
+        let menuButtonClasses = [
+            'display__menu__button',
+            this.state.menuActive ? 'display__menu__button--active' : null
+        ];
+
         return (
             <div className='display__body'>
+                <div className={classNames(menuButtonClasses)} onClick={this.toggleMenu}>
+                    MENU
+                </div>
                 <div className='display__inner-bezel'>
                     <DisplayMenu
                         projects        = {this.props.projects}
                         activeProject   = {this.state.activeProject}
                         onMenuItemClick = {this.onMenuItemClick}
-                        toggleMenu      = {this.toggleMenu}
                         menuActive      = {this.state.menuActive}
                     />
                     <div className='display'>

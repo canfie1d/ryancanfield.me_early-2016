@@ -149,9 +149,24 @@
         cursor       : deflault;
     }
 
+    .button__children {
+        display    : block;
+        width      : 100%;
+        text-align : center;
+    }
+
 }
 
 .download-button {
-    display       : inline-block;
-    margin-bottom : rem-calc(20);
+    display : block;
+    margin  : 0 rem-calc(10 40);
+
+    @include min-screen($media-xsmall) {
+        margin  : 0;
+    }
+
+    @include min-screen($media-small) {
+        display : inline-block;
+    }
+
 }

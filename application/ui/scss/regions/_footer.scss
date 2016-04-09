@@ -13,5 +13,9 @@ footer {
 }
 
 .footer__column {
-    @include flexItem(0, 1, auto);
+    @include flexItem(0, 0, 100%);
+
+    @include min-screen($media-xsmall) {
+        @include flexItem(0, 1, auto);
+    }
 }

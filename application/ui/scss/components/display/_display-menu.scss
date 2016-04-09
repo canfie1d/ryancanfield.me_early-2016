@@ -15,7 +15,7 @@
     align-self : stretch;
     transform  : translateY(-100%);
     transition : transform 300ms $ease-in-out-quint;
-    background : $gray--500;
+    background : $white;
     z-index    : 1;
 
     &.display__menu--active {
@@ -23,30 +23,18 @@
     }
 }
 
+.display__menu__list {
+    padding : 8.5% 30%;
+}
+
 .display__menu__item {
-    @include styledAnchor($display-font,#{rem-calc(24)},$gray--800,$white);
+    @include styledAnchor($display-font,#{rem-calc(24)},$workColor,$white);
     @include flexItem(1, 1, auto);
     padding : rem-calc(20);
     cursor  : pointer;
 
     @include min-screen($media-medium) {
         font-size : rem-calc(34)
-    }
-
-}
-
-.display__menu__button {
-    position    : absolute;
-    top         : rem-calc(5);
-    left        : rem-calc(5);
-    padding     : rem-calc(5);
-    font-family : $body-font;
-    color       : $white;
-    z-index     : 2;
-
-    &:hover,
-    &:focus {
-        outline : 1px solid $white;
     }
 
 }

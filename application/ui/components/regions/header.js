@@ -16,9 +16,10 @@ const Header = connect(getPropsFromApplicationState)(React.createClass({
     displayName: 'Header',
 
     propTypes : {
-        title     : React.PropTypes.string,
-        icon      : React.PropTypes.string,
-        marginTop : React.PropTypes.bool
+        title      : React.PropTypes.string,
+        icon       : React.PropTypes.string,
+        marginTop  : React.PropTypes.bool,
+        smallWidth : React.PropTypes.bool
     },
 
     onBackClick() {
@@ -36,10 +37,15 @@ const Header = connect(getPropsFromApplicationState)(React.createClass({
     },
 
     render() {
+        let classes = [
+            'page__header',
+            this.props.smallWidth ? 'page__header--small-width' : null
+        ];
+
         return (
             <header className='header'>
                 <BackButton onClick={this.onBackClick} />
-                <div className='page__header'>
+                <div className={classNames(classes)}>
                     {this.renderIcon()}
                     <h1 className='page__header__title'>{this.props.title}</h1>
                 </div>

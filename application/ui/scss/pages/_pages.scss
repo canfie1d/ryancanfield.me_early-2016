@@ -54,12 +54,12 @@
 }
 
 .page__content-container {
-    position       : relative;
-    width          : 100%;
-    min-height     : 100vh;
-    display        : flex;
-    align-items    : flex-start;
-    flex-direction : column;
+    @include flexContainer();
+    flex-wrap  : wrap;
+    position   : relative;
+    width      : 100%;
+    min-height : 100vh;
+
 }
 
 .page__content {
