@@ -30,7 +30,11 @@ const ProcessPage = connect(getPropsFromApplicationState)(React.createClass({
                     icon  = 'Process'
                 />
                 <main className='page__content'>
-
+                    <p className='page__p'>
+                        
+                    </p>
+                    <p className='page__p'>
+                    </p>
                 </main>
                 <Footer>
                     <BackButton onClick={this.onBackClick} staySmall />
