@@ -5,19 +5,19 @@ $transition-duration : 300ms;
 ///////////////////
 // SNIPPETS PAGE //
 ///////////////////
-.process-page {
+.concepts-page {
 
-  // controls process enter from menu page
-  &.process-enter {
+  // controls concepts enter from menu page
+  &.concepts-enter {
       transform  : translate3d(-100%, 0, 0);
       transition : transform $transition-duration $transiton-timing;
   }
 
-  &.process-enter.process-enter-active {
+  &.concepts-enter.concepts-enter-active {
       transform : translate3d(0, 0, 0);
   }
 
-  // controls process leave from process page
+  // controls concepts leave from concepts page
   &.menu-leave {
     transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing2;
@@ -31,13 +31,13 @@ $transition-duration : 300ms;
 
 .menu-page {
   // controls menu leave from menu page
-  // when going to process page
-  &.process-leave {
+  // when going to concepts page
+  &.concepts-leave {
     transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
-  &.process-leave.process-leave-active {
+  &.concepts-leave.concepts-leave-active {
     transform : translate3d(100%, 0, 0);
   }
 
@@ -47,19 +47,19 @@ $transition-duration : 300ms;
 //   WORK PAGE   //
 ///////////////////
 
-.work-page {
+.projects-page {
 
-  // controls work enter from menu page
-  &.work-enter {
+  // controls projects enter from menu page
+  &.projects-enter {
       transform  : translate3d(100%, 0, 0);
       transition : transform $transition-duration $transiton-timing;
   }
 
-  &.work-enter.work-enter-active {
+  &.projects-enter.projects-enter-active {
       transform : translate3d(0, 0, 0);
   }
 
-  // controls work leave from work page
+  // controls projects leave from projects page
   &.menu-leave {
     transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing2;
@@ -73,13 +73,13 @@ $transition-duration : 300ms;
 
 .menu-page {
   // controls menu leave from menu page
-  // when going to work page
-  &.work-leave {
+  // when going to projects page
+  &.projects-leave {
     transform  : translate3d(0, 0, 0);
     transition : transform $transition-duration $transiton-timing;
   }
 
-  &.work-leave.work-leave-active {
+  &.projects-leave.projects-leave-active {
     transform : translate3d(-100%, 0, 0);
   }
 

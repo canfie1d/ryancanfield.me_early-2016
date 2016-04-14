@@ -58,16 +58,16 @@
 
     &:hover,
     &:focus {
-        .process-page & {
-            color : $processColor;
+        .concepts-page & {
+            color : $conceptsColor;
         }
 
         .about-page & {
             color : $aboutColor;
         }
 
-        .work-page & {
-            color : $workColor;
+        .projects-page & {
+            color : $projectsColor;
         }
 
         .elsewhere-page & {

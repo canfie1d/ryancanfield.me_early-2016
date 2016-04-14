@@ -14,11 +14,11 @@ const site = React.createClass({
             case '/':
                 page = 'menu';
                 break;
-            case '/process':
-                page = 'process';
+            case '/concepts':
+                page = 'concepts';
                 break;
-            case '/work':
-                page = 'work';
+            case '/projects':
+                page = 'projects';
                 break;
             case '/about':
                 page = 'about';

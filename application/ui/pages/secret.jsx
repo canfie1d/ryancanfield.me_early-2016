@@ -10,7 +10,7 @@ const SecretPage = React.createClass({
     render() {
 
         return (
-            <div key='process-page' className='page__content-container'>
+            <div key='secret-page' className='page__content-container'>
                 <main className='page__content'>
                     <audio src={secretSound} autoPlay="autoplay" />
                 </main>

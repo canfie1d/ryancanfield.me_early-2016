@@ -28,7 +28,7 @@
 }
 
 .display__menu__item {
-    @include styledAnchor($display-font,#{rem-calc(24)},$workColor,$white);
+    @include styledAnchor($display-font,#{rem-calc(24)},$projectsColor,$white);
     @include flexItem(1, 1, auto);
     padding : rem-calc(20);
     cursor  : pointer;

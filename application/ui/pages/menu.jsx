@@ -4,15 +4,15 @@ import Branding from '../components/branding/branding';
 
 const NAV_ITEMS = [
     {
-        title    : 'Work',
-        url      : 'work',
-        icon     : 'Work',
+        title    : 'Projects',
+        url      : 'projects',
+        icon     : 'Projects',
         external : false
     },
     {
-        title    : 'Process',
-        url      : 'process',
-        icon     : 'Process',
+        title    : 'Concepts',
+        url      : 'concepts',
+        icon     : 'Concepts',
         external : false
     },
     {

@@ -14,11 +14,11 @@
     &:first-of-type .menu__link,
     &:nth-of-type(5) .menu__link,
     &:nth-of-type(9) .menu__link {
-        color : $workColor;
+        color : $projectsColor;
 
         &:hover::before,
         &:focus::before {
-            background : $workColor;
+            background : $projectsColor;
         }
 
         &:hover,
@@ -30,11 +30,11 @@
 
     &:nth-of-type(2) .menu__link,
     &:nth-of-type(6) .menu__link {
-        color : $processColor;
+        color : $conceptsColor;
 
         &:hover::before,
         &:focus::before {
-            background : $processColor;
+            background : $conceptsColor;
         }
 
         &:hover,
@@ -101,27 +101,25 @@
 
 .menu__icon {
     position : absolute;
-    top      : rem-calc(20);
+    top      : rem-calc(25);
     left     : rem-calc(-100);
     height   : rem-calc(60);
 
     svg {
-        fill : $workColor;
+        fill : $projectsColor;
     }
 
     &:nth-of-type(2) {
-        top        : 25%;
-        margin-top : rem-calc(10);
+        top : calc(25% + #{rem-calc(15)});
 
         svg {
-            fill : $processColor;
+            fill : $conceptsColor;
         }
 
     }
 
     &:nth-of-type(3) {
-        top        : 50%;
-        margin-top : rem-calc(10);
+        top : calc(50% + #{rem-calc(15)});
 
         svg {
             fill : $aboutColor;
@@ -130,8 +128,7 @@
     }
 
     &:nth-of-type(4) {
-        top        : 75%;
-        margin-top : rem-calc(5);
+        top : calc(75% + #{rem-calc(15)});
 
         svg {
             fill : $elsewhereColor;

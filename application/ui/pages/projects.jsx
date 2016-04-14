@@ -14,16 +14,7 @@ const CLIENTS = [
         title : 'eBay Enterprise'
     },
     {
-        title : 'Hotelogical'
-    },
-    {
-        title : 'TruTankless'
-    },
-    {
         title : 'Blue Cross Blue Shield'
-    },
-    {
-        title : 'BodeTree'
     },
     {
         title : 'Arizona State University'
@@ -35,10 +26,25 @@ const CLIENTS = [
         title : 'Northern Arizona University'
     },
     {
+        title : 'Hotelogical'
+    },
+    {
+        title : 'TruTankless'
+    },
+    {
+        title : 'BodeTree'
+    },
+    {
         title : 'Beacon ID'
     },
     {
         title : 'Puppies.com'
+    },
+    {
+        title : 'High Above'
+    },
+    {
+        title : 'Synapse Studios'
     }
 ];
 
@@ -123,9 +129,9 @@ let getPropsFromApplicationState = (state) => {
     };
 };
 
-const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
+const ProjectsPage = connect(getPropsFromApplicationState)(React.createClass({
 
-    displayName: 'WorkPage',
+    displayName: 'ProjectsPage',
 
     onBackClick() {
         browserHistory.push('/');
@@ -150,10 +156,10 @@ const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
     render() {
 
         return (
-            <div key='work-page' className='page__content-container'>
+            <div key='projects-page' className='page__content-container'>
                 <Header
-                    title = {this.props.browser.greaterThan.mediumSmall ? 'Work' : 'Clients'}
-                    icon  = 'Work'
+                    title = {this.props.browser.greaterThan.mediumSmall ? 'Projects' : 'Clients'}
+                    icon  = 'Projects'
                 />
                 <main className='page__content'>
                     {this.renderDisplay()}
@@ -169,4 +175,4 @@ const WorkPage = connect(getPropsFromApplicationState)(React.createClass({
 
 }));
 
-export default WorkPage;
+export default ProjectsPage;

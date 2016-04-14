@@ -1,8 +1,8 @@
 import React from 'react';
 
-const Process = React.createClass({
+const Concepts = React.createClass({
 
-    displayName: 'Process',
+    displayName: 'Concepts',
 
     render() {
         /* eslint-disable max-len */
@@ -17,4 +17,4 @@ const Process = React.createClass({
 
 });
 
-export default Process;
+export default Concepts;

@@ -189,12 +189,12 @@ $large-font-size  : 2em;
         }
     }
 
-    &.branding__letter--work {
-        color : $workColor;
+    &.branding__letter--projects {
+        color : $projectsColor;
     }
 
-    &.branding__letter--process {
-        color : $processColor;
+    &.branding__letter--concepts {
+        color : $conceptsColor;
     }
 
     &.branding__letter--about {

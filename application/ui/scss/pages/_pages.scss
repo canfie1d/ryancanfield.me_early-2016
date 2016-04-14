@@ -7,9 +7,9 @@
 // *******************************************
 
 .menu-page,
-.process-page,
+.concepts-page,
 .about-page,
-.work-page,
+.projects-page,
 .elsewhere-page,
 .secret-page {
     box-sizing : content-box;
@@ -22,9 +22,9 @@
     -webkit-overflow-scrolling : touch;
 }
 
-.process-page,
+.concepts-page,
 .about-page,
-.work-page,
+.projects-page,
 .elsewhere-page,
 .secret-page {
     box-shadow : inset 0 0 300px 0 rgba($black, .1);
@@ -34,16 +34,16 @@
     background : $off-white;
 }
 
-.process-page {
-    background : $processColor;
+.concepts-page {
+    background : $conceptsColor;
 }
 
 .about-page {
     background : $aboutColor;
 }
 
-.work-page {
-    background : $workColor;
+.projects-page {
+    background : $projectsColor;
 }
 
 .elsewhere-page {

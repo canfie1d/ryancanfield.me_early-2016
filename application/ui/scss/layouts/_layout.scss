@@ -12,3 +12,8 @@
   bottom   : 0;
   left     : 0;
 }
+
+.l--max-width {
+    max-width : rem-calc(1024);
+    margin    : auto;
+}
