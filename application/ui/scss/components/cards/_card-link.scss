@@ -1,0 +1,82 @@
+$card-height : rem-calc(250);
+
+.card__link {
+    display         : flex;
+    flex-wrap       : wrap;
+    margin          : rem-calc(20);
+    width           : 100%;
+    background      : $white;
+    border          : 1px solid shade($white, 3%);
+    transition      : box-shadow 300ms ease;
+    text-decoration : none;
+
+    &:hover {
+        box-shadow : 2px 2px 4px rgba($black, .2);
+    }
+
+    &:focus {
+        outline        : 1px solid $white;
+        outline-offset : 2px;
+    }
+
+}
+
+.card__row {
+    display   : flex;
+    flex-wrap : wrap;
+    flex      : 1 1 50%;
+
+    @include min-screen($media-small) {
+        flex  : 1 1 100%;
+    }
+
+}
+
+.card__column {
+    position : relative;
+    flex     : 1 1 100%;
+    height   : $card-height;
+    overflow : hidden;
+
+    @include min-screen($media-small) {
+        &:first-of-type {
+            flex : 1 1 40%;
+        }
+
+        &:last-of-type {
+            flex : 1 1 60%;
+        }
+
+    }
+
+}
+
+.card__image {
+    width      : 100%;
+    min-height : 100%;
+}
+
+.card__title {
+    display     : block;
+    padding     : rem-calc(20);
+    font-family : $display-font;
+    font-size   : rem-calc(42);
+    color       : $conceptsColor;
+}
+
+.card__description {
+    display     : block;
+    padding     : rem-calc(20);
+    font-family : $body-font;
+    font-size   : rem-calc(20);
+    color       : $conceptsColor;
+}
+
+.card__length {
+    position    : absolute;
+    bottom      : rem-calc(20);
+    right       : rem-calc(20);
+    font-family : $body-font;
+    font-size   : rem-calc(16);
+    color       : $conceptsColor;
+}

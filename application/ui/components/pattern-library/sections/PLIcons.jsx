@@ -3,11 +3,16 @@ import React from 'react';
 import Icon from '../../../components/icon/icon';
 
 const ICONS = [
+    'About',
     'Back',
     'Cancel',
     'Caret',
+    'Concepts',
+    'Elsewhere',
     'Group',
+    'Hamburger',
     'Heart',
+    'Projects',
     'Save',
     'Search',
     'Trash',
