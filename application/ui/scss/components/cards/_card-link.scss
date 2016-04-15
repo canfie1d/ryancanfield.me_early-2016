@@ -1,14 +1,15 @@
+$card-height--small : rem-calc(200);
 $card-height : rem-calc(250);
 
 .card__link {
     display         : flex;
     flex-wrap       : wrap;
-    margin          : rem-calc(20);
     width           : 100%;
-    background      : $white;
+    margin          : rem-calc(20) 0;
     border          : 1px solid shade($white, 3%);
-    transition      : box-shadow 300ms ease;
+    background      : $white;
     text-decoration : none;
+    transition      : box-shadow 300ms ease;
 
     &:hover {
         box-shadow : 2px 2px 4px rgba($black, .2);
@@ -35,10 +36,12 @@ $card-height : rem-calc(250);
 .card__column {
     position : relative;
     flex     : 1 1 100%;
-    height   : $card-height;
+    height   : $card-height--small;
     overflow : hidden;
 
     @include min-screen($media-small) {
+        height : $card-height;
+
         &:first-of-type {
             flex : 1 1 40%;
         }
@@ -60,22 +63,30 @@ $card-height : rem-calc(250);
     display     : block;
     padding     : rem-calc(20);
     font-family : $display-font;
-    font-size   : rem-calc(42);
+    font-size   : rem-calc(24);
     color       : $conceptsColor;
+
+    @include min-screen($media-small) {
+        font-size : rem-calc(42);
+    }
 }
 
 .card__description {
     display     : block;
     padding     : rem-calc(20);
     font-family : $body-font;
-    font-size   : rem-calc(20);
+    font-size   : rem-calc(16);
     color       : $conceptsColor;
+
+    @include min-screen($media-small) {
+        font-size : rem-calc(20);
+    }
 }
 
 .card__length {
     position    : absolute;
-    bottom      : rem-calc(20);
     right       : rem-calc(20);
+    bottom      : rem-calc(20);
     font-family : $body-font;
     font-size   : rem-calc(16);
     color       : $conceptsColor;

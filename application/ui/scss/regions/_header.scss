@@ -49,12 +49,17 @@ $header-padding      : rem-calc(10);
 
 .page__header__title {
     @include flexItem(1, 0, auto);
+    margin      : auto;
     font-family : $display-font--bold;
     font-size   : rem-calc(52);
     color       : $white;
-    text-align  : left;
+    text-align  : center;
     transition  : font-size 200ms ease;
-    margin-left : rem-calc(10);
+
+    @include min-screen($media-xsmall) {
+        margin-left : rem-calc(20);
+        text-align  : left;
+    }
 
     @include min-screen($media-small) {
         font-size : rem-calc(90);
