@@ -61,33 +61,40 @@ $card-height : rem-calc(250);
 
 .card__title {
     display     : block;
-    padding     : rem-calc(20);
+    padding     : rem-calc(10);
     font-family : $display-font;
     font-size   : rem-calc(24);
     color       : $conceptsColor;
 
     @include min-screen($media-small) {
+        padding   : rem-calc(20);
         font-size : rem-calc(42);
     }
 }
 
 .card__description {
     display     : block;
-    padding     : rem-calc(20);
+    padding     : rem-calc(10);
     font-family : $body-font;
     font-size   : rem-calc(16);
     color       : $conceptsColor;
 
     @include min-screen($media-small) {
+        padding   : rem-calc(20);
         font-size : rem-calc(20);
     }
 }
 
 .card__length {
     position    : absolute;
-    right       : rem-calc(20);
-    bottom      : rem-calc(20);
+    right       : rem-calc(10);
+    bottom      : rem-calc(10);
     font-family : $body-font;
     font-size   : rem-calc(16);
     color       : $conceptsColor;
+
+    @include min-screen($media-small) {
+        right  : rem-calc(20);
+        bottom : rem-calc(20);
+    }
 }

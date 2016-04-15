@@ -47,6 +47,7 @@ const ConceptsPage = connect(getPropsFromApplicationState)(React.createClass({
         return _.map(CARD_LINKS, (card, index) => {
             return (
                 <CardLink
+                    key         = {index}
                     title       = {card.title}
                     description = {card.description}
                     imageUrl    = {card.imageUrl}

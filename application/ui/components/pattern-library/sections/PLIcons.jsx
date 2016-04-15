@@ -5,17 +5,11 @@ import Icon from '../../../components/icon/icon';
 const ICONS = [
     'About',
     'Back',
-    'Cancel',
     'Caret',
     'Concepts',
     'Elsewhere',
-    'Group',
     'Hamburger',
-    'Heart',
-    'Projects',
-    'Save',
-    'Search',
-    'Trash',
+    'Projects'
 ];
 
 const PLIcons = React.createClass({
@@ -45,55 +39,55 @@ const PLIcons = React.createClass({
                 <div className="row">
                     <div className="medium-4">
                         <h2 className="pl-h2">Icon sizes</h2>
-                        <Icon icon="Caret" size="x-small" /> Extra Small
+                        <Icon icon="Hamburger" size="x-small" /> Extra Small
                         <br />
                         <br />
-                        <Icon icon="Caret" size="small" /> Small
+                        <Icon icon="Hamburger" size="small" /> Small
                         <br />
                         <br />
-                        <Icon icon="Caret" /> Default
+                        <Icon icon="Hamburger" /> Default
                         <br />
                         <br />
-                        <Icon icon="Caret" size="large" /> Large
+                        <Icon icon="Hamburger" size="large" /> Large
                         <br />
                         <br />
-                        <Icon icon="Caret" size="x-large" /> Extra Large
+                        <Icon icon="Hamburger" size="x-large" /> Extra Large
                         <br />
                         <br />
                         </div>
                         <div className="medium-4">
                         <h2 className="pl-h2">Icon rotation</h2>
-                        <Icon icon="Caret" size="small" rotate={0} /> 0deg Rotation
+                        <Icon icon="Hamburger" size="small" rotate={0} /> 0deg Rotation
                         <br />
                         <br />
-                        <Icon icon="Caret" size="small" rotate={45} /> 45deg Rotation
+                        <Icon icon="Hamburger" size="small" rotate={45} /> 45deg Rotation
                         <br />
                         <br />
-                        <Icon icon="Caret" size="small" rotate={90} /> 90deg Rotation
+                        <Icon icon="Hamburger" size="small" rotate={90} /> 90deg Rotation
                         <br />
                         <br />
-                        <Icon icon="Caret" size="small" rotate={180} /> 180deg Rotation
+                        <Icon icon="Hamburger" size="small" rotate={180} /> 180deg Rotation
                         <br />
                         <br />
-                        <Icon icon="Caret" size="small" rotate={270} /> 270deg Rotation
+                        <Icon icon="Hamburger" size="small" rotate={270} /> 270deg Rotation
                         <br />
                         <br />
                         </div>
                         <div className="medium-4">
                         <h2 className="pl-h2">{"Icon colors"}</h2>
-                        <Icon icon="Caret" size="small" colorTheme="black" /> Black fill
+                        <Icon icon="Hamburger" size="small" colorTheme="black" /> Black fill
                         <br />
                         <br />
-                        <Icon icon="Caret" size="small" colorTheme="white" /> White fill
+                        <Icon icon="Hamburger" size="small" colorTheme="white" /> White fill
                         <br />
                         <br />
-                        <Icon icon="Caret" size="small" colorTheme="primary" /> Primary fill
+                        <Icon icon="Hamburger" size="small" colorTheme="primary" /> Primary fill
                         <br />
                         <br />
-                        <Icon icon="Caret" size="small" colorTheme="secondary" /> Secondary fill
+                        <Icon icon="Hamburger" size="small" colorTheme="secondary" /> Secondary fill
                         <br />
                         <br />
-                        <Icon icon="Caret" size="small" colorTheme="tertiary" /> Tertiary fill
+                        <Icon icon="Hamburger" size="small" colorTheme="tertiary" /> Tertiary fill
                         <br />
                         <br />
                     </div>
