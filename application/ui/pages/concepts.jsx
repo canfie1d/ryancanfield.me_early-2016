@@ -43,6 +43,10 @@ const ConceptsPage = connect(getPropsFromApplicationState)(React.createClass({
 
     displayName: 'ConceptsPage',
 
+    onBackClick() {
+        browserHistory.push('/');
+    },
+
     renderCardLinks() {
         return _.map(CARD_LINKS, (card, index) => {
             return (
