@@ -14,6 +14,7 @@ var config      = {
   entry    : environment !== 'production'
     ? ['./application/bootstrap.js', 'webpack-hot-middleware/client?path=/__webpack_hmr?http://' + __HOSTNAME__ + ':9000']
     : ['./application/bootstrap.js'],
+    media : ['./application/media.js'],
   plugins  : [
     new webpack.DefinePlugin({
       __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
