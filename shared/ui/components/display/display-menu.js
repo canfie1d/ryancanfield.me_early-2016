@@ -2,16 +2,13 @@ import React       from 'react';
 import _           from 'lodash';
 import classNames from 'classnames';
 
-const Display = React.createClass({
+let DisplayMenu = React.createClass({
 
-    displayName: 'Display',
+    displayName: 'DisplayMenu',
 
     propTypes: {
         projects        : React.PropTypes.array,
-        activeProject   : React.PropTypes.oneOfType([
-            React.PropTypes.string,
-            null
-        ]),
+        activeProject   : React.PropTypes.object,
         onMenuItemClick : React.PropTypes.func,
         menuActive      : React.PropTypes.bool
     },
@@ -45,4 +42,4 @@ const Display = React.createClass({
 
 });
 
-export default Display;
+export default DisplayMenu;
