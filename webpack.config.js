@@ -10,9 +10,9 @@ var npmPath     = path.resolve(__dirname, 'node_modules');
 var config      = {
   devtools : [],
   entry    : environment !== 'production'
-    ? ['./application/bootstrap.js', 'webpack-hot-middleware/client?path=/__webpack_hmr?http://' + __HOSTNAME__ + ':9000']
-    : ['./application/bootstrap.js'],
-  media : ['./application/media.js'],
+    ? ['./shared/bootstrap.js', 'webpack-hot-middleware/client?path=/__webpack_hmr?http://' + __HOSTNAME__ + ':9000']
+    : ['./shared/bootstrap.js'],
+  media : ['./shared/media.js'],
   plugins  : [
     new webpack.DefinePlugin({
       __BACKEND__     : process.env.BACKEND ? '\'' + process.env.BACKEND + '\'' : undefined,
@@ -24,7 +24,7 @@ var config      = {
     }),
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
-    new HtmlWebpackPlugin({template : './application/index.html'})
+    new HtmlWebpackPlugin({template : './shared/index.html', inject: false})
   ],
   sassOptions  : (
     '?outputStyle=' + (environment === 'production' ? 'compressed' : 'nested') +

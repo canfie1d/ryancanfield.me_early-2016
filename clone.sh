@@ -14,8 +14,8 @@ echo "Copying files to $1"
 rsync -av --exclude='node_modules' --exclude='.git' --exclude="clone.sh" ./ $1
 
 echo "Configuring $2"
-sed -i "" s/%DEV_API_HOST%/$2.vm/g "$1/application/config/development.js"
-sed -i "" s/%PRODUCTION_API_HOST%/api.$2.com/g "$1/application/config/production.js"
-sed -i "" s/%PRODUCTION_APP_HOST%/$2.com/g "$1/application/config/production.js"
-sed -i "" s/%QA_API_HOST%/$2-qa.$QA_HOST/g "$1/application/config/ci.js"
-sed -i "" s/%QA_API_HOST%/$2-qa.$QA_HOST/g "$1/application/config/qa.js"
+sed -i "" s/%DEV_API_HOST%/$2.vm/g "$1/shared/config/development.js"
+sed -i "" s/%PRODUCTION_API_HOST%/api.$2.com/g "$1/shared/config/production.js"
+sed -i "" s/%PRODUCTION_APP_HOST%/$2.com/g "$1/shared/config/production.js"
+sed -i "" s/%QA_API_HOST%/$2-qa.$QA_HOST/g "$1/shared/config/ci.js"
+sed -i "" s/%QA_API_HOST%/$2-qa.$QA_HOST/g "$1/shared/config/qa.js"
