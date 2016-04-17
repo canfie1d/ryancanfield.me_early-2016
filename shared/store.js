@@ -1,7 +1,7 @@
 import './ui/scss/app';
 import app from './redux/reducers';
-import { addResponsiveHandlers } from 'redux-responsive';
 import { compose, createStore, applyMiddleware } from 'redux';
+import { createResponsiveStoreEnhancer } from 'redux-responsive';
 import { persistState } from 'redux-devtools';
 import DevTools from './dev-tools-component';
 
@@ -19,13 +19,12 @@ const getDebugSessionKey = () => {
 if (process.env.NODE_ENV === 'development') {
     storeEnhancer = compose(
         storeEnhancer,
+        createResponsiveStoreEnhancer(),
         DevTools.instrument(),
         persistState(getDebugSessionKey())
     );
 }
 
 const store = storeEnhancer(createStore)(app);
-
-addResponsiveHandlers(store);
 
 export default store;
