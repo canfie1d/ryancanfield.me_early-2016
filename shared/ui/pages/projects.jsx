@@ -146,7 +146,7 @@ const ProjectsPage = connect(getPropsFromApplicationState)(React.createClass({
     },
 
     renderSubtitle() {
-        if(this.props.browser.greaterThan.small) {
+        if(this.props.browser.greaterThan.mediumSmall) {
             return (
                 <h2 className='page__subtitle'>Clients</h2>
             );
@@ -154,7 +154,6 @@ const ProjectsPage = connect(getPropsFromApplicationState)(React.createClass({
     },
 
     render() {
-
         return (
             <div key='projects-page' className='page__content-container'>
                 <Header
