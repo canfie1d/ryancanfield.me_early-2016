@@ -1,4 +1,5 @@
 import React              from 'react';
+import ReactDOM           from 'react-dom';
 import _                  from 'lodash';
 import { Link }           from 'react-router';
 import { toggleMenuItem } from '../../../redux/menu/menu-actions';
@@ -18,6 +19,16 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
 
     propTypes: {
         menuItems : React.PropTypes.array.isRequired
+    },
+
+    componentDidMount() {
+        var component = ReactDOM.findDOMNode(this);
+
+        component.style.opacity = 0;
+        window.requestAnimationFrame(() => {
+            component.style.transition = 'opacity 2500ms';
+            component.style.opacity = 1;
+        });
     },
 
     componentWillUnmount() {
@@ -91,7 +102,7 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
             };
 
             return (
-                <li key={index} className="menu__item">
+                <li key={index} className='menu__item'>
                     {link()}
                 </li>
             );
