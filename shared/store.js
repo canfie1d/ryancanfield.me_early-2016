@@ -23,6 +23,11 @@ if (process.env.NODE_ENV === 'development') {
         DevTools.instrument(),
         persistState(getDebugSessionKey())
     );
+} else {
+    storeEnhancer = compose(
+      storeEnhancer,
+      createResponsiveStoreEnhancer()
+    );
 }
 
 const store = storeEnhancer(createStore)(app);
