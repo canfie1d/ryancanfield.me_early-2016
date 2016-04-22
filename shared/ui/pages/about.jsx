@@ -45,7 +45,7 @@ const AboutPage = connect(getPropsFromApplicationState)(React.createClass({
                 </main>
                 <Footer
                     childArray={[
-                        <Button className='download-button' element='a' href='https://s3-us-west-2.amazonaws.com/ryancanfield.me-docs/R_Canfield_Resume_2016.pdf' colorTheme='white'>
+                        <Button className='download-button' element='a' target='_blank' href='https://s3-us-west-2.amazonaws.com/ryancanfield.me-docs/R_Canfield_Resume_2016.pdf' colorTheme='white'>
                             View Résumé PDF
                         </Button>,
                         <BackButton onClick={this.onBackClick} staySmall />
