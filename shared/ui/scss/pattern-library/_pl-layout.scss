@@ -101,15 +101,15 @@ $pl-header-height: rem-calc(64);
     margin-bottom: 20px;
 
     > div {
-      background: tint($primary-color, 60%);
+      background: tint($primary, 60%);
       padding: rem-calc(3);
     }
   }
 
   &.example .row .box {
     padding: rem-calc(10);
-    background: $primary-color;
-    border: 1px solid darken($primary-color, 20%);
+    background: $primary;
+    border: 1px solid darken($primary, 20%);
     color: $white;
   }
 
