@@ -1,5 +1,4 @@
 import React       from 'react';
-import _           from 'lodash';
 import classNames from 'classnames';
 
 let DisplayMenu = React.createClass({
@@ -14,13 +13,17 @@ let DisplayMenu = React.createClass({
     },
 
     renderMenuItems() {
-        return _.map(this.props.projects, (project, index) => {
-            return (
-                <li key={index} tabIndex='1' className='display__menu__item' onClick={_.partial(this.props.onMenuItemClick, index)}>
-                    {project.title}
+        let projects = [];
+
+        for (let i = 0; i < this.props.projects.length; i++) {
+            projects.push(
+                <li key={i} tabIndex='1' className='display__menu__item' onClick={this.props.onMenuItemClick.bind(this, i)}>
+                    {this.props.projects[i].title}
                 </li>
             );
-        });
+        }
+
+        return projects;
     },
 
     render() {

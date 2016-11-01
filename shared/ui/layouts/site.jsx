@@ -1,5 +1,6 @@
-import React                   from 'react';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import React from 'react';
+import classNames from 'classnames';
+import Page from '../pages/page';
 
 const site = React.createClass({
 
@@ -39,7 +40,6 @@ const site = React.createClass({
     },
 
     render() {
-
         let currentPage = window.location.pathname,
             page = '';
 
@@ -70,19 +70,14 @@ const site = React.createClass({
             'l--site-wrapper',
             this.state.hideFocusOutline ? 'focus-outline--hidden' : null,
             pageClass
-        ].join(' ').trim();
+        ];
 
         return (
-            <ReactCSSTransitionGroup
-                component='div'
-                transitionName={page}
-                transitionEnterTimeout={500}
-                transitionLeaveTimeout={500}
-            >
-                <div key={page} className={classes}>
-                    {this.props.children}
-                </div>
-            </ReactCSSTransitionGroup>
+            <Page
+                key={page}
+                className={classNames(classes)}
+                children={this.props.children}
+            />
         );
     },
 

@@ -1,4 +1,3 @@
-import _           from 'lodash';
 import React       from 'react';
 import DisplayMenu from './display-menu';
 import classNames  from 'classnames';
@@ -51,28 +50,38 @@ const Display = React.createClass({
     },
 
     renderImages(project) {
-        return _.map(project.images, (image, index) => {
+        let projectImages = [];
+
+        for (let i = 0; i < project.images.length; i++) {
             let classes = [
                 'project__image',
                 'project__image--' + this.state.activeImage + '-active'
             ];
 
-            return <img key={index} className={classNames(classes)} src={image.url} />;
-        });
+            projectImages.push(
+                <img key={i} className={classNames(classes)} src={project.images[i].url} />
+            );
+        }
+
+        return projectImages;
     },
 
     renderProjects() {
-        return _.map(this.props.projects, (project, index) => {
+        let projects = [];
+
+        for (let i = 0; i < this.props.projects.length; i++) {
             let classes = [
                 'project__list',
                 'project__list--' + this.state.activeProject.id + '-active'
             ];
-            return (
-                <ul key={index} className={classNames(classes)}>
-                    {this.renderImages(project)}
+            projects.push(
+                <ul key={i} className={classNames(classes)}>
+                    {this.renderImages(this.props.projects[i])}
                 </ul>
             );
-        });
+        }
+
+        return projects;
     },
 
     onMenuItemClick(index) {
@@ -87,13 +96,17 @@ const Display = React.createClass({
     },
 
     renderMenuItems() {
-        return _.map(this.props.projects, (project, index) => {
-            return (
-                <li key={index} className='display__menu__item' onClick={this.onMenuItemClick}>
-                    {project.title}
+        let projectTitles = [];
+
+        for (let i = 0; i < this.props.projects.length; i++) {
+            projectTitles.push(
+                <li key={i} className='display__menu__item' onClick={this.onMenuItemClick}>
+                    {this.props.projects[i].title}
                 </li>
             );
-        });
+        }
+
+        return projectTitles;
     },
 
     renderProjectButtons() {

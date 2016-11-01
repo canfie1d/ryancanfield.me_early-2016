@@ -1,4 +1,3 @@
-import _                   from 'lodash';
 import { combineReducers } from 'redux';
 import { HOVER_MENU_ITEM } from './menu-actions';
 

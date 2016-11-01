@@ -1,6 +1,6 @@
 import React              from 'react';
 import ReactDOM           from 'react-dom';
-import _                  from 'lodash';
+import { findIndex }      from 'lodash';
 import { Link }           from 'react-router';
 import { toggleMenuItem } from '../../../redux/menu/menu-actions';
 import { connect }        from 'react-redux';
@@ -44,59 +44,63 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
     },
 
     renderIcons() {
-        return _.map(this.props.menuItems, (icon, index) => {
+        let icons = [];
 
-            if (icon.icon) {
-                return (
+        for (let i = 0; i < this.props.menuItems; i++) {
+            if (this.props.menuItems[i].icon) {
+                icons.push(
                     <Icon
-                        key       = {index}
+                        key       = {i}
                         className = 'menu__icon'
-                        icon      = {icon.icon}
+                        icon      = {this.props.menuItems[i].icon}
                         size      = 'x-large'
                     />
                 );
             }
 
             return null;
-        });
+        }
+
+        return icons;
     },
 
     renderItems() {
-        return _.map(this.props.menuItems, (item, index) => {
+        let items = [];
 
+        for (let i = 0; i < this.props.menuItems; i++) {
             let link = () => {
-                if (item.external) {
-                    return (
+                if (this.props.menuItems[i].external) {
+                    items.push(
                         <a
-                            key         = {index}
-                            href        = {item.url}
-                            target      = {item.url !== 'mailto:ryancanfield@me.com' ? '_blank' : '_self'}
+                            key         = {i}
+                            href        = {this.props.menuItems[i].url}
+                            target      = {this.props.menuItems[i].url !== 'mailto:ryancanfield@me.com' ? '_blank' : '_self'}
                             className   = 'menu__link'
-                            onMouseOver = {this.activeMenuItem.bind(null, item.title)}
+                            onMouseOver = {this.activeMenuItem.bind(null, this.props.menuItems[i].title)}
                             onMouseOut  = {this.inactiveMenuItem}
                             onClick     = {this.inactiveMenuItem}
                             onTouchEnd  = {this.inactiveMenuItem}
-                            onFocus     = {this.activeMenuItem.bind(null, item.title)}
+                            onFocus     = {this.activeMenuItem.bind(null, this.props.menuItems[i].title)}
                             onBlur      = {this.inactiveMenuItem}
                         >
-                            {item.title}
+                            {this.props.menuItems[i].title}
                         </a>
                     );
                 }
 
-                return (
+                items.push(
                     <Link
-                        key          = {index}
-                        to           = {'/' + item.url}
+                        key          = {i}
+                        to           = {'/' + this.props.menuItems[i].url}
                         className    = 'menu__link'
-                        onFocus      = {this.activeMenuItem.bind(null, item.url)}
+                        onFocus      = {this.activeMenuItem.bind(null, this.props.menuItems[i].url)}
                         onBlur       = {this.inactiveMenuItem}
-                        onMouseOver  = {this.activeMenuItem.bind(null, item.url)}
+                        onMouseOver  = {this.activeMenuItem.bind(null, this.props.menuItems[i].url)}
                         onMouseOut   = {this.inactiveMenuItem}
                         onMouseDown  = {this.inactiveMenuItem}
                         onTouchStart = {this.inactiveMenuItem}
                         >
-                        {item.title}
+                        {this.props.menuItems[i].title}
                     </Link>
                 );
             };
@@ -106,11 +110,13 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
                     {link()}
                 </li>
             );
-        });
+        }
+
+        return items;
     },
 
     renderIconList() {
-        if(_.findIndex(this.props.menuItems, 'icon') === 0) {
+        if(findIndex(this.props.menuItems, 'icon') === 0) {
             let iconClasses = classNames({
                 'menu__icon-list'         : true,
                 'menu__icon-list--hidden' : this.props.currentMenuItem !== ''

@@ -1,5 +1,4 @@
 import React              from 'react';
-import _                  from 'lodash';
 import { Link }           from 'react-router';
 import { toggleMenuItem } from '../../../redux/menu/menu-actions';
 import { connect }        from 'react-redux';
@@ -21,14 +20,17 @@ const List = connect(getPropsFromApplicationState)(React.createClass({
     },
 
     renderItems() {
-        return _.map(this.props.listItems, (item, index) => {
+        let items = [];
 
-            return (
-                <li key={index} className='menu__item'>
-                    <span className='menu__link'>{item.title}</span>
+        for (let i = 0; i < this.props.listItems.length; i++) {
+            items.push(
+                <li key={i} className='menu__item'>
+                    <span className='menu__link'>{this.props.listItems[i].title}</span>
                 </li>
             );
-        });
+        }
+
+        return items;
     },
 
     render() {
