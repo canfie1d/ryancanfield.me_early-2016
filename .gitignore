@@ -1,4 +1,3 @@
-bower_components
 build
 cache
 node_modules
@@ -7,4 +6,3 @@ npm-debug.log
 .vagrant
 dist/
 server/render-generated.js
-shippable/testresults/unit.xml

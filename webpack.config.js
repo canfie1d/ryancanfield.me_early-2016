@@ -82,7 +82,12 @@ module.exports = [
       return [autoprefixer];
     },
     resolve : {
-      extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js']
+      extensions : ['', '.css', '.js', '.json', '.jsx', '.scss', '.webpack.js', '.web.js'],
+      alias: {
+        "react": "preact-compat",
+        "react-dom": "preact-compat",
+        'react-addons-css-transition-group': 'rc-css-transition-group'
+      }
     },
     devtool : config.devtools
   },
