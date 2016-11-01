@@ -1,10 +1,13 @@
 // vendor imports
 @import "app-settings";
-@import "synfrastructure/scss/synfrastructure";
+@import "vendor/reset";
+
 // dependency imports
-@import "dependencies/synfrastructure-loader";
 @import "dependencies/colors";
 @import "dependencies/fonts";
+@import "dependencies/functions";
+@import "dependencies/timing-functions";
+@import "dependencies/media-queries";
 // layouts
 @import "layouts/base";
 @import "layouts/layout";

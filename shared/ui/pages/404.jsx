@@ -1,5 +1,5 @@
 import React              from 'react';
-import { Button }         from 'synfrastructure';
+import Button             from '../components/buttons/button';
 import { browserHistory } from 'react-router';
 
 const Page404 = React.createClass({

@@ -1,9 +1,14 @@
 // vendor imports
 @import "app-settings";
-@import "synfrastructure/scss/synfrastructure";
+
 // dependency imports
-@import "dependencies/synfrastructure-loader";
 @import "pattern-library/pl-colors";
+@import "dependencies/colors";
+@import "dependencies/fonts";
+@import "dependencies/functions";
+@import "dependencies/timing-functions";
+@import "dependencies/media-queries";
+
 // layout imports
 @import "pattern-library/pl-layout";
 // component imports
