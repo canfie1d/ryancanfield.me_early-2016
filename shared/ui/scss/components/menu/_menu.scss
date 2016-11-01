@@ -6,20 +6,10 @@
 
 .menu__item {
 
-    .menu__link:hover::before,
-    .menu__link:focus::before {
-        box-shadow : inset 0 0 300px 0 rgba($black, .10);
-    }
-
     &:first-of-type .menu__link,
     &:nth-of-type(5) .menu__link,
     &:nth-of-type(9) .menu__link {
         color : $projectsColor;
-
-        &:hover::before,
-        &:focus::before {
-            background : $projectsColor;
-        }
 
         &:hover,
         &:focus {
@@ -32,11 +22,6 @@
     &:nth-of-type(6) .menu__link {
         color : $conceptsColor;
 
-        &:hover::before,
-        &:focus::before {
-            background : $conceptsColor;
-        }
-
         &:hover,
         &:focus {
             color : $white;
@@ -46,11 +31,6 @@
     &:nth-of-type(3) .menu__link,
     &:nth-of-type(7) .menu__link {
         color : $aboutColor;
-
-        &:hover::before,
-        &:focus::before {
-            background : $aboutColor;
-        }
 
         &:hover,
         &:focus {
@@ -64,11 +44,6 @@
 
         .elsewhere-page & {
             color : $quaternary--dark;
-        }
-
-        &:hover::before,
-        &:focus::before {
-            background : $elsewhereColor;
         }
 
 
@@ -154,9 +129,14 @@
     text-align      : left;
     white-space     : nowrap;
     user-select     : none;
-    transition      : font-size 300ms $ease-out-back,
-                      color 300ms ease-in-out;
-
+    transition      : color 300ms ease-in-out;
+    
+    &:hover::before,
+    &:focus::before {
+        box-shadow : inset 0 0 600px 0 rgba($black, 1);
+        opacity : 1;
+    }
+    
     &::before {
         display          : block; // for IE11 pointer-events
         content          : '';
@@ -168,14 +148,10 @@
         width            : 100vw;
         height           : 100vh;
         transform-origin : center;
-        transition       : background 300ms ease-in-out;
+        opacity          : 0;
+        transition       : opacity 10000ms ease-in;
         z-index          : -1;
         pointer-events   : none;
-
-        &:hover {
-            transform : scale(0);
-        }
-
     }
 
     &:focus {

@@ -5,20 +5,21 @@
 $white: #fff;
 $black: #000;
 
-$gray--050: tint($black, 95%);
-$gray--100: tint($black, 90%);
-$gray--200: tint($black, 80%);
-$gray--300: tint($black, 70%);
-$gray--400: tint($black, 60%);
-$gray--500: tint($black, 50%);
-$gray--600: tint($black, 40%);
-$gray--700: tint($black, 30%);
-$gray--800: tint($black, 20%);
-$gray--900: tint($black, 10%);
+$gray--050: #F2F2F2;
+$gray--100: #E5E5E5;
+$gray--200: #CDCDCD;
+$gray--300: #B3B3B3;
+$gray--400: #999999;
+$gray--500: #7F7F7F;
+$gray--600: #666666;
+$gray--700: #4D4D4D;
+$gray--800: #333333;
+$gray--900: #1A1A1A;
 
 
 // Thematic colors
-$primary: #7e98a5; // #bcd5d1;
+$primary: #7e98a5;
+$primary--alt: #bcd5d1;
 $secondary: #827b73;
 $tertiary: #5a5c51;
 $quaternary: #5e6d69;

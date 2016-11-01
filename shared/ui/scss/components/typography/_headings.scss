@@ -96,6 +96,7 @@ $h6-margin: 1.7em 0 !default;
     font-family : $display-font--bold;
     color       : $white;
     font-size   : rem-calc(52);
+    margin-top : rem-calc(100);
 
     @include min-screen($media-small) {
         margin-top : rem-calc(100);

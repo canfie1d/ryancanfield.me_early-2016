@@ -72,11 +72,11 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
                             href        = {item.url}
                             target      = {item.url !== 'mailto:ryancanfield@me.com' ? '_blank' : '_self'}
                             className   = 'menu__link'
-                            onMouseOver = {_.partial(this.activeMenuItem, item.title)}
+                            onMouseOver = {this.activeMenuItem.bind(null, item.title)}
                             onMouseOut  = {this.inactiveMenuItem}
                             onClick     = {this.inactiveMenuItem}
                             onTouchEnd  = {this.inactiveMenuItem}
-                            onFocus     = {_.partial(this.activeMenuItem, item.title)}
+                            onFocus     = {this.activeMenuItem.bind(null, item.title)}
                             onBlur      = {this.inactiveMenuItem}
                         >
                             {item.title}
@@ -89,9 +89,9 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
                         key          = {index}
                         to           = {'/' + item.url}
                         className    = 'menu__link'
-                        onFocus      = {_.partial(this.activeMenuItem, item.url)}
+                        onFocus      = {this.activeMenuItem.bind(null, item.url)}
                         onBlur       = {this.inactiveMenuItem}
-                        onMouseOver  = {_.partial(this.activeMenuItem, item.url)}
+                        onMouseOver  = {this.activeMenuItem.bind(null, item.url)}
                         onMouseOut   = {this.inactiveMenuItem}
                         onMouseDown  = {this.inactiveMenuItem}
                         onTouchStart = {this.inactiveMenuItem}
