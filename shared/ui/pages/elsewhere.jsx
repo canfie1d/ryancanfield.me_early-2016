@@ -1,48 +1,10 @@
 import React              from 'react';
-import { browserHistory } from 'react-router';
-import { connect }        from 'react-redux';
-import MenuList           from '../components/list/menu-list';
-import BackButton         from '../components/buttons/back-button';
-import Icon               from '../components/icon/icon';
 import Header             from '../components/regions/header';
-import Footer             from '../components/regions/footer';
+import ElsewhereContent   from '../content/elsewhere-content';
 
-let getPropsFromApplicationState = (state) => {
-    return {
-        currentMenuItem : state.menu.currentMenuItem
-    };
-};
-
-const ELSEWHERE_ITEMS = [
-    {
-        title    : 'Email',
-        url      : 'mailto:ryancanfield@me.com',
-        external : true
-    },
-    {
-        title    : 'Github',
-        url      : 'http://www.github.com/canfie1d',
-        external : true
-    },
-    {
-        title    : 'Twitter',
-        url      : 'http://www.twitter.com/canfie1d',
-        external : true
-    },
-    {
-        title    : 'LinkedIn',
-        url      : 'http://www.linkedin.com/in/ryanmcanfield',
-        external : true
-    }
-];
-
-const ElsewherePage = connect(getPropsFromApplicationState)(React.createClass({
+const ElsewherePage = React.createClass({
 
     displayName: 'ElsewherePage',
-
-    onBackClick() {
-        browserHistory.push('/');
-    },
 
     render() {
         return (
@@ -51,13 +13,11 @@ const ElsewherePage = connect(getPropsFromApplicationState)(React.createClass({
                     title = 'Elsewhere'
                     icon  = 'Elsewhere'
                 />
-                <main className='page__content page__content--menu page__content--no-header'>
-                    <MenuList menuItems={ELSEWHERE_ITEMS} />
-                </main>
+                <ElsewhereContent />
             </div>
         );
     },
 
-}));
+});
 
 export default ElsewherePage;
