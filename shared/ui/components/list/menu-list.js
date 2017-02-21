@@ -46,7 +46,7 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
     renderIcons() {
         let icons = [];
 
-        for (let i = 0; i < this.props.menuItems; i++) {
+        for (let i = 0; i < this.props.menuItems.length; i++) {
             if (this.props.menuItems[i].icon) {
                 icons.push(
                     <Icon
@@ -57,8 +57,6 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
                     />
                 );
             }
-
-            return null;
         }
 
         return icons;
@@ -67,49 +65,45 @@ const MenuList = connect(getPropsFromApplicationState)(React.createClass({
     renderItems() {
         let items = [];
 
-        for (let i = 0; i < this.props.menuItems; i++) {
-            let link = () => {
-                if (this.props.menuItems[i].external) {
-                    items.push(
-                        <a
-                            key         = {i}
-                            href        = {this.props.menuItems[i].url}
-                            target      = {this.props.menuItems[i].url !== 'mailto:ryancanfield@me.com' ? '_blank' : '_self'}
-                            className   = 'menu__link'
-                            onMouseOver = {this.activeMenuItem.bind(null, this.props.menuItems[i].title)}
-                            onMouseOut  = {this.inactiveMenuItem}
-                            onClick     = {this.inactiveMenuItem}
-                            onTouchEnd  = {this.inactiveMenuItem}
-                            onFocus     = {this.activeMenuItem.bind(null, this.props.menuItems[i].title)}
-                            onBlur      = {this.inactiveMenuItem}
-                        >
-                            {this.props.menuItems[i].title}
-                        </a>
-                    );
-                }
-
-                items.push(
-                    <Link
-                        key          = {i}
-                        to           = {'/' + this.props.menuItems[i].url}
-                        className    = 'menu__link'
-                        onFocus      = {this.activeMenuItem.bind(null, this.props.menuItems[i].url)}
-                        onBlur       = {this.inactiveMenuItem}
-                        onMouseOver  = {this.activeMenuItem.bind(null, this.props.menuItems[i].url)}
-                        onMouseOut   = {this.inactiveMenuItem}
-                        onMouseDown  = {this.inactiveMenuItem}
-                        onTouchStart = {this.inactiveMenuItem}
-                        >
-                        {this.props.menuItems[i].title}
-                    </Link>
-                );
-            };
-
-            return (
-                <li key={index} className='menu__item'>
-                    {link()}
+        for (let i = 0; i < this.props.menuItems.length; i++) {
+          if (this.props.menuItems[i].external) {
+              items.push(
+                <li key={i} className='menu__item'>
+                  <a
+                      key         = {i}
+                      href        = {this.props.menuItems[i].url}
+                      target      = {this.props.menuItems[i].url !== 'mailto:ryancanfield@me.com' ? '_blank' : '_self'}
+                      className   = 'menu__link'
+                      onMouseOver = {this.activeMenuItem.bind(null, this.props.menuItems[i].title)}
+                      onMouseOut  = {this.inactiveMenuItem}
+                      onClick     = {this.inactiveMenuItem}
+                      onTouchEnd  = {this.inactiveMenuItem}
+                      onFocus     = {this.activeMenuItem.bind(null, this.props.menuItems[i].title)}
+                      onBlur      = {this.inactiveMenuItem}
+                  >
+                      {this.props.menuItems[i].title}
+                  </a>
                 </li>
-            );
+              );
+          } else {
+              items.push(
+                <li key={i} className='menu__item'>
+                  <Link
+                      key          = {i}
+                      to           = {'/' + this.props.menuItems[i].url}
+                      className    = 'menu__link'
+                      onFocus      = {this.activeMenuItem.bind(null, this.props.menuItems[i].url)}
+                      onBlur       = {this.inactiveMenuItem}
+                      onMouseOver  = {this.activeMenuItem.bind(null, this.props.menuItems[i].url)}
+                      onMouseOut   = {this.inactiveMenuItem}
+                      onMouseDown  = {this.inactiveMenuItem}
+                      onTouchStart = {this.inactiveMenuItem}
+                      >
+                      {this.props.menuItems[i].title}
+                  </Link>
+                </li>
+              );
+          }
         }
 
         return items;

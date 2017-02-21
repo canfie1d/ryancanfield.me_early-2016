@@ -3,7 +3,6 @@ import React from 'react';
 import { Route, Redirect, IndexRoute } from 'react-router';
 
 import SiteLayout from './ui/layouts/site';
-import MenuPage from './ui/pages/menu';
 import ConceptsPage from './ui/pages/concepts';
 import ProjectsPage from './ui/pages/projects';
 import AboutPage from './ui/pages/about';
@@ -13,7 +12,7 @@ import SecretPage from './ui/pages/secret';
 
 export default (
     <Route path="/" component={SiteLayout}>
-        <IndexRoute component={MenuPage} />
+        <IndexRoute component={ProjectsPage} />
         <Route path="/projects" component={ProjectsPage} />
         <Route path="/concepts" component={ConceptsPage} />
         <Route path="/about" component={AboutPage} />

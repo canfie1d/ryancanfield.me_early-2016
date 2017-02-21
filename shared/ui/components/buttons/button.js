@@ -16,6 +16,7 @@ let Button = React.createClass({
         disabled              : React.PropTypes.bool,
         className             : React.PropTypes.string,
         onClick               : React.PropTypes.func,
+        href                  : React.PropTypes.string,
         tabIndex              : React.PropTypes.string,
         children              : React.PropTypes.any
     },
@@ -57,6 +58,7 @@ let Button = React.createClass({
             this.props.element,
             {
                 className : classes,
+                href      : this.props.href,
                 onClick   : this.props.onClick,
                 disabled  : this.props.disabled,
                 tabIndex  : this.props.tabIndex
